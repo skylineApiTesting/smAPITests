@@ -1,0 +1,2381 @@
+{
+  "info": {
+    "_postman_id": "1ac2ad22-d339-4faa-b74d-2c276b019520",
+    "name": "Stream Manager Operator",
+    "description": "This collection contains tests for stream manager APIs to run as an operator user.\n\nDocumentation for stream manager APIs can be found on 172.28.12.54/docs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "830bbbae-739b-4b64-9d16-b6341db8ffa3",
+      "name": "Test Methods Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "75185882-bc99-47b5-bcd7-b595d3ff77ef",
+          "name": "CRUD Tests",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bbed600a-9b88-48ab-897d-c01d1f362e46",
+                "type": "text/javascript",
+                "exec": [
+                  "//options for method are \"create\", and \"retrieve\", \"update\", \"delete\"",
+                  "//options for section are \"User\", \"Contacts\", \"Zones\", \"ApiKeys\"",
+                  "var crudTests = (method, section) => {",
+                  "    ",
+                  "    successMessage = function(method, section){",
+                  "        pm.test(\"Body shows success message\", function () {",
+                  "            pm.expect(pm.response.text()).to.include(\"\\\"\" + method + section + \"\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "        });",
+                  "    };",
+                  "    ",
+                  "    pm.test(\"Status code is 200\", function () {",
+                  "        pm.response.to.have.status(200);",
+                  "    });",
+                  "    ",
+                  "    pm.test(\"Response time is less than 200ms\", function () {",
+                  "        pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "    });",
+                  "    ",
+                  "    switch(method) {",
+                  "        case 'create':",
+                  "            successMessage(method, section);",
+                  "            break;",
+                  "            ",
+                  "        case 'retrieve':",
+                  "            section = section.toLowerCase();",
+                  "            name = pm.environment.get(section + \"_name\");",
+                  "            ",
+                  "            pm.test(\"Body includes \" + section +  \" name\", function (){",
+                  "                pm.expect(pm.response.text()).to.include(name);",
+                  "            });",
+                  "            ",
+                  "            break;",
+                  "        ",
+                  "        case 'update':",
+                  "            section = section.toLowerCase();",
+                  "            var nameEDITED = pm.environment.get(section + \"_name_EDIT\");",
+                  "",
+                  "            pm.test(\"Body includes edited \" + section + \" name\", function () {",
+                  "                pm.expect(pm.response.text()).to.include(nameEDITED);",
+                  "            });",
+                  "            ",
+                  "            break;",
+                  "        ",
+                  "        case 'delete':",
+                  "            section = section.toLowerCase();",
+                  "            var nameEDIT = pm.environment.get(section + \"name_EDIT\");",
+                  "",
+                  "            pm.test(\"Body does not contain edited \" + section + \" name\", function () {",
+                  "                pm.expect(pm.response.text()).to.not.include(nameEDIT);",
+                  "            });",
+                  "            ",
+                  "            break;",
+                  "            ",
+                  "        default:",
+                  "            return () => {};",
+                  "    }",
+                  "};",
+                  "",
+                  "pm.environment.set('crudTests', crudTests.toString());",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a9b4d914-7920-4e02-8ce4-8d1e9c2b9e9b",
+          "name": "Login Tests",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cba68983-1d27-4b4b-ba5d-63b8e571d2f0",
+                "type": "text/javascript",
+                "exec": [
+                  "//success is a bool",
+                  "//isAdmin is a bool",
+                  "var LoginTests = (success, isAdmin=true) => {",
+                  "",
+                  "    pm.test(\"Status code is 200\", function () {",
+                  "        pm.response.to.have.status(200);",
+                  "    });",
+                  "    ",
+                  "    pm.test(\"Response time is less than 200ms\", function () {",
+                  "        pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "    });",
+                  "    ",
+                  "    if(success === true && isAdmin === true){",
+                  "        pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "            pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "        });",
+                  "    }",
+                  "    ",
+                  "    else if(success === true && isAdmin === false){",
+                  "        pm.test(\"Response time is less than 200ms\", function () {",
+                  "            pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "        });",
+                  "        ",
+                  "        pm.test(\"User is not an admin\", function () {",
+                  "            pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "        });",
+                  "        ",
+                  "    }",
+                  "    ",
+                  "    else{",
+                  "        pm.test(\"Body Contains Login Fields\", function () {",
+                  "            pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "        });",
+                  "    ",
+                  "    }",
+                  "    ",
+                  "};",
+                  "",
+                  "pm.environment.set('LoginTests', LoginTests.toString());",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "http://{{url}}"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "29ea5206-c179-40db-840c-07fe4cef367c",
+      "name": "Login",
+      "description": "Tests under the Login category.",
+      "item": [
+        {
+          "_postman_id": "73b679c9-9821-4174-8506-8d22f1164ceb",
+          "name": "Login Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c4858c6f-531a-44db-851c-98bdbc5d47eb",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(true, true);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e48e02b1-244d-456e-b18f-117a1a7d75b4",
+          "name": "Login Admin Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c4858c6f-531a-44db-851c-98bdbc5d47eb",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(true, true);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "70fc891c-4856-428f-8fa3-302675433877",
+          "name": "Create Operator User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"User was created and variables set.\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "    pm.environment.unset(\"user_ID\");",
+                  "    pm.environment.unset(\"user_name\");",
+                  "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
+                  "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
+                  "});",
+                  "",
+                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
+                  "crudTestsMethod('create', 'User');",
+                  "",
+                  "user_email = pm.environment.get(\"user_email\");",
+                  "",
+                  "pm.test(\"Body has email\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_email);",
+                  "});",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "7be8edf0-db71-40b0-b037-c7a04d78613a",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{user}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"PName\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "creates an admin user in stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "987501ba-0a5b-47dc-a2f0-5bd1400a0be7",
+          "name": "Logout",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "02351da2-c908-4f0f-9ea9-9a44a4554bc7",
+          "name": "Empty Password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "03ab159d-47f8-4361-aef0-5d2dda26d7bf",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(false, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6fde0d67-40a8-4f51-b2ae-f1b962307906",
+          "name": "Empty Username",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f6c79170-f98e-4723-9dd4-a5cbed1cdc1b",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(false, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "70e52c15-8b90-4e6c-be9e-ae4429b11c06",
+          "name": "Incorrect Username",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fd02c6a7-adde-43cd-bc48-d1a53fe7dbf1",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(false, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "wrongUser",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e39626b3-fcd0-4849-9ed4-6e840f7586e5",
+          "name": "Incorrect Password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "96251dfb-6aca-460e-9149-4c5424c634e5",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(false, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "wrongPassword",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2c179d87-76ee-41e4-bbdc-9e767e18dfca",
+          "name": "Username Password Swapped",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "94542d77-dc06-4fad-9899-4388ce0e685f",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(false, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{password}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{user}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0cf05332-f95e-4e13-ad46-96fb81fae993",
+          "name": "Username Wrong Case",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1a421a29-f4c1-42ec-bc72-94f25b1a0379",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(true, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "OPERATOR",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fa13d017-d754-4d8d-86e1-d8e0cee3c359",
+          "name": "Logout",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d686f59b-8e52-402b-949c-6d1d1b5b9979",
+          "name": "Password Wrong Case",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "SM1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7e290903-6387-49f5-9eda-3329e934a898",
+          "name": "Login Valid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
+                "type": "text/javascript",
+                "exec": [
+                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
+                  "LoginTestsMethod(true, false);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "operator",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "a6408328-10fd-4484-a454-01798fde1a5b",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "35cf5db4-f295-4880-9ca9-4b2309aa394a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "dac16a1a-cb39-4387-a008-b7d698459a46",
+      "name": "api",
+      "description": "api that is initialized after logging into stream manager. looks like it contains information about the various apis (actions) which can be used in stream manager",
+      "item": [
+        {
+          "_postman_id": "51c676d1-9526-4f80-b726-0c42557ddbaf",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"User is an operator, not admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "68e21e41-e504-4839-8ada-12b621fc6b04",
+          "name": "List APIs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body contains api names\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
+                  "});",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://{{url}}/{{version}}/direct/api"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5f2725af-2355-4e8b-b82f-724a3fbcab05",
+          "name": "Get lots of categories",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "74ec85a3-e4a7-4d29-93cf-6e82df2e5c9e",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Success is true\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t},\n\t{\n\t\t\"action\": \"Appliance\",\n\t\t\"method\": \"getAppliances\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 2\n\t},\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getIssueStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 3\n\t},\n\t{\n\t\t\"action\": \"Location\",\n\t\t\"method\": \"getLocations\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 4\n\t},\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"Media\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 5\n\t},\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 6\n\t},\n\t{\n\t\t\"action\": \"Capacity\",\n\t\t\"method\": \"getSfsCapacity\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 7\n\t},\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"SSL VPN\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 8\n\t},\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getGrid\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 9\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t},\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 11\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gotten by this request: contacts, appliances, issue streams, locations, offline sfs streams, sfs capacity, offline sfs streams, grid, and users\n\nThis runs everytime a user logs in."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "b4a4c79e-da5e-409f-ab7c-7825cc00d30e",
+      "name": "API Keys",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "74a93a59-c064-4460-931b-fc2443a9605c",
+          "name": "Login Admin Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8b88e99b-2738-40ce-a88b-42a2f6a65b93",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "13d2db5c-7be7-4b39-94dd-3cbd59cc2a5c",
+          "name": "Create API Key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1181797c-a819-4e06-a600-15bec4595719",
+                "type": "text/javascript",
+                "exec": [
+                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
+                  "crudTestsMethod('create', 'ApiKey');",
+                  "",
+                  "pm.test(\"API Key was created and variables set.\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "    pm.environment.unset(\"user_key\");",
+                  "    pm.environment.set(\"user_key\",lastApi);",
+                  "});",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": 1,\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 1,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "cc30507b-66c9-4a49-9349-bb71ee7aed29",
+          "name": "Retrieve API keys",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
+                "type": "text/javascript",
+                "exec": [
+                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
+                  "crudTestsMethod();",
+                  "",
+                  "pm.test(\"Response contains latest created API key\", function () {",
+                  "    var user_key = pm.environment.get(\"user_key\");",
+                  "    pm.expect(pm.response.text()).to.include(user_key);",
+                  "});",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 20\n  }\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all the API keys."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "383b7f7f-a4c0-4a22-880f-0b85506113d3",
+          "name": "Delete API Key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
+                "type": "text/javascript",
+                "exec": [
+                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
+                  "crudTestsMethod('delete', 'ApiKey');",
+                  "",
+                  "pm.test(\"Body matches string\", function () {",
+                  "    var user_key = pm.environment.get(\"user_key\");",
+                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                  "});",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "deletes an api key"
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "ae6caa51-c51d-40fe-a258-52a8cd9ade22",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "3735d9f5-0f5f-4b3d-bf24-fbc4be0ea2ef",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "f84eb2a4-9da0-4415-b691-2b0cb9b9cfa4",
+      "name": "Dashboard",
+      "description": "APIs called for the dashboard",
+      "item": [
+        {
+          "_postman_id": "ff1bb1ad-64d8-4b37-b78b-cebb8958ceee",
+          "name": "Login Valid Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"User is an operator, not admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f7bbacc7-4ef6-49df-bfca-30e13ed54af5",
+          "name": "Get appliances",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Appliances were listed\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.result.success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Appliance\",\n\t\"method\": \"getAppliances\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 2\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5edd40cb-6a86-4a1d-b7e2-43b4b1de945d",
+          "name": "Get sfs capacity",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Success message\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.result.success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Capacity\",\n\t\"method\": \"getSfsCapacity\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 14\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "dff94900-a31a-4648-9b9b-93b2fdc35001",
+      "name": "Streams",
+      "description": "API tests for streams tab for operators",
+      "item": [
+        {
+          "_postman_id": "0a3592ef-a974-4462-bf9c-4c634c196e25",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"User is an operator, not admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8a582192-4aef-419a-b631-07ad567f2195",
+          "name": "Get grid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Success message present\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "returns a list of camera streams (camera grid)"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "234187b2-c189-4f3e-8fc7-f6e82e8a85d3",
+          "name": "View a stream",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Verify stream info was returned\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 15\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "get information for a specific stream"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e6ac1922-313c-4b27-b66d-9c873c735b65",
+          "name": "Update stream",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Verify operator cannot have edited stream\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "extTID",
+                  "value": "17",
+                  "type": "text"
+                },
+                {
+                  "key": "extAction",
+                  "value": "Streams",
+                  "type": "text"
+                },
+                {
+                  "key": "extMethod",
+                  "value": "updateMetadata",
+                  "type": "text"
+                },
+                {
+                  "key": "extType",
+                  "value": "rpc",
+                  "type": "text"
+                },
+                {
+                  "key": "extUpload",
+                  "value": "false",
+                  "type": "text"
+                },
+                {
+                  "key": "id",
+                  "value": "6",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "test_stream_cam_to_multiple_sfsEDITED",
+                  "type": "text"
+                },
+                {
+                  "key": "jurisdiction",
+                  "value": "test jurisdiction EDITED",
+                  "type": "text"
+                },
+                {
+                  "key": "route_name",
+                  "value": "test route EDITED",
+                  "type": "text"
+                },
+                {
+                  "key": "mile_marker",
+                  "value": "66",
+                  "type": "text"
+                },
+                {
+                  "key": "traffic_direction",
+                  "value": "S",
+                  "type": "text"
+                },
+                {
+                  "key": "latitude",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "longitude",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "deviceid",
+                  "value": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "db795be1-2496-43d5-a9d4-2a31812ef0a1",
+      "name": "Appliances",
+      "description": "Tests which are used for the appliance tab of stream manager.",
+      "item": [
+        {
+          "_postman_id": "956fa7e0-9e1e-47d8-a2fa-2d6c8427bb80",
+          "name": "Retrieve appliance",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0db209bd-a2bd-44a2-8a16-f7674e86277d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Correct Hostname\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-ts\\\"\");",
+                  "});",
+                  "",
+                  "pm.test(\"Correct Model\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"model\\\":\\\"SFS1000\\\"\");",
+                  "});",
+                  "",
+                  "sfsVersion = pm.environment.get(\"SfsVersion\");",
+                  "pm.test(\"Correct SFS Version\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"0.0.999\\\"\");",
+                  "});",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d14d5469-f58b-46b0-822e-7d9f790fed06",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "4ded32af-684c-406c-a06b-32191c80030e",
+      "name": "Profile",
+      "description": "api calls that help you manage user profile",
+      "item": [
+        {
+          "_postman_id": "9431b36c-51ff-4fdf-b886-36c142ffe195",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"User is an operator, not admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d18b7952-b37f-4716-9a85-2a97f7fb41fe",
+          "name": "Get all users Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Set operator id environment variable\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var operator_id = jsonData[0].result.records.id;",
+                  "    pm.environment.set(\"operator_id\", operator_id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7db93258-c620-4484-8c7e-fa942ce368bb",
+          "name": "Update operator profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "99fe64b1-19ab-4b7f-9d4f-01696e144f19",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"operator was updated\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jenn\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "08ea78db-6a28-4a9c-9dd6-2038173b0f06",
+          "name": "Update operator profile invalid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Operator cant make self admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"invalid authorization\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jannifer\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "440bab57-df9e-427e-8192-8dcd1c5f336f",
+          "name": "Change back to operator",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cf7c0124-bb10-43e5-878f-b9f08a45b244",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Admin is false\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('is_admin\":false');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jannifer\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "83a810e6-871b-4601-be30-b628eae66046",
+          "name": "Update admin profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "59434114-5f74-45a1-87d5-7f82cc84f65b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Could not change admins information\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Only an admin can change other users data\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"username\": \"admin\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jenn\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-18 16:31:22.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "you should not be allowed to do this as an operator"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "97e6b17b-4db8-4ebd-bfe3-11f69960517c",
+      "name": "Get Lists",
+      "description": "get lists of different items/information from stream manager.",
+      "item": [
+        {
+          "_postman_id": "08156533-f3df-4fe0-ab62-b733c6971d0a",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "",
+                  "",
+                  "pm.test(\"User is an operator, not admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4113826f-5414-4bbb-878a-4faed02b49cd",
+          "name": "Get All Contacts",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bd01da50-638a-4d06-ac48-355d8066b431",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all contacts associated with the stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "eb3c0b85-9c96-4b24-8f7e-967d330db4bb",
+          "name": "Get All Appliances",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\t\"action\": \"Appliance\",\n\t\t\"method\": \"getAppliances\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 2\n\t}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all appliances"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "98f00c88-89e6-4f3d-93e4-1a9fee51ea2f",
+          "name": "Get all issue streams",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3210c158-8837-41a2-97ff-5fbb4016ead3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getIssueStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 3\n\t}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all issue streams from stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "60a9209f-b654-4e68-a9c6-a74988b38bc3",
+          "name": "Get all Locations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Location\",\n\t\t\"method\": \"getLocations\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 4\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all locations associated with a stream manager"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "91ae61a7-5ecc-4c6e-8337-9d939ff1c11f",
+          "name": "Get all offline sfs streams",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"Media\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 5\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all offlined sfs streams from stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "52d29a84-643f-4153-9375-a7e41ee1f376",
+          "name": "Get all offlined streams no media flag",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a52af66e-6564-479f-85fc-78e49c204817",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 6\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "This technically has its own TID. Im not really sure how much it differs from Get all offline sfs streams. The only difference is that there is no type: media property in this one."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "38791413-6153-43b4-905f-782fe30caec4",
+          "name": "Get  sfs capacity",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Capacity\",\n\t\t\"method\": \"getSfsCapacity\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 7\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "Returns a list of connected appliances and their current connections and streamcount."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d09e4776-e9fe-4159-ad4f-e6f15cea9870",
+          "name": "Get all offline streams SSL VPN",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"SSL VPN\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 8\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "offline appliace = SSL VPN"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2b33350c-53b7-45bd-bb42-198da44444a1",
+          "name": "Get all streams",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getGrid\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 9\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a list of all streams (grid)"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5495183a-5b75-43ee-8200-490e7d54fc0f",
+          "name": "Get all users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "412ae572-d47e-4c54-a5a3-77c321226f61",
+          "name": "Get all zones",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 11\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "Gets a list of all zones in stream manager"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "668893c0-bc60-49e8-9aac-f495f95a2a5e",
+          "name": "Get Stream Map",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e5b299d5-3abd-42ad-89b8-cb71210d6735",
+                "type": "text/javascript",
+                "exec": [
+                  "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getStreamMap\",\n\t\"data\": [\n\t\t{\n\t\t\t\"metadataId\": {{metadata_id}}\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 17\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "gets a stream map of a test stream based on its metadata_id"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "b375f5b0-f119-4c82-a391-8ce1c4ddbdd4",
+      "name": "Reports",
+      "description": "these are the APIs which are called when you view reports in the reports tab of stream manager.",
+      "item": [
+        {
+          "_postman_id": "eba85d2e-3788-464f-9d55-d07e5fbff231",
+          "name": "Login Valid Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "aeac104d-906a-4223-abea-c688504db648",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"User is an operator, not admin\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1d53e74b-7263-4795-aca0-39e15f562615",
+          "name": "getAllStreamStatus",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5bb8f8e4-838d-4008-ad62-f9b3e552c10b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getAllStreamStatus\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 22\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "this is the response from using the 'Current status' report in stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "080556f1-0065-48b0-af06-85c827fb9da4",
+          "name": "Stream metadata report",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9309f386-78cc-4e1f-92f1-0153d75e9154",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 23\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "this is the response when you get data for the 'stream metadata' report in stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "571eec58-31f2-4e06-bbdd-3170e556e335",
+          "name": "stream network config report",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fc3fe377-5c3a-4b40-bd5a-d93dacb54412",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 24\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "911c3056-57cd-497f-bc16-d88b1c6e77c4",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "6069576c-b186-472b-ad5d-c7054bb9a008",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
