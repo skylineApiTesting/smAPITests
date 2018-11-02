@@ -3820,7 +3820,23 @@
       "_postman_id": "0834e351-c747-4e1a-8e88-c0cac579d80e",
       "name": "testrail-integration",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "f171344f-174f-4aa0-8a57-bd07612ea483",
+          "name": "GET results",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "",
+            "description": "Grabbing results test "
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
