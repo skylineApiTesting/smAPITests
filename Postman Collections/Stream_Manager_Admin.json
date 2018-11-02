@@ -3003,7 +3003,26 @@
                   "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
                   "});",
                   "",
-                  ""
+                  "pm.environment.set(\"variable_key\", \"variable_value\");"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                "exec": [
+                  "pm.environment.set(\"stream_extTID\", \"17\");",
+                  "pm.environment.set(\"stream_id\", \"6\");",
+                  "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
+                  "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
+                  "pm.environment.set(\"stream_route_name\", \"test route\");",
+                  "pm.environment.set(\"stream_milemarker\", \"66\");",
+                  "pm.environment.set(\"stream_traffic_direction\", \"S\");",
+                  "pm.environment.set(\"stream_latitude\", \"50\");",
+                  "pm.environment.set(\"stream_longitude\", \"51\");",
+                  "pm.environment.set(\"stream_device_id\", \"11536\");"
                 ],
                 "type": "text/javascript"
               }
@@ -3077,12 +3096,138 @@
                 },
                 {
                   "key": "latitude",
-                  "value": "\"50\"",
+                  "value": "50",
                   "type": "text"
                 },
                 {
                   "key": "longitude",
-                  "value": "\"50\"",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "deviceid",
+                  "value": "11536",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b65aceb1-878b-4b9f-8e95-ed0b8b60ae71",
+          "name": "Update stream Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                "exec": [
+                  "pm.test(\"Verify admin can edit stream metadata\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
+                  "});",
+                  "",
+                  "pm.environment.set(\"variable_key\", \"variable_value\");"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                "exec": [
+                  "pm.environment.set(\"stream_extTID\", \"17\");",
+                  "pm.environment.set(\"stream_id\", \"6\");",
+                  "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
+                  "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
+                  "pm.environment.set(\"stream_route_name\", \"test route\");",
+                  "pm.environment.set(\"stream_milemarker\", \"66\");",
+                  "pm.environment.set(\"stream_traffic_direction\", \"S\");",
+                  "pm.environment.set(\"stream_latitude\", \"50\");",
+                  "pm.environment.set(\"stream_longitude\", \"51\");",
+                  "pm.environment.set(\"stream_device_id\", \"11536\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "extTID",
+                  "value": "17",
+                  "type": "text"
+                },
+                {
+                  "key": "extAction",
+                  "value": "Streams",
+                  "type": "text"
+                },
+                {
+                  "key": "extMethod",
+                  "value": "updateMetadata",
+                  "type": "text"
+                },
+                {
+                  "key": "extType",
+                  "value": "rpc",
+                  "type": "text"
+                },
+                {
+                  "key": "extUpload",
+                  "value": "false",
+                  "type": "text"
+                },
+                {
+                  "key": "id",
+                  "value": "6",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "test_stream_cam_to_multiple_sfsEDITED",
+                  "type": "text"
+                },
+                {
+                  "key": "jurisdiction",
+                  "value": "test jurisdiction EDITED",
+                  "type": "text"
+                },
+                {
+                  "key": "route_name",
+                  "value": "test route EDITED",
+                  "type": "text"
+                },
+                {
+                  "key": "mile_marker",
+                  "value": "66",
+                  "type": "text"
+                },
+                {
+                  "key": "traffic_direction",
+                  "value": "S",
+                  "type": "text"
+                },
+                {
+                  "key": "latitude",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "longitude",
+                  "value": "50",
                   "type": "text"
                 },
                 {
