@@ -1158,7 +1158,7 @@
       "item": [
         {
           "_postman_id": "7d085612-5eee-4c3b-a472-a13ccea5e32b",
-          "name": "Login Admin Copy Copy Copy",
+          "name": "Login Admin",
           "request": {
             "method": "POST",
             "header": [],
@@ -1167,13 +1167,13 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "admin",
-                  "type": "text"
+                  "type": "text",
+                  "value": "admin"
                 },
                 {
                   "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
+                  "type": "text",
+                  "value": "sm1000"
                 }
               ]
             },
@@ -2851,7 +2851,7 @@
     },
     {
       "_postman_id": "0d99da64-9bc5-40a7-a9fa-fcd28e7f797e",
-      "name": "Streams",
+      "name": "Stream Metadata",
       "description": "API tests for streams tab for operators",
       "item": [
         {
@@ -3832,7 +3832,9 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});"
+                  "});",
+                  "",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -3842,8 +3844,8 @@
             "auth": {
               "type": "basic",
               "basic": {
-                "username": "callemang@skylinenet.net",
-                "password": "uBOooBnx6XIjWQgwZLMH-3luMW5dKYyh15.PP2tkq"
+                "password": "C1aC6Pc/LzrcmeYRT7OC-U3vSihLdDYY0KPpx2G9n",
+                "username": "callemang@skylinenet.net"
               }
             },
             "method": "GET",
@@ -3859,7 +3861,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "https://skylinenolimits.testrail.net/index.php?/api/v2/get_results_for_case/:R1087/:T674121",
+              "raw": "https://skylinenolimits.testrail.net/index.php?/api/v2/get_results_for_case/R1087/T674121",
               "protocol": "https",
               "host": [
                 "skylinenolimits",
@@ -3871,7 +3873,7 @@
               ],
               "query": [
                 {
-                  "key": "/api/v2/get_results_for_case/:R1087/:T674121",
+                  "key": "/api/v2/get_results_for_case/R1087/T674121",
                   "value": "",
                   "equals": false
                 }
