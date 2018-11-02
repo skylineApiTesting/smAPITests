@@ -3001,7 +3001,9 @@
                 "exec": [
                   "pm.test(\"Verify admin can edit stream metadata\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
-                  "});"
+                  "});",
+                  "",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -3045,7 +3047,7 @@
                 },
                 {
                   "key": "id",
-                  "value": "6",
+                  "value": "887",
                   "type": "text"
                 },
                 {
@@ -3075,12 +3077,12 @@
                 },
                 {
                   "key": "latitude",
-                  "value": "50",
+                  "value": "\"50\"",
                   "type": "text"
                 },
                 {
                   "key": "longitude",
-                  "value": "50",
+                  "value": "\"50\"",
                   "type": "text"
                 },
                 {
