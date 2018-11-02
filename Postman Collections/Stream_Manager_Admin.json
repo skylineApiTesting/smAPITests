@@ -2998,73 +2998,73 @@
               "formdata": [
                 {
                   "key": "extTID",
-                  "value": "17",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{extTID}}"
                 },
                 {
                   "key": "extAction",
-                  "value": "Streams",
-                  "type": "text"
+                  "type": "text",
+                  "value": "Streams"
                 },
                 {
                   "key": "extMethod",
-                  "value": "updateMetadata",
-                  "type": "text"
+                  "type": "text",
+                  "value": "updateMetadata"
                 },
                 {
                   "key": "extType",
-                  "value": "rpc",
-                  "type": "text"
+                  "type": "text",
+                  "value": "rpc"
                 },
                 {
                   "key": "extUpload",
-                  "value": "false",
-                  "type": "text"
+                  "type": "text",
+                  "value": "false"
                 },
                 {
                   "key": "id",
-                  "value": "6",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_id}}"
                 },
                 {
                   "key": "description",
-                  "value": "test_stream_cam_to_multiple_sfsEDITED",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_description}}"
                 },
                 {
                   "key": "jurisdiction",
-                  "value": "test jurisdiction EDITED",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_jurisdiction}}"
                 },
                 {
                   "key": "route_name",
-                  "value": "test route EDITED",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_route}}"
                 },
                 {
                   "key": "mile_marker",
-                  "value": "66",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_milemarker}}"
                 },
                 {
                   "key": "traffic_direction",
-                  "value": "S",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_traffic_direction}}"
                 },
                 {
                   "key": "latitude",
-                  "value": "50",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_latitude}}"
                 },
                 {
                   "key": "longitude",
-                  "value": "50",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_longitude}}"
                 },
                 {
                   "key": "deviceid",
-                  "value": "11536",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{stream_device_id}}"
                 }
               ]
             },
@@ -3118,7 +3118,7 @@
         },
         {
           "_postman_id": "32571a71-9260-4532-b4ad-23f1b67c2e90",
-          "name": "Update stream",
+          "name": "Update Metadata",
           "event": [
             {
               "listen": "test",
