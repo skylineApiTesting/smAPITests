@@ -3081,7 +3081,6 @@
               "listen": "test",
               "script": {
                 "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
@@ -3095,7 +3094,8 @@
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3109,7 +3109,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 15\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
+              "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 59\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "get information for a specific stream"
