@@ -2948,51 +2948,8 @@
           "response": []
         },
         {
-          "_postman_id": "a094ae39-6adf-44e1-bdd5-4b3f865d5776",
-          "name": "View a stream",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Verify stream info was returned\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 15\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "get information for a specific stream"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "32571a71-9260-4532-b4ad-23f1b67c2e90",
-          "name": "Update stream",
+          "_postman_id": "b65aceb1-878b-4b9f-8e95-ed0b8b60ae71",
+          "name": "Update stream Copy",
           "event": [
             {
               "listen": "test",
@@ -3117,8 +3074,51 @@
           "response": []
         },
         {
-          "_postman_id": "b65aceb1-878b-4b9f-8e95-ed0b8b60ae71",
-          "name": "Update stream Copy",
+          "_postman_id": "a094ae39-6adf-44e1-bdd5-4b3f865d5776",
+          "name": "View a stream",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Verify stream info was returned\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 15\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "get information for a specific stream"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "32571a71-9260-4532-b4ad-23f1b67c2e90",
+          "name": "Update stream",
           "event": [
             {
               "listen": "test",
