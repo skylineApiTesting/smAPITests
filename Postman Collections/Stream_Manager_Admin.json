@@ -2998,12 +2998,12 @@
               "listen": "test",
               "script": {
                 "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Verify operator cannot have edited stream\", function () {",
+                  "pm.test(\"Verify admin can edited stream metadata\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
