@@ -3824,14 +3824,59 @@
         {
           "_postman_id": "f171344f-174f-4aa0-8a57-bd07612ea483",
           "name": "GET results",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5ce92319-8f50-4bb1-a680-69f0e9f45d46",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "username": "callemang@skylinenet.net",
+                "password": "uBOooBnx6XIjWQgwZLMH-3luMW5dKYyh15.PP2tkq"
+              }
+            },
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": "",
+            "url": {
+              "raw": "https://skylinenolimits.testrail.net/index.php?/api/v2/get_results_for_case/:R1087/:T674121",
+              "protocol": "https",
+              "host": [
+                "skylinenolimits",
+                "testrail",
+                "net"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "/api/v2/get_results_for_case/:R1087/:T674121",
+                  "value": "",
+                  "equals": false
+                }
+              ]
+            },
             "description": "Grabbing results test "
           },
           "response": []
