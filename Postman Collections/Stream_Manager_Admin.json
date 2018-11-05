@@ -3281,7 +3281,7 @@
         },
         {
           "_postman_id": "96e1f791-8b32-4c8a-8d58-6cd6f93e5e82",
-          "name": "Edit Metadata Copy",
+          "name": "Delete Metadata",
           "event": [
             {
               "listen": "test",
