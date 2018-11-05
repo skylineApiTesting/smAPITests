@@ -3300,17 +3300,7 @@
               "script": {
                 "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
                 "exec": [
-                  "stream_description = pm.environment.get(\"stream_description\");",
-                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
-                  "stream_route_name = pm.environment.get(\"stream_route_name\");",
-                  "",
-                  "pm.environment.set(\"stream_description_EDIT\", stream_description + \"EDIT\");",
-                  "pm.environment.set(\"stream_jurisdiction_EDIT\", stream_jurisdiction + \"EDIT\");",
-                  "pm.environment.set(\"stream_route_name_EDIT\", stream_route_name + \"EDIT\");",
-                  "pm.environment.set(\"stream_milemarker_EDIT\", \"11\");",
-                  "pm.environment.set(\"stream_traffic_direction_EDIT\", \"NE\");",
-                  "pm.environment.set(\"stream_latitude_EDIT\", \"20\");",
-                  "pm.environment.set(\"stream_longitude_EDIT\", \"21\");"
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -3360,37 +3350,37 @@
                 {
                   "key": "description",
                   "type": "text",
-                  "value": "{{stream_description_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "jurisdiction",
                   "type": "text",
-                  "value": "{{stream_jurisdiction_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "route_name",
                   "type": "text",
-                  "value": "{{stream_route_name_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "mile_marker",
                   "type": "text",
-                  "value": "{{stream_milemarker_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "traffic_direction",
                   "type": "text",
-                  "value": "{{stream_traffic_direction_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "latitude",
                   "type": "text",
-                  "value": "{{stream_latitude_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "longitude",
                   "type": "text",
-                  "value": "{{stream_longitude_EDIT}}"
+                  "value": ""
                 },
                 {
                   "key": "deviceid",
