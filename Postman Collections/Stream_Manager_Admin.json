@@ -1389,7 +1389,7 @@
                   "// Parse response body",
                   "var obj = JSON.parse(pm.response.text());",
                   "console.log(\"OBJECT:\", obj);",
-                  "var record = NULL;",
+                  "var record = null;",
                   "",
                   "",
                   "pm.test(\"Status code is 200\", function () {",
