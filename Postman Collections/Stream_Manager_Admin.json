@@ -3101,7 +3101,7 @@
         },
         {
           "_postman_id": "0aafc9c7-0beb-4939-ae4c-f19392391141",
-          "name": "Create Metadata Copy",
+          "name": "Edit Metadata",
           "event": [
             {
               "listen": "test",
