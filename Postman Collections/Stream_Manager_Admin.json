@@ -3280,6 +3280,61 @@
           "response": []
         },
         {
+          "_postman_id": "b49faca6-9fb8-496f-a6f6-b8db8726b9f9",
+          "name": "Read Updated Metadata Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                "exec": [
+                  "stream_id = pm.environment.get(\"stream_id\");",
+                  "stream_description = pm.environment.get(\"stream_description_EDIT\");",
+                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction_EDIT\");",
+                  "stream_route_name = pm.environment.get(\"stream_route_name_EDIT\");",
+                  "stream_milemarker = pm.environment.get(\"stream_milemarker_EDIT\");",
+                  "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction_EDIT\");",
+                  "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
+                  "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Success message present\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                  "});",
+                  "",
+                  "pm.test(\"Created Metadata was saved\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "returns a list of camera streams (camera grid)"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "96e1f791-8b32-4c8a-8d58-6cd6f93e5e82",
           "name": "Delete Metadata",
           "event": [
@@ -3391,61 +3446,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b49faca6-9fb8-496f-a6f6-b8db8726b9f9",
-          "name": "Read Updated Metadata Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
-                "exec": [
-                  "stream_id = pm.environment.get(\"stream_id\");",
-                  "stream_description = pm.environment.get(\"stream_description_EDIT\");",
-                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction_EDIT\");",
-                  "stream_route_name = pm.environment.get(\"stream_route_name_EDIT\");",
-                  "stream_milemarker = pm.environment.get(\"stream_milemarker_EDIT\");",
-                  "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction_EDIT\");",
-                  "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
-                  "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Success message present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"success\":true');",
-                  "});",
-                  "",
-                  "pm.test(\"Created Metadata was saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "returns a list of camera streams (camera grid)"
           },
           "response": []
         }
