@@ -1407,7 +1407,7 @@
                   "});",
                   "",
                   "pm.test(\"Correct Hostname\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"hera.qa.skyline.local\\\"\");",
+                  "    pm.expect(record.hostname === \"hera.qa.skyline.local\");",
                   "});",
                   "",
                   "pm.test(\"Correct Model\", function () {",
