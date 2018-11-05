@@ -1388,7 +1388,6 @@
                 "exec": [
                   "// Parse response body",
                   "var obj = JSON.parse(pm.response.text());",
-                  "console.log(\"OBJECT:\", obj);",
                   "var record = null;",
                   "",
                   "",
@@ -1407,7 +1406,6 @@
                   "// Find Hera's record to verify model and version",
                   "for (var i = 0; i < obj.result.total; i++) {",
                   "    if (obj.result.records[i].hostname === \"hera.qa.skyline.local\") {",
-                  "        console.log(\"ID: \", i);",
                   "        record = obj.result.records[i];",
                   "    }",
                   "}",
