@@ -1385,8 +1385,10 @@
               "listen": "test",
               "script": {
                 "id": "dd08c7d1-4426-4be4-ab03-fb43db6a6b68",
-                "type": "text/javascript",
                 "exec": [
+                  "var obj = JSON.parse(pm.response.text());",
+                  "console.log(\"OBJECT:\", obj);",
+                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
@@ -1408,17 +1410,18 @@
                   "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"\" + sfsVersion + \"\\\"\");",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "d14d5469-f58b-46b0-822e-7d9f790fed06",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3040,8 +3043,16 @@
               "listen": "test",
               "script": {
                 "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
-                "type": "text/javascript",
                 "exec": [
+                  "stream_id = pm.environment.get(\"stream_id\");",
+                  "stream_description = pm.environment.get(\"stream_description\");",
+                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
+                  "stream_route_name = pm.environment.get(\"stream_route_name\");",
+                  "stream_milemarker = pm.environment.get(\"stream_milemarker\");",
+                  "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction\");",
+                  "stream_latitude = pm.environment.get(\"stream_latitude\");",
+                  "stream_longitude = pm.environment.get(\"stream_longitude\");",
+                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
@@ -3052,8 +3063,13 @@
                   "",
                   "pm.test(\"Success message present\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                  "});",
+                  "",
+                  "pm.test(\"Created Metadata was saved\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\" + stream_description + \",\\\"jurisdiction\\\":\" + stream_jurisdiction + \",\\\"traffic_direction\\\":\" + stream_traffic_direction + \",\\\"route_name\\\":\" + stream_route_name + \",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
