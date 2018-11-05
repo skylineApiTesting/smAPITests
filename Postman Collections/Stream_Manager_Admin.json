@@ -3254,7 +3254,7 @@
                   "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                   "});",
                   "",
-                  "pm.test(\"Created Metadata was saved\", function () {",
+                  "pm.test(\"Updated Metadata was saved\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
                   "});"
                 ],
