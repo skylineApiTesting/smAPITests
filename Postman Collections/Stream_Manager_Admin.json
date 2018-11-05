@@ -3046,7 +3046,7 @@
         },
         {
           "_postman_id": "36ce4a08-8e54-40cb-9f11-174d87923a5b",
-          "name": "Get grid",
+          "name": "Read Created Metadata",
           "event": [
             {
               "listen": "test",
