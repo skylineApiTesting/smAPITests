@@ -3226,7 +3226,7 @@
         },
         {
           "_postman_id": "8e072b59-f940-4228-93ae-b695e88c4af4",
-          "name": "Read Created Metadata Copy",
+          "name": "Read Updated Metadata",
           "event": [
             {
               "listen": "test",
