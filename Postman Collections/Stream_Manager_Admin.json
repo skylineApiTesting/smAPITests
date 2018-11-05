@@ -3122,17 +3122,17 @@
               "script": {
                 "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
                 "exec": [
-                  "pm.environment.set(\"stream_extTID\", \"31\");",
-                  "// This ID is the id that is associated with the stream's metadata",
-                  "pm.environment.set(\"stream_id\", \"6\");",
-                  "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
-                  "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
-                  "pm.environment.set(\"stream_route_name\", \"test route\");",
-                  "pm.environment.set(\"stream_milemarker\", \"66\");",
-                  "pm.environment.set(\"stream_traffic_direction\", \"S\");",
-                  "pm.environment.set(\"stream_latitude\", \"50\");",
-                  "pm.environment.set(\"stream_longitude\", \"51\");",
-                  "pm.environment.set(\"stream_device_id\", \"11536\");"
+                  "stream_description = pm.environment.get(\"stream_description\");",
+                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
+                  "stream_route_name = pm.environment.get(\"stream_route_name\");",
+                  "",
+                  "pm.environment.set(\"stream_description_EDIT\", stream_description + \"EDIT\");",
+                  "pm.environment.set(\"stream_jurisdiction_EDIT\", stream_jurisdiction + \"EDIT\");",
+                  "pm.environment.set(\"stream_route_name_EDIT\", stream_route_name + \"EDIT\");",
+                  "pm.environment.set(\"stream_milemarker_EDIT\", \"11\");",
+                  "pm.environment.set(\"stream_traffic_direction_EDIT\", \"NE\");",
+                  "pm.environment.set(\"stream_latitude_EDIT\", \"20\");",
+                  "pm.environment.set(\"stream_longitude_EDIT\", \"21\");"
                 ],
                 "type": "text/javascript"
               }
@@ -3182,37 +3182,37 @@
                 {
                   "key": "description",
                   "type": "text",
-                  "value": "{{stream_description}}"
+                  "value": "{{stream_description_EDIT}}"
                 },
                 {
                   "key": "jurisdiction",
                   "type": "text",
-                  "value": "{{stream_jurisdiction}}"
+                  "value": "{{stream_jurisdiction_EDIT}}"
                 },
                 {
                   "key": "route_name",
                   "type": "text",
-                  "value": "{{stream_route_name}}"
+                  "value": "{{stream_route_name_EDIT}}"
                 },
                 {
                   "key": "mile_marker",
                   "type": "text",
-                  "value": "{{stream_milemarker}}"
+                  "value": "{{stream_milemarker_EDIT}}"
                 },
                 {
                   "key": "traffic_direction",
                   "type": "text",
-                  "value": "{{stream_traffic_direction}}"
+                  "value": "{{stream_traffic_direction_EDIT}}"
                 },
                 {
                   "key": "latitude",
                   "type": "text",
-                  "value": "{{stream_latitude}}"
+                  "value": "{{stream_latitude_EDIT}}"
                 },
                 {
                   "key": "longitude",
                   "type": "text",
-                  "value": "{{stream_longitude}}"
+                  "value": "{{stream_longitude_EDIT}}"
                 },
                 {
                   "key": "deviceid",
