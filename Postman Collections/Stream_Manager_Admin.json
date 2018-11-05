@@ -2970,7 +2970,8 @@
               "script": {
                 "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
                 "exec": [
-                  "pm.environment.set(\"stream_extTID\", \"17\");",
+                  "pm.environment.set(\"stream_extTID\", \"31\");",
+                  "// This ID is the id that is associated with the stream's metadata",
                   "pm.environment.set(\"stream_id\", \"6\");",
                   "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
                   "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
@@ -2999,7 +3000,7 @@
                 {
                   "key": "extTID",
                   "type": "text",
-                  "value": "{{extTID}}"
+                  "value": "{{stream_extTID}}"
                 },
                 {
                   "key": "extAction",
@@ -3039,7 +3040,7 @@
                 {
                   "key": "route_name",
                   "type": "text",
-                  "value": "{{stream_route}}"
+                  "value": "{{stream_route_name}}"
                 },
                 {
                   "key": "mile_marker",
@@ -3112,7 +3113,7 @@
               "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 59\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "get information for a specific stream"
+            "description": "Get information for a specific stream. \nThis will verify the previously created metadata"
           },
           "response": []
         },
