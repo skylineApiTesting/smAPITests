@@ -1401,7 +1401,7 @@
                   "});",
                   "",
                   "pm.test(\"Correct Hostname\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"\" + sfsHostname + \"\\\"\");",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"hera.qa.skyline.local\\\"\");",
                   "});",
                   "",
                   "// Find Hera's record to verify model and version",
