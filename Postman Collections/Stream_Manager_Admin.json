@@ -3110,9 +3110,7 @@
                 "exec": [
                   "pm.test(\"Verify admin can edit stream metadata\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
-                  "});",
-                  "",
-                  "pm.environment.set(\"variable_key\", \"variable_value\");"
+                  "});"
                 ],
                 "type": "text/javascript"
               }
