@@ -1458,7 +1458,6 @@
               "listen": "test",
               "script": {
                 "id": "f12aa076-c80a-46f8-9f9e-a834799288ae",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
@@ -1473,7 +1472,8 @@
                   "});",
                   "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1487,7 +1487,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"updateAppliance\",\n  \"data\": [\n    {\n      \"status\": \"\",\n      \"hostname\": \"Jennnn-SFS\",\n      \"last_updated\": \"\",\n      \"software_version\": \"1.1.111\",\n      \"contract_renewal_date\": \"\",\n      \"id\": 21,\n      \"public_ip\": \"6.6.6.6\",\n      \"has_service_contract\": \"\",\n      \"management_ip\": \"172.0.0.77\",\n      \"username\": \"admin\",\n      \"password\": \"sfs1000\",\n      \"last_updated_by\": \"\",\n      \"total_connections\": \"\",\n      \"license_type\": \"\",\n      \"license_key\": \"\",\n      \"synced\": \"\",\n      \"model\": \"SFS1000\",\n      \"location_name\": \"Test Data Center\",\n      \"zone_name\": \"Public\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 17\n}"
+              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"updateAppliance\",\n  \"data\": [\n    {\n      \"status\": \"\",\n      \"hostname\": \"Jennnn-SFS\",\n      \"last_updated\": \"\",\n      \"software_version\": \"1.1.111\",\n      \"contract_renewal_date\": \"\",\n      \"id\": 21,\n      \"public_ip\": \"6.6.6.6\",\n      \"has_service_contract\": \"\",\n      \"management_ip\": \"172.0.0.77\",\n      \"username\": \"admin\",\n      \"password\": \"sfs1000\",\n      \"last_updated_by\": \"\",\n      \"total_connections\": \"\",\n      \"license_type\": \"\",\n      \"license_key\": \"\",\n      \"synced\": \"\",\n      \"model\": \"SFS1000\",\n      \"location_name\": \"Test Data Center\",\n      \"zone_name\": \"The Zone\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 17\n}"
             },
             "url": "http://{{url}}/{{version}}/direct/router/",
             "description": "hostname and id need to match an appliance in order to update it."
@@ -1502,8 +1502,12 @@
               "listen": "test",
               "script": {
                 "id": "b1bb5551-2e2d-4947-b918-7c860cb7af47",
-                "type": "text/javascript",
                 "exec": [
+                  "// Parse response body",
+                  "var obj = JSON.parse(pm.response.text());",
+                  "var record = null;",
+                  "",
+                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
@@ -1516,29 +1520,37 @@
                   "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-SFS\\\"\");",
                   "});",
                   "",
+                  "// Find appliance's record to verify model and version",
+                  "for (var i = 0; i < obj.result.total; i++) {",
+                  "    if (obj.result.records[i].hostname === \"Jennnn-SFS\") {",
+                  "        record = obj.result.records[i];",
+                  "    }",
+                  "}",
+                  "",
                   "pm.test(\"Correct Model\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"model\\\":\\\"SFS1000\\\"\");",
+                  "    pm.expect(record.model === \"SFS1000\");",
                   "});",
                   "",
-                  "sfsVersion = pm.environment.get(\"SfsVersion\");",
-                  "pm.test(\"Correct SFS Version\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"1.1.111\\\"\");",
+                  "pm.test(\"Correct Public IP\", function () {",
+                  "    pm.expect(record.public_ip === \"6.6.6.6\");",
                   "});",
                   "",
-                  "pm.test(\"Shows updated Public IP\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"public_ip\\\":\\\"6.6.6.6\\\"\");",
-                  "});"
-                ]
+                  "pm.test(\"Correct Zone\", function () {",
+                  "    pm.expect(record.public_ip === \"The Zone\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "d14d5469-f58b-46b0-822e-7d9f790fed06",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -4208,75 +4220,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "creates an admin user in stream manager."
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "0834e351-c747-4e1a-8e88-c0cac579d80e",
-      "name": "testrail-integration",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "f171344f-174f-4aa0-8a57-bd07612ea483",
-          "name": "GET results",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5ce92319-8f50-4bb1-a680-69f0e9f45d46",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "basic",
-              "basic": {
-                "password": "C1aC6Pc/LzrcmeYRT7OC-U3vSihLdDYY0KPpx2G9n",
-                "username": "callemang@skylinenet.net"
-              }
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "https://skylinenolimits.testrail.net/index.php?/api/v2/get_results_for_case/R1087/T674121",
-              "protocol": "https",
-              "host": [
-                "skylinenolimits",
-                "testrail",
-                "net"
-              ],
-              "path": [
-                "index.php"
-              ],
-              "query": [
-                {
-                  "key": "/api/v2/get_results_for_case/R1087/T674121",
-                  "value": "",
-                  "equals": false
-                }
-              ]
-            },
-            "description": "Grabbing results test "
           },
           "response": []
         }
