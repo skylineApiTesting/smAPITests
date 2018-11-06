@@ -1776,6 +1776,7 @@
                   "pm.test(\"C78005 Correct Contact\", function () {",
                   "    pm.expect(record.first_name === \"Bertha\");",
                   "    pm.expect(record.last_name === \"Shakira\");",
+                  "    pm.expect(record.contact_id === 17);",
                   "});",
                   "",
                   "pm.test(\"C78005 Response contains latest created API key\", function () {",
