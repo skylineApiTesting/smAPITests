@@ -1754,18 +1754,39 @@
               "listen": "test",
               "script": {
                 "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
-                "type": "text/javascript",
                 "exec": [
                   "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
                   "crudTestsMethod();",
                   "",
-                  "pm.test(\"Response contains latest created API key\", function () {",
-                  "    var user_key = pm.environment.get(\"user_key\");",
+                  "var user_API_Key = pm.environment.get(\"user_API_Key\");",
+                  "var obj = JSON.parse(pm.response.text());",
+                  "var record = null;",
+                  "",
+                  "for (var i = 0; i < obj.result; i++){",
+                  "    if (obj.result.records[i][1].user_key == user_API_Key){",
+                  "        record = obj.result.records[i][1];",
+                  "    }",
+                  "}",
+                  "",
+                  "pm.test(\"C78005 Correct Zone\", function () {",
+                  "    pm.expect(record.zone_name === \"SSL VPN\");",
+                  "    pm.expect(record.zone_id === 2);",
+                  "});",
+                  "",
+                  "pm.test(\"C78005 Correct Contact\", function () {",
+                  "    pm.expect(record.first_name === \"Bertha\");",
+                  "    pm.expect(record.last_name === \"Shakira\");",
+                  "});",
+                  "",
+                  "pm.test(\"C78005 Response contains latest created API key\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_key);",
                   "});",
                   "",
+                  "",
+                  "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1779,7 +1800,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n    {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 20\n  }\n]"
+              "raw": "{\n\t\"action\": \"ApiKey\",\n\t\"method\": \"getApikeys\",\n\t\"data\": [\n\t  {\n\t    \"page\": 1,\n\t    \"start\": 0,\n\t    \"limit\": 25\n\t  }\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 20\n}"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "gets a list of all the API keys."
