@@ -170,11 +170,15 @@
               "listen": "test",
               "script": {
                 "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
-                "type": "text/javascript",
                 "exec": [
                   "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
-                  "LoginTestsMethod(false);"
-                ]
+                  "LoginTestsMethod(false);",
+                  "",
+                  "pm.test(\"C77283 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
