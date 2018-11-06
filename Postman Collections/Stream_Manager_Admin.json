@@ -1755,8 +1755,8 @@
               "script": {
                 "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod();",
+                  "//var crudTestsMethod = eval(pm.environment.get('crudTests'));",
+                  "//crudTestsMethod();",
                   "",
                   "var user_API_Key = pm.environment.get(\"user_API_Key\");",
                   "var obj = JSON.parse(pm.response.text());",
