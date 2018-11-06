@@ -1717,7 +1717,7 @@
                   "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
                   "crudTestsMethod('create', 'ApiKey');",
                   "",
-                  "pm.test(\"API Key was created and variables set.\", function () {",
+                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
                   "    pm.expect(jsonData.total) !== null;",
