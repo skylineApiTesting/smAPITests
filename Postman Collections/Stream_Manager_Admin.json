@@ -1721,8 +1721,8 @@
                   "    var jsonData = pm.response.json();",
                   "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
                   "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"user_key\");",
-                  "    pm.environment.set(\"user_key\",lastApi);",
+                  "    pm.environment.unset(\"user_API_Key\");",
+                  "    pm.environment.set(\"user_API_Key\",lastApi);",
                   "});",
                   ""
                 ],
