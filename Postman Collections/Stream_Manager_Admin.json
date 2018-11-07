@@ -1197,6 +1197,14 @@
                   "    pm.environment.unset(\"contact_id\");",
                   "    ",
                   "    pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -1486,6 +1494,14 @@
                   "    recordsLength = jsonData[0].result.records.length;",
                   "    ",
                   "    pm.environment.set(\"zone_id\",jsonData[0].result.records[recordsLength-1].id);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -1526,22 +1542,32 @@
               "listen": "test",
               "script": {
                 "id": "e2e87afa-5685-43e1-aba3-4a082566403a",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('update', 'Zone');"
-                ]
+                  "zone_name_EDIT = pm.environment.get(\"zone_name_EDIT\");",
+                  "pm.test(\"Body includes edited zone\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_name_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "1f827154-1f78-4c81-bf74-fe0d14db46ac",
-                "type": "text/javascript",
                 "exec": [
                   "zone_name = pm.environment.get(\"zone_name\");",
                   "pm.environment.set(\"zone_name_EDIT\", zone_name + \"EDIT\");"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1569,21 +1595,37 @@
               "listen": "test",
               "script": {
                 "id": "40d3fee4-2ae4-4d1d-8bd6-25f5d930910a",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('delete', 'Zone');"
-                ]
+                  "zone_name_EDIT = pm.environment.get(\"zone_name_EDIT\");",
+                  "",
+                  "pm.test(\"Response does not contain deleted zone\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.include(zone_name_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"deleteZone gives success message\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "fe5296d5-0c4b-4241-b91c-9eac5ae7ddb5",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1900,22 +1942,30 @@
               "listen": "test",
               "script": {
                 "id": "833c2d9d-108d-4e30-b6db-355b0b695f16",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Body does not include deleted appliance\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(\"\\\"hostname\\\": \\\"Jennnn-SFS\\\"\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "d14d5469-f58b-46b0-822e-7d9f790fed06",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1998,10 +2048,21 @@
               "script": {
                 "id": "1181797c-a819-4e06-a600-15bec4595719",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('create', 'ApiKey');",
+                  "pm.test(\"C77964 Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
                   "",
-                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
+                  "apiKey = pm.environment.get(\"apiKey\");",
+                  "",
+                  "pm.test(\"C77964 Body has new key\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(apiKey);",
+                  "});",
+                  "",
+                  "pm.test(\"C77964 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C77964 API Key list is not empty\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.total) !== null;",
                   "});",
@@ -2036,9 +2097,6 @@
               "script": {
                 "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
                 "exec": [
-                  "//var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "//crudTestsMethod();",
-                  "",
                   "var obj = JSON.parse(pm.response.text());",
                   "var record = null;",
                   "",
