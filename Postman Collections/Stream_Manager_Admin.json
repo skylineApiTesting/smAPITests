@@ -1805,45 +1805,6 @@
           "response": []
         },
         {
-          "_postman_id": "838ac33b-be92-489c-a6e4-66995ca46496",
-          "name": "Delete API Key",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
-                "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('delete', 'ApiKey');",
-                  "",
-                  "pm.test(\"C77967 Api key was deleted\", function () {",
-                  "    var user_key = pm.environment.get(\"user_API_Key\");",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_API_Key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "deletes an api key"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "c14c9d11-6088-40e3-aa52-ff7f23942e55",
           "name": "GetAll streams in JSON w/Valid Key Copy",
           "event": [
@@ -1914,6 +1875,45 @@
               ]
             },
             "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "838ac33b-be92-489c-a6e4-66995ca46496",
+          "name": "Delete API Key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
+                "exec": [
+                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
+                  "crudTestsMethod('delete', 'ApiKey');",
+                  "",
+                  "pm.test(\"C77967 Api key was deleted\", function () {",
+                  "    var user_key = pm.environment.get(\"user_API_Key\");",
+                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_API_Key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "deletes an api key"
           },
           "response": []
         }
