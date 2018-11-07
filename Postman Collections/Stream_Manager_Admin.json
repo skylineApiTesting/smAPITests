@@ -663,6 +663,28 @@
         {
           "_postman_id": "245895e6-ecfb-4a38-bb87-5c16de2188c4",
           "name": "Login Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -850,29 +872,26 @@
       "item": [
         {
           "_postman_id": "2b634568-8030-48a9-8bfa-a26142827bda",
-          "name": "Login Valid Copy Copy",
+          "name": "Login Valid",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
+                  "    ",
                   "pm.test(\"Response time is less than 200ms\", function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"User is an operator, not admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -884,13 +903,13 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{user}}"
                 },
                 {
                   "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{password}}"
                 }
               ]
             },
@@ -1014,7 +1033,7 @@
       "item": [
         {
           "_postman_id": "d9051480-9325-4e1e-b071-5ea9441e1656",
-          "name": "Login Admin Copy",
+          "name": "Login Admin",
           "request": {
             "method": "POST",
             "header": [],
@@ -1738,7 +1757,7 @@
       "item": [
         {
           "_postman_id": "4b9eb684-cda9-4018-a861-17bf64ec0751",
-          "name": "Login Admin Copy",
+          "name": "Login Admin",
           "event": [
             {
               "listen": "test",
@@ -1769,13 +1788,13 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "admin",
-                  "type": "text"
+                  "type": "text",
+                  "value": "admin"
                 },
                 {
                   "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
+                  "type": "text",
+                  "value": "sm1000"
                 }
               ]
             },
