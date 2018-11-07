@@ -651,20 +651,24 @@
               "listen": "test",
               "script": {
                 "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
-                "type": "text/javascript",
                 "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
                   "pm.test(\"Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "pm.test(\"Body Contains Error\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -962,20 +966,38 @@
               "listen": "test",
               "script": {
                 "id": "1181797c-a819-4e06-a600-15bec4595719",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('create', 'ApiKey');",
+                  "pm.test(\"C77964 Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
                   "",
-                  "pm.test(\"API Key was created and variables set.\", function () {",
+                  "user_key = pm.environment.get(\"user_key\");",
+                  "",
+                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
                   "    pm.expect(jsonData.total) !== null;",
                   "    pm.environment.unset(\"user_key\");",
                   "    pm.environment.set(\"user_key\",lastApi);",
                   "});",
+                  "",
+                  "user_key = pm.environment.get(\"user_key\");",
+                  "",
+                  "pm.test(\"C77964 Body has new key\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_key);",
+                  "});",
+                  "",
+                  "pm.test(\"C77964 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C77964 API Key list is not empty\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1003,18 +1025,37 @@
               "listen": "test",
               "script": {
                 "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod();",
+                  "var obj = JSON.parse(pm.response.text());",
+                  "console.log(obj);",
+                  "var record = null;",
                   "",
-                  "pm.test(\"Response contains latest created API key\", function () {",
-                  "    var user_key = pm.environment.get(\"user_key\");",
-                  "    pm.expect(pm.response.text()).to.include(user_key);",
+                  "for (var i = 0; i < obj.result.total; i++){",
+                  "    if (obj.result.records[i].zone_id == 2 && obj.result.records[i].contact_id == 17){",
+                  "        record = obj.result.records[i];",
+                  "    }",
+                  "}",
+                  "",
+                  "pm.test(\"C78005 Correct Zone\", function () {",
+                  "    pm.expect(record.zone_name === \"SSL VPN\");",
                   "});",
                   "",
+                  "pm.test(\"C78005 Correct Contact\", function () {",
+                  "    pm.expect(record.first_name === \"Bertha\");",
+                  "    pm.expect(record.last_name === \"Shakira\");",
+                  "});",
+                  "",
+                  "pm.test(\"C78005 Response record contains an API key\", function () {",
+                  "    pm.expect(record.user_key!==null);",
+                  "});",
+                  "",
+                  "pm.environment.unset(\"user_API_Key\");",
+                  "pm.environment.set(\"user_API_Key\", record.user_key);",
+                  "",
+                  "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1043,17 +1084,31 @@
               "listen": "test",
               "script": {
                 "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('delete', 'ApiKey');",
+                  "user_key = pm.environment.get(\"user_key\");",
                   "",
-                  "pm.test(\"Body matches string\", function () {",
-                  "    var user_key = pm.environment.get(\"user_key\");",
+                  "pm.test(\"Response does not contain deleted key\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                  "});",
+                  "",
+                  "pm.test(\"deleteApiKey gives success message\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "pm.test(\"Api key was deleted\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(user_key);",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
