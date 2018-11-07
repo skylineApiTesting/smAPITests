@@ -2571,7 +2571,7 @@
       "item": [
         {
           "_postman_id": "fbf79430-437d-4b34-8ff3-b25a8fbcd17d",
-          "name": "Login Valid Copy",
+          "name": "Login Valid",
           "event": [
             {
               "listen": "test",
@@ -3243,7 +3243,7 @@
       "item": [
         {
           "_postman_id": "b96bce6e-4ea8-4126-9243-e97612ab0743",
-          "name": "Login Valid Copy",
+          "name": "Login Valid",
           "event": [
             {
               "listen": "test",
