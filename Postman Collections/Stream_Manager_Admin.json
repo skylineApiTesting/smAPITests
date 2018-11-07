@@ -1842,6 +1842,80 @@
             "description": "deletes an api key"
           },
           "response": []
+        },
+        {
+          "_postman_id": "c14c9d11-6088-40e3-aa52-ff7f23942e55",
+          "name": "GetAll streams in JSON w/Valid Key Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Response time is less than 1000 ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Body is JSON format\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
+              "protocol": "http",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "{{version}}",
+                "streams",
+                "getAll"
+              ],
+              "query": [
+                {
+                  "key": "X-API-KEY",
+                  "value": "{{user_key}}",
+                  "equals": true
+                },
+                {
+                  "key": "format",
+                  "value": "json",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+          },
+          "response": []
         }
       ]
     },
@@ -2215,80 +2289,6 @@
               ]
             },
             "description": "description: attempts to grab cameras in a random format (\"1001\"). not a real format and therefore not supported\n\nexpectation: not sure. currently it just returns XML format. i'll put a ticket in or ask someone how it should actually behave."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c14c9d11-6088-40e3-aa52-ff7f23942e55",
-          "name": "GetAll streams in JSON w/Valid Key Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
-                  "",
-                  "pm.test(\"Body is JSON format\", function () {",
-                  "    pm.response.to.be.json;",
-                  "});",
-                  "",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
-              "protocol": "http",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
           },
           "response": []
         }
