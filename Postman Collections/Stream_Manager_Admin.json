@@ -1816,8 +1816,8 @@
                   "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
                   "crudTestsMethod('delete', 'ApiKey');",
                   "",
-                  "pm.test(\"Body matches string\", function () {",
-                  "    var user_key = pm.environment.get(\"user_key\");",
+                  "pm.test(\"C77967 Api key was deleted\", function () {",
+                  "    var user_key = pm.environment.get(\"user_API_Key\");",
                   "    pm.expect(pm.response.text()).to.not.include(user_key);",
                   "});",
                   ""
