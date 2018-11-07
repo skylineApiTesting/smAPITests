@@ -4496,7 +4496,29 @@
       "item": [
         {
           "_postman_id": "cc22f8b1-f824-4d78-865f-52519f22ee64",
-          "name": "Login Valid Copy",
+          "name": "Login Valid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "923e4442-af3e-420e-8e53-c425c1c8bab9",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
