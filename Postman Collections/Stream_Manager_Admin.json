@@ -1825,11 +1825,11 @@
                   "    pm.response.to.be.json;",
                   "});",
                   "",
-                  "pm.test(\"Streams in API Zone revieved\", function () {",
+                  "pm.test(\"C78006 Streams in API Zone received\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"test_stream_cam_to_multiple_sfs\");",
                   "});",
                   "",
-                  "pm.test(\"Body matches string\", function () {",
+                  "pm.test(\"C78006 Streams not in API Zone are not received\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
                   "});"
                 ],
