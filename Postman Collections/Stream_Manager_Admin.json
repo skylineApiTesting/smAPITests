@@ -7,157 +7,6 @@
   },
   "item": [
     {
-      "_postman_id": "59d43be7-32e9-41b9-961c-606863586b49",
-      "name": "Test Methods",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "5ecf9fc6-20ab-4103-8274-aed4d69e89da",
-          "name": "CRUD Tests",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bbed600a-9b88-48ab-897d-c01d1f362e46",
-                "type": "text/javascript",
-                "exec": [
-                  "//options for method are \"create\", and \"retrieve\", \"update\", \"delete\"",
-                  "//options for section are \"User\", \"Contacts\", \"Zones\", \"ApiKeys\"",
-                  "var crudTests = (method, section) => {",
-                  "    ",
-                  "    successMessage = function(method, section){",
-                  "        pm.test(\"Body shows success message\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"\\\"\" + method + section + \"\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "        });",
-                  "    };",
-                  "    ",
-                  "    pm.test(\"Status code is 200\", function () {",
-                  "        pm.response.to.have.status(200);",
-                  "    });",
-                  "    ",
-                  "    pm.test(\"Response time is less than 200ms\", function () {",
-                  "        pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "    });",
-                  "    ",
-                  "    switch(method) {",
-                  "        case 'create':",
-                  "            successMessage(method, section);",
-                  "            break;",
-                  "            ",
-                  "        case 'retrieve':",
-                  "            section = section.toLowerCase();",
-                  "            name = pm.environment.get(section + \"_name\");",
-                  "            ",
-                  "            pm.test(\"Body includes \" + section +  \" name\", function (){",
-                  "                pm.expect(pm.response.text()).to.include(name);",
-                  "            });",
-                  "            ",
-                  "            break;",
-                  "        ",
-                  "        case 'update':",
-                  "            section = section.toLowerCase();",
-                  "            var nameEDITED = pm.environment.get(section + \"_name_EDIT\");",
-                  "",
-                  "            pm.test(\"Body includes edited \" + section + \" name\", function () {",
-                  "                pm.expect(pm.response.text()).to.include(nameEDITED);",
-                  "            });",
-                  "            ",
-                  "            break;",
-                  "        ",
-                  "        case 'delete':",
-                  "            section = section.toLowerCase();",
-                  "            var nameEDIT = pm.environment.get(section + \"name_EDIT\");",
-                  "",
-                  "            pm.test(\"Body does not contain edited \" + section + \" name\", function () {",
-                  "                pm.expect(pm.response.text()).to.not.include(nameEDIT);",
-                  "            });",
-                  "            ",
-                  "            break;",
-                  "            ",
-                  "        default:",
-                  "            return () => {};",
-                  "    }",
-                  "};",
-                  "",
-                  "pm.environment.set('crudTests', crudTests.toString());",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "http://{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "76844e62-1f84-47f3-8e11-80f135ff9365",
-          "name": "Login Tests",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "eef05b83-9acd-4151-92d3-8430858ac764",
-                "type": "text/javascript",
-                "exec": [
-                  "//success is a bool",
-                  "//isAdmin is a bool",
-                  "var LoginTests = (success, isAdmin=true) => {",
-                  "",
-                  "    pm.test(\"Status code is 200\", function () {",
-                  "        pm.response.to.have.status(200);",
-                  "    });",
-                  "    ",
-                  "    pm.test(\"Response time is less than 200ms\", function () {",
-                  "        pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "    });",
-                  "    ",
-                  "    if(success === true && isAdmin === true){",
-                  "        pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "        });",
-                  "    }",
-                  "    ",
-                  "    else if(success === true && isAdmin === false){",
-                  "        pm.test(\"Response time is less than 200ms\", function () {",
-                  "            pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "        });",
-                  "        ",
-                  "        pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "            pm.expect(pm.response.text()).to.not.include(\"IsAdministrator=true ;\");",
-                  "        });",
-                  "        ",
-                  "    }",
-                  "    ",
-                  "    else{",
-                  "        pm.test(\"Body Contains Login Fields\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "        });",
-                  "    ",
-                  "    }",
-                  "    ",
-                  "};",
-                  "",
-                  "pm.environment.set('LoginTests', LoginTests.toString());",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "http://{{url}}"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "_postman_id": "a139401d-2bfc-4f61-8556-6950f75b9abd",
       "name": "Login",
       "description": null,
@@ -2243,10 +2092,10 @@
               "script": {
                 "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
                 "exec": [
-                  "user_API_Key = pm.environment.get(\"user_API_Key\");",
+                  "user_key = pm.environment.get(\"user_key\");",
                   "",
                   "pm.test(\"C77967 Response does not contain deleted key\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_API_Key);",
+                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
                   "});",
                   "",
                   "pm.test(\"C77967 deleteApiKey gives success message\", function () {",
@@ -2262,7 +2111,7 @@
                   "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "pm.test(\"C77967 Api key was deleted\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_API_Key);",
+                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
                   "});",
                   ""
                 ],
@@ -2280,7 +2129,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_API_Key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
+              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes an api key"
