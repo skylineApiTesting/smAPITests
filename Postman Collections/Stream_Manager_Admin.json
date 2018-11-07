@@ -2054,7 +2054,16 @@
                   "",
                   "user_key = pm.environment.get(\"user_key\");",
                   "",
-                  "//TODO: figure out how to verify API key",
+                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "    pm.environment.unset(\"user_key\");",
+                  "    pm.environment.set(\"user_key\",lastApi);",
+                  "});",
+                  "",
+                  "user_key = pm.environment.get(\"user_key\");",
+                  "",
                   "pm.test(\"C77964 Body has new key\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_key);",
                   "});",
@@ -2067,14 +2076,7 @@
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.total) !== null;",
                   "});",
-                  "",
-                  "pm.test(\"API Key was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"user_key\");",
-                  "    pm.environment.set(\"user_key\",lastApi);",
-                  "});"
+                  ""
                 ],
                 "type": "text/javascript"
               }
