@@ -1830,7 +1830,7 @@
                   "});",
                   "",
                   "pm.test(\"Body matches string\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(\"test_stream_ts_to_multiple_sfs\");",
+                  "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
                   "});"
                 ],
                 "type": "text/javascript"
