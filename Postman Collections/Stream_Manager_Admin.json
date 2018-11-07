@@ -1240,7 +1240,8 @@
                 "id": "e7db2ce3-0949-47cc-a29f-e0458198eb4b",
                 "exec": [
                   "contact_name = pm.environment.get(\"contact_name\");",
-                  "pm.environment.set(\"contact_name_EDIT\", contact_name + \"_EDIT\")",
+                  "pm.environment.set(\"contact_name_EDIT\", contact_name + \"EDIT\");",
+                  "contact_name_EDIT = pm.environment.get(\"contact_name_EDIT\");",
                   "",
                   "pm.test(\"Body includes edited username\", function () {",
                   "    pm.expect(pm.response.text()).to.include(contact_name_EDIT);",
