@@ -1302,6 +1302,7 @@
                   "",
                   "pm.test(\"deleteContact gives success message\", function () {",
                   "    var jsonData = pm.response.json();",
+                  "    console.log(jsonData);",
                   "    pm.expect(jsonData.result.success).to.eql(true);",
                   "});",
                   "",
