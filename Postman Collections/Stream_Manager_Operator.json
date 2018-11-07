@@ -568,11 +568,20 @@
               "listen": "test",
               "script": {
                 "id": "1a421a29-f4c1-42ec-bc72-94f25b1a0379",
-                "type": "text/javascript",
                 "exec": [
-                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
-                  "LoginTestsMethod(true, false);"
-                ]
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
