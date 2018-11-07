@@ -856,7 +856,7 @@
                 "exec": [
                   "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
                   "",
-                  "pm.test(\"Response does not contain deletes user\", function () {",
+                  "pm.test(\"Response does not contain deleted user\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
                   "});",
                   "",
