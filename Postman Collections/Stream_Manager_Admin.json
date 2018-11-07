@@ -1516,7 +1516,7 @@
       "item": [
         {
           "_postman_id": "17b82612-b9eb-493f-9823-acfeaf0a053d",
-          "name": "Login Admin Copy",
+          "name": "Login Admin",
           "event": [
             {
               "listen": "test",
@@ -2577,23 +2577,20 @@
               "listen": "test",
               "script": {
                 "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
+                  "    ",
                   "pm.test(\"Response time is less than 200ms\", function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"User is an operator, not admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
