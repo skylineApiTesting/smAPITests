@@ -734,6 +734,14 @@
                   "pm.test(\"Body has email\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email);",
                   "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
                   ""
                 ],
                 "type": "text/javascript"
@@ -793,6 +801,14 @@
                   "",
                   "pm.test(\"Response contains edited email address\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});"
                 ],
                 "type": "text/javascript"
