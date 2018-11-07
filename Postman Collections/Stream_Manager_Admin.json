@@ -838,6 +838,8 @@
               "script": {
                 "id": "670c345d-54af-47e0-a401-d870d811612a",
                 "exec": [
+                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
+                  "",
                   "pm.test(\"Response does not contain deletes user\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
                   "});",
@@ -845,6 +847,14 @@
                   "pm.test(\"deleteUser gives success message\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.result.success).to.eql(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});"
                 ],
                 "type": "text/javascript"
