@@ -783,7 +783,9 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "pm.test(\"Body includes edited \" + section + \" name\", function () {",
+                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
+                  "",
+                  "pm.test(\"Body includes edited username\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_name_EDIT);",
                   "});",
                   "",
@@ -835,16 +837,17 @@
               "listen": "test",
               "script": {
                 "id": "670c345d-54af-47e0-a401-d870d811612a",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('delete', 'User');",
+                  "pm.test(\"Response does not contain deletes user\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
+                  "});",
                   "",
                   "pm.test(\"deleteUser gives success message\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.result.success).to.eql(true);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
