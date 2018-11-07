@@ -1812,7 +1812,6 @@
               "listen": "test",
               "script": {
                 "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
@@ -1829,17 +1828,18 @@
                   "});",
                   "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1851,7 +1851,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
+              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
               "protocol": "http",
               "host": [
                 "{{url}}"
@@ -1864,7 +1864,7 @@
               "query": [
                 {
                   "key": "X-API-KEY",
-                  "value": "{{user_key}}",
+                  "value": "{{user_API_Key}}",
                   "equals": true
                 },
                 {
