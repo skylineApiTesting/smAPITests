@@ -1176,23 +1176,20 @@
               "listen": "test",
               "script": {
                 "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
+                  "    ",
                   "pm.test(\"Response time is less than 200ms\", function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"User is an operator, not admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1486,29 +1483,26 @@
       "item": [
         {
           "_postman_id": "9431b36c-51ff-4fdf-b886-36c142ffe195",
-          "name": "Login Valid Copy",
+          "name": "Login Valid",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
+                  "    ",
                   "pm.test(\"Response time is less than 200ms\", function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"User is an operator, not admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1520,13 +1514,13 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{user}}"
                 },
                 {
                   "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{password}}"
                 }
               ]
             },
@@ -1722,29 +1716,26 @@
       "item": [
         {
           "_postman_id": "08156533-f3df-4fe0-ab62-b733c6971d0a",
-          "name": "Login Valid Copy",
+          "name": "Login Valid",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
+                  "    ",
                   "pm.test(\"Response time is less than 200ms\", function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"User is an operator, not admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2196,17 +2187,20 @@
               "listen": "test",
               "script": {
                 "id": "aeac104d-906a-4223-abea-c688504db648",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
-                  "pm.test(\"User is an operator, not admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false\");",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
