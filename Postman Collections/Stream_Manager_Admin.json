@@ -1117,20 +1117,27 @@
               "listen": "test",
               "script": {
                 "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('create', 'Contact');",
+                  "pm.test(\"Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
                   "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "e380079a-dd76-479f-a16c-818c47b9259a",
-                "type": "text/javascript",
                 "exec": [
                   "pm.environment.unset(\"contact_name\");",
                   "pm.environment.unset(\"contact_email\");",
@@ -1142,7 +1149,8 @@
                   "pm.environment.set(\"contact_email\", email);",
                   "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
