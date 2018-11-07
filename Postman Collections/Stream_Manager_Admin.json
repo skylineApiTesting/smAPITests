@@ -782,31 +782,32 @@
               "listen": "test",
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
-                "type": "text/javascript",
                 "exec": [
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('update', 'User');",
+                  "pm.test(\"Body includes edited \" + section + \" name\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_name_EDIT);",
+                  "});",
                   "",
                   "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
                   "",
                   "pm.test(\"Response contains edited email address\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
-                "type": "text/javascript",
                 "exec": [
                   "user_name = pm.environment.get(\"user_name\");",
                   "user_email = pm.environment.get(\"user_email\");",
                   "",
                   "pm.environment.set(\"user_name_EDIT\", user_name + \"EDIT\");",
                   "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
