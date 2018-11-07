@@ -287,7 +287,7 @@
                   "});",
                   "",
                   "pm.test(\"Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                   "});"
                 ],
                 "type": "text/javascript"
