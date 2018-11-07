@@ -324,11 +324,24 @@
               "listen": "test",
               "script": {
                 "id": "3f390d2f-ddeb-4ce0-a2a3-8bbdaa376370",
-                "type": "text/javascript",
                 "exec": [
-                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
-                  "LoginTestsMethod(false);"
-                ]
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Error\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
