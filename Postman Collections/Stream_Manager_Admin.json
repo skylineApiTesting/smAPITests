@@ -1515,6 +1515,53 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "17b82612-b9eb-493f-9823-acfeaf0a053d",
+          "name": "Login Admin Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "26cafbef-d4d1-4f24-98d7-d70f2df83f00",
           "name": "Retrieve",
           "event": [
@@ -1789,53 +1836,6 @@
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
             },
             "url": "http://{{url}}/{{version}}/direct/router/"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "17b82612-b9eb-493f-9823-acfeaf0a053d",
-          "name": "Login Admin Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "admin",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}"
           },
           "response": []
         }
