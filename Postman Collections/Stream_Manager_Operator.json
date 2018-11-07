@@ -466,11 +466,24 @@
               "listen": "test",
               "script": {
                 "id": "96251dfb-6aca-460e-9149-4c5424c634e5",
-                "type": "text/javascript",
                 "exec": [
-                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
-                  "LoginTestsMethod(false, false);"
-                ]
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Error\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -504,11 +517,24 @@
               "listen": "test",
               "script": {
                 "id": "94542d77-dc06-4fad-9899-4388ce0e685f",
-                "type": "text/javascript",
                 "exec": [
-                  "var LoginTestsMethod = eval(pm.environment.get('LoginTests'));",
-                  "LoginTestsMethod(false, false);"
-                ]
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Response time is less than 200ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Error\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                  "});"
+                ],
+                "type": "text/javascript"
               }
             }
           ],
