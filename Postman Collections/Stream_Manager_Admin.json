@@ -1806,7 +1806,7 @@
         },
         {
           "_postman_id": "c14c9d11-6088-40e3-aa52-ff7f23942e55",
-          "name": "GetAll streams in JSON w/Valid Key Copy",
+          "name": "GetAll streams - Re",
           "event": [
             {
               "listen": "test",
