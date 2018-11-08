@@ -2246,7 +2246,7 @@
       "item": [
         {
           "_postman_id": "ca98f504-1535-4ac2-be2c-bfd4418183b9",
-          "name": "Create New Contact Copy",
+          "name": "Create New Contact",
           "event": [
             {
               "listen": "test",
