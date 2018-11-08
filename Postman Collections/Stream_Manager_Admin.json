@@ -3929,22 +3929,16 @@
               "listen": "test",
               "script": {
                 "id": "070d143d-35f2-4a24-84a4-6875ed240ba5",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
-                  "",
                   "pm.test(\"Body is in XML format\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
