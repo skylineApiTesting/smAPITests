@@ -1892,7 +1892,7 @@
               "script": {
                 "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
                 "exec": [
-                  "pm.test(\"C78166 Status code is 200\", function () {",
+                  "pm.test(\"C78167 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -1925,12 +1925,12 @@
               "listen": "test",
               "script": {
                 "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78168 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1959,14 +1959,14 @@
               "listen": "test",
               "script": {
                 "id": "e5b299d5-3abd-42ad-89b8-cb71210d6735",
-                "type": "text/javascript",
                 "exec": [
                   "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78169 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
