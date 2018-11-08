@@ -1373,8 +1373,8 @@
           "response": []
         },
         {
-          "_postman_id": "08ea78db-6a28-4a9c-9dd6-2038173b0f06",
-          "name": "Update operator - Make self admin",
+          "_postman_id": "8ad0deeb-b6b2-4c02-8d70-43bde2d5d4a3",
+          "name": "Cannot Make Self Admin",
           "event": [
             {
               "listen": "test",
@@ -1399,7 +1399,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jannifer\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
@@ -1433,39 +1433,6 @@
             "body": {
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jannifer\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8ad0deeb-b6b2-4c02-8d70-43bde2d5d4a3",
-          "name": "Update operator profile invalid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
-                "exec": [
-                  "pm.test(\"Operator cant make self admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"invalid authorization\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
