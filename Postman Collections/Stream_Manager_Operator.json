@@ -202,15 +202,15 @@
               "script": {
                 "id": "f6c79170-f98e-4723-9dd4-a5cbed1cdc1b",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78010 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "pm.test(\"C78010 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Error\", function () {",
+                  "pm.test(\"C78010 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                   "});"
                 ],
@@ -227,53 +227,6 @@
                 {
                   "key": "user",
                   "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "70e52c15-8b90-4e6c-be9e-ae4429b11c06",
-          "name": "Incorrect Username",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "fd02c6a7-adde-43cd-bc48-d1a53fe7dbf1",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "wrongUser",
                   "type": "text"
                 },
                 {
@@ -326,6 +279,53 @@
                 {
                   "key": "password",
                   "value": "wrongPassword",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "70e52c15-8b90-4e6c-be9e-ae4429b11c06",
+          "name": "Incorrect Username",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fd02c6a7-adde-43cd-bc48-d1a53fe7dbf1",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Body Contains Error\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "wrongUser",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
                   "type": "text"
                 }
               ]
