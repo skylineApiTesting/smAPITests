@@ -390,11 +390,11 @@
               "script": {
                 "id": "1a421a29-f4c1-42ec-bc72-94f25b1a0379",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78207 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "pm.test(\"C78207 Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
                 ],
