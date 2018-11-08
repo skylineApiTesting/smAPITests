@@ -2202,23 +2202,17 @@
               "listen": "test",
               "script": {
                 "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 403\", function () {",
                   "    pm.response.to.have.status(403);",
                   "});",
                   "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
-                  "",
                   "pm.test(\"Verify invalid API error message is provided\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2243,11 +2237,13 @@
               "query": [
                 {
                   "key": "X-API-KEY",
-                  "value": "ABC123"
+                  "value": "ABC123",
+                  "equals": true
                 },
                 {
                   "key": "format",
-                  "value": "json"
+                  "value": "json",
+                  "equals": true
                 }
               ]
             },
