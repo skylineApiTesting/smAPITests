@@ -1217,12 +1217,13 @@
                 {
                   "key": "user",
                   "type": "text",
-                  "value": "{{user}}"
+                  "value": "{{operator_2}}"
                 },
                 {
                   "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
+                  "value": "{{operator_2_password}}",
+                  "description": "",
+                  "type": "text"
                 }
               ]
             },
