@@ -1290,7 +1290,7 @@
                   "    pm.expect(pm.response.text()).to.include('\"email\":\"jpeeling_edit@skylinenet.net\"');",
                   "});",
                   "",
-                  "pm.test(\"Body contains new email\", function () {",
+                  "pm.test(\"Body contains new personal name\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"personal_name\":\"Jennnnnnnnnnnn\"');",
                   "});",
                   ""
@@ -1399,39 +1399,6 @@
             "body": {
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "440bab57-df9e-427e-8192-8dcd1c5f336f",
-          "name": "Change back to operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cf7c0124-bb10-43e5-878f-b9f08a45b244",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Admin is false\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('is_admin\":false');",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jannifer\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
