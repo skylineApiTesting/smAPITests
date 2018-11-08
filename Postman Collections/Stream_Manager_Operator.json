@@ -1360,7 +1360,8 @@
                 },
                 {
                   "key": "password",
-                  "value": "{{operator_2_password}}",
+                  "value": "{{operator_2_password_edit}}",
+                  "description": "",
                   "type": "text"
                 }
               ]
