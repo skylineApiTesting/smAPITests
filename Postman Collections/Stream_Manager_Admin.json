@@ -954,70 +954,6 @@
           "response": []
         },
         {
-          "_postman_id": "d5985e16-efb2-4f65-b885-f39ae5cdcb79",
-          "name": "Create New Contact Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
-                "exec": [
-                  "pm.test(\"Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "contact_name = pm.environment.get(\"contact_name\");",
-                  "",
-                  "pm.test(\"Body has contact\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_name);",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e380079a-dd76-479f-a16c-818c47b9259a",
-                "exec": [
-                  "pm.environment.unset(\"contact_name\");",
-                  "pm.environment.unset(\"contact_email\");",
-                  "",
-                  "var first_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var email = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"contact_name\", first_name);",
-                  "pm.environment.set(\"contact_email\", email);",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "ec491ad1-346f-4655-9d74-cee38e14fb83",
           "name": "Retrieve Contact",
           "event": [
@@ -2219,6 +2155,70 @@
               ]
             },
             "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d5985e16-efb2-4f65-b885-f39ae5cdcb79",
+          "name": "Create New Contact Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
+                "exec": [
+                  "pm.test(\"Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
+                  "",
+                  "contact_name = pm.environment.get(\"contact_name\");",
+                  "",
+                  "pm.test(\"Body has contact\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(contact_name);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e380079a-dd76-479f-a16c-818c47b9259a",
+                "exec": [
+                  "pm.environment.unset(\"contact_name\");",
+                  "pm.environment.unset(\"contact_email\");",
+                  "",
+                  "var first_name = Math.floor((Math.random() * 1000000) + 1);",
+                  "var email = Math.floor((Math.random() * 1000000) + 1);",
+                  "",
+                  "pm.environment.set(\"contact_name\", first_name);",
+                  "pm.environment.set(\"contact_email\", email);",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
