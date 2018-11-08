@@ -2961,51 +2961,6 @@
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
-        },
-        {
-          "_postman_id": "d2d1d6f1-7306-4d5a-b8d5-33dbb842f75e",
-          "name": "Login Valid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user}}"
-                },
-                {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
         }
       ]
     },
