@@ -585,6 +585,50 @@
           "response": []
         },
         {
+          "_postman_id": "340ce49f-29d5-4121-bd90-4871b840bfb8",
+          "name": "Get all users Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
+                "exec": [
+                  "var obj = JSON.parse(pm.response.text());",
+                  "var record = null;",
+                  "    ",
+                  "for (var i = 0; i < obj[0].result.total; i++){",
+                  "    if (!obj[0].result.records[i].is_admin){",
+                  "        record = obj[0].result.records[i];",
+                  "    }",
+                  "}",
+                  "",
+                  "pm.test(\"Set operator id environment variable\", function () {",
+                  "    var operator_id = record.id;",
+                  "    pm.environment.set(\"operator_id\", operator_id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d0f17c7d-a89c-4f2e-b28c-2b5d68c94707",
           "name": "Update User",
           "event": [
@@ -2746,50 +2790,6 @@
         {
           "_postman_id": "8654aa68-8986-42fc-9fbe-982e6dd908c9",
           "name": "Get all users Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
-                "exec": [
-                  "var obj = JSON.parse(pm.response.text());",
-                  "var record = null;",
-                  "    ",
-                  "for (var i = 0; i < obj[0].result.total; i++){",
-                  "    if (!obj[0].result.records[i].is_admin){",
-                  "        record = obj[0].result.records[i];",
-                  "    }",
-                  "}",
-                  "",
-                  "pm.test(\"Set operator id environment variable\", function () {",
-                  "    var operator_id = record.id;",
-                  "    pm.environment.set(\"operator_id\", operator_id);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "340ce49f-29d5-4121-bd90-4871b840bfb8",
-          "name": "Get all users Copy Copy",
           "event": [
             {
               "listen": "test",
