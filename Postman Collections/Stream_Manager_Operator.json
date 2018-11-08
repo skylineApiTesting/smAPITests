@@ -1284,7 +1284,16 @@
                   "pm.test(\"operator was updated\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
-                  "});"
+                  "});",
+                  "",
+                  "pm.test(\"Body contains new email\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"email\":\"jpeeling_edit@skylinenet.net\"');",
+                  "});",
+                  "",
+                  "pm.test(\"Body contains new email\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"personal_name\":\"Jennnnnnnnnnnn\"');",
+                  "});",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -1294,8 +1303,8 @@
               "script": {
                 "id": "4b491a78-3df2-49f3-a594-8663feab62cf",
                 "exec": [
-                  "//var operator_2_password = String(pm.environment.get(\"{{operator_2_password}}\")); ",
-                  "pm.environment.set(\"operator_2_password_edit\", \"{{operator_2_password}}\"+\"edit\");"
+                  "pm.environment.set(\"operator_2_password_edit\", \"{{operator_2_password}}\"+\"edit\");",
+                  "pm.environment.get(\"variable_key\");"
                 ],
                 "type": "text/javascript"
               }
@@ -1311,7 +1320,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User 1533235445\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jenn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User 1533235445\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jennnnnnnnnnnn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
@@ -1319,7 +1328,7 @@
         },
         {
           "_postman_id": "dfc09181-c919-4e89-9bd5-ba6d1305f552",
-          "name": "Login As Other Operator Copy",
+          "name": "Login with New Password",
           "event": [
             {
               "listen": "test",
