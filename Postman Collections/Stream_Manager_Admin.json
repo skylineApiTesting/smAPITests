@@ -2802,9 +2802,26 @@
                   "",
                   "pm.test(\"operator was updated\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    console.log(jsonData);",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "4dcd2dd9-fa0f-4a17-bbe3-c3199ac9d734",
+                "exec": [
+                  "pm.environment.unset(\"operator_un\");",
+                  "pm.environment.unset(\"operator_email\");",
+                  "",
+                  "var operator_un = \"operator\" + Math.floor((Math.random() * 1000000) + 1);",
+                  "var operator_email = \"abc\"+Math.floor((Math.random() * 1000000) + 1)+\"@skylinenet.net\";",
+                  "",
+                  "pm.environment.set(\"operator_un\", operator_un);",
+                  "pm.environment.set(\"operator_email\", operator_email);",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -2820,7 +2837,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"operator\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jenn\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
