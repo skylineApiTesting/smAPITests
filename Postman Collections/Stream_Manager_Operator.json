@@ -456,50 +456,6 @@
             "url": "http://{{url}}"
           },
           "response": []
-        },
-        {
-          "_postman_id": "7e290903-6387-49f5-9eda-3329e934a898",
-          "name": "Login Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
-                "exec": [
-                  "pm.test(\"C78016 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "operator",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
         }
       ],
       "event": [
@@ -648,6 +604,50 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "gotten by this request: contacts, appliances, issue streams, locations, offline sfs streams, sfs capacity, offline sfs streams, grid, and users\n\nThis runs everytime a user logs in."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7e290903-6387-49f5-9eda-3329e934a898",
+          "name": "Login Operator",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
+                "exec": [
+                  "pm.test(\"C78016 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "operator",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         }
