@@ -2259,18 +2259,14 @@
               "listen": "test",
               "script": {
                 "id": "d6db7a64-fa64-4c8a-901e-062013b58e54",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
