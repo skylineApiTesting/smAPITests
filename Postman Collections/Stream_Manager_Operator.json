@@ -1721,12 +1721,12 @@
               "listen": "test",
               "script": {
                 "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78162 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
