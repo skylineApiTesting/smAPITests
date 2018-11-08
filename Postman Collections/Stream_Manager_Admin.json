@@ -1830,12 +1830,12 @@
                 {
                   "key": "user",
                   "type": "text",
-                  "value": "admin"
+                  "value": "{{user}}"
                 },
                 {
                   "key": "password",
                   "type": "text",
-                  "value": "sm1000"
+                  "value": "{{password}}"
                 }
               ]
             },
