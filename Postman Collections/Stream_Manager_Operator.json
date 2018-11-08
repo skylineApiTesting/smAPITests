@@ -1381,7 +1381,7 @@
                 "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
                 "exec": [
                   "pm.test(\"Operator cant make self admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"invalid authorization\");",
+                  "    pm.expect(pm.response.text()).to.include('\"success\":false');",
                   "});"
                 ],
                 "type": "text/javascript"
