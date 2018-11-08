@@ -1152,12 +1152,12 @@
                 {
                   "key": "user",
                   "type": "text",
-                  "value": "admin"
+                  "value": "{{user}}"
                 },
                 {
                   "key": "password",
                   "type": "text",
-                  "value": "sm1000"
+                  "value": "{{password}}"
                 }
               ]
             },
@@ -1438,12 +1438,12 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "admin",
+                  "value": "{{user}}",
                   "type": "text"
                 },
                 {
                   "key": "password",
-                  "value": "sm1000",
+                  "value": "{{password}}",
                   "type": "text"
                 }
               ]
@@ -1542,6 +1542,19 @@
                 ],
                 "type": "text/javascript"
               }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "73aa30af-f544-4b02-9932-d0eec285f0ac",
+                "exec": [
+                  "pm.environment.set(\"appliance_version\", \"1.1.1.\" + Math.floor((Math.random() * 1000000) + 1));",
+                  "pm.environment.set(\"appliance_hostname\", \"Jenn-SFS \" + Math.floor((Math.random() * 1000000) + 1));",
+                  "pm.environment.set(\"appliance_model\", \"SFS\" + Math.floor((Math.random() * 1000000) + 1));",
+                  "pm.environment.set(\"appliance_pubIP\", \"6.6.6.\" + Math.floor((Math.random() * 1000000) + 1));"
+                ],
+                "type": "text/javascript"
+              }
             }
           ],
           "request": {
@@ -1554,7 +1567,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"updateAppliance\",\n  \"data\": [\n    {\n      \"status\": \"\",\n      \"hostname\": \"Jennnn-SFS\",\n      \"last_updated\": \"\",\n      \"software_version\": \"1.1.111\",\n      \"contract_renewal_date\": \"\",\n      \"id\": 21,\n      \"public_ip\": \"6.6.6.6\",\n      \"has_service_contract\": \"\",\n      \"management_ip\": \"172.0.0.77\",\n      \"username\": \"admin\",\n      \"password\": \"sfs1000\",\n      \"last_updated_by\": \"\",\n      \"total_connections\": \"\",\n      \"license_type\": \"\",\n      \"license_key\": \"\",\n      \"synced\": \"\",\n      \"model\": \"SFS1000\",\n      \"location_name\": \"Test Data Center\",\n      \"zone_name\": \"The Zone\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 17\n}"
+              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"updateAppliance\",\n  \"data\": [\n    {\n      \"status\": \"\",\n      \"hostname\": \"{{appliance_hostname}}\",\n      \"last_updated\": \"\",\n      \"software_version\": \"{{appliance_version}}\",\n      \"contract_renewal_date\": \"\",\n      \"id\": 21,\n      \"public_ip\": \"{{appliace_pubIP}}\",\n      \"has_service_contract\": \"\",\n      \"management_ip\": \"172.0.0.77\",\n      \"username\": \"admin\",\n      \"password\": \"sfs1000\",\n      \"last_updated_by\": \"\",\n      \"total_connections\": \"\",\n      \"license_type\": \"\",\n      \"license_key\": \"\",\n      \"synced\": \"\",\n      \"model\": \"{{appliance_model}}\",\n      \"location_name\": \"Test Data Center\",\n      \"zone_name\": \"The Zone\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 17\n}"
             },
             "url": "http://{{url}}/{{version}}/direct/router/",
             "description": "hostname and id need to match an appliance in order to update it."
@@ -1574,28 +1587,36 @@
                   "var obj = JSON.parse(pm.response.text());",
                   "var record = null;",
                   "",
+                  "appliance_hostname = pm.environment.get(\"appliance_hostname\");",
+                  "appliance_version = pm.environment.get(\"appliance_version\");",
+                  "appliance_model = pm.environment.get(\"appliance_model\");",
+                  "appliance_pubIP = pm.environment.get(\"appliance_pubIP\");",
                   "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
                   "pm.test(\"Correct Hostname\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-SFS\\\"\");",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"\"+appliance_hostname+\"\\\"\");",
                   "});",
                   "",
                   "// Find appliance's record to verify model and version",
                   "for (var i = 0; i < obj.result.total; i++) {",
-                  "    if (obj.result.records[i].hostname === \"Jennnn-SFS\") {",
+                  "    if (obj.result.records[i].hostname === appliance_hostname) {",
                   "        record = obj.result.records[i];",
                   "    }",
                   "}",
                   "",
+                  "pm.test(\"Correct Version\", function () {",
+                  "    pm.expect(record.model === appliance_version);",
+                  "});",
+                  "",
                   "pm.test(\"Correct Model\", function () {",
-                  "    pm.expect(record.model === \"SFS1000\");",
+                  "    pm.expect(record.model === appliance_model);",
                   "});",
                   "",
                   "pm.test(\"Correct Public IP\", function () {",
-                  "    pm.expect(record.public_ip === \"6.6.6.6\");",
+                  "    pm.expect(record.public_ip === appliance_pubIP);",
                   "});",
                   "",
                   "pm.test(\"Correct Zone\", function () {",
