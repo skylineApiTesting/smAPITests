@@ -1635,12 +1635,7 @@
               "listen": "test",
               "script": {
                 "id": "f70ab318-f89d-49be-9cf7-ca8032b0d253",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
@@ -1648,7 +1643,8 @@
                   "pm.test(\"Body shows success message\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(\"\\\"result\\\":{\\\"success\\\":true\\\"\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
