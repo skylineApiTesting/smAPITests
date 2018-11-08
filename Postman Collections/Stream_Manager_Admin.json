@@ -1873,7 +1873,7 @@
                   "var record;",
                   "pm.environment.unset(\"contact_id\");",
                   "for (var i = 0; i < obj[1].result.total; i++) {",
-                  "    if (obj[1].result.records[i].first_name === contact_name) {",
+                  "    if (obj[1].result.records[i].first_name == contact_name) {",
                   "        record = obj[1].result.records[i].id;",
                   "    }",
                   "}",
@@ -1973,7 +1973,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": 17,\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
+              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
