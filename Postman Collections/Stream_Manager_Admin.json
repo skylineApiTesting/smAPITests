@@ -586,7 +586,7 @@
         },
         {
           "_postman_id": "340ce49f-29d5-4121-bd90-4871b840bfb8",
-          "name": "Get all users Copy Copy",
+          "name": "Retrieve Users",
           "event": [
             {
               "listen": "test",
