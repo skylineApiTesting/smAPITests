@@ -1946,7 +1946,6 @@
                   "            record = obj[1].result.records[i];",
                   "        }",
                   "    }",
-                  "    pm.expect(jsonData.total) !== null;",
                   "    pm.environment.unset(\"user_key\");",
                   "    pm.environment.set(\"user_key\",record);",
                   "});",
