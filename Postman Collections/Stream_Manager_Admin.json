@@ -462,51 +462,6 @@
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
-        },
-        {
-          "_postman_id": "3eb29ef6-0652-46c1-abf7-13948adddddd",
-          "name": "Login Valid Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
         }
       ]
     },
@@ -1629,6 +1584,51 @@
               "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": false,\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3eb29ef6-0652-46c1-abf7-13948adddddd",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         },
