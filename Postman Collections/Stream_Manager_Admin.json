@@ -2322,6 +2322,65 @@
           "response": []
         },
         {
+          "_postman_id": "bea9d7b8-6178-4887-9703-ede4cde63f5b",
+          "name": "Create API Key Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1181797c-a819-4e06-a600-15bec4595719",
+                "exec": [
+                  "pm.test(\"C77964 Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
+                  "",
+                  "user_key = pm.environment.get(\"user_key\");",
+                  "",
+                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "    pm.environment.unset(\"user_key\");",
+                  "    pm.environment.set(\"user_key\",lastApi);",
+                  "});",
+                  "",
+                  "user_key = pm.environment.get(\"user_key\");",
+                  "",
+                  "pm.test(\"C77964 Body has new key\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_key);",
+                  "});",
+                  "",
+                  "pm.test(\"C77964 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C77964 API Key list is not empty\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "6dbb838a-ee39-4786-ac17-4cc455c83ba0",
           "name": "Create API Key Copy",
           "event": [
@@ -2679,65 +2738,6 @@
               ]
             },
             "description": "description: attempts to grab cameras in a random format (\"1001\"). not a real format and therefore not supported\n\nexpectation: not sure. currently it just returns XML format. i'll put a ticket in or ask someone how it should actually behave."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "bea9d7b8-6178-4887-9703-ede4cde63f5b",
-          "name": "Create API Key Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1181797c-a819-4e06-a600-15bec4595719",
-                "exec": [
-                  "pm.test(\"C77964 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"user_key\");",
-                  "    pm.environment.set(\"user_key\",lastApi);",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\"C77964 Body has new key\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_key);",
-                  "});",
-                  "",
-                  "pm.test(\"C77964 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77964 API Key list is not empty\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
