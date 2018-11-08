@@ -2963,39 +2963,6 @@
           "response": []
         },
         {
-          "_postman_id": "501c9955-346c-4b3c-8235-affe948ba633",
-          "name": "Change back to operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cf7c0124-bb10-43e5-878f-b9f08a45b244",
-                "exec": [
-                  "pm.test(\"Admin is false\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('is_admin\":false');",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "d2d1d6f1-7306-4d5a-b8d5-33dbb842f75e",
           "name": "Login Valid",
           "event": [
