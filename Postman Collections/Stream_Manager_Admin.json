@@ -1393,36 +1393,6 @@
           "response": []
         },
         {
-          "_postman_id": "c8d8ede5-1caa-4db1-b86f-bdb56edebc8a",
-          "name": "Logout Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
-                "exec": [
-                  "pm.test(\"Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "http://{{url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e5c01160-8559-4541-8166-5be838dacfff",
           "name": "Delete Zone",
           "event": [
@@ -2915,6 +2885,36 @@
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c8d8ede5-1caa-4db1-b86f-bdb56edebc8a",
+          "name": "Logout Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
+                "exec": [
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "http://{{url}}"
           },
           "response": []
         },
