@@ -1523,7 +1523,7 @@
         },
         {
           "_postman_id": "31ef6d97-90e1-4357-8dfa-390aef03d939",
-          "name": "Create New Zone Copy",
+          "name": "Create New Zone",
           "event": [
             {
               "listen": "test",
