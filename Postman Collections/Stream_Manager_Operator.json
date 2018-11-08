@@ -667,7 +667,12 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  ""
+                  "",
+                  "var obj = JSON.parse(pm.response.text());",
+                  "",
+                  "pm.test(\"C77964 Body has new key\", function () {",
+                  "    pm.expect(obj.result.total === 0);",
+                  "});"
                 ],
                 "type": "text/javascript"
               }
