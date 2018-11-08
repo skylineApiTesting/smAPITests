@@ -419,6 +419,36 @@
           "response": []
         },
         {
+          "_postman_id": "c8d8ede5-1caa-4db1-b86f-bdb56edebc8a",
+          "name": "Logout Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
+                "exec": [
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "f70fd7af-b368-4bef-9890-90ae3c519453",
           "name": "Login Valid",
           "event": [
