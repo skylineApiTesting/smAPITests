@@ -1233,6 +1233,50 @@
           "response": []
         },
         {
+          "_postman_id": "dfc09181-c919-4e89-9bd5-ba6d1305f552",
+          "name": "Login As Other Operator Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body shows Operator Logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "type": "text",
+                  "value": "{{operator_2}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{operator_2_password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d18b7952-b37f-4716-9a85-2a97f7fb41fe",
           "name": "Read Profile",
           "event": [
@@ -1414,50 +1458,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "you should not be allowed to do this as an operator"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "dfc09181-c919-4e89-9bd5-ba6d1305f552",
-          "name": "Login As Other Operator Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body shows Operator Logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{operator_2}}"
-                },
-                {
-                  "key": "password",
-                  "value": "{{operator_2_password}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         }
