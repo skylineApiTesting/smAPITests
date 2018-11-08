@@ -419,36 +419,6 @@
           "response": []
         },
         {
-          "_postman_id": "c8d8ede5-1caa-4db1-b86f-bdb56edebc8a",
-          "name": "Logout Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
-                "exec": [
-                  "pm.test(\"Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "http://{{url}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "f70fd7af-b368-4bef-9890-90ae3c519453",
           "name": "Login Valid",
           "event": [
@@ -1419,6 +1389,36 @@
               "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": false,\n\t\t\t\t\"description\": \"868599\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c8d8ede5-1caa-4db1-b86f-bdb56edebc8a",
+          "name": "Logout Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
+                "exec": [
+                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "http://{{url}}"
           },
           "response": []
         },
