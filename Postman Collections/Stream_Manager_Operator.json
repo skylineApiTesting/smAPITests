@@ -937,11 +937,11 @@
               "script": {
                 "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78173 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Appliances were listed\", function () {",
+                  "pm.test(\"C78173 Appliances were listed\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.result.success).to.eql(true);",
                   "});"
