@@ -1876,7 +1876,7 @@
                   "        record = obj[1].result.records[i].id;",
                   "    }",
                   "}",
-                  "pm.environment.set(\"contact_id\",record;",
+                  "pm.environment.set(\"contact_id\",record);",
                   ""
                 ],
                 "type": "text/javascript"
