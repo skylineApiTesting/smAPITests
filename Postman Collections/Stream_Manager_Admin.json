@@ -2963,39 +2963,6 @@
           "response": []
         },
         {
-          "_postman_id": "7dd30725-415a-48de-94e3-b40c1f608bd7",
-          "name": "Update operator profile invalid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
-                "exec": [
-                  "pm.test(\"Operator cant make self admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"invalid authorization\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "501c9955-346c-4b3c-8235-affe948ba633",
           "name": "Change back to operator",
           "event": [
