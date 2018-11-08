@@ -975,11 +975,11 @@
               "script": {
                 "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78174 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Success message\", function () {",
+                  "pm.test(\"C78174 Success message\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.result.success).to.eql(true);",
                   "});"
