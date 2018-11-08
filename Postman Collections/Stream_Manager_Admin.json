@@ -1614,9 +1614,6 @@
               "script": {
                 "id": "73aa30af-f544-4b02-9932-d0eec285f0ac",
                 "exec": [
-                  "pm.environment.set(\"appliance_version\", \"1.1.1.\" + Math.floor((Math.random() * 1000000) + 1));",
-                  "pm.environment.set(\"appliance_hostname\", \"Jennnn-SFS \" + Math.floor((Math.random() * 1000000) + 1));",
-                  "pm.environment.set(\"appliance_model\", \"SFS\" + Math.floor((Math.random() * 1000000) + 1));",
                   "pm.environment.set(\"appliance_pubIP\", \"6.6.6.\" + Math.floor((Math.random() * 1000000) + 1));"
                 ],
                 "type": "text/javascript"
@@ -1661,12 +1658,12 @@
                   "});",
                   "",
                   "pm.test(\"Correct Hostname\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"\"+appliance_hostname+\"\\\"\");",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-SFS\\\"\");",
                   "});",
                   "",
                   "// Find appliance's record to verify model and version",
                   "for (var i = 0; i < obj.result.total; i++) {",
-                  "    if (obj.result.records[i].hostname === appliance_hostname) {",
+                  "    if (obj.result.records[i].hostname === \"Jennnn-SFS\") {",
                   "        record = obj.result.records[i];",
                   "    }",
                   "}",
