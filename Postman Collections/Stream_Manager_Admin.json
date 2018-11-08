@@ -593,18 +593,18 @@
               "script": {
                 "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
                 "exec": [
-                  "var obj = JSON.parse(pm.response.text());",
-                  "var record = null;",
-                  "    ",
-                  "for (var i = 0; i < obj[0].result.total; i++){",
-                  "    if (!obj[0].result.records[i].is_admin){",
-                  "        record = obj[0].result.records[i];",
-                  "    }",
-                  "}",
+                  "user_email = pm.environment.get(\"user_email\");",
+                  "user_name = pm.environment.get(\"user_name\");",
+                  "pm.test(\"Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"getUsers\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
                   "",
-                  "pm.test(\"Set operator id environment variable\", function () {",
-                  "    var operator_id = record.id;",
-                  "    pm.environment.set(\"operator_id\", operator_id);",
+                  "pm.test(\"Body includes user\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_name);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -4666,7 +4666,7 @@
         },
         {
           "_postman_id": "1b426d01-942f-47a2-961c-0ff422c48991",
-          "name": "Create User  Copy",
+          "name": "Create User",
           "event": [
             {
               "listen": "test",
