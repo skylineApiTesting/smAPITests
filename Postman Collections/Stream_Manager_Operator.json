@@ -1111,20 +1111,16 @@
               "listen": "test",
               "script": {
                 "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "",
                   "pm.test(\"Success message present\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1153,21 +1149,17 @@
               "listen": "test",
               "script": {
                 "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "",
                   "pm.test(\"Verify stream info was returned\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
