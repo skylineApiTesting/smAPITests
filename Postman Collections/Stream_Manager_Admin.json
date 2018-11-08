@@ -4005,16 +4005,12 @@
               "listen": "test",
               "script": {
                 "id": "5aee534c-eefb-40b6-b224-d2f43eaf2747",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
