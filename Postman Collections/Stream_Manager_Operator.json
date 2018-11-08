@@ -1789,12 +1789,12 @@
               "listen": "test",
               "script": {
                 "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78164 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1823,12 +1823,12 @@
               "listen": "test",
               "script": {
                 "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78165 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
