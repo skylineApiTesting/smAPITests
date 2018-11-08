@@ -1845,7 +1845,7 @@
         },
         {
           "_postman_id": "d5985e16-efb2-4f65-b885-f39ae5cdcb79",
-          "name": "Create New Contact Copy",
+          "name": "Create New Contact",
           "event": [
             {
               "listen": "test",
@@ -1866,6 +1866,9 @@
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
+                  "// Set up next test",
+                  "pm.environment.unset(\"contact_id\");",
+                  "pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
                   ""
                 ],
                 "type": "text/javascript"
