@@ -2751,14 +2751,22 @@
               "listen": "test",
               "script": {
                 "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
-                "type": "text/javascript",
                 "exec": [
+                  "var obj = JSON.parse(pm.response.text());",
+                  "var record = null;",
+                  "    ",
+                  "for (var i = 0; i < obj[0].result.total; i++){",
+                  "    if (!obj[0].result.records[i].is_admin){",
+                  "        record = obj[0].result.records[i];",
+                  "    }",
+                  "}",
+                  "",
                   "pm.test(\"Set operator id environment variable\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    var operator_id = jsonData[0].result.records.id;",
+                  "    var operator_id = record.id;",
                   "    pm.environment.set(\"operator_id\", operator_id);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
