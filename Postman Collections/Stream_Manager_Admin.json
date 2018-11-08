@@ -1938,7 +1938,7 @@
                   "pm.test(\"C77964 API Key was created and variables set.\", function () {",
                   "    var obj = JSON.parse(pm.response.text());",
                   "    var record = null;",
-                  "    console.log(obj[1].result.records[1]);",
+                  "    console.log(obj[1].result.records[1].zone_id);",
                   "    contact_id = pm.environment.get(\"contact_id\");",
                   "",
                   "    for (var i = 0; i < obj[1].result.total; i++){",
