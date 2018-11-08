@@ -517,7 +517,6 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
                   "    ",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
@@ -592,10 +591,6 @@
                   "    pm.response.to.have.status(200);",
                   "});",
                   "    ",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "    ",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
@@ -635,21 +630,17 @@
               "listen": "test",
               "script": {
                 "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "",
                   "pm.test(\"Body contains api names\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -677,12 +668,7 @@
               "listen": "test",
               "script": {
                 "id": "74ec85a3-e4a7-4d29-93cf-6e82df2e5c9e",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "",
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
@@ -691,7 +677,8 @@
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
