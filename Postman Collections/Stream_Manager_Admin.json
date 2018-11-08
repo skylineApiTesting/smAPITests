@@ -4149,18 +4149,16 @@
               "listen": "test",
               "script": {
                 "id": "77be54ce-3ab1-4200-9794-b625e84a993e",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "",
-                  "",
                   "pm.test(\"Body just has empty Feature Collection\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"FeatureCollection\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -4242,10 +4240,7 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "    ",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
+                  "",
                   "pm.test(\"Api key was deleted\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(user_key);",
                   "});",
@@ -4283,10 +4278,6 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "",
                   "pm.test(\"Verify stream info was returned\", function () {",
