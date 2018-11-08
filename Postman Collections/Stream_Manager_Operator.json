@@ -531,50 +531,6 @@
           "response": []
         },
         {
-          "_postman_id": "51c676d1-9526-4f80-b726-0c42557ddbaf",
-          "name": "Login Valid Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "68e21e41-e504-4839-8ada-12b621fc6b04",
           "name": "List APIs",
           "event": [
