@@ -1867,6 +1867,7 @@
                   "});",
                   "",
                   "// Set up next test",
+                  "var jsonData = pm.response.json();",
                   "pm.environment.unset(\"contact_id\");",
                   "pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
                   ""
