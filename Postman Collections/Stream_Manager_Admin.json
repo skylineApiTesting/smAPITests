@@ -3702,24 +3702,17 @@
               "listen": "test",
               "script": {
                 "id": "76cbfd0e-8e2b-42b1-8099-3447a6371de0",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
-                  "",
-                  "",
                   "pm.test(\"Body is JSON format\", function () {",
                   "    pm.response.to.be.json;",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3786,23 +3779,17 @@
               "listen": "test",
               "script": {
                 "id": "0d73228b-3eb2-4a76-ab7f-4a8b0f90d9d8",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 403\", function () {",
                   "    pm.response.to.have.status(403);",
                   "});",
                   "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
-                  "",
                   "pm.test(\"Verify invalid API error message is provided\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3827,27 +3814,33 @@
               "query": [
                 {
                   "key": "X-API-KEY",
-                  "value": "ABC123"
+                  "value": "ABC123",
+                  "equals": true
                 },
                 {
                   "key": "format",
-                  "value": "json"
+                  "value": "json",
+                  "equals": true
                 },
                 {
                   "key": "lat",
-                  "value": "33"
+                  "value": "33",
+                  "equals": true
                 },
                 {
                   "key": "lng",
-                  "value": "33"
+                  "value": "33",
+                  "equals": true
                 },
                 {
                   "key": "radius",
-                  "value": "1000"
+                  "value": "1000",
+                  "equals": true
                 },
                 {
                   "key": "active",
-                  "value": "1"
+                  "value": "1",
+                  "equals": true
                 }
               ]
             },
@@ -3863,19 +3856,13 @@
               "listen": "test",
               "script": {
                 "id": "c7a87241-8255-4da7-8972-53e88ceacb48",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
