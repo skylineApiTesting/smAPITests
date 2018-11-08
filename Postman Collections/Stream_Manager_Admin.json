@@ -2318,23 +2318,17 @@
               "listen": "test",
               "script": {
                 "id": "ce7e6e40-f5bb-41d2-b035-a9ab8219f8cf",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
-                  "",
                   "pm.test(\"Body is in XML format\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
