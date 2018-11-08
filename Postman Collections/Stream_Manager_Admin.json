@@ -2134,34 +2134,28 @@
               "listen": "test",
               "script": {
                 "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "",
-                  "pm.test(\"Response time is less than 1000 ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
-                  "});",
-                  "",
                   "",
                   "pm.test(\"Body is JSON format\", function () {",
                   "    pm.response.to.be.json;",
                   "});",
                   "",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
