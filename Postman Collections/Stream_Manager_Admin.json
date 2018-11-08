@@ -2092,7 +2092,7 @@
               "script": {
                 "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
                 "exec": [
-                  "user_key = pm.environment.get(\"user_key\");",
+                  "user_key = pm.environment.get(\"user_API_Key\");",
                   "",
                   "pm.test(\"C77967 Response does not contain deleted key\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include(user_key);",
