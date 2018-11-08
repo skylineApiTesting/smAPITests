@@ -1867,9 +1867,15 @@
                   "});",
                   "",
                   "// Set up next test",
-                  "var jsonData = pm.response.json();",
+                  "var obj = pm.response.json();",
+                  "console.log(obj);",
                   "pm.environment.unset(\"contact_id\");",
-                  "pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
+                  "for (var i = 0; i < obj[1].result.total; i++) {",
+                  "    if (obj[1].result.records[i].first_name === contact_name) {",
+                  "        record = obj[1].result.records[i];",
+                  "    }",
+                  "}",
+                  "pm.environment.set(\"contact_id\",record.id);",
                   ""
                 ],
                 "type": "text/javascript"
