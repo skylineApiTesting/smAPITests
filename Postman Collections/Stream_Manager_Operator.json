@@ -433,11 +433,11 @@
               "script": {
                 "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
                 "exec": [
-                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "pm.test(\"C78017 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78017 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
@@ -466,11 +466,11 @@
               "script": {
                 "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78016 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
                 ],
@@ -1585,12 +1585,12 @@
               "listen": "test",
               "script": {
                 "id": "bd01da50-638a-4d06-ac48-355d8066b431",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78158 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1619,12 +1619,12 @@
               "listen": "test",
               "script": {
                 "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78159 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1653,12 +1653,12 @@
               "listen": "test",
               "script": {
                 "id": "3210c158-8837-41a2-97ff-5fbb4016ead3",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78160 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1687,12 +1687,12 @@
               "listen": "test",
               "script": {
                 "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78161 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
