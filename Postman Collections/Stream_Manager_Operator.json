@@ -1265,40 +1265,6 @@
           "response": []
         },
         {
-          "_postman_id": "1e43c495-0ce6-4df7-957a-1869d4b9915b",
-          "name": "Update admin profile",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "59434114-5f74-45a1-87d5-7f82cc84f65b",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Could not change admins information\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"Only an admin can change other users data\");",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"username\": \"admin\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jenn\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-18 16:31:22.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "you should not be allowed to do this as an operator"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "d18b7952-b37f-4716-9a85-2a97f7fb41fe",
           "name": "Get all users",
           "event": [
