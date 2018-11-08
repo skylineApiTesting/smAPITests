@@ -487,50 +487,6 @@
       "description": "api that is initialized after logging into stream manager. looks like it contains information about the various apis (actions) which can be used in stream manager",
       "item": [
         {
-          "_postman_id": "7e290903-6387-49f5-9eda-3329e934a898",
-          "name": "Login Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
-                "exec": [
-                  "pm.test(\"C78016 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "operator",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "68e21e41-e504-4839-8ada-12b621fc6b04",
           "name": "List APIs",
           "event": [
@@ -654,6 +610,50 @@
               ]
             },
             "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7e290903-6387-49f5-9eda-3329e934a898",
+          "name": "Login Operator",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
+                "exec": [
+                  "pm.test(\"C78016 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "operator",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         },
