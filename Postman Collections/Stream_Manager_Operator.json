@@ -1189,7 +1189,7 @@
       "item": [
         {
           "_postman_id": "9431b36c-51ff-4fdf-b886-36c142ffe195",
-          "name": "Login Valid",
+          "name": "Login As Other Operator",
           "event": [
             {
               "listen": "test",
@@ -1233,7 +1233,7 @@
         },
         {
           "_postman_id": "d18b7952-b37f-4716-9a85-2a97f7fb41fe",
-          "name": "Get all users",
+          "name": "Read Profile",
           "event": [
             {
               "listen": "test",
