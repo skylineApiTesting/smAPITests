@@ -63,7 +63,6 @@
               "listen": "test",
               "script": {
                 "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"User was created and variables set.\", function () {",
                   "    var jsonData = pm.response.json();",
@@ -74,26 +73,24 @@
                   "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
                   "});",
                   "",
-                  "var crudTestsMethod = eval(pm.environment.get('crudTests'));",
-                  "crudTestsMethod('create', 'User');",
-                  "",
                   "user_email = pm.environment.get(\"user_email\");",
                   "",
                   "pm.test(\"Body has email\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email);",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             },
             {
               "listen": "prerequest",
               "script": {
                 "id": "7be8edf0-db71-40b0-b037-c7a04d78613a",
-                "type": "text/javascript",
                 "exec": [
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
