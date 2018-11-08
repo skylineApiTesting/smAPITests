@@ -1444,21 +1444,17 @@
               "listen": "test",
               "script": {
                 "id": "99fe64b1-19ab-4b7f-9d4f-01696e144f19",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "",
                   "pm.test(\"operator was updated\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1596,10 +1592,6 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "    ",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
