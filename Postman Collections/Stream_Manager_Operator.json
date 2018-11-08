@@ -1755,12 +1755,12 @@
               "listen": "test",
               "script": {
                 "id": "a52af66e-6564-479f-85fc-78e49c204817",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78163 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
