@@ -1232,72 +1232,6 @@
           "response": []
         },
         {
-          "_postman_id": "31ef6d97-90e1-4357-8dfa-390aef03d939",
-          "name": "Create New Zone Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2312f720-db46-4552-a787-b8b1164c658e",
-                "exec": [
-                  "pm.test(\"Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "zone_name = pm.environment.get(\"zone_name\");",
-                  "zone_description = pm.environment.get(\"zone_description\");",
-                  "",
-                  "pm.test(\"Body has new zone\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_name);",
-                  "});",
-                  "",
-                  "pm.test(\"Body has new zone description\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_description);",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "a3492e1e-1f6a-4614-9556-fca9f9a8dc52",
-                "exec": [
-                  "pm.environment.unset(\"zone_name\");",
-                  "pm.environment.unset(\"zone_description\");",
-                  "",
-                  "var zone_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var zone_description = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"zone_name\", zone_name);",
-                  "pm.environment.set(\"zone_description\", zone_description);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": false,\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "8cc115a8-4b97-413c-8e97-4d45089fd732",
           "name": "Retrieve Zone",
           "event": [
@@ -1803,6 +1737,72 @@
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
             },
             "url": "http://{{url}}/{{version}}/direct/router/"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "31ef6d97-90e1-4357-8dfa-390aef03d939",
+          "name": "Create New Zone Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2312f720-db46-4552-a787-b8b1164c658e",
+                "exec": [
+                  "pm.test(\"Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
+                  "",
+                  "zone_name = pm.environment.get(\"zone_name\");",
+                  "zone_description = pm.environment.get(\"zone_description\");",
+                  "",
+                  "pm.test(\"Body has new zone\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_name);",
+                  "});",
+                  "",
+                  "pm.test(\"Body has new zone description\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_description);",
+                  "});",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "a3492e1e-1f6a-4614-9556-fca9f9a8dc52",
+                "exec": [
+                  "pm.environment.unset(\"zone_name\");",
+                  "pm.environment.unset(\"zone_description\");",
+                  "",
+                  "var zone_name = Math.floor((Math.random() * 1000000) + 1);",
+                  "var zone_description = Math.floor((Math.random() * 1000000) + 1);",
+                  "",
+                  "pm.environment.set(\"zone_name\", zone_name);",
+                  "pm.environment.set(\"zone_description\", zone_description);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": false,\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
