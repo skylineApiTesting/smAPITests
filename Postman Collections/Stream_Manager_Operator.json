@@ -660,18 +660,18 @@
               "script": {
                 "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
                 "exec": [
-                  "pm.test(\"Body shows success message\", function () {",
+                  "pm.test(\"C78209 Body shows success message\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"\\\"getApikeys\\\",\\\"result\\\":{\\\"success\\\":true\");",
                   "});",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78209 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
                   "var obj = JSON.parse(pm.response.text());",
                   "",
-                  "pm.test(\"C77964 Body has new key\", function () {",
-                  "    pm.expect(obj.result.total === 0);",
+                  "pm.test(\"C78209 No Keys are returned\", function () {",
+                  "    pm.expect(obj[0].result.total === 0);",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -704,23 +704,12 @@
               "script": {
                 "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
                 "exec": [
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\"Response does not contain deleted key\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                  "pm.test(\"C78180 Body shows failure message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"success\":false,\"message\":\"not logged in\"');",
                   "});",
                   "",
-                  "pm.test(\"deleteApiKey gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78180 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Api key was deleted\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
                   "});",
                   ""
                 ],
@@ -1244,7 +1233,7 @@
         },
         {
           "_postman_id": "d18b7952-b37f-4716-9a85-2a97f7fb41fe",
-          "name": "Get all users Copy",
+          "name": "Get all users",
           "event": [
             {
               "listen": "test",
@@ -1318,7 +1307,7 @@
         },
         {
           "_postman_id": "08ea78db-6a28-4a9c-9dd6-2038173b0f06",
-          "name": "Update operator profile invalid",
+          "name": "Update operator - Make admin",
           "event": [
             {
               "listen": "test",
