@@ -249,15 +249,15 @@
               "script": {
                 "id": "96251dfb-6aca-460e-9149-4c5424c634e5",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78011 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "pm.test(\"C78011 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Error\", function () {",
+                  "pm.test(\"C78011 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                   "});"
                 ],
@@ -296,15 +296,15 @@
               "script": {
                 "id": "fd02c6a7-adde-43cd-bc48-d1a53fe7dbf1",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78012 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "pm.test(\"C78012 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Error\", function () {",
+                  "pm.test(\"C78012 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                   "});"
                 ],
@@ -335,13 +335,13 @@
           "response": []
         },
         {
-          "_postman_id": "2c179d87-76ee-41e4-bbdc-9e767e18dfca",
-          "name": "Username Password Swapped",
+          "_postman_id": "d686f59b-8e52-402b-949c-6d1d1b5b9979",
+          "name": "Password Wrong Case",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "94542d77-dc06-4fad-9899-4388ce0e685f",
+                "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
@@ -352,7 +352,7 @@
                   "});",
                   "",
                   "pm.test(\"Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -367,12 +367,12 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "{{password}}",
+                  "value": "{{user}}",
                   "type": "text"
                 },
                 {
                   "key": "password",
-                  "value": "{{user}}",
+                  "value": "SM1000",
                   "type": "text"
                 }
               ]
@@ -452,53 +452,6 @@
             "body": {
               "mode": "raw",
               "raw": ""
-            },
-            "url": "http://{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d686f59b-8e52-402b-949c-6d1d1b5b9979",
-          "name": "Password Wrong Case",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "SM1000",
-                  "type": "text"
-                }
-              ]
             },
             "url": "http://{{url}}"
           },
