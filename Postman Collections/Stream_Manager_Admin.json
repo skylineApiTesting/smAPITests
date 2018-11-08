@@ -1868,8 +1868,6 @@
                   "",
                   "// Set up next test",
                   "var obj = pm.response.json();",
-                  "console.log(contact_name);",
-                  "console.log(obj);",
                   "var record;",
                   "pm.environment.unset(\"contact_id\");",
                   "for (var i = 0; i < obj[1].result.total; i++) {",
