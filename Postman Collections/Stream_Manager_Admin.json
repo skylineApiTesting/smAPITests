@@ -2845,7 +2845,7 @@
         },
         {
           "_postman_id": "c8d8ede5-1caa-4db1-b86f-bdb56edebc8a",
-          "name": "Logout Copy",
+          "name": "Logout",
           "event": [
             {
               "listen": "test",
@@ -2887,7 +2887,7 @@
                   "});",
                   "",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});",
                   ""
                 ],
@@ -2903,7 +2903,7 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "{{user}}",
+                  "value": "{{operator_un}}",
                   "type": "text"
                 },
                 {
