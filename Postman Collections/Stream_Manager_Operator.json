@@ -7,157 +7,6 @@
   },
   "item": [
     {
-      "_postman_id": "830bbbae-739b-4b64-9d16-b6341db8ffa3",
-      "name": "Test Methods Copy",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "75185882-bc99-47b5-bcd7-b595d3ff77ef",
-          "name": "CRUD Tests",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bbed600a-9b88-48ab-897d-c01d1f362e46",
-                "type": "text/javascript",
-                "exec": [
-                  "//options for method are \"create\", and \"retrieve\", \"update\", \"delete\"",
-                  "//options for section are \"User\", \"Contacts\", \"Zones\", \"ApiKeys\"",
-                  "var crudTests = (method, section) => {",
-                  "    ",
-                  "    successMessage = function(method, section){",
-                  "        pm.test(\"Body shows success message\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"\\\"\" + method + section + \"\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "        });",
-                  "    };",
-                  "    ",
-                  "    pm.test(\"Status code is 200\", function () {",
-                  "        pm.response.to.have.status(200);",
-                  "    });",
-                  "    ",
-                  "    pm.test(\"Response time is less than 200ms\", function () {",
-                  "        pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "    });",
-                  "    ",
-                  "    switch(method) {",
-                  "        case 'create':",
-                  "            successMessage(method, section);",
-                  "            break;",
-                  "            ",
-                  "        case 'retrieve':",
-                  "            section = section.toLowerCase();",
-                  "            name = pm.environment.get(section + \"_name\");",
-                  "            ",
-                  "            pm.test(\"Body includes \" + section +  \" name\", function (){",
-                  "                pm.expect(pm.response.text()).to.include(name);",
-                  "            });",
-                  "            ",
-                  "            break;",
-                  "        ",
-                  "        case 'update':",
-                  "            section = section.toLowerCase();",
-                  "            var nameEDITED = pm.environment.get(section + \"_name_EDIT\");",
-                  "",
-                  "            pm.test(\"Body includes edited \" + section + \" name\", function () {",
-                  "                pm.expect(pm.response.text()).to.include(nameEDITED);",
-                  "            });",
-                  "            ",
-                  "            break;",
-                  "        ",
-                  "        case 'delete':",
-                  "            section = section.toLowerCase();",
-                  "            var nameEDIT = pm.environment.get(section + \"name_EDIT\");",
-                  "",
-                  "            pm.test(\"Body does not contain edited \" + section + \" name\", function () {",
-                  "                pm.expect(pm.response.text()).to.not.include(nameEDIT);",
-                  "            });",
-                  "            ",
-                  "            break;",
-                  "            ",
-                  "        default:",
-                  "            return () => {};",
-                  "    }",
-                  "};",
-                  "",
-                  "pm.environment.set('crudTests', crudTests.toString());",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "http://{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a9b4d914-7920-4e02-8ce4-8d1e9c2b9e9b",
-          "name": "Login Tests",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cba68983-1d27-4b4b-ba5d-63b8e571d2f0",
-                "type": "text/javascript",
-                "exec": [
-                  "//success is a bool",
-                  "//isAdmin is a bool",
-                  "var LoginTests = (success, isAdmin=true) => {",
-                  "",
-                  "    pm.test(\"Status code is 200\", function () {",
-                  "        pm.response.to.have.status(200);",
-                  "    });",
-                  "    ",
-                  "    pm.test(\"Response time is less than 200ms\", function () {",
-                  "        pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "    });",
-                  "    ",
-                  "    if(success === true && isAdmin === true){",
-                  "        pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "        });",
-                  "    }",
-                  "    ",
-                  "    else if(success === true && isAdmin === false){",
-                  "        pm.test(\"Response time is less than 200ms\", function () {",
-                  "            pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "        });",
-                  "        ",
-                  "        pm.test(\"User is not an admin\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "        });",
-                  "        ",
-                  "    }",
-                  "    ",
-                  "    else{",
-                  "        pm.test(\"Body Contains Login Fields\", function () {",
-                  "            pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "        });",
-                  "    ",
-                  "    }",
-                  "    ",
-                  "};",
-                  "",
-                  "pm.environment.set('LoginTests', LoginTests.toString());",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "http://{{url}}"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "_postman_id": "29ea5206-c179-40db-840c-07fe4cef367c",
       "name": "Login",
       "description": "Tests under the Login category.",
@@ -174,11 +23,7 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "    ",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "    ",
+                  "",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});"
@@ -1733,12 +1578,12 @@
               "listen": "test",
               "script": {
                 "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Operator cant make self admin\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"invalid authorization\");",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
