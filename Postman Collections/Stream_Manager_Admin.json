@@ -2381,64 +2381,6 @@
           "response": []
         },
         {
-          "_postman_id": "6dbb838a-ee39-4786-ac17-4cc455c83ba0",
-          "name": "Create API Key Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8e6f3deb-0e7d-4196-af41-eb88970607bc",
-                "exec": [
-                  "pm.test(\" Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\" API Key was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    var lastApi = jsonData[1].result.records[jsonData[1].result.records.length-1].user_key;",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"user_key\");",
-                  "    pm.environment.set(\"user_key\",lastApi);",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\" Body has new key\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_key);",
-                  "});",
-                  "",
-                  "pm.test(\" Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\" API Key list is not empty\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"createApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"\",\n        \"level\": \"\",\n        \"date_created\": \"\",\n        \"first_name\": \"\",\n        \"last_name\": \"\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 17\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 18\n  }\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "35123bc1-336d-42b1-9258-aa3bab89addf",
           "name": "GetAll streams in JSON w/Valid Key",
           "event": [
