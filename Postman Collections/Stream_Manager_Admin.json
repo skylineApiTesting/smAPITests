@@ -2788,6 +2788,50 @@
           "response": []
         },
         {
+          "_postman_id": "340ce49f-29d5-4121-bd90-4871b840bfb8",
+          "name": "Get all users Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
+                "exec": [
+                  "var obj = JSON.parse(pm.response.text());",
+                  "var record = null;",
+                  "    ",
+                  "for (var i = 0; i < obj[0].result.total; i++){",
+                  "    if (!obj[0].result.records[i].is_admin){",
+                  "        record = obj[0].result.records[i];",
+                  "    }",
+                  "}",
+                  "",
+                  "pm.test(\"Set operator id environment variable\", function () {",
+                  "    var operator_id = record.id;",
+                  "    pm.environment.set(\"operator_id\", operator_id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "c1653c9b-c705-4b2a-a65b-039df4db88f8",
           "name": "Update operator profile",
           "event": [
@@ -2919,51 +2963,6 @@
           "response": []
         },
         {
-          "_postman_id": "d2d1d6f1-7306-4d5a-b8d5-33dbb842f75e",
-          "name": "Login Valid Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{operator_un}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "7dd30725-415a-48de-94e3-b40c1f608bd7",
           "name": "Update operator profile invalid",
           "event": [
@@ -3026,6 +3025,51 @@
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d2d1d6f1-7306-4d5a-b8d5-33dbb842f75e",
+          "name": "Login Valid",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "type": "text",
+                  "value": "{{user}}"
+                },
+                {
+                  "key": "password",
+                  "type": "text",
+                  "value": "{{password}}"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         },
