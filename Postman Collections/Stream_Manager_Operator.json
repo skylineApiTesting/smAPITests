@@ -1022,21 +1022,17 @@
               "listen": "test",
               "script": {
                 "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
                   "});",
                   "",
                   "pm.test(\"Success message\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.result.success).to.eql(true);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -1075,11 +1071,7 @@
                   "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "    ",
-                  "pm.test(\"Response time is less than 200ms\", function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(200);",
-                  "});",
-                  "    ",
+                  "",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
