@@ -2922,12 +2922,12 @@
               "listen": "test",
               "script": {
                 "id": "a52af66e-6564-479f-85fc-78e49c204817",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77977 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2956,12 +2956,12 @@
               "listen": "test",
               "script": {
                 "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77978 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -2990,12 +2990,12 @@
               "listen": "test",
               "script": {
                 "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77979 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3024,12 +3024,12 @@
               "listen": "test",
               "script": {
                 "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77980 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3058,12 +3058,12 @@
               "listen": "test",
               "script": {
                 "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77981 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3092,12 +3092,12 @@
               "listen": "test",
               "script": {
                 "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77982 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
