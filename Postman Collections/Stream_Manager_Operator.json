@@ -1372,7 +1372,7 @@
         },
         {
           "_postman_id": "dfc09181-c919-4e89-9bd5-ba6d1305f552",
-          "name": "Login with New Password",
+          "name": "Login With New Password",
           "event": [
             {
               "listen": "test",
