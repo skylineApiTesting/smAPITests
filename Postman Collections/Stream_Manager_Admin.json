@@ -448,13 +448,13 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{user}}"
                 },
                 {
                   "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{password}}"
                 }
               ]
             },
