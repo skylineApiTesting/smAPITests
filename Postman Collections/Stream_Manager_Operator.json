@@ -809,7 +809,7 @@
       "item": [
         {
           "_postman_id": "ff1bb1ad-64d8-4b37-b78b-cebb8958ceee",
-          "name": "Login Valid",
+          "name": "Login Operator",
           "event": [
             {
               "listen": "test",
@@ -936,7 +936,7 @@
       "item": [
         {
           "_postman_id": "0a3592ef-a974-4462-bf9c-4c634c196e25",
-          "name": "Login Valid",
+          "name": "Login Operator",
           "event": [
             {
               "listen": "test",
@@ -1491,7 +1491,7 @@
       "item": [
         {
           "_postman_id": "08156533-f3df-4fe0-ab62-b733c6971d0a",
-          "name": "Login Valid",
+          "name": "Login Operator",
           "event": [
             {
               "listen": "test",
