@@ -289,7 +289,7 @@
         },
         {
           "_postman_id": "70e52c15-8b90-4e6c-be9e-ae4429b11c06",
-          "name": "Incorrect Username",
+          "name": "Invalid Username",
           "event": [
             {
               "listen": "test",
