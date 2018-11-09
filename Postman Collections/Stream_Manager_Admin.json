@@ -3785,11 +3785,11 @@
               "script": {
                 "id": "76cbfd0e-8e2b-42b1-8099-3447a6371de0",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77956 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body is JSON format\", function () {",
+                  "pm.test(\"C77956 Body is JSON format\", function () {",
                   "    pm.response.to.be.json;",
                   "});",
                   ""
@@ -3862,11 +3862,11 @@
               "script": {
                 "id": "0d73228b-3eb2-4a76-ab7f-4a8b0f90d9d8",
                 "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
+                  "pm.test(\"C77957 Status code is 403\", function () {",
                   "    pm.response.to.have.status(403);",
                   "});",
                   "",
-                  "pm.test(\"Verify invalid API error message is provided\", function () {",
+                  "pm.test(\"C77957 Verify invalid API error message is provided\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
                   "});"
@@ -3939,7 +3939,7 @@
               "script": {
                 "id": "c7a87241-8255-4da7-8972-53e88ceacb48",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77958 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
@@ -4012,11 +4012,11 @@
               "script": {
                 "id": "070d143d-35f2-4a24-84a4-6875ed240ba5",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78224 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body is in XML format\", function () {",
+                  "pm.test(\"C78224 Body is in XML format\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
                   "});"
                 ],
@@ -4081,7 +4081,7 @@
         },
         {
           "_postman_id": "756af524-c0da-4029-8d47-2affd0bcca9b",
-          "name": "getByBounds invalid format ",
+          "name": "getByBounds Invalid Format, Valid Key",
           "event": [
             {
               "listen": "test",
@@ -4153,7 +4153,7 @@
         },
         {
           "_postman_id": "787a56e1-a190-463f-a2ef-0734e7226d0d",
-          "name": "getByBounds invalid lat longs",
+          "name": "getByBounds Invalid Lat/Longs",
           "event": [
             {
               "listen": "test",
@@ -4225,7 +4225,7 @@
         },
         {
           "_postman_id": "46fbec71-e6ef-44ee-a0c6-1e993bdedd4c",
-          "name": "getByBounds find inactive cameras",
+          "name": "getByBounds Find Inactive Cameras",
           "event": [
             {
               "listen": "test",
@@ -4301,7 +4301,7 @@
         },
         {
           "_postman_id": "0497e021-d11c-4993-a036-ec34bbdd9c4a",
-          "name": "Delete API Key Copy",
+          "name": "Delete API Key",
           "event": [
             {
               "listen": "test",
