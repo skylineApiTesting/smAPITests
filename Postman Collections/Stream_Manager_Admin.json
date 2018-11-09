@@ -2752,12 +2752,12 @@
               "listen": "test",
               "script": {
                 "id": "bd01da50-638a-4d06-ac48-355d8066b431",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77972 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
