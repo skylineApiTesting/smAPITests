@@ -3126,14 +3126,14 @@
               "listen": "test",
               "script": {
                 "id": "e5b299d5-3abd-42ad-89b8-cb71210d6735",
-                "type": "text/javascript",
                 "exec": [
                   "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77983 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
