@@ -630,7 +630,7 @@
         },
         {
           "_postman_id": "d0f17c7d-a89c-4f2e-b28c-2b5d68c94707",
-          "name": "Update User",
+          "name": "Update Admin",
           "event": [
             {
               "listen": "test",
@@ -639,17 +639,17 @@
                 "exec": [
                   "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
                   "",
-                  "pm.test(\"Body includes edited username\", function () {",
+                  "pm.test(\"C77450 Body includes edited username\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_name_EDIT);",
                   "});",
                   "",
                   "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
                   "",
-                  "pm.test(\"Response contains edited email address\", function () {",
+                  "pm.test(\"C77450 Response contains edited email address\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
                   "});",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77450 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
