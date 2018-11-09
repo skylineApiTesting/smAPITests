@@ -2786,12 +2786,12 @@
               "listen": "test",
               "script": {
                 "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77973 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
