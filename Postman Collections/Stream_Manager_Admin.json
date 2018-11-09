@@ -3714,15 +3714,15 @@
                   "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
                   "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78004 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Success message present\", function () {",
+                  "pm.test(\"C78004 Success message present\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                   "});",
                   "",
-                  "pm.test(\"Deleted Metadata was saved\", function () {",
+                  "pm.test(\"C78004 Deleted Metadata was saved\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"id\":'+stream_id+',\"description\":\"\",\"jurisdiction\":\"\",\"traffic_direction\":\"\",\"route_name\":\"\",\"mile_marker\":0,\"latitude\":0,\"longitude\":0');",
                   "});"
                 ],
@@ -3778,7 +3778,7 @@
       "item": [
         {
           "_postman_id": "825d99d0-8a93-4930-937e-357ede9fb7b4",
-          "name": "getByBounds Json format Valid",
+          "name": "getByBounds Json Format, Valid Key",
           "event": [
             {
               "listen": "test",
