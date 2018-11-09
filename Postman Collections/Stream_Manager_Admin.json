@@ -2568,7 +2568,7 @@
               "script": {
                 "id": "d6db7a64-fa64-4c8a-901e-062013b58e54",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77940 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
