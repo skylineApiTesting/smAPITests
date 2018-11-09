@@ -383,7 +383,7 @@
         },
         {
           "_postman_id": "0cf05332-f95e-4e13-ad46-96fb81fae993",
-          "name": "Username Wrong Case",
+          "name": "Correct Username Wrong Case, Correct Password",
           "event": [
             {
               "listen": "test",
@@ -539,11 +539,11 @@
               "script": {
                 "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78227 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body contains api names\", function () {",
+                  "pm.test(\"C78227 Body contains api names\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
                   "});",
                   ""
@@ -577,11 +577,11 @@
               "script": {
                 "id": "74ec85a3-e4a7-4d29-93cf-6e82df2e5c9e",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78228 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Success is true\", function () {",
+                  "pm.test(\"C78228 Success is true\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
@@ -614,6 +614,50 @@
       "name": "API Keys",
       "description": null,
       "item": [
+        {
+          "_postman_id": "a4815b66-81bf-4a78-b26d-ed5c30dc788a",
+          "name": "Login Operator",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
+                "exec": [
+                  "pm.test(\"C78016 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "operator",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
         {
           "_postman_id": "13d2db5c-7be7-4b39-94dd-3cbd59cc2a5c",
           "name": "Op Cannot Create API Key",
@@ -731,50 +775,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes an api key"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a4815b66-81bf-4a78-b26d-ed5c30dc788a",
-          "name": "Login Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
-                "exec": [
-                  "pm.test(\"C78016 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "operator",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         }
