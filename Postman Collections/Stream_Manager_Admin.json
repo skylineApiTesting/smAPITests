@@ -2443,11 +2443,11 @@
               "script": {
                 "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77938 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body is JSON format\", function () {",
+                  "pm.test(\"C77938 Body is JSON format\", function () {",
                   "    pm.response.to.be.json;",
                   "});",
                   "",
@@ -2511,11 +2511,11 @@
               "script": {
                 "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
                 "exec": [
-                  "pm.test(\"Status code is 403\", function () {",
+                  "pm.test(\"C77939 Status code is 403\", function () {",
                   "    pm.response.to.have.status(403);",
                   "});",
                   "",
-                  "pm.test(\"Verify invalid API error message is provided\", function () {",
+                  "pm.test(\"C77939 Verify invalid API error message is provided\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
                   "});"
