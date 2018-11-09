@@ -303,11 +303,11 @@
               "script": {
                 "id": "66c1c821-2ce2-40ec-b411-56ffbbdb5ee8",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78214 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "pm.test(\"C78214 Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});",
                   ""
@@ -347,11 +347,11 @@
               "script": {
                 "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
                 "exec": [
-                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "pm.test(\"C77292 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77292 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
@@ -427,11 +427,11 @@
               "script": {
                 "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77291 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});",
                   ""
