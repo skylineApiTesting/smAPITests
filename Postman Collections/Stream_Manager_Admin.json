@@ -3855,7 +3855,7 @@
         },
         {
           "_postman_id": "01423f7d-263c-4a50-bcf8-96cc00fc1f99",
-          "name": "getByBounds invalid API key",
+          "name": "getByBounds Json Format, Invalid Key",
           "event": [
             {
               "listen": "test",
@@ -3932,7 +3932,7 @@
         },
         {
           "_postman_id": "ff9965ba-a131-49f8-bf94-f5c3e05ddb25",
-          "name": "getByBounds JsonP format",
+          "name": "getByBounds JsonP Format, Valid Key",
           "event": [
             {
               "listen": "test",
