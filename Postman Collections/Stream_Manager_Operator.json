@@ -1025,11 +1025,11 @@
               "script": {
                 "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C78230 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Verify stream info was returned\", function () {",
+                  "pm.test(\"C78230 Verify stream info was returned\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData[0].result.success).to.eql(true);",
                   "});"
@@ -1064,7 +1064,7 @@
               "script": {
                 "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
                 "exec": [
-                  "pm.test(\"Verify operator cannot have edited stream\", function () {",
+                  "pm.test(\"C78231 Verify operator cannot have edited stream\", function () {",
                   "    pm.expect(pm.response.text()).to.not.include('\"result\":{\"success\":true}}');",
                   "});"
                 ],
