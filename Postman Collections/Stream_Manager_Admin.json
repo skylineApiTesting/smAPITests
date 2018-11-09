@@ -4005,7 +4005,7 @@
         },
         {
           "_postman_id": "6073a274-90a0-4691-be7d-b68a3d8dbe7c",
-          "name": "getByBounds XML format",
+          "name": "getByBounds XML Format, Valid Key",
           "event": [
             {
               "listen": "test",
