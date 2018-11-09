@@ -4160,7 +4160,7 @@
               "script": {
                 "id": "6a6aaa2a-16b7-4a71-85c0-51fe82b99c00",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77961 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -4232,11 +4232,11 @@
               "script": {
                 "id": "77be54ce-3ab1-4200-9794-b625e84a993e",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77962 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body just has empty Feature Collection\", function () {",
+                  "pm.test(\"C77962 Body just has empty Feature Collection\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"FeatureCollection\");",
                   "});"
                 ],
@@ -4346,45 +4346,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes an api key"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a094ae39-6adf-44e1-bdd5-4b3f865d5776",
-          "name": "View a stream",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Verify stream info was returned\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 59\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "Get information for a specific stream. \nThis will verify the previously created metadata"
           },
           "response": []
         }
