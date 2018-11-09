@@ -515,7 +515,7 @@
         },
         {
           "_postman_id": "1c744416-8ee1-4f79-9238-65bc79c84731",
-          "name": "Create User",
+          "name": "Create Admin User",
           "event": [
             {
               "listen": "test",
