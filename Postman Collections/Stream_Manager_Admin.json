@@ -155,22 +155,22 @@
         },
         {
           "_postman_id": "d12a0eeb-48d0-42ed-be74-dede2daaa784",
-          "name": "Incorrect Username",
+          "name": "Invalid Username",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "3f390d2f-ddeb-4ce0-a2a3-8bbdaa376370",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
+                  "pm.test(\"C77287 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Login Fields\", function () {",
+                  "pm.test(\"C77287 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"Body Contains Error\", function () {",
+                  "pm.test(\"C77287 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                   "});"
                 ],
@@ -202,7 +202,7 @@
         },
         {
           "_postman_id": "56933c62-8815-4ef8-b503-4be7effadb4a",
-          "name": "Incorrect Password",
+          "name": "Invalid Password",
           "event": [
             {
               "listen": "test",
