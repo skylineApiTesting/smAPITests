@@ -242,7 +242,7 @@
         },
         {
           "_postman_id": "e39626b3-fcd0-4849-9ed4-6e840f7586e5",
-          "name": "Incorrect Password",
+          "name": "Invalid Password",
           "event": [
             {
               "listen": "test",
