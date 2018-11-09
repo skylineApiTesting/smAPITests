@@ -1952,7 +1952,7 @@
       "item": [
         {
           "_postman_id": "eba85d2e-3788-464f-9d55-d07e5fbff231",
-          "name": "Login Valid",
+          "name": "Login Operator",
           "event": [
             {
               "listen": "test",
