@@ -2523,7 +2523,12 @@
                   "});",
                   "",
                   "pm.test(\"C78232 Coordinates are in an array\", function () {",
-                  "    pm.expect(Array.isArray(record.geometry));",
+                  "    pm.expect(record.geometry.coordinates[0]);",
+                  "    pm.expect(record.geometry.coordinates[1]);",
+                  "});",
+                  "",
+                  "pm.test(\"C78232 Status code is 200\", function () {",
+                  "    pm.expect(record.properties.active).to.be.a('boolean'));",
                   "});",
                   "",
                   ""
