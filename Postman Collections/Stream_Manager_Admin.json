@@ -2450,7 +2450,6 @@
                   "pm.test(\"C77938 Body is JSON format\", function () {",
                   "    pm.response.to.be.json;",
                   "});",
-                  "",
                   ""
                 ],
                 "type": "text/javascript"
@@ -2676,7 +2675,7 @@
                   "});",
                   "",
                   "pm.test(\"C77940 Response has padding\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"pluginFunction(\");",
+                  "    pm.expect(pm.response.text()).to.include(\"callbackFunction(\");",
                   "});",
                   ""
                 ],
@@ -2689,7 +2688,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=pluginFunction",
+              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
               "protocol": "http",
               "host": [
                 "{{url}}"
@@ -2712,7 +2711,7 @@
                 },
                 {
                   "key": "callback",
-                  "value": "pluginFunction",
+                  "value": "callbackFunction",
                   "equals": true
                 }
               ]
