@@ -2523,20 +2523,33 @@
                   "});",
                   "",
                   "pm.test(\"C78232 Coordinates are in an array\", function () {",
-                  "    pm.expect(record.geometry.coordinates[0]).to.be.defined;",
-                  "    pm.expect(record.geometry.coordinates[1]).to.be.defined;",
+                  "    pm.expect(record.geometry.coordinates[0]).to.not.be.undefined;",
+                  "    pm.expect(record.geometry.coordinates[1]).to.not.be.undefined;",
                   "});",
                   "",
                   "pm.test(\"C78232 Active field is a bool\", function () {",
                   "    pm.expect(record.properties.active).to.be.a('boolean');",
                   "});",
                   "",
-                  "pm.test(\"C78232 CLSP urls are strings\", function () {",
+                  "pm.test(\"C78232 urls are strings\", function () {",
                   "    pm.expect(record.properties.clsp_url).to.be.a('string');",
                   "    pm.expect(record.properties.clsps_url).to.be.a('string');",
+                  "    ",
+                  "    pm.expect(record.properties.https_url).to.be.a('string');",
+                  "    ",
+                  "    pm.expect(record.properties.rtmp_url).to.be.a('string');",
+                  "    pm.expect(record.properties.rtsp_url).to.be.a('string');",
                   "});",
                   "",
-                  ""
+                  "pm.test(\"C78232 Metadata are strings\", function () {",
+                  "    pm.expect(record.properties.description).to.be.a('string');",
+                  "    pm.expect(record.properties.deviceid).to.be.a('string');",
+                  "    pm.expect(record.properties.direction).to.be.a('string');",
+                  "    pm.expect(record.properties.id).to.be.a('string');",
+                  "    pm.expect(record.properties.jurisdiction).to.be.a('string');",
+                  "    pm.expect(record.properties.route).to.be.a('string');",
+                  "    pm.expect(record.properties.image_url).to.be.a('string');",
+                  "});"
                 ],
                 "type": "text/javascript"
               }
@@ -2654,6 +2667,9 @@
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
+                  "pm.test(\"C77940 Status code is 200\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"pluginFunction(\");",
+                  "});",
                   ""
                 ],
                 "type": "text/javascript"
@@ -2663,10 +2679,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=pluginFunction",
               "protocol": "http",
