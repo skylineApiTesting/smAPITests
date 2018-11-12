@@ -2570,13 +2570,13 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
+              "raw": "http://{{url}}/5.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
               "protocol": "http",
               "host": [
                 "{{url}}"
               ],
               "path": [
-                "{{version}}",
+                "5.0",
                 "streams",
                 "getAll"
               ],
@@ -2667,7 +2667,7 @@
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"C77940 Status code is 200\", function () {",
+                  "pm.test(\"C77940 Response has padding\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"pluginFunction(\");",
                   "});",
                   ""
@@ -2779,8 +2779,13 @@
               "script": {
                 "id": "56af97ea-979c-46af-8552-e51286b20569",
                 "exec": [
-                  "pm.test(\"C77942 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
+                  "pm.test(\"C77942 Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"C77942 Verify invalid API error message is provided\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.error).to.eql(\"Invalid Format.\");",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -2800,10 +2805,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=ABC123",
               "protocol": "http",
