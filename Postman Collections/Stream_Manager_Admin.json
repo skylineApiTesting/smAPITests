@@ -950,6 +950,7 @@
                   "",
                   "pm.test(\"C77396 Body has contact\", function () {",
                   "    pm.expect(pm.response.text()).to.include(contact_name);",
+                  "    pm.expect(pm.response.text()).to.include(contact_last_name);",
                   "});",
                   "",
                   "pm.test(\"C77396 Status code is 200\", function () {",
@@ -991,7 +992,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"{{contact_last_name}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"{{contact_primary_phone}}\",\n\t\t\t\t\"title\": \"{{contact_title}}\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"{{contact_company}}\",\n\t\t\t\t\"secondary_phone\": \"{{contact_secondary_phone}}\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
