@@ -1421,14 +1421,33 @@
               "script": {
                 "id": "e2e87afa-5685-43e1-aba3-4a082566403a",
                 "exec": [
-                  "zone_name_EDIT = pm.environment.get(\"zone_name_EDIT\");",
+                  "zone_name_EDIT = pm.environment.get(\"zone_name\");",
+                  "zone_description_EDIT = pm.environment.get(\"zone_description\");",
+                  "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
+                  "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
                   "",
-                  "pm.test(\"C77470 Body includes edited zone\", function () {",
+                  "pm.test(\"C77470 Body includes edited zone name\", function () {",
                   "    pm.expect(pm.response.text()).to.include(zone_name_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"C77470 Body includes edited zone description\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_description_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"C77470 Body includes edited zone auto offline\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_auto_offline);",
+                  "});",
+                  "",
+                  "pm.test(\"C77470 Body includes edited zone status report\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_current_status_report);",
                   "});",
                   "",
                   "pm.test(\"C77470 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C78222 Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"updateZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
                   "});",
                   ""
                 ],
@@ -1444,7 +1463,11 @@
                   "pm.environment.set(\"zone_name_EDIT\", zone_name + \"EDIT\");",
                   "",
                   "zone_description = pm.environment.get(\"zone_description\");",
-                  "pm.environment.set(\"zone_description_EDIT\", zone_description + \"EDIT\");"
+                  "pm.environment.set(\"zone_description_EDIT\", zone_description + \"EDIT\");",
+                  "",
+                  "pm.environment.set(\"zone_auto_offline\", true);",
+                  "",
+                  "pm.environment.set(\"zone_current_status_report\", false);"
                 ],
                 "type": "text/javascript"
               }
@@ -1460,7 +1483,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description_EDIT}}\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+              "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description_EDIT}}\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t},\n\t{\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
