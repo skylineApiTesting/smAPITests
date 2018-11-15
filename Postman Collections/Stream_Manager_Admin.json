@@ -1350,8 +1350,24 @@
                   "    pm.expect(pm.response.text()).to.include(\"\\\"getZones\\\",\\\"result\\\":{\\\"success\\\":true\");",
                   "});",
                   "",
+                  "pm.test(\"C78222 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
                   "pm.test(\"C78222 Body includes zone\", function () {",
                   "    pm.expect(pm.response.text()).to.include(zone_name);",
+                  "});",
+                  "",
+                  "pm.test(\"C77466 Body has new zone description\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_description);",
+                  "});",
+                  "",
+                  "pm.test(\"C77466 Body has auto offline setting\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_auto_offline);",
+                  "});",
+                  "",
+                  "pm.test(\"C77466 Body has current status settings\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(zone_current_status_report);",
                   "});",
                   "",
                   "//Setting up for next test",
@@ -1364,20 +1380,7 @@
                   "    recordsLength = jsonData[0].result.records.length;",
                   "    ",
                   "    pm.environment.set(\"zone_id\",jsonData[0].result.records[recordsLength-1].id);",
-                  "});",
-                  "",
-                  "pm.test(\"C78222 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77466 Body has new zone\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_name);",
-                  "});",
-                  "",
-                  "pm.test(\"C77466 Body has new zone description\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_description);",
-                  "});",
-                  ""
+                  "});"
                 ],
                 "type": "text/javascript"
               }
@@ -1438,7 +1441,10 @@
                 "id": "1f827154-1f78-4c81-bf74-fe0d14db46ac",
                 "exec": [
                   "zone_name = pm.environment.get(\"zone_name\");",
-                  "pm.environment.set(\"zone_name_EDIT\", zone_name + \"EDIT\");"
+                  "pm.environment.set(\"zone_name_EDIT\", zone_name + \"EDIT\");",
+                  "",
+                  "zone_description = pm.environment.get(\"zone_description\");",
+                  "pm.environment.set(\"zone_description_EDIT\", zone_description + \"EDIT\");"
                 ],
                 "type": "text/javascript"
               }
@@ -1454,7 +1460,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": false,\n\t\t\t\t\"description\": \"868599\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+              "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description_EDIT}}\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
