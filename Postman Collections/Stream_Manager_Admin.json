@@ -1308,6 +1308,8 @@
                   "var zone_description = Math.floor((Math.random() * 1000000) + 1);",
                   "",
                   "pm.environment.set(\"zone_name\", zone_name);",
+                  "pm.environment.set(\"zone_description\", zone_description);",
+                  "pm.environment.set(\"zone_auto_offline\", false);",
                   "pm.environment.set(\"zone_description\", zone_description);"
                 ],
                 "type": "text/javascript"
@@ -1339,11 +1341,12 @@
               "script": {
                 "id": "7c82a013-75a5-4154-befc-699a9e81fad4",
                 "exec": [
+                  "zone_name = pm.environment.get(\"zone_name\");",
+                  "zone_description = pm.environment.get(\"zone_description\");",
+                  "",
                   "pm.test(\"C78222 Body shows success message\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"\\\"getZones\\\",\\\"result\\\":{\\\"success\\\":true\");",
                   "});",
-                  "",
-                  "zone_name = pm.environment.get(\"zone_name\");",
                   "",
                   "pm.test(\"C78222 Body includes zone\", function () {",
                   "    pm.expect(pm.response.text()).to.include(zone_name);",
@@ -1364,9 +1367,6 @@
                   "pm.test(\"C78222 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
-                  "",
-                  "zone_name = pm.environment.get(\"zone_name\");",
-                  "zone_description = pm.environment.get(\"zone_description\");",
                   "",
                   "pm.test(\"C77466 Body has new zone\", function () {",
                   "    pm.expect(pm.response.text()).to.include(zone_name);",
