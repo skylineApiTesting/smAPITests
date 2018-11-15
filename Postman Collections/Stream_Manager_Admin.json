@@ -1343,6 +1343,8 @@
                 "exec": [
                   "zone_name = pm.environment.get(\"zone_name\");",
                   "zone_description = pm.environment.get(\"zone_description\");",
+                  "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
+                  "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
                   "",
                   "pm.test(\"C78222 Body shows success message\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"\\\"getZones\\\",\\\"result\\\":{\\\"success\\\":true\");",
