@@ -1083,7 +1083,7 @@
                   "",
                   "pm.environment.set(\"contact_secondary_phone_EDIT\", \"111-111-1115\");",
                   "",
-                  "contact_company = pm.environment.get(\"contact_email\");",
+                  "contact_email = pm.environment.get(\"contact_email\");",
                   "pm.environment.set(\"contact_email_EDIT\", contact_email + \"EDIT\");",
                   ""
                 ],
