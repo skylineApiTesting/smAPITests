@@ -569,40 +569,6 @@
           "response": []
         },
         {
-          "_postman_id": "d2319fea-788d-4cb7-b599-8da2a0815a29",
-          "name": "Get All Contacts",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bd01da50-638a-4d06-ac48-355d8066b431",
-                "exec": [
-                  "pm.test(\"C123397 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all contacts associated with the stream manager."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "88da0c05-7a3a-409e-ab0b-e2902171b800",
           "name": "Get All Appliances",
           "event": [
