@@ -602,7 +602,7 @@
               "mode": "raw",
               "raw": "[\n    {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 20\n  }\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/api"
+            "url": "http://{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
