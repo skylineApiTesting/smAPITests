@@ -3089,40 +3089,6 @@
           "response": []
         },
         {
-          "_postman_id": "59ad59a8-7d52-48c3-a5d2-91a804d2c0f6",
-          "name": "Get all Locations Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
-                "exec": [
-                  "pm.test(\"C77975 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Location\",\n\t\t\"method\": \"getLocations\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 4\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all locations associated with a stream manager"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "d57aa69f-7e53-44d7-bc3a-5bb3be5b6f04",
           "name": "Get all offline sfs streams",
           "event": [
