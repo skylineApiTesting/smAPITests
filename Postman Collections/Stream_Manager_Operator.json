@@ -1661,7 +1661,7 @@
               "script": {
                 "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
                 "exec": [
-                  "pm.test(\"C78162 Status code is 200\", function () {",
+                  "pm.test(\"C123400 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -1729,7 +1729,7 @@
               "script": {
                 "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
                 "exec": [
-                  "pm.test(\"C78164 Status code is 200\", function () {",
+                  "pm.test(\"C123402 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
