@@ -577,14 +577,14 @@
               "script": {
                 "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
                 "exec": [
-                  "pm.test(\"C78227 Status code is 200\", function () {",
+                  "pm.test(\"C123397 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
-                  "pm.test(\"C78227 Body contains api names\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
-                  "});",
-                  ""
+                  "pm.test(\"C123397 Success is true\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
+                  "});"
                 ],
                 "type": "text/javascript"
               }
@@ -600,7 +600,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "[\n    {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 20\n  }\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/api"
           },
@@ -723,6 +723,44 @@
         {
           "_postman_id": "87d082ff-271c-451c-8a5d-76ae35f9b52b",
           "name": "List APIs Copy Copy Copy Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
+                "exec": [
+                  "pm.test(\"C78227 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C78227 Body contains api names\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://{{url}}/{{version}}/direct/api"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3b4ca3fd-19d0-4367-81d0-6c731f2a2b08",
+          "name": "List APIs Copy Copy Copy Copy Copy Copy",
           "event": [
             {
               "listen": "test",
