@@ -3436,6 +3436,50 @@
           "response": []
         },
         {
+          "_postman_id": "718db5a3-3967-4a35-876e-ae7f29abe69c",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "11710913-2121-4ef0-9792-ed8db549290c",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "{{user}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "b65aceb1-878b-4b9f-8e95-ed0b8b60ae71",
           "name": "Create Metadata",
           "event": [
