@@ -569,40 +569,6 @@
           "response": []
         },
         {
-          "_postman_id": "88da0c05-7a3a-409e-ab0b-e2902171b800",
-          "name": "Get All Appliances",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
-                "exec": [
-                  "pm.test(\"C123398 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\t\"action\": \"Appliance\",\n\t\t\"method\": \"getAppliances\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 2\n\t}"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all appliances"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "8f460513-da15-4377-991e-2aeee6f33b5e",
           "name": "Get all issue streams",
           "event": [
