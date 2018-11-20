@@ -569,40 +569,6 @@
           "response": []
         },
         {
-          "_postman_id": "6e7a0765-c921-4d70-9ee2-d21988922734",
-          "name": "Get all users",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
-                "exec": [
-                  "pm.test(\"C123404 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "ae4db870-7835-4222-b8f0-e3178c593006",
           "name": "Get all zones",
           "event": [
