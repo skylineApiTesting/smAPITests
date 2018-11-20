@@ -616,21 +616,8 @@
               "script": {
                 "id": "0db209bd-a2bd-44a2-8a16-f7674e86277d",
                 "exec": [
-                  "pm.test(\"C78183 Status code is 200\", function () {",
+                  "pm.test(\"C123398 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78183 Correct Hostname\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-ts\\\"\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78183 Correct Model\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"model\\\":\\\"SFS1000\\\"\");",
-                  "});",
-                  "",
-                  "sfsVersion = pm.environment.get(\"SfsVersion\");",
-                  "pm.test(\"C78183 Correct SFS Version\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"0.0.999\\\"\");",
                   "});",
                   ""
                 ],
