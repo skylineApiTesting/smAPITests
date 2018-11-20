@@ -569,6 +569,45 @@
           "response": []
         },
         {
+          "_postman_id": "7a5881bb-1e29-4036-b842-c6e28abfb287",
+          "name": "List Contacts",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e4558a59-a6eb-4806-a91f-254c36501ff1",
+                "exec": [
+                  "pm.test(\"C78221 Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"getContacts\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
+                  "",
+                  "pm.test(\"C78221 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }\n]\n"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "0d885941-d634-412b-83c8-d16ac24b325c",
           "name": "List APIs Copy",
           "event": [
@@ -832,84 +871,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "gotten by this request: contacts, appliances, issue streams, locations, offline sfs streams, sfs capacity, offline sfs streams, grid, and users\n\nThis runs everytime a user logs in."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7a5881bb-1e29-4036-b842-c6e28abfb287",
-          "name": "Retrieve Contact Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e4558a59-a6eb-4806-a91f-254c36501ff1",
-                "exec": [
-                  "pm.test(\"C78221 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"getContacts\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78221 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "contact_name = pm.environment.get(\"contact_name\");",
-                  "contact_last_name = pm.environment.get(\"contact_last_name\");",
-                  "contact_primary_phone = pm.environment.get(\"contact_primary_phone\");",
-                  "contact_title = pm.environment.get(\"contact_title\");",
-                  "contact_company = pm.environment.get(\"contact_company\");",
-                  "contact_secondary_phone = pm.environment.get(\"contact_secondary_phone\");",
-                  "contact_email = pm.environment.get(\"contact_email\");",
-                  "",
-                  "pm.test(\"C78221 Contact name is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_name);",
-                  "});",
-                  "pm.test(\"C78221 Contact last name is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_last_name);",
-                  "});",
-                  "pm.test(\"C78221 Contact primary phone is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_primary_phone);",
-                  "});",
-                  "pm.test(\"C78221 Contact title is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_title);",
-                  "});",
-                  "pm.test(\"C78221 Contact company is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_company);",
-                  "});",
-                  "pm.test(\"C78221 Contact secondary phone is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_secondary_phone);",
-                  "});",
-                  "pm.test(\"C78221 Contact email is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_email);",
-                  "});",
-                  "",
-                  "//Setting up for next test",
-                  "pm.test(\"C78221 User was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    ",
-                  "    pm.environment.unset(\"contact_id\");",
-                  "    ",
-                  "    pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }\n]\n"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
