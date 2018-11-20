@@ -609,7 +609,7 @@
         },
         {
           "_postman_id": "19460a58-5f70-489c-aa03-a07832552184",
-          "name": "Retrieve appliance",
+          "name": "List appliances",
           "event": [
             {
               "listen": "test",
