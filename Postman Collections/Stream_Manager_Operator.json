@@ -608,44 +608,6 @@
           "response": []
         },
         {
-          "_postman_id": "0d885941-d634-412b-83c8-d16ac24b325c",
-          "name": "List APIs Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
-                "exec": [
-                  "pm.test(\"C123397 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C123397 Success is true\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[0].result.success).to.eql(true);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n    {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 20\n  }\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "d35775e1-ca77-456e-b2a9-0a5dfcb2acd0",
           "name": "List APIs Copy Copy",
           "event": [
