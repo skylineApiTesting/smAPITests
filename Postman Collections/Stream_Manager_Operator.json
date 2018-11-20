@@ -645,7 +645,7 @@
               "script": {
                 "id": "3210c158-8837-41a2-97ff-5fbb4016ead3",
                 "exec": [
-                  "pm.test(\"C77974 Status code is 200\", function () {",
+                  "pm.test(\"C123401 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -679,7 +679,7 @@
               "script": {
                 "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
                 "exec": [
-                  "pm.test(\"C77975 Status code is 200\", function () {",
+                  "pm.test(\"C123399 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -713,7 +713,7 @@
               "script": {
                 "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
                 "exec": [
-                  "pm.test(\"C77976 Status code is 200\", function () {",
+                  "pm.test(\"C123400 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
