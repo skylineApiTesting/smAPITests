@@ -944,7 +944,7 @@
                   "",
                   "pm.test(\"C78209 No Keys are returned\", function () {",
                   "    pm.expect(obj[0].result.total === 0);",
-                  "});"
+                  "}); "
                 ],
                 "type": "text/javascript"
               }
