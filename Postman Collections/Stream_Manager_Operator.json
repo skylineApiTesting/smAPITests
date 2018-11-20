@@ -569,40 +569,6 @@
           "response": []
         },
         {
-          "_postman_id": "2f7cb745-5748-4661-a12f-6376991b4c0e",
-          "name": "Get all streams",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
-                "exec": [
-                  "pm.test(\"C123403 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getGrid\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 9\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all streams (grid)"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "6e7a0765-c921-4d70-9ee2-d21988922734",
           "name": "Get all users",
           "event": [
