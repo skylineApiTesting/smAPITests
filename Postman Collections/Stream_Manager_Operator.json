@@ -608,6 +608,63 @@
           "response": []
         },
         {
+          "_postman_id": "19460a58-5f70-489c-aa03-a07832552184",
+          "name": "Retrieve appliance Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0db209bd-a2bd-44a2-8a16-f7674e86277d",
+                "exec": [
+                  "pm.test(\"C78183 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C78183 Correct Hostname\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-ts\\\"\");",
+                  "});",
+                  "",
+                  "pm.test(\"C78183 Correct Model\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"model\\\":\\\"SFS1000\\\"\");",
+                  "});",
+                  "",
+                  "sfsVersion = pm.environment.get(\"SfsVersion\");",
+                  "pm.test(\"C78183 Correct SFS Version\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"0.0.999\\\"\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d14d5469-f58b-46b0-822e-7d9f790fed06",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router/"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d35775e1-ca77-456e-b2a9-0a5dfcb2acd0",
           "name": "List APIs Copy Copy",
           "event": [
@@ -833,63 +890,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "gotten by this request: contacts, appliances, issue streams, locations, offline sfs streams, sfs capacity, offline sfs streams, grid, and users\n\nThis runs everytime a user logs in."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "19460a58-5f70-489c-aa03-a07832552184",
-          "name": "Retrieve appliance Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0db209bd-a2bd-44a2-8a16-f7674e86277d",
-                "exec": [
-                  "pm.test(\"C78183 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78183 Correct Hostname\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-ts\\\"\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78183 Correct Model\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"model\\\":\\\"SFS1000\\\"\");",
-                  "});",
-                  "",
-                  "sfsVersion = pm.environment.get(\"SfsVersion\");",
-                  "pm.test(\"C78183 Correct SFS Version\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"0.0.999\\\"\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "d14d5469-f58b-46b0-822e-7d9f790fed06",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router/"
           },
           "response": []
         }
