@@ -721,6 +721,44 @@
           "response": []
         },
         {
+          "_postman_id": "87d082ff-271c-451c-8a5d-76ae35f9b52b",
+          "name": "List APIs Copy Copy Copy Copy Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
+                "exec": [
+                  "pm.test(\"C78227 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C78227 Body contains api names\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "http://{{url}}/{{version}}/direct/api"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "5f2725af-2355-4e8b-b82f-724a3fbcab05",
           "name": "Get lots of categories",
           "event": [
@@ -756,44 +794,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "gotten by this request: contacts, appliances, issue streams, locations, offline sfs streams, sfs capacity, offline sfs streams, grid, and users\n\nThis runs everytime a user logs in."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "87d082ff-271c-451c-8a5d-76ae35f9b52b",
-          "name": "List APIs Copy Copy Copy Copy Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
-                "exec": [
-                  "pm.test(\"C78227 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78227 Body contains api names\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "http://{{url}}/{{version}}/direct/api"
           },
           "response": []
         }
