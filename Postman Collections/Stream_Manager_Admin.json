@@ -3563,6 +3563,133 @@
           "response": []
         },
         {
+          "_postman_id": "61ba2fd8-f1eb-4f44-b1cb-8fc31fb528cc",
+          "name": "Create Metadata Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                "exec": [
+                  "pm.test(\"C77999 Verify admin can edit stream metadata\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
+                  "});",
+                  "",
+                  "pm.environment.set(\"variable_key\", \"variable_value\");"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                "exec": [
+                  "pm.environment.set(\"stream_extTID\", \"31\");",
+                  "// This ID is the id that is associated with the stream's metadata",
+                  "pm.environment.set(\"stream_id\", \"6\");",
+                  "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
+                  "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
+                  "pm.environment.set(\"stream_route_name\", \"test route\");",
+                  "pm.environment.set(\"stream_milemarker\", \"66\");",
+                  "pm.environment.set(\"stream_traffic_direction\", \"S\");",
+                  "pm.environment.set(\"stream_latitude\", \"50\");",
+                  "pm.environment.set(\"stream_longitude\", \"51\");",
+                  "pm.environment.set(\"stream_device_id\", \"11536\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "extTID",
+                  "type": "text",
+                  "value": "{{stream_extTID}}"
+                },
+                {
+                  "key": "extAction",
+                  "type": "text",
+                  "value": "Streams"
+                },
+                {
+                  "key": "extMethod",
+                  "type": "text",
+                  "value": "updateMetadata"
+                },
+                {
+                  "key": "extType",
+                  "type": "text",
+                  "value": "rpc"
+                },
+                {
+                  "key": "extUpload",
+                  "type": "text",
+                  "value": "false"
+                },
+                {
+                  "key": "id",
+                  "type": "text",
+                  "value": "{{stream_id}}"
+                },
+                {
+                  "key": "description",
+                  "type": "text",
+                  "value": "{{stream_description}}"
+                },
+                {
+                  "key": "jurisdiction",
+                  "type": "text",
+                  "value": "{{stream_jurisdiction}}"
+                },
+                {
+                  "key": "route_name",
+                  "type": "text",
+                  "value": "{{stream_route_name}}"
+                },
+                {
+                  "key": "mile_marker",
+                  "type": "text",
+                  "value": "{{stream_milemarker}}"
+                },
+                {
+                  "key": "traffic_direction",
+                  "type": "text",
+                  "value": "{{stream_traffic_direction}}"
+                },
+                {
+                  "key": "latitude",
+                  "type": "text",
+                  "value": "{{stream_latitude}}"
+                },
+                {
+                  "key": "longitude",
+                  "type": "text",
+                  "value": "{{stream_longitude}}"
+                },
+                {
+                  "key": "deviceid",
+                  "type": "text",
+                  "value": "{{stream_device_id}}"
+                }
+              ]
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+          },
+          "response": []
+        },
+        {
           "_postman_id": "36ce4a08-8e54-40cb-9f11-174d87923a5b",
           "name": "Read Created Metadata",
           "event": [
