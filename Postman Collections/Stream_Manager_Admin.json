@@ -682,7 +682,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": {{user_ID}},\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"skyl1n3!\",\r\n        \"personal_name\": \"PName\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"skyl1n3!\",\r\n        \"personal_name\": \"PName\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
@@ -727,7 +727,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": {{user_ID}},\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
+              "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": \"{{user_ID}}\",\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
