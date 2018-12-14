@@ -836,11 +836,11 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "pm.test(\"Admin is now an operator\", function () {",
+                  "pm.test(\"C77451 Admin is now an operator\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"is_admin\":false');",
                   "});",
                   "",
-                  "pm.test(\"C77450 Status code is 200\", function () {",
+                  "pm.test(\"C77451 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
@@ -894,7 +894,7 @@
                   "    pm.response.to.have.status(200);",
                   "});",
                   "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "pm.test(\"User is logged in as an operator\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
                 ],
