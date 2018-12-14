@@ -713,7 +713,7 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "user_name_EDIT = pm.environment.get(\"user_name\");",
+                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
                   "",
                   "pm.test(\"C77450 Body includes edited username\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_name);",
@@ -739,8 +739,8 @@
                 "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
                 "exec": [
                   "user_email = pm.environment.get(\"user_email\");",
-                  "admin_password_EDIT = pm.environment.get(\"admin_password_EDIT\");",
-                  "admin_personal_name_EDIT = pm.environment.get(\"admin_personal_name\");",
+                  "admin_password = pm.environment.get(\"admin_password_EDIT\");",
+                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
                   "",
                   "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);",
                   "pm.environment.set(\"admin_password_EDIT\", \"EDIT\" + admin_password);",
