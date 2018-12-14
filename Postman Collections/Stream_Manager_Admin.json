@@ -713,10 +713,10 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
+                  "user_name_EDIT = pm.environment.get(\"user_name\");",
                   "",
                   "pm.test(\"C77450 Body includes edited username\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_name_EDIT);",
+                  "    pm.expect(pm.response.text()).to.include(user_name);",
                   "});",
                   "",
                   "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
@@ -738,11 +738,13 @@
               "script": {
                 "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
                 "exec": [
-                  "user_name = pm.environment.get(\"user_name\");",
                   "user_email = pm.environment.get(\"user_email\");",
+                  "admin_password_EDIT = pm.environment.get(\"admin_password_EDIT\");",
+                  "admin_personal_name_EDIT = pm.environment.get(\"admin_personal_name\");",
                   "",
-                  "pm.environment.set(\"user_name_EDIT\", user_name + \"EDIT\");",
-                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);"
+                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);",
+                  "pm.environment.set(\"admin_password_EDIT\", \"EDIT\" + admin_password);",
+                  "pm.environment.set(\"admin_personal_name_EDIT\", \"EDIT\" + admin_personal_name);"
                 ],
                 "type": "text/javascript"
               }
@@ -758,7 +760,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"skyl1n3!\",\r\n        \"personal_name\": \"PName\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
