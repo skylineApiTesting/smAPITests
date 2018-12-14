@@ -884,54 +884,8 @@
           "response": []
         },
         {
-          "_postman_id": "c7347624-a691-4f77-855e-45344ab84fd9",
-          "name": "Delete User",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "670c345d-54af-47e0-a401-d870d811612a",
-                "exec": [
-                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
-                  "",
-                  "pm.test(\"C77434 Response does not contain deleted user\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77434 deleteUser gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.result.success).to.eql(true);",
-                  "});",
-                  "",
-                  "pm.test(\"C77434 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": \"{{user_ID}}\",\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "79aeb40b-21df-4842-b513-e63e65b775ba",
-          "name": "Update Operator Copy",
+          "name": "Update Operator - Make Admin",
           "event": [
             {
               "listen": "test",
@@ -987,6 +941,52 @@
               "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c7347624-a691-4f77-855e-45344ab84fd9",
+          "name": "Delete User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "670c345d-54af-47e0-a401-d870d811612a",
+                "exec": [
+                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
+                  "",
+                  "pm.test(\"C77434 Response does not contain deleted user\", function () {",
+                  "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"C77434 deleteUser gives success message\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.result.success).to.eql(true);",
+                  "});",
+                  "",
+                  "pm.test(\"C77434 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": \"{{user_ID}}\",\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
           },
           "response": []
         }
