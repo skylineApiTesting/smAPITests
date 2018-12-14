@@ -719,6 +719,8 @@
                   "    pm.expect(pm.response.text()).to.include(user_name_EDIT);",
                   "});",
                   "",
+                  "admin_personal_name_EDIT = pm.environment.get(\"admin_personal_name_EDIT\");",
+                  "",
                   "pm.test(\"C77450 Body includes edited edited personal name\", function () {",
                   "    pm.expect(pm.response.text()).to.include(admin_personal_name_EDIT);",
                   "});",
