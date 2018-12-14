@@ -1002,12 +1002,12 @@
                 {
                   "key": "user",
                   "type": "text",
-                  "value": "{{user_name}}"
+                  "value": "{{operator_user_name}}"
                 },
                 {
                   "key": "password",
                   "type": "text",
-                  "value": "{{admin_password_EDIT}}"
+                  "value": "{{operator_password_EDIT}}"
                 }
               ]
             },
