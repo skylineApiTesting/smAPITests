@@ -761,7 +761,7 @@
         },
         {
           "_postman_id": "06f8fc15-5ab0-4cd7-8dcc-1edb35cc8bfa",
-          "name": "Update Admin Copy",
+          "name": "Update Operator",
           "event": [
             {
               "listen": "test",
