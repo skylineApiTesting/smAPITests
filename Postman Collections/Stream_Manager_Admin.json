@@ -932,6 +932,49 @@
           "response": []
         },
         {
+          "_postman_id": "abc489de-de4a-4576-8a27-4741389e2ca7",
+          "name": "Login Admin Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "c7347624-a691-4f77-855e-45344ab84fd9",
           "name": "Delete User",
           "event": [
@@ -974,49 +1017,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "abc489de-de4a-4576-8a27-4741389e2ca7",
-          "name": "Login Admin Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "admin",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "http://{{url}}"
           },
           "response": []
         }
