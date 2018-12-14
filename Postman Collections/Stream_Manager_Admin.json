@@ -897,7 +897,7 @@
                   "});",
                   "    ",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -912,13 +912,13 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "admin",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{user_name}}"
                 },
                 {
                   "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{admin_password_EDIT}}"
                 }
               ]
             },
