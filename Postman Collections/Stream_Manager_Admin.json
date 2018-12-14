@@ -925,6 +925,51 @@
           "response": []
         },
         {
+          "_postman_id": "43ab7b84-7283-4733-9189-d38346728508",
+          "name": "Login Valid Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
+                "exec": [
+                  "pm.test(\"C77291 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "type": "text",
+                  "value": "{{user}}"
+                },
+                {
+                  "key": "password",
+                  "type": "text",
+                  "value": "{{password}}"
+                }
+              ]
+            },
+            "url": "http://{{url}}",
+            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "79aeb40b-21df-4842-b513-e63e65b775ba",
           "name": "Update Operator - Make Admin",
           "event": [
@@ -1058,51 +1103,6 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "43ab7b84-7283-4733-9189-d38346728508",
-          "name": "Login Valid Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                "exec": [
-                  "pm.test(\"C77291 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user}}"
-                },
-                {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
-                }
-              ]
-            },
-            "url": "http://{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
         }
