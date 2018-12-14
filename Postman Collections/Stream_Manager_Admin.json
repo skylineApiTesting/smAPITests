@@ -4610,7 +4610,7 @@
         },
         {
           "_postman_id": "1b426d01-942f-47a2-961c-0ff422c48991",
-          "name": "Create User",
+          "name": "Create Operator",
           "event": [
             {
               "listen": "test",
