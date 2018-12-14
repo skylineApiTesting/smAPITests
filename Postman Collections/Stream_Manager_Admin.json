@@ -536,9 +536,14 @@
                   "});",
                   "",
                   "user_email = pm.environment.get(\"user_email\");",
+                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
                   "",
                   "pm.test(\"C77441 Body has email\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email);",
+                  "});",
+                  "",
+                  "pm.test(\"C77441 Body has personal name\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(admin_personal_name);",
                   "});",
                   "",
                   "pm.test(\"C77441 Status code is 200\", function () {",
@@ -577,7 +582,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"skyl1n3!\",\n\t\t\t\t\"personal_name\": \"PName\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "creates an admin user in stream manager."
@@ -625,14 +630,14 @@
               "script": {
                 "id": "48710cc8-7321-4f55-b607-bab44c69a186",
                 "exec": [
-                  "pm.environment.unset(\"user_name\");",
-                  "pm.environment.unset(\"user_email\");",
+                  "pm.environment.unset(\"operator_user_name\");",
+                  "pm.environment.unset(\"operator_email\");",
                   "",
-                  "var user_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var user_email = Math.floor((Math.random() * 1000000) + 1);",
+                  "var operator_user_name = Math.floor((Math.random() * 1000000) + 1);",
+                  "var operator_email = Math.floor((Math.random() * 1000000) + 1);",
                   "",
-                  "pm.environment.set(\"user_name\", user_name);",
-                  "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");"
+                  "pm.environment.set(\"operator_user_name\", operator_user_name);",
+                  "pm.environment.set(\"operator_email\", operator_email+\"@gmail.com\");"
                 ],
                 "type": "text/javascript"
               }
@@ -648,7 +653,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"skyl1n3!\",\n\t\t\t\t\"personal_name\": \"PName\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User {{timestamp}}\",\n\t\t\t\t\"password\": \"{{operator_password\",\n\t\t\t\t\"personal_name\": \"{{operator_personal_name}}\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "creates an admin user in stream manager."
@@ -813,7 +818,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"skyl1n3!\",\r\n        \"personal_name\": \"PName\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{$operator_id}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"skyl1n3!edit\",\r\n        \"personal_name\": \"PName_Edit\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
