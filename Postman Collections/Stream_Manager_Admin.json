@@ -986,7 +986,7 @@
                   "});",
                   "    ",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});"
                 ],
                 "type": "text/javascript"
