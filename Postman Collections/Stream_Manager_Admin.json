@@ -978,11 +978,11 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "pm.test(\"Admin is now an operator\", function () {",
+                  "pm.test(\"C78217 Operator is now an Admin\", function () {",
                   "    pm.expect(pm.response.text()).to.include('\"is_admin\":true');",
                   "});",
                   "",
-                  "pm.test(\"C78216 Status code is 200\", function () {",
+                  "pm.test(\"C78217 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
