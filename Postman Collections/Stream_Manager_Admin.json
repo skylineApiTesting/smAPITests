@@ -586,7 +586,7 @@
         },
         {
           "_postman_id": "8349e5df-4e9a-4a80-a4d5-0d1ccf28e404",
-          "name": "Create Operator Copy",
+          "name": "Create Operator",
           "event": [
             {
               "listen": "test",
@@ -702,6 +702,66 @@
         {
           "_postman_id": "d0f17c7d-a89c-4f2e-b28c-2b5d68c94707",
           "name": "Update Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
+                "exec": [
+                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
+                  "",
+                  "pm.test(\"C77450 Body includes edited username\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_name_EDIT);",
+                  "});",
+                  "",
+                  "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
+                  "",
+                  "pm.test(\"C77450 Response contains edited email address\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                  "});",
+                  "",
+                  "pm.test(\"C77450 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
+                "exec": [
+                  "user_name = pm.environment.get(\"user_name\");",
+                  "user_email = pm.environment.get(\"user_email\");",
+                  "",
+                  "pm.environment.set(\"user_name_EDIT\", user_name + \"EDIT\");",
+                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"skyl1n3!\",\r\n        \"personal_name\": \"PName\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "06f8fc15-5ab0-4cd7-8dcc-1edb35cc8bfa",
+          "name": "Update Admin Copy",
           "event": [
             {
               "listen": "test",
@@ -4688,7 +4748,7 @@
               "script": {
                 "id": "26b6c30f-c56b-42b6-96c5-336163e50673",
                 "exec": [
-                  "pm.test(\"C77442 User was created and variables set.\", function () {",
+                  "pm.test(\"User was created and variables set.\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData.total) !== null;",
                   "    pm.environment.unset(\"user_ID\");",
@@ -4697,17 +4757,17 @@
                   "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
                   "});",
                   "",
-                  "pm.test(\"C77442 Body shows success message\", function () {",
+                  "pm.test(\"Body shows success message\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
                   "});",
                   "",
                   "user_email = pm.environment.get(\"user_email\");",
                   "",
-                  "pm.test(\"C77442 Body has email\", function () {",
+                  "pm.test(\"Body has email\", function () {",
                   "    pm.expect(pm.response.text()).to.include(user_email);",
                   "});",
                   "",
-                  "pm.test(\"C77442 Status code is 200\", function () {",
+                  "pm.test(\"Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});",
                   ""
