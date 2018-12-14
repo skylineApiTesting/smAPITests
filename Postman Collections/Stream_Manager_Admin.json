@@ -926,7 +926,7 @@
         },
         {
           "_postman_id": "43ab7b84-7283-4733-9189-d38346728508",
-          "name": "Login Valid Copy",
+          "name": "Login Super Admin",
           "event": [
             {
               "listen": "test",
