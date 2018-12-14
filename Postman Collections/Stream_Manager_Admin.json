@@ -885,7 +885,7 @@
         },
         {
           "_postman_id": "79aeb40b-21df-4842-b513-e63e65b775ba",
-          "name": "Update Operator - Make Admin",
+          "name": "Update Operator Copy",
           "event": [
             {
               "listen": "test",
