@@ -823,7 +823,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{user_name_EDIT}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
             "url": "http://{{url}}/{{version}}/direct/router"
           },
@@ -885,7 +885,7 @@
         },
         {
           "_postman_id": "79aeb40b-21df-4842-b513-e63e65b775ba",
-          "name": "Update Operator Copy",
+          "name": "Update Operator - Make Admin",
           "event": [
             {
               "listen": "test",
