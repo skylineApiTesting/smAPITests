@@ -713,8 +713,6 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
-                  "",
                   "admin_personal_name_EDIT = pm.environment.get(\"admin_personal_name_EDIT\");",
                   "",
                   "pm.test(\"C77450 Body includes edited edited personal name\", function () {",
