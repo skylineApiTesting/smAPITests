@@ -892,15 +892,8 @@
               "script": {
                 "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                 "exec": [
-                  "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
-                  "operator_personal_name_EDIT = pm.environment.get(\"operator_personal_name_EDIT\")",
-                  "",
-                  "pm.test(\"C78216 Response contains edited email address\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C78216 Response contains edited personal name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                  "pm.test(\"Admin is now an operator\", function () {",
+                  "    pm.expect(pm.response.text()).to.include('\"is_admin\":true');",
                   "});",
                   "",
                   "pm.test(\"C78216 Status code is 200\", function () {",
@@ -916,13 +909,7 @@
               "script": {
                 "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
                 "exec": [
-                  "operator_email = pm.environment.get(\"operator_email\");",
-                  "operator_password = pm.environment.get(\"operator_password\")",
-                  "operator_personal_name = pm.environment.get(\"operator_personal_name\")",
-                  "",
-                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + operator_email);",
-                  "pm.environment.set(\"operator_password_EDIT\", \"EDIT\" + operator_password);",
-                  "pm.environment.set(\"operator_personal_name_EDIT\", \"EDIT\" + operator_personal_name);"
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -987,6 +974,49 @@
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "abc489de-de4a-4576-8a27-4741389e2ca7",
+          "name": "Login Admin Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "    ",
+                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user",
+                  "value": "admin",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "sm1000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "http://{{url}}"
           },
           "response": []
         }
