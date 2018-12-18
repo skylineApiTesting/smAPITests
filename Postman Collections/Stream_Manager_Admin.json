@@ -1105,82 +1105,6 @@
             "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
           },
           "response": []
-        },
-        {
-          "_postman_id": "4b959215-f6b9-40b5-abe1-0ef0a7dcbb90",
-          "name": "Create Admin User Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
-                "exec": [
-                  "pm.test(\"C77441 User was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"user_ID\");",
-                  "    pm.environment.unset(\"user_name\");",
-                  "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
-                  "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
-                  "});",
-                  "",
-                  "pm.test(\"C77441 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "user_email = pm.environment.get(\"user_email\");",
-                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
-                  "",
-                  "pm.test(\"C77441 Body has email\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email);",
-                  "});",
-                  "",
-                  "pm.test(\"C77441 Body has personal name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(admin_personal_name);",
-                  "});",
-                  "",
-                  "pm.test(\"C77441 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "48710cc8-7321-4f55-b607-bab44c69a186",
-                "exec": [
-                  "pm.environment.unset(\"user_name\");",
-                  "pm.environment.unset(\"user_email\");",
-                  "",
-                  "var user_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var user_email = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"user_name\", user_name);",
-                  "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "creates an admin user in stream manager."
-          },
-          "response": []
         }
       ]
     },
@@ -5121,6 +5045,82 @@
             "body": {
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"skyl1n3!\",\n\t\t\t\t\"personal_name\": \"PName\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+            },
+            "url": "http://{{url}}/{{version}}/direct/router",
+            "description": "creates an admin user in stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4b959215-f6b9-40b5-abe1-0ef0a7dcbb90",
+          "name": "Create Admin User Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
+                "exec": [
+                  "pm.test(\"C77441 User was created and variables set.\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.total) !== null;",
+                  "    pm.environment.unset(\"user_ID\");",
+                  "    pm.environment.unset(\"user_name\");",
+                  "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
+                  "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
+                  "});",
+                  "",
+                  "pm.test(\"C77441 Body shows success message\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                  "});",
+                  "",
+                  "user_email = pm.environment.get(\"user_email\");",
+                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
+                  "",
+                  "pm.test(\"C77441 Body has email\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(user_email);",
+                  "});",
+                  "",
+                  "pm.test(\"C77441 Body has personal name\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(admin_personal_name);",
+                  "});",
+                  "",
+                  "pm.test(\"C77441 Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "48710cc8-7321-4f55-b607-bab44c69a186",
+                "exec": [
+                  "pm.environment.unset(\"user_name\");",
+                  "pm.environment.unset(\"user_email\");",
+                  "",
+                  "var user_name = Math.floor((Math.random() * 1000000) + 1);",
+                  "var user_email = Math.floor((Math.random() * 1000000) + 1);",
+                  "",
+                  "pm.environment.set(\"user_name\", user_name);",
+                  "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
             },
             "url": "http://{{url}}/{{version}}/direct/router",
             "description": "creates an admin user in stream manager."
