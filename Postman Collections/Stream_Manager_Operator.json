@@ -1430,40 +1430,6 @@
             "url": "http://{{url}}/{{version}}/direct/router"
           },
           "response": []
-        },
-        {
-          "_postman_id": "83a810e6-871b-4601-be30-b628eae66046",
-          "name": "Cannot Update Admin Profile",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "59434114-5f74-45a1-87d5-7f82cc84f65b",
-                "exec": [
-                  "pm.test(\"C78210 Could not change admins information\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"Only an admin can change other users data\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"username\": \"admin\",\n\t\t\t\t\"password\": \"sm1000\",\n\t\t\t\t\"personal_name\": \"Jenn\",\n\t\t\t\t\"email\": \"jpeeling@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-18 16:31:22.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
-            },
-            "url": "http://{{url}}/{{version}}/direct/router",
-            "description": "you should not be allowed to do this as an operator"
-          },
-          "response": []
         }
       ]
     },
@@ -1797,7 +1763,7 @@
               "script": {
                 "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
                 "exec": [
-                  "pm.test(\"C78166 Status code is 200\", function () {",
+                  "pm.test(\"C123403 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -1831,7 +1797,7 @@
               "script": {
                 "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
                 "exec": [
-                  "pm.test(\"C78167 Status code is 200\", function () {",
+                  "pm.test(\"C123404 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
@@ -1865,7 +1831,7 @@
               "script": {
                 "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
                 "exec": [
-                  "pm.test(\"C78168 Status code is 200\", function () {",
+                  "pm.test(\"C123405 Status code is 200\", function () {",
                   "    pm.response.to.have.status(200);",
                   "});"
                 ],
