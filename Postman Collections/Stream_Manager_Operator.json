@@ -156,7 +156,7 @@
                 "id": "03ab159d-47f8-4361-aef0-5d2dda26d7bf",
                 "exec": [
                   "pm.test(\"C78009 Status code is 200\", function () {",
-                  "    pm.response.to.be.ok;",
+                  "    pm.response.to.have.status(200);",
                   "});",
                   "",
                   "pm.test(\"C78009 Body Contains Login Fields\", function () {",
@@ -176,7 +176,13 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "formdata",
               "formdata": [
