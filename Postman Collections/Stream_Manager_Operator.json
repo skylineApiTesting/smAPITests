@@ -156,7 +156,7 @@
                 "id": "03ab159d-47f8-4361-aef0-5d2dda26d7bf",
                 "exec": [
                   "pm.test(\"C78009 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
+                  "    pm.response.to.be.ok;",
                   "});",
                   "",
                   "pm.test(\"C78009 Body Contains Login Fields\", function () {",
@@ -165,7 +165,10 @@
                   "",
                   "pm.test(\"C78009 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});"
+                  "});",
+                  "",
+                  "console.log(pm.response.text());",
+                  ""
                 ],
                 "type": "text/javascript"
               }
