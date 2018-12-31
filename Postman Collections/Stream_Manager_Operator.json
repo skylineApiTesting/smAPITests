@@ -168,7 +168,7 @@
                   "});",
                   "",
                   "console.log(\"This is coming from postman\");",
-                  "console.log(pm.response);",
+                  "console.log(pm.response.reason());",
                   ""
                 ],
                 "type": "text/javascript"
