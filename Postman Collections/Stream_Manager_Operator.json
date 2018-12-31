@@ -167,6 +167,7 @@
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                   "});",
                   "",
+                  "console.log(\"This is coming from postman\");",
                   "console.log(pm.response.text());",
                   ""
                 ],
@@ -178,8 +179,8 @@
             "method": "POST",
             "header": [
               {
-                "key": "Content-Type",
-                "value": "application/json",
+                "key": "",
+                "value": "",
                 "type": "text"
               }
             ],
