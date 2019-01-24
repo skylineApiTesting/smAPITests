@@ -168,7 +168,7 @@
                   "});",
                   "",
                   "console.log(\"This is coming from postman\");",
-                  "console.log(pm);",
+                  "console.log(pm.info);",
                   ""
                 ],
                 "type": "text/javascript"
@@ -506,7 +506,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}",
+            "url": "https://{{url}}",
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
