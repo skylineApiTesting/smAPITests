@@ -172,9 +172,6 @@
                   "pm.test(\"C78009 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                   "});",
-                  "",
-                  "console.log(\"This is coming from postman\");",
-                  "console.log(pm.info);",
                   ""
                 ],
                 "type": "text/javascript"
