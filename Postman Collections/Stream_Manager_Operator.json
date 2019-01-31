@@ -183,13 +183,7 @@
           ],
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "",
-                "value": "",
-                "type": "text"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "formdata",
               "formdata": [
