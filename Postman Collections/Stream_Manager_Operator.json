@@ -169,9 +169,9 @@
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
                   "",
-                  "pm.test(\"C78009 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});",
+                  "//pm.test(\"C78009 Body Contains Error\", function () {",
+                  "//    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                  "//});",
                   ""
                 ],
                 "type": "text/javascript"
