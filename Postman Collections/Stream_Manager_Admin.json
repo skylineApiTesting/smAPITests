@@ -92,7 +92,7 @@
               "formdata": [
                 {
                   "key": "user",
-                  "value": "admin",
+                  "value": "{{user}}",
                   "type": "text"
                 },
                 {
@@ -5053,7 +5053,7 @@
         },
         {
           "_postman_id": "4b959215-f6b9-40b5-abe1-0ef0a7dcbb90",
-          "name": "Create Admin User Copy",
+          "name": "Create Admin User So we can actually do things.",
           "event": [
             {
               "listen": "test",
