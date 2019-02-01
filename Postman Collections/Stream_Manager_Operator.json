@@ -201,23 +201,16 @@
             }
           ],
           "request": {
+            "auth": {
+              "type": "basic",
+              "basic": {
+                "password": "sm1000",
+                "username": "admin"
+              }
+            },
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "",
-                  "type": "text"
-                }
-              ]
-            },
+            "body": {},
             "url": "http://{{url}}"
           },
           "response": []
