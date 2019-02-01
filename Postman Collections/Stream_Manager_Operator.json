@@ -161,8 +161,9 @@
               "script": {
                 "id": "03ab159d-47f8-4361-aef0-5d2dda26d7bf",
                 "exec": [
-                  "",
-                  "",
+                  "pm.test(\"C78009 Object exxists\", function () {",
+                  "    pm.expect(pm.response.code).to.exist;",
+                  "});",
                   "",
                   "pm.test(\"C78009 Status code is 200\", function () {",
                   "    pm.expect(pm.response.code).to.eql(200);",
