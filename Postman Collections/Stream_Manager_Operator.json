@@ -56,7 +56,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}/1.0/direct/router",
+            "url": "http://{{url}}",
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
