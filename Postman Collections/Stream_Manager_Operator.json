@@ -163,9 +163,11 @@
                 "exec": [
                   "const $ = cheerio.load(responseBody);",
                   "console.log(pm.response)",
+                  "console.log(pm.response.code)",
+                  "",
                   "",
                   "pm.test(\"C78009 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
+                  "    pm.expect(pm.response.code).to.eql.(200);",
                   "});",
                   "",
                   "pm.test(\"C78009 Body Contains Login Fields\", function () {",
