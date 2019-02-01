@@ -161,19 +161,19 @@
               "script": {
                 "id": "03ab159d-47f8-4361-aef0-5d2dda26d7bf",
                 "exec": [
-                  "//console.log(\"PM:\");",
-                  "//console.log(pm);",
-                  "//console.log(\"PM.resp:\");",
-                  "// console.log(pm.response);",
+                  "console.log(\"PM:\");",
+                  "console.log(pm);",
+                  "console.log(\"PM.resp:\");",
+                  "console.log(pm.response);",
                   "",
-                  "// console.log(\"pm get header:\");",
-                  "// console.log(postman.getResponseHeader());",
+                  "console.log(\"pm get header:\");",
+                  "console.log(postman.getResponseHeader());",
                   "",
-                  "// console.log(\"pm get cookie:\");",
-                  "// console.log(postman.getResponseCookie());",
+                  "console.log(\"pm get cookie:\");",
+                  "console.log(postman.getResponseCookie());",
                   "",
-                  "// const $ = cheerio.load(pm.response);",
-                  "// console.log($);",
+                  "const $ = cheerio.load(pm.response);",
+                  "console.log($);",
                   "",
                   "pm.test(\"C78009 PM exxists\", function () {",
                   "    pm.expect(pm).to.exist;",
@@ -218,7 +218,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}/1.0/direct/router"
+            "url": "http://{{url}}"
           },
           "response": []
         },
