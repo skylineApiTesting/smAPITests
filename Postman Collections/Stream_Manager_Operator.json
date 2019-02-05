@@ -179,7 +179,7 @@
                   "    pm.expect(pm).to.exist;",
                   "});",
                   "",
-                  "pm.test(\"C78009 Object exxists\", function () {",
+                  "pm.test(\"C78009 Object exists\", function () {",
                   "    pm.expect(pm.response).to.exist;",
                   "});",
                   "",
@@ -210,7 +210,17 @@
             },
             "method": "POST",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
             "url": "http://{{url}}"
           },
           "response": []
