@@ -204,14 +204,17 @@
             "auth": {
               "type": "basic",
               "basic": {
-                "password": "sm1000",
-                "username": "admin"
+                "username": "",
+                "password": ""
               }
             },
             "method": "POST",
             "header": [],
-            "body": {},
-            "url": "http://{{url}}"
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\"username\": \"admin\",\n\"password\": \"sm1000\"\n}"
+            },
+            "url": "http://{{url}}/login"
           },
           "response": []
         },
