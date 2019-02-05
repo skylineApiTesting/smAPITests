@@ -78,7 +78,8 @@
                   "",
                   "pm.test(\"C77284 Body Contains Error\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});"
+                  "});",
+                  ""
                 ],
                 "type": "text/javascript"
               }
@@ -427,10 +428,6 @@
               "script": {
                 "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
                 "exec": [
-                  "pm.test(\"C77291 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
                   "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});",
