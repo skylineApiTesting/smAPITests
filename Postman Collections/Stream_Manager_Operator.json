@@ -1350,10 +1350,6 @@
               "script": {
                 "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
                 "exec": [
-                  "pm.test(\"C78212 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
                   "pm.test(\"C78212 Body shows Operator Logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
