@@ -20,10 +20,6 @@
               "script": {
                 "id": "c4858c6f-531a-44db-851c-98bdbc5d47eb",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
                   "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                   "});"
