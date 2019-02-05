@@ -210,11 +210,8 @@
             },
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\"username\": \"admin\",\n\"password\": \"sm1000\"\n}"
-            },
-            "url": "http://{{url}}/login"
+            "body": {},
+            "url": "http://{{url}}"
           },
           "response": []
         },
