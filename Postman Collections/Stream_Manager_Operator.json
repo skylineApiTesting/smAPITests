@@ -351,10 +351,6 @@
               "script": {
                 "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
                 "exec": [
-                  "pm.test(\"C78013 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
                   "pm.test(\"C78013 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
@@ -398,10 +394,6 @@
               "script": {
                 "id": "1a421a29-f4c1-42ec-bc72-94f25b1a0379",
                 "exec": [
-                  "pm.test(\"C78207 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
                   "pm.test(\"C78207 Body IsAdministrator field to show it is logged in\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                   "});"
