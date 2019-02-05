@@ -175,10 +175,6 @@
                   "    pm.expect(pm.response).to.exist;",
                   "});",
                   "",
-                  "pm.test(\"C78009 Status code is 200\", function () {",
-                  "    pm.expect(pm.response.code).to.eql(200);",
-                  "});",
-                  "",
                   "pm.test(\"C78009 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
@@ -226,10 +222,6 @@
               "script": {
                 "id": "f6c79170-f98e-4723-9dd4-a5cbed1cdc1b",
                 "exec": [
-                  "pm.test(\"C78010 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
                   "pm.test(\"C78010 Body Contains Login Fields\", function () {",
                   "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                   "});",
