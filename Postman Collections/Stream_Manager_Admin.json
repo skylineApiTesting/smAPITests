@@ -368,7 +368,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{url}}"
+            "url": "https://{{url}}"
           },
           "response": []
         },
