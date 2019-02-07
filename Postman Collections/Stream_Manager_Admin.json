@@ -55,7 +55,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "https://{{url}}"
           },
           "response": []
         },
@@ -103,7 +103,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "https://{{url}}"
           },
           "response": []
         },
@@ -150,7 +150,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "https://{{url}}"
           },
           "response": []
         },
@@ -197,7 +197,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "https://{{url}}"
           },
           "response": []
         },
