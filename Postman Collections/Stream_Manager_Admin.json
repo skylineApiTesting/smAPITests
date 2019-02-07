@@ -1511,7 +1511,7 @@
               "mode": "raw",
               "raw": "[{\n  \"action\": \"Contact\",\n  \"method\": \"updateContact\",\n  \"data\": [\n    {\n      \"first_name\": \"{{contact_name_EDIT}}\",\n      \"last_name\": \"{{contact_last_name_EDIT}}\",\n      \"last_updated\": {\n        \"date\": \"2018-06-11 14:18:14.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"primary_phone\": \"412-576-1000\",\n      \"title\": \"{{contact_title_EDIT}}\",\n      \"last_updated_by\": \"Stream Manager\",\n      \"company_name\": \"{{contact_company_EDIT}}\",\n      \"secondary_phone\": \"{{contact_secondary_phone_EDIT}}\",\n      \"email_address\": \"{{contact_email_EDIT}}@gmail.com\",\n      \"displayx\": \"793209 Allemang\",\n      \"id\": \"{{contact_id}}\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 29\n},\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
@@ -1586,7 +1586,7 @@
               "mode": "raw",
               "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"deleteContact\",\n    \"data\": [\n      {\n        \"first_name\": \"{{contact_first_name_EDIT}}\",\n        \"last_name\": \"bfdbfdsdf\",\n        \"last_updated\": {\n          \"date\": \"2018-06-08 17:53:23.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"primary_phone\": \"444-168-6533\",\n        \"title\": \"bdfdfgbdf\",\n        \"last_updated_by\": \"Stream Manager\",\n        \"company_name\": \"bdfsdbdf\",\n        \"secondary_phone\": \"\",\n        \"email_address\": \"{{contact_email}}@gmail.com\",\n        \"displayx\": \"1111\",\n        \"id\": \"{{contact_id}}\"\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 28\n  },\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"last_name\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 107\n  }\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
