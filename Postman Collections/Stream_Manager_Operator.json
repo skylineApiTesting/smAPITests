@@ -1242,7 +1242,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}",
+            "url": "{{url}}",
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
@@ -1278,7 +1278,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
           },
           "response": []
@@ -1337,7 +1337,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User 1533235445\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jennnnnnnnnnnn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
