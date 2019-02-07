@@ -2552,7 +2552,7 @@
               "mode": "raw",
               "raw": "{\n\t\"action\": \"ApiKey\",\n\t\"method\": \"getApikeys\",\n\t\"data\": [\n\t  {\n\t    \"page\": 1,\n\t    \"start\": 0,\n\t    \"limit\": 25\n\t  }\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 20\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "gets a list of all the API keys."
           },
           "response": []
