@@ -3219,8 +3219,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=xml",
-              "protocol": "http",
+              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=xml",
               "host": [
                 "{{url}}"
               ],
