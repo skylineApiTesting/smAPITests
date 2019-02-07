@@ -1021,7 +1021,7 @@
               "mode": "raw",
               "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 15\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "get information for a specific stream"
           },
           "response": []
