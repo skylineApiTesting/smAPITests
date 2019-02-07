@@ -1411,7 +1411,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": {{operator_id}},\n\t\t\t\t\"username\": \"{{operator_un}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
@@ -1461,7 +1461,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}",
+            "url": "{{url}}",
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
@@ -1495,7 +1495,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "gets a list of all contacts associated with the stream manager."
           },
           "response": []
