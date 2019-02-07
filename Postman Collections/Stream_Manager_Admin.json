@@ -1636,7 +1636,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
@@ -1693,7 +1693,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
@@ -1773,7 +1773,7 @@
               "mode": "raw",
               "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
