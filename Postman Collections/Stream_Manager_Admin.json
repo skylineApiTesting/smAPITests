@@ -1094,7 +1094,7 @@
               "mode": "raw",
               "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": \"{{user_ID}}\",\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
           },
           "response": []
