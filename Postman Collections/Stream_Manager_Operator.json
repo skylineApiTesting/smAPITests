@@ -1529,7 +1529,7 @@
               "mode": "raw",
               "raw": "{\n\t\t\"action\": \"Appliance\",\n\t\t\"method\": \"getAppliances\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 2\n\t}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "gets a list of all appliances"
           },
           "response": []
@@ -1563,7 +1563,7 @@
               "mode": "raw",
               "raw": "{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getIssueStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 3\n\t}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "gets a list of all issue streams from stream manager."
           },
           "response": []
@@ -1597,7 +1597,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Location\",\n\t\t\"method\": \"getLocations\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 4\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "gets a list of all locations associated with a stream manager"
           },
           "response": []
@@ -1631,7 +1631,7 @@
               "mode": "raw",
               "raw": "[\n\t\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"Media\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 5\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "gets a list of all offlined sfs streams from stream manager."
           },
           "response": []
