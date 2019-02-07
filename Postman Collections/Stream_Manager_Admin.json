@@ -917,7 +917,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
