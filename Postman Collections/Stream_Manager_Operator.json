@@ -338,7 +338,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
@@ -381,7 +381,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
@@ -420,7 +420,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
@@ -449,7 +449,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
@@ -488,7 +488,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}",
+            "url": "{{url}}",
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
