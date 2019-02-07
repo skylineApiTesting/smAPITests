@@ -652,7 +652,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{operator_password}}\",\n\t\t\t\t\"personal_name\": \"{{operator_personal_name}}\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "creates an admin user in stream manager."
           },
           "response": []
@@ -696,7 +696,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
           },
           "response": []
@@ -759,7 +759,7 @@
               "mode": "raw",
               "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
@@ -820,7 +820,7 @@
               "mode": "raw",
               "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{operator_user_name}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
@@ -874,7 +874,7 @@
               "mode": "raw",
               "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
