@@ -4456,8 +4456,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getByBounds?X-API-KEY=ABC123&format=json&lat=33&lng=33&radius=1000&active=1",
-              "protocol": "http",
+              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY=ABC123&format=json&lat=33&lng=33&radius=1000&active=1",
               "host": [
                 "{{url}}"
               ],
@@ -4529,8 +4528,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=jsonp&lat=33&lng=33&radius=1000&active=1",
-              "protocol": "http",
+              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=jsonp&lat=33&lng=33&radius=1000&active=1",
               "host": [
                 "{{url}}"
               ],
@@ -4605,8 +4603,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=xml&lat=33&lng=33&radius=1000&active=1",
-              "protocol": "http",
+              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=xml&lat=33&lng=33&radius=1000&active=1",
               "host": [
                 "{{url}}"
               ],
@@ -4677,8 +4674,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=ABC123&lat=33&lng=33&radius=1000&active=1",
-              "protocol": "http",
+              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=ABC123&lat=33&lng=33&radius=1000&active=1",
               "host": [
                 "{{url}}"
               ],
@@ -4749,8 +4745,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=AB&lng=CD&radius=1000&active=1",
-              "protocol": "http",
+              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=AB&lng=CD&radius=1000&active=1",
               "host": [
                 "{{url}}"
               ],
