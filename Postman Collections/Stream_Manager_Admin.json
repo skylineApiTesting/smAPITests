@@ -103,7 +103,7 @@
                 }
               ]
             },
-            "url": "https://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
