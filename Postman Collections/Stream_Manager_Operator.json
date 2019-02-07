@@ -556,7 +556,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{url}}/{{version}}/direct/api"
+            "url": "{{url}}/{{version}}/direct/api"
           },
           "response": []
         }
@@ -624,7 +624,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}",
+            "url": "{{url}}",
             "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
           },
           "response": []
