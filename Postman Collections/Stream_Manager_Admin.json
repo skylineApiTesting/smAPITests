@@ -1912,7 +1912,7 @@
               "mode": "raw",
               "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"deleteZone\",\n    \"data\": [\n      {\n        \"id\": \"{{zone_id}}\",\n        \"customer_id\": \"\",\n        \"name\": \"{{zone_name_EDIT}}\",\n        \"auto_offline\": false,\n        \"description\": \"{{zone_description}}\",\n        \"last_updated\": {\n          \"date\": \"2018-06-13 19:01:18.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"last_updated_by\": \"admin\",\n        \"include_in_current_status_report\": true\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 29\n  },\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 30\n  }\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         }
@@ -1962,7 +1962,7 @@
                 }
               ]
             },
-            "url": "http://{{url}}"
+            "url": "{{url}}"
           },
           "response": []
         },
@@ -2031,7 +2031,7 @@
               "mode": "raw",
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router/"
+            "url": "{{url}}/{{version}}/direct/router/"
           },
           "response": []
         },
@@ -2097,7 +2097,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": false,\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router"
+            "url": "{{url}}/{{version}}/direct/router"
           },
           "response": []
         },
@@ -2146,7 +2146,7 @@
               "mode": "raw",
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"updateAppliance\",\n  \"data\": [\n    {\n      \"status\": \"\",\n      \"hostname\": \"Jennnn-SFS\",\n      \"last_updated\": \"\",\n      \"software_version\": \"1.1.111\",\n      \"contract_renewal_date\": \"\",\n      \"id\": 21,\n      \"public_ip\": \"{{appliance_pubIP}}\",\n      \"has_service_contract\": \"\",\n      \"management_ip\": \"172.0.0.77\",\n      \"username\": \"admin\",\n      \"password\": \"sfs1000\",\n      \"last_updated_by\": \"\",\n      \"total_connections\": \"\",\n      \"license_type\": \"\",\n      \"license_key\": \"\",\n      \"synced\": \"\",\n      \"model\": \"SFS1000\",\n      \"location_name\": \"Test Data Center\",\n      \"zone_name\": \"{{zone_name}}\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 17\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router/",
+            "url": "{{url}}/{{version}}/direct/router/",
             "description": "hostname and id need to match an appliance in order to update it."
           },
           "response": []
@@ -2217,7 +2217,7 @@
               "mode": "raw",
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router/"
+            "url": "{{url}}/{{version}}/direct/router/"
           },
           "response": []
         },
@@ -2254,7 +2254,7 @@
               "mode": "raw",
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"deleteAppliance\",\n  \"data\": [\n    {\n      \"status\": \"\",\n      \"hostname\": \"Jennnn-SFS\",\n      \"last_updated\": \"\",\n      \"software_version\": \"1.1.111\",\n      \"contract_renewal_date\": \"\",\n      \"id\": 21,\n      \"public_ip\": \"6.6.6.6\",\n      \"has_service_contract\": \"\",\n      \"management_ip\": \"172.0.0.77\",\n      \"username\": \"admin\",\n      \"password\": \"sfs1000\",\n      \"last_updated_by\": \"\",\n      \"total_connections\": \"\",\n      \"license_type\": \"\",\n      \"license_key\": \"\",\n      \"synced\": \"\",\n      \"model\": \"SFS1000\",\n      \"location_name\": \"Test Data Center\",\n      \"zone_name\": \"Public\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 18\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router/",
+            "url": "{{url}}/{{version}}/direct/router/",
             "description": "I don't know how often we should run this. We only have a limited number of appliances to hook up to our streammanager."
           },
           "response": []
@@ -2303,7 +2303,7 @@
               "mode": "raw",
               "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
             },
-            "url": "http://{{url}}/{{version}}/direct/router/"
+            "url": "{{url}}/{{version}}/direct/router/"
           },
           "response": []
         }
