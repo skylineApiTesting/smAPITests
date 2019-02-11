@@ -439,7 +439,13 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Chris",
+                "value": "FindME",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "formdata",
               "formdata": [
@@ -5109,7 +5115,7 @@
               "mode": "raw",
               "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
             },
-            "url": "http://{{url}}/{{version}}/direct/router",
+            "url": "{{url}}/{{version}}/direct/router",
             "description": "creates an admin user in stream manager."
           },
           "response": []
