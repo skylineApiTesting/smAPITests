@@ -286,7 +286,7 @@
                   "formdata": [
                     {
                       "key": "user",
-                      "value": "admin",
+                      "value": "{{admin_user}}",
                       "type": "text"
                     },
                     {
