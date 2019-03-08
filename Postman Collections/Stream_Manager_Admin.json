@@ -150,7 +150,7 @@
                     },
                     {
                       "key": "password",
-                      "value": "sm1000",
+                      "value": "{{admin_password}}",
                       "type": "text"
                     }
                   ]
@@ -239,7 +239,7 @@
                   "formdata": [
                     {
                       "key": "user",
-                      "value": "admin",
+                      "value": "{{admin_user}}",
                       "type": "text"
                     },
                     {
