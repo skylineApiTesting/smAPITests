@@ -3771,599 +3771,600 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "0d99da64-9bc5-40a7-a9fa-fcd28e7f797e",
-      "name": "Stream Metadata",
-      "description": "API tests for streams tab for operators",
-      "item": [
-        {
-          "_postman_id": "b96bce6e-4ea8-4126-9243-e97612ab0743",
-          "name": "Login Valid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "11710913-2121-4ef0-9792-ed8db549290c",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
         },
         {
-          "_postman_id": "b65aceb1-878b-4b9f-8e95-ed0b8b60ae71",
-          "name": "Create Metadata",
-          "event": [
+          "_postman_id": "0d99da64-9bc5-40a7-a9fa-fcd28e7f797e",
+          "name": "Stream Metadata",
+          "description": "API tests for streams tab for operators",
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
-                "exec": [
-                  "pm.test(\"C77999 Verify admin can edit stream metadata\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
-                  "});",
-                  "",
-                  "pm.environment.set(\"variable_key\", \"variable_value\");"
-                ],
-                "type": "text/javascript"
-              }
+              "_postman_id": "b96bce6e-4ea8-4126-9243-e97612ab0743",
+              "name": "Login Valid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "11710913-2121-4ef0-9792-ed8db549290c",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "    ",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "{{user}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}",
+                "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+              },
+              "response": []
             },
+            {
+              "_postman_id": "b65aceb1-878b-4b9f-8e95-ed0b8b60ae71",
+              "name": "Create Metadata",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                    "exec": [
+                      "pm.test(\"C77999 Verify admin can edit stream metadata\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
+                      "});",
+                      "",
+                      "pm.environment.set(\"variable_key\", \"variable_value\");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                    "exec": [
+                      "pm.environment.set(\"stream_extTID\", \"31\");",
+                      "// This ID is the id that is associated with the stream's metadata",
+                      "pm.environment.set(\"stream_id\", \"6\");",
+                      "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
+                      "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
+                      "pm.environment.set(\"stream_route_name\", \"test route\");",
+                      "pm.environment.set(\"stream_milemarker\", \"66\");",
+                      "pm.environment.set(\"stream_traffic_direction\", \"S\");",
+                      "pm.environment.set(\"stream_latitude\", \"50\");",
+                      "pm.environment.set(\"stream_longitude\", \"51\");",
+                      "pm.environment.set(\"stream_device_id\", \"11536\");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "extTID",
+                      "type": "text",
+                      "value": "{{stream_extTID}}"
+                    },
+                    {
+                      "key": "extAction",
+                      "type": "text",
+                      "value": "Streams"
+                    },
+                    {
+                      "key": "extMethod",
+                      "type": "text",
+                      "value": "updateMetadata"
+                    },
+                    {
+                      "key": "extType",
+                      "type": "text",
+                      "value": "rpc"
+                    },
+                    {
+                      "key": "extUpload",
+                      "type": "text",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "type": "text",
+                      "value": "{{stream_id}}"
+                    },
+                    {
+                      "key": "description",
+                      "type": "text",
+                      "value": "{{stream_description}}"
+                    },
+                    {
+                      "key": "jurisdiction",
+                      "type": "text",
+                      "value": "{{stream_jurisdiction}}"
+                    },
+                    {
+                      "key": "route_name",
+                      "type": "text",
+                      "value": "{{stream_route_name}}"
+                    },
+                    {
+                      "key": "mile_marker",
+                      "type": "text",
+                      "value": "{{stream_milemarker}}"
+                    },
+                    {
+                      "key": "traffic_direction",
+                      "type": "text",
+                      "value": "{{stream_traffic_direction}}"
+                    },
+                    {
+                      "key": "latitude",
+                      "type": "text",
+                      "value": "{{stream_latitude}}"
+                    },
+                    {
+                      "key": "longitude",
+                      "type": "text",
+                      "value": "{{stream_longitude}}"
+                    },
+                    {
+                      "key": "deviceid",
+                      "type": "text",
+                      "value": "{{stream_device_id}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "36ce4a08-8e54-40cb-9f11-174d87923a5b",
+              "name": "Read Created Metadata",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                    "exec": [
+                      "stream_id = pm.environment.get(\"stream_id\");",
+                      "stream_description = pm.environment.get(\"stream_description\");",
+                      "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
+                      "stream_route_name = pm.environment.get(\"stream_route_name\");",
+                      "stream_milemarker = pm.environment.get(\"stream_milemarker\");",
+                      "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction\");",
+                      "stream_latitude = pm.environment.get(\"stream_latitude\");",
+                      "stream_longitude = pm.environment.get(\"stream_longitude\");",
+                      "",
+                      "pm.test(\"C78000 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78000 Success message present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                      "});",
+                      "",
+                      "pm.test(\"C78000 Created Metadata was saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "returns a list of camera streams (camera grid)"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "0aafc9c7-0beb-4939-ae4c-f19392391141",
+              "name": "Edit Metadata",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                    "exec": [
+                      "pm.test(\"C78001 Verify admin can edit stream metadata\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                    "exec": [
+                      "stream_description = pm.environment.get(\"stream_description\");",
+                      "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
+                      "stream_route_name = pm.environment.get(\"stream_route_name\");",
+                      "",
+                      "pm.environment.set(\"stream_description_EDIT\", stream_description + \"EDIT\");",
+                      "pm.environment.set(\"stream_jurisdiction_EDIT\", stream_jurisdiction + \"EDIT\");",
+                      "pm.environment.set(\"stream_route_name_EDIT\", stream_route_name + \"EDIT\");",
+                      "pm.environment.set(\"stream_milemarker_EDIT\", \"11\");",
+                      "pm.environment.set(\"stream_traffic_direction_EDIT\", \"NE\");",
+                      "pm.environment.set(\"stream_latitude_EDIT\", \"20\");",
+                      "pm.environment.set(\"stream_longitude_EDIT\", \"21\");"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "extTID",
+                      "type": "text",
+                      "value": "{{stream_extTID}}"
+                    },
+                    {
+                      "key": "extAction",
+                      "type": "text",
+                      "value": "Streams"
+                    },
+                    {
+                      "key": "extMethod",
+                      "type": "text",
+                      "value": "updateMetadata"
+                    },
+                    {
+                      "key": "extType",
+                      "type": "text",
+                      "value": "rpc"
+                    },
+                    {
+                      "key": "extUpload",
+                      "type": "text",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "type": "text",
+                      "value": "{{stream_id}}"
+                    },
+                    {
+                      "key": "description",
+                      "type": "text",
+                      "value": "{{stream_description_EDIT}}"
+                    },
+                    {
+                      "key": "jurisdiction",
+                      "type": "text",
+                      "value": "{{stream_jurisdiction_EDIT}}"
+                    },
+                    {
+                      "key": "route_name",
+                      "type": "text",
+                      "value": "{{stream_route_name_EDIT}}"
+                    },
+                    {
+                      "key": "mile_marker",
+                      "type": "text",
+                      "value": "{{stream_milemarker_EDIT}}"
+                    },
+                    {
+                      "key": "traffic_direction",
+                      "type": "text",
+                      "value": "{{stream_traffic_direction_EDIT}}"
+                    },
+                    {
+                      "key": "latitude",
+                      "type": "text",
+                      "value": "{{stream_latitude_EDIT}}"
+                    },
+                    {
+                      "key": "longitude",
+                      "type": "text",
+                      "value": "{{stream_longitude_EDIT}}"
+                    },
+                    {
+                      "key": "deviceid",
+                      "type": "text",
+                      "value": "{{stream_device_id}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "8e072b59-f940-4228-93ae-b695e88c4af4",
+              "name": "Read Updated Metadata",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                    "exec": [
+                      "stream_id = pm.environment.get(\"stream_id\");",
+                      "stream_description = pm.environment.get(\"stream_description_EDIT\");",
+                      "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction_EDIT\");",
+                      "stream_route_name = pm.environment.get(\"stream_route_name_EDIT\");",
+                      "stream_milemarker = pm.environment.get(\"stream_milemarker_EDIT\");",
+                      "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction_EDIT\");",
+                      "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
+                      "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
+                      "",
+                      "pm.test(\"C78002 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78002 Success message present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                      "});",
+                      "",
+                      "pm.test(\"C78002 Updated Metadata was saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "returns a list of camera streams (camera grid)"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "96e1f791-8b32-4c8a-8d58-6cd6f93e5e82",
+              "name": "Delete Metadata",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                    "exec": [
+                      "pm.test(\"C78003 Verify admin can edit stream metadata\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "extTID",
+                      "type": "text",
+                      "value": "{{stream_extTID}}"
+                    },
+                    {
+                      "key": "extAction",
+                      "type": "text",
+                      "value": "Streams"
+                    },
+                    {
+                      "key": "extMethod",
+                      "type": "text",
+                      "value": "updateMetadata"
+                    },
+                    {
+                      "key": "extType",
+                      "type": "text",
+                      "value": "rpc"
+                    },
+                    {
+                      "key": "extUpload",
+                      "type": "text",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "type": "text",
+                      "value": "{{stream_id}}"
+                    },
+                    {
+                      "key": "description",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "jurisdiction",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "route_name",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "mile_marker",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "traffic_direction",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "latitude",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "longitude",
+                      "type": "text",
+                      "value": ""
+                    },
+                    {
+                      "key": "deviceid",
+                      "type": "text",
+                      "value": "{{stream_device_id}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "b49faca6-9fb8-496f-a6f6-b8db8726b9f9",
+              "name": "Read Deleted",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                    "exec": [
+                      "stream_id = pm.environment.get(\"stream_id\");",
+                      "stream_description = pm.environment.get(\"stream_description_EDIT\");",
+                      "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction_EDIT\");",
+                      "stream_route_name = pm.environment.get(\"stream_route_name_EDIT\");",
+                      "stream_milemarker = pm.environment.get(\"stream_milemarker_EDIT\");",
+                      "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction_EDIT\");",
+                      "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
+                      "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
+                      "",
+                      "pm.test(\"C78004 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78004 Success message present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                      "});",
+                      "",
+                      "pm.test(\"C78004 Deleted Metadata was saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"id\":'+stream_id+',\"description\":\"\",\"jurisdiction\":\"\",\"traffic_direction\":\"\",\"route_name\":\"\",\"mile_marker\":0,\"latitude\":0,\"longitude\":0');",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "returns a list of camera streams (camera grid)"
+              },
+              "response": []
+            }
+          ],
+          "event": [
             {
               "listen": "prerequest",
               "script": {
-                "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
-                "exec": [
-                  "pm.environment.set(\"stream_extTID\", \"31\");",
-                  "// This ID is the id that is associated with the stream's metadata",
-                  "pm.environment.set(\"stream_id\", \"6\");",
-                  "pm.environment.set(\"stream_description\", \"test_stream_cam_to_multiple_sfs\");",
-                  "pm.environment.set(\"stream_jurisdiction\", \"test jurisdiction\");",
-                  "pm.environment.set(\"stream_route_name\", \"test route\");",
-                  "pm.environment.set(\"stream_milemarker\", \"66\");",
-                  "pm.environment.set(\"stream_traffic_direction\", \"S\");",
-                  "pm.environment.set(\"stream_latitude\", \"50\");",
-                  "pm.environment.set(\"stream_longitude\", \"51\");",
-                  "pm.environment.set(\"stream_device_id\", \"11536\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "extTID",
-                  "type": "text",
-                  "value": "{{stream_extTID}}"
-                },
-                {
-                  "key": "extAction",
-                  "type": "text",
-                  "value": "Streams"
-                },
-                {
-                  "key": "extMethod",
-                  "type": "text",
-                  "value": "updateMetadata"
-                },
-                {
-                  "key": "extType",
-                  "type": "text",
-                  "value": "rpc"
-                },
-                {
-                  "key": "extUpload",
-                  "type": "text",
-                  "value": "false"
-                },
-                {
-                  "key": "id",
-                  "type": "text",
-                  "value": "{{stream_id}}"
-                },
-                {
-                  "key": "description",
-                  "type": "text",
-                  "value": "{{stream_description}}"
-                },
-                {
-                  "key": "jurisdiction",
-                  "type": "text",
-                  "value": "{{stream_jurisdiction}}"
-                },
-                {
-                  "key": "route_name",
-                  "type": "text",
-                  "value": "{{stream_route_name}}"
-                },
-                {
-                  "key": "mile_marker",
-                  "type": "text",
-                  "value": "{{stream_milemarker}}"
-                },
-                {
-                  "key": "traffic_direction",
-                  "type": "text",
-                  "value": "{{stream_traffic_direction}}"
-                },
-                {
-                  "key": "latitude",
-                  "type": "text",
-                  "value": "{{stream_latitude}}"
-                },
-                {
-                  "key": "longitude",
-                  "type": "text",
-                  "value": "{{stream_longitude}}"
-                },
-                {
-                  "key": "deviceid",
-                  "type": "text",
-                  "value": "{{stream_device_id}}"
-                }
-              ]
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "36ce4a08-8e54-40cb-9f11-174d87923a5b",
-          "name": "Read Created Metadata",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
-                "exec": [
-                  "stream_id = pm.environment.get(\"stream_id\");",
-                  "stream_description = pm.environment.get(\"stream_description\");",
-                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
-                  "stream_route_name = pm.environment.get(\"stream_route_name\");",
-                  "stream_milemarker = pm.environment.get(\"stream_milemarker\");",
-                  "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction\");",
-                  "stream_latitude = pm.environment.get(\"stream_latitude\");",
-                  "stream_longitude = pm.environment.get(\"stream_longitude\");",
-                  "",
-                  "pm.test(\"C78000 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78000 Success message present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"success\":true');",
-                  "});",
-                  "",
-                  "pm.test(\"C78000 Created Metadata was saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "returns a list of camera streams (camera grid)"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0aafc9c7-0beb-4939-ae4c-f19392391141",
-          "name": "Edit Metadata",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
-                "exec": [
-                  "pm.test(\"C78001 Verify admin can edit stream metadata\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
-                "exec": [
-                  "stream_description = pm.environment.get(\"stream_description\");",
-                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction\");",
-                  "stream_route_name = pm.environment.get(\"stream_route_name\");",
-                  "",
-                  "pm.environment.set(\"stream_description_EDIT\", stream_description + \"EDIT\");",
-                  "pm.environment.set(\"stream_jurisdiction_EDIT\", stream_jurisdiction + \"EDIT\");",
-                  "pm.environment.set(\"stream_route_name_EDIT\", stream_route_name + \"EDIT\");",
-                  "pm.environment.set(\"stream_milemarker_EDIT\", \"11\");",
-                  "pm.environment.set(\"stream_traffic_direction_EDIT\", \"NE\");",
-                  "pm.environment.set(\"stream_latitude_EDIT\", \"20\");",
-                  "pm.environment.set(\"stream_longitude_EDIT\", \"21\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "extTID",
-                  "type": "text",
-                  "value": "{{stream_extTID}}"
-                },
-                {
-                  "key": "extAction",
-                  "type": "text",
-                  "value": "Streams"
-                },
-                {
-                  "key": "extMethod",
-                  "type": "text",
-                  "value": "updateMetadata"
-                },
-                {
-                  "key": "extType",
-                  "type": "text",
-                  "value": "rpc"
-                },
-                {
-                  "key": "extUpload",
-                  "type": "text",
-                  "value": "false"
-                },
-                {
-                  "key": "id",
-                  "type": "text",
-                  "value": "{{stream_id}}"
-                },
-                {
-                  "key": "description",
-                  "type": "text",
-                  "value": "{{stream_description_EDIT}}"
-                },
-                {
-                  "key": "jurisdiction",
-                  "type": "text",
-                  "value": "{{stream_jurisdiction_EDIT}}"
-                },
-                {
-                  "key": "route_name",
-                  "type": "text",
-                  "value": "{{stream_route_name_EDIT}}"
-                },
-                {
-                  "key": "mile_marker",
-                  "type": "text",
-                  "value": "{{stream_milemarker_EDIT}}"
-                },
-                {
-                  "key": "traffic_direction",
-                  "type": "text",
-                  "value": "{{stream_traffic_direction_EDIT}}"
-                },
-                {
-                  "key": "latitude",
-                  "type": "text",
-                  "value": "{{stream_latitude_EDIT}}"
-                },
-                {
-                  "key": "longitude",
-                  "type": "text",
-                  "value": "{{stream_longitude_EDIT}}"
-                },
-                {
-                  "key": "deviceid",
-                  "type": "text",
-                  "value": "{{stream_device_id}}"
-                }
-              ]
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8e072b59-f940-4228-93ae-b695e88c4af4",
-          "name": "Read Updated Metadata",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
-                "exec": [
-                  "stream_id = pm.environment.get(\"stream_id\");",
-                  "stream_description = pm.environment.get(\"stream_description_EDIT\");",
-                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction_EDIT\");",
-                  "stream_route_name = pm.environment.get(\"stream_route_name_EDIT\");",
-                  "stream_milemarker = pm.environment.get(\"stream_milemarker_EDIT\");",
-                  "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction_EDIT\");",
-                  "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
-                  "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
-                  "",
-                  "pm.test(\"C78002 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78002 Success message present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"success\":true');",
-                  "});",
-                  "",
-                  "pm.test(\"C78002 Updated Metadata was saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "returns a list of camera streams (camera grid)"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "96e1f791-8b32-4c8a-8d58-6cd6f93e5e82",
-          "name": "Delete Metadata",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
-                "exec": [
-                  "pm.test(\"C78003 Verify admin can edit stream metadata\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e7ee47de-2d92-4855-84d0-ab11eae8a212",
+                "id": "42c2c41d-89b0-4991-b290-092d7b8b96ed",
+                "type": "text/javascript",
                 "exec": [
                   ""
-                ],
-                "type": "text/javascript"
+                ]
               }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "extTID",
-                  "type": "text",
-                  "value": "{{stream_extTID}}"
-                },
-                {
-                  "key": "extAction",
-                  "type": "text",
-                  "value": "Streams"
-                },
-                {
-                  "key": "extMethod",
-                  "type": "text",
-                  "value": "updateMetadata"
-                },
-                {
-                  "key": "extType",
-                  "type": "text",
-                  "value": "rpc"
-                },
-                {
-                  "key": "extUpload",
-                  "type": "text",
-                  "value": "false"
-                },
-                {
-                  "key": "id",
-                  "type": "text",
-                  "value": "{{stream_id}}"
-                },
-                {
-                  "key": "description",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "jurisdiction",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "route_name",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "mile_marker",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "traffic_direction",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "latitude",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "longitude",
-                  "type": "text",
-                  "value": ""
-                },
-                {
-                  "key": "deviceid",
-                  "type": "text",
-                  "value": "{{stream_device_id}}"
-                }
-              ]
             },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b49faca6-9fb8-496f-a6f6-b8db8726b9f9",
-          "name": "Read Deleted",
-          "event": [
             {
               "listen": "test",
               "script": {
-                "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                "id": "6d091680-5217-4c72-9243-2297364fc021",
+                "type": "text/javascript",
                 "exec": [
-                  "stream_id = pm.environment.get(\"stream_id\");",
-                  "stream_description = pm.environment.get(\"stream_description_EDIT\");",
-                  "stream_jurisdiction = pm.environment.get(\"stream_jurisdiction_EDIT\");",
-                  "stream_route_name = pm.environment.get(\"stream_route_name_EDIT\");",
-                  "stream_milemarker = pm.environment.get(\"stream_milemarker_EDIT\");",
-                  "stream_traffic_direction = pm.environment.get(\"stream_traffic_direction_EDIT\");",
-                  "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
-                  "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
-                  "",
-                  "pm.test(\"C78004 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78004 Success message present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"success\":true');",
-                  "});",
-                  "",
-                  "pm.test(\"C78004 Deleted Metadata was saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"id\":'+stream_id+',\"description\":\"\",\"jurisdiction\":\"\",\"traffic_direction\":\"\",\"route_name\":\"\",\"mile_marker\":0,\"latitude\":0,\"longitude\":0');",
-                  "});"
-                ],
-                "type": "text/javascript"
+                  ""
+                ]
               }
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "returns a list of camera streams (camera grid)"
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "42c2c41d-89b0-4991-b290-092d7b8b96ed",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "6d091680-5217-4c72-9243-2297364fc021",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
+          "_postman_isSubFolder": true
         }
       ]
     },
