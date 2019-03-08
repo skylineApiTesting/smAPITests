@@ -98,7 +98,7 @@
                   "formdata": [
                     {
                       "key": "user",
-                      "value": "{{user}}",
+                      "value": "{{admin_user}}",
                       "type": "text"
                     },
                     {
