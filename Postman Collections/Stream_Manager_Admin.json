@@ -5911,6 +5911,368 @@
             }
           ],
           "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "29fcd312-eb6c-40e7-9616-2f76e0161bf2",
+          "name": "Dashboard",
+          "description": "APIs called for the dashboard",
+          "item": [
+            {
+              "_postman_id": "de2abd28-e593-432e-bed7-dc77e5f4d8b5",
+              "name": "Login Operator",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "    ",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "{{user}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}",
+                "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "70d925e5-2f28-41e6-a710-dd715279dfe9",
+              "name": "Get appliances",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
+                    "exec": [
+                      "pm.test(\"C78173 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78173 Appliances were listed\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.result.success).to.eql(true);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Appliance\",\n\t\"method\": \"getAppliances\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 2\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "5666bcfb-c8aa-47e0-bfc6-94942a811580",
+              "name": "Get sfs capacity",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
+                    "exec": [
+                      "pm.test(\"C78174 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78174 Success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.result.success).to.eql(true);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Capacity\",\n\t\"method\": \"getSfsCapacity\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 14\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "817f9a17-0934-4183-a450-cff2260441fd",
+          "name": "Streams",
+          "description": "API tests for streams tab for operators",
+          "item": [
+            {
+              "_postman_id": "9422bf67-38ca-4e0e-bed0-98c35f293c8b",
+              "name": "Login Operator",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "{{user}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}",
+                "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "c4e7dc13-845b-4759-9b15-68ae090d4baf",
+              "name": "Get grid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
+                    "exec": [
+                      "pm.test(\"C78229 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78229 Success message present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"success\":true');",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 21\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "returns a list of camera streams (camera grid)"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "109eca6d-c77c-4329-a6aa-7c660d78e952",
+              "name": "View a stream",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
+                    "exec": [
+                      "pm.test(\"C78230 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78230 Verify stream info was returned\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData[0].result.success).to.eql(true);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 15\n  },\n  {\n    \"action\": \"Streams\",\n    \"method\": \"getAppliancesFromMetadata\",\n    \"data\": [\n      {\n        \"metadataId\": 6,\n        \"clearCache\": false,\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"model\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "get information for a specific stream"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "7d4b696c-bcfc-47cb-b14d-1f4daf0bfd5b",
+              "name": "Update Stream Metadata - Operator Cannot Update",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
+                    "exec": [
+                      "pm.test(\"C78231 Verify operator cannot have edited stream\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include('\"result\":{\"success\":true}}');",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "extTID",
+                      "value": "17",
+                      "type": "text"
+                    },
+                    {
+                      "key": "extAction",
+                      "value": "Streams",
+                      "type": "text"
+                    },
+                    {
+                      "key": "extMethod",
+                      "value": "updateMetadata",
+                      "type": "text"
+                    },
+                    {
+                      "key": "extType",
+                      "value": "rpc",
+                      "type": "text"
+                    },
+                    {
+                      "key": "extUpload",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "key": "id",
+                      "value": "6",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "test_stream_cam_to_multiple_sfsEDITED",
+                      "type": "text"
+                    },
+                    {
+                      "key": "jurisdiction",
+                      "value": "test jurisdiction EDITED",
+                      "type": "text"
+                    },
+                    {
+                      "key": "route_name",
+                      "value": "test route EDITED",
+                      "type": "text"
+                    },
+                    {
+                      "key": "mile_marker",
+                      "value": "66",
+                      "type": "text"
+                    },
+                    {
+                      "key": "traffic_direction",
+                      "value": "S",
+                      "type": "text"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "50",
+                      "type": "text"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "50",
+                      "type": "text"
+                    },
+                    {
+                      "key": "deviceid",
+                      "value": "",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
         }
       ]
     }
