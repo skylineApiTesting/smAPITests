@@ -473,645 +473,646 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "e0446629-e293-4fdc-a838-499baf7a60c2",
-      "name": "User",
-      "description": "User section of Stream Manager\n",
-      "item": [
+        },
         {
-          "_postman_id": "245895e6-ecfb-4a38-bb87-5c16de2188c4",
-          "name": "Login Admin",
-          "event": [
+          "_postman_id": "e0446629-e293-4fdc-a838-499baf7a60c2",
+          "name": "User",
+          "description": "User section of Stream Manager\n",
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "245895e6-ecfb-4a38-bb87-5c16de2188c4",
+              "name": "Login Admin",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "admin",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "    ",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "admin",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "sm1000",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "1c744416-8ee1-4f79-9238-65bc79c84731",
+              "name": "Create Admin User",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
+                    "exec": [
+                      "pm.test(\"C77441 User was created and variables set.\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.total) !== null;",
+                      "    pm.environment.unset(\"user_ID\");",
+                      "    pm.environment.unset(\"user_name\");",
+                      "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
+                      "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
+                      "});",
+                      "",
+                      "pm.test(\"C77441 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "user_email = pm.environment.get(\"user_email\");",
+                      "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
+                      "",
+                      "pm.test(\"C77441 Body has email\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_email);",
+                      "});",
+                      "",
+                      "pm.test(\"C77441 Body has personal name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(admin_personal_name);",
+                      "});",
+                      "",
+                      "pm.test(\"C77441 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "48710cc8-7321-4f55-b607-bab44c69a186",
+                    "exec": [
+                      "pm.environment.unset(\"user_name\");",
+                      "pm.environment.unset(\"user_email\");",
+                      "",
+                      "var user_name = Math.floor((Math.random() * 1000000) + 1);",
+                      "var user_email = Math.floor((Math.random() * 1000000) + 1);",
+                      "",
+                      "pm.environment.set(\"user_name\", user_name);",
+                      "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1c744416-8ee1-4f79-9238-65bc79c84731",
-          "name": "Create Admin User",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
-                "exec": [
-                  "pm.test(\"C77441 User was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"user_ID\");",
-                  "    pm.environment.unset(\"user_name\");",
-                  "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
-                  "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
-                  "});",
-                  "",
-                  "pm.test(\"C77441 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "user_email = pm.environment.get(\"user_email\");",
-                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
-                  "",
-                  "pm.test(\"C77441 Body has email\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email);",
-                  "});",
-                  "",
-                  "pm.test(\"C77441 Body has personal name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(admin_personal_name);",
-                  "});",
-                  "",
-                  "pm.test(\"C77441 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "creates an admin user in stream manager."
+              },
+              "response": []
             },
             {
-              "listen": "prerequest",
-              "script": {
-                "id": "48710cc8-7321-4f55-b607-bab44c69a186",
-                "exec": [
-                  "pm.environment.unset(\"user_name\");",
-                  "pm.environment.unset(\"user_email\");",
-                  "",
-                  "var user_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var user_email = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"user_name\", user_name);",
-                  "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "creates an admin user in stream manager."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8349e5df-4e9a-4a80-a4d5-0d1ccf28e404",
-          "name": "Create Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "26b6c30f-c56b-42b6-96c5-336163e50673",
-                "exec": [
-                  "pm.test(\"C77442 User was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    pm.environment.unset(\"operator_id\");",
-                  "    pm.environment.unset(\"operator_user_name\");",
-                  "    pm.environment.set(\"operator_id\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
-                  "    pm.environment.set(\"operator_user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
-                  "});",
-                  "",
-                  "pm.test(\"C77442 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "operator_email = pm.environment.get(\"operator_email\");",
-                  "",
-                  "pm.test(\"C77442 Body has email\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(operator_email);",
-                  "});",
-                  "",
-                  "pm.test(\"C77442 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "48710cc8-7321-4f55-b607-bab44c69a186",
-                "exec": [
-                  "pm.environment.unset(\"operator_user_name\");",
-                  "pm.environment.unset(\"operator_email\");",
-                  "",
-                  "var operator_user_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var operator_email = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"operator_user_name\", operator_user_name);",
-                  "pm.environment.set(\"operator_email\", operator_email+\"@gmail.com\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{operator_password}}\",\n\t\t\t\t\"personal_name\": \"{{operator_personal_name}}\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "creates an admin user in stream manager."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "340ce49f-29d5-4121-bd90-4871b840bfb8",
-          "name": "Retrieve Users",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
-                "exec": [
-                  "user_email = pm.environment.get(\"user_email\");",
-                  "user_name = pm.environment.get(\"user_name\");",
-                  "pm.test(\"C78215 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"getUsers\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78215 Body includes user\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_name);",
-                  "});",
-                  "",
-                  "pm.test(\"C78215 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d0f17c7d-a89c-4f2e-b28c-2b5d68c94707",
-          "name": "Update Admin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
-                "exec": [
-                  "admin_personal_name_EDIT = pm.environment.get(\"admin_personal_name_EDIT\");",
-                  "",
-                  "pm.test(\"C77450 Body includes edited edited personal name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(admin_personal_name_EDIT);",
-                  "});",
-                  "",
-                  "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
-                  "",
-                  "pm.test(\"C77450 Response contains edited email address\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77450 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
-                "exec": [
-                  "user_email = pm.environment.get(\"user_email\");",
-                  "admin_password = pm.environment.get(\"admin_password\");",
-                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
-                  "",
-                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);",
-                  "pm.environment.set(\"admin_password_EDIT\", \"EDIT\" + admin_password);",
-                  "pm.environment.set(\"admin_personal_name_EDIT\", \"EDIT\" + admin_personal_name);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "06f8fc15-5ab0-4cd7-8dcc-1edb35cc8bfa",
-          "name": "Update Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
-                "exec": [
-                  "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
-                  "operator_personal_name_EDIT = pm.environment.get(\"operator_personal_name_EDIT\")",
-                  "",
-                  "pm.test(\"C78216 Response contains edited email address\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C78216 Response contains edited personal name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C78216 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
-                "exec": [
-                  "operator_email = pm.environment.get(\"operator_email\");",
-                  "operator_password = pm.environment.get(\"operator_password\")",
-                  "operator_personal_name = pm.environment.get(\"operator_personal_name\")",
-                  "",
-                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + operator_email);",
-                  "pm.environment.set(\"operator_password_EDIT\", \"EDIT\" + operator_password);",
-                  "pm.environment.set(\"operator_personal_name_EDIT\", \"EDIT\" + operator_personal_name);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{operator_user_name}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8b9ffd58-5644-458f-b3fe-caf06609c3ff",
-          "name": "Update Admin - Make Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
-                "exec": [
-                  "pm.test(\"C77451 Admin is now an operator\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"is_admin\":false');",
-                  "});",
-                  "",
-                  "pm.test(\"C77451 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
-                "exec": [
-                  "user_email = pm.environment.get(\"user_email\");",
-                  "admin_password = pm.environment.get(\"admin_password\");",
-                  "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
-                  "",
-                  "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);",
-                  "pm.environment.set(\"admin_password_EDIT\", \"EDIT\" + admin_password);",
-                  "pm.environment.set(\"admin_personal_name_EDIT\", \"EDIT\" + admin_personal_name);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "abc489de-de4a-4576-8a27-4741389e2ca7",
-          "name": "Login with New Operator",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
-                "exec": [
-                  "pm.test(\"C78218 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"C78218 User is logged in as an operator\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "8349e5df-4e9a-4a80-a4d5-0d1ccf28e404",
+              "name": "Create Operator",
+              "event": [
                 {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user_name}}"
+                  "listen": "test",
+                  "script": {
+                    "id": "26b6c30f-c56b-42b6-96c5-336163e50673",
+                    "exec": [
+                      "pm.test(\"C77442 User was created and variables set.\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.total) !== null;",
+                      "    pm.environment.unset(\"operator_id\");",
+                      "    pm.environment.unset(\"operator_user_name\");",
+                      "    pm.environment.set(\"operator_id\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
+                      "    pm.environment.set(\"operator_user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
+                      "});",
+                      "",
+                      "pm.test(\"C77442 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "operator_email = pm.environment.get(\"operator_email\");",
+                      "",
+                      "pm.test(\"C77442 Body has email\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(operator_email);",
+                      "});",
+                      "",
+                      "pm.test(\"C77442 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{admin_password_EDIT}}"
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "48710cc8-7321-4f55-b607-bab44c69a186",
+                    "exec": [
+                      "pm.environment.unset(\"operator_user_name\");",
+                      "pm.environment.unset(\"operator_email\");",
+                      "",
+                      "var operator_user_name = Math.floor((Math.random() * 1000000) + 1);",
+                      "var operator_email = Math.floor((Math.random() * 1000000) + 1);",
+                      "",
+                      "pm.environment.set(\"operator_user_name\", operator_user_name);",
+                      "pm.environment.set(\"operator_email\", operator_email+\"@gmail.com\");"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "43ab7b84-7283-4733-9189-d38346728508",
-          "name": "Login Super Admin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                "exec": [
-                  "pm.test(\"C77291 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});",
-                  ""
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{operator_password}}\",\n\t\t\t\t\"personal_name\": \"{{operator_personal_name}}\",\n\t\t\t\t\"email\": \"{{operator_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "creates an admin user in stream manager."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "340ce49f-29d5-4121-bd90-4871b840bfb8",
+              "name": "Retrieve Users",
+              "event": [
                 {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user}}"
+                  "listen": "test",
+                  "script": {
+                    "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
+                    "exec": [
+                      "user_email = pm.environment.get(\"user_email\");",
+                      "user_name = pm.environment.get(\"user_name\");",
+                      "pm.test(\"C78215 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"getUsers\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78215 Body includes user\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_name);",
+                      "});",
+                      "",
+                      "pm.test(\"C78215 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "d0f17c7d-a89c-4f2e-b28c-2b5d68c94707",
+              "name": "Update Admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
+                    "exec": [
+                      "admin_personal_name_EDIT = pm.environment.get(\"admin_personal_name_EDIT\");",
+                      "",
+                      "pm.test(\"C77450 Body includes edited edited personal name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(admin_personal_name_EDIT);",
+                      "});",
+                      "",
+                      "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
+                      "",
+                      "pm.test(\"C77450 Response contains edited email address\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77450 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
+                    "exec": [
+                      "user_email = pm.environment.get(\"user_email\");",
+                      "admin_password = pm.environment.get(\"admin_password\");",
+                      "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
+                      "",
+                      "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);",
+                      "pm.environment.set(\"admin_password_EDIT\", \"EDIT\" + admin_password);",
+                      "pm.environment.set(\"admin_personal_name_EDIT\", \"EDIT\" + admin_personal_name);"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "79aeb40b-21df-4842-b513-e63e65b775ba",
-          "name": "Update Operator - Make Admin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
-                "exec": [
-                  "pm.test(\"C78217 Operator is now an Admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include('\"is_admin\":true');",
-                  "});",
-                  "",
-                  "pm.test(\"C78217 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
             },
             {
-              "listen": "prerequest",
-              "script": {
-                "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{operator_user_name}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3d220d6c-a2d5-4353-9641-2844cf2f43a5",
-          "name": "Login with New Admin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
-                "exec": [
-                  "pm.test(\"C78219 User is logged in as an admin\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "06f8fc15-5ab0-4cd7-8dcc-1edb35cc8bfa",
+              "name": "Update Operator",
+              "event": [
                 {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{operator_user_name}}"
+                  "listen": "test",
+                  "script": {
+                    "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
+                    "exec": [
+                      "user_email_EDIT = pm.environment.get(\"user_email_EDIT\");",
+                      "operator_personal_name_EDIT = pm.environment.get(\"operator_personal_name_EDIT\")",
+                      "",
+                      "pm.test(\"C78216 Response contains edited email address\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C78216 Response contains edited personal name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C78216 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{operator_password_EDIT}}"
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
+                    "exec": [
+                      "operator_email = pm.environment.get(\"operator_email\");",
+                      "operator_password = pm.environment.get(\"operator_password\")",
+                      "operator_personal_name = pm.environment.get(\"operator_personal_name\")",
+                      "",
+                      "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + operator_email);",
+                      "pm.environment.set(\"operator_password_EDIT\", \"EDIT\" + operator_password);",
+                      "pm.environment.set(\"operator_personal_name_EDIT\", \"EDIT\" + operator_personal_name);"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c7347624-a691-4f77-855e-45344ab84fd9",
-          "name": "Delete User",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "670c345d-54af-47e0-a401-d870d811612a",
-                "exec": [
-                  "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
-                  "",
-                  "pm.test(\"C77434 Response does not contain deleted user\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77434 deleteUser gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.result.success).to.eql(true);",
-                  "});",
-                  "",
-                  "pm.test(\"C77434 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{operator_user_name}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "8b9ffd58-5644-458f-b3fe-caf06609c3ff",
+              "name": "Update Admin - Make Operator",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
+                    "exec": [
+                      "pm.test(\"C77451 Admin is now an operator\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"is_admin\":false');",
+                      "});",
+                      "",
+                      "pm.test(\"C77451 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
+                    "exec": [
+                      "user_email = pm.environment.get(\"user_email\");",
+                      "admin_password = pm.environment.get(\"admin_password\");",
+                      "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
+                      "",
+                      "pm.environment.set(\"user_email_EDIT\", \"EDIT\" + user_email);",
+                      "pm.environment.set(\"admin_password_EDIT\", \"EDIT\" + admin_password);",
+                      "pm.environment.set(\"admin_personal_name_EDIT\", \"EDIT\" + admin_personal_name);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "abc489de-de4a-4576-8a27-4741389e2ca7",
+              "name": "Login with New Operator",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                    "exec": [
+                      "pm.test(\"C78218 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "    ",
+                      "pm.test(\"C78218 User is logged in as an operator\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "{{user_name}}"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "{{admin_password_EDIT}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "43ab7b84-7283-4733-9189-d38346728508",
+              "name": "Login Super Admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
+                    "exec": [
+                      "pm.test(\"C77291 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "{{user}}"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "{{password}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}",
+                "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "79aeb40b-21df-4842-b513-e63e65b775ba",
+              "name": "Update Operator - Make Admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
+                    "exec": [
+                      "pm.test(\"C78217 Operator is now an Admin\", function () {",
+                      "    pm.expect(pm.response.text()).to.include('\"is_admin\":true');",
+                      "});",
+                      "",
+                      "pm.test(\"C78217 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "bbf5e62b-a19f-4cf8-aaae-e2ed1224004e",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{operator_user_name}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": true\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "3d220d6c-a2d5-4353-9641-2844cf2f43a5",
+              "name": "Login with New Admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
+                    "exec": [
+                      "pm.test(\"C78219 User is logged in as an admin\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "{{operator_user_name}}"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "{{operator_password_EDIT}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "c7347624-a691-4f77-855e-45344ab84fd9",
+              "name": "Delete User",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "670c345d-54af-47e0-a401-d870d811612a",
+                    "exec": [
+                      "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
+                      "",
+                      "pm.test(\"C77434 Response does not contain deleted user\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77434 deleteUser gives success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.result.success).to.eql(true);",
+                      "});",
+                      "",
+                      "pm.test(\"C77434 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": \"{{user_ID}}\",\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"action\": \"Users\",\n  \"method\": \"deleteUser\",\n  \"data\": [\n    {\n      \"id\": \"{{user_ID}}\",\n      \"username\": \"{{user_Name}}\",\n      \"password\": \"\",\n      \"personal_name\": \"PName\",\n      \"email\": \"jpeeling1528233076@skylinenet.net\",\n      \"date_created\": {\n        \"date\": \"2018-06-05 21:11:18.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"is_admin\": true\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 21\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "deletes the user which was just created and checks to make sure the user was actually set as deleted."
-          },
-          "response": []
+          "_postman_isSubFolder": true
         }
       ]
     },
