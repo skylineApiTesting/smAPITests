@@ -410,12 +410,12 @@
                   "formdata": [
                     {
                       "key": "user",
-                      "value": "sm1000",
+                      "value": "{{admin_user}}",
                       "type": "text"
                     },
                     {
                       "key": "password",
-                      "value": "admin",
+                      "value": "{{admin_password}}",
                       "type": "text"
                     }
                   ]
@@ -457,13 +457,13 @@
                     {
                       "key": "user",
                       "type": "text",
-                      "value": "admin",
+                      "value": "{{admin_user}}",
                       "description": ""
                     },
                     {
                       "key": "password",
                       "type": "text",
-                      "value": "sm1000"
+                      "value": "{{admin_password}}"
                     }
                   ]
                 },
