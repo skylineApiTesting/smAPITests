@@ -532,7 +532,7 @@
                   "script": {
                     "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
                     "exec": [
-                      "pm.test(\"C77441 User was created and variables set.\", function () {",
+                      "/*pm.test(\"C77441 User was created and variables set.\", function () {",
                       "    var jsonData = pm.response.json();",
                       "    pm.expect(jsonData.total) !== null;",
                       "    pm.environment.unset(\"user_ID\");",
@@ -557,7 +557,7 @@
                       "pm.test(\"C77441 Status code is 200\", function () {",
                       "    pm.response.to.have.status(200);",
                       "});",
-                      ""
+                      "*/"
                     ],
                     "type": "text/javascript"
                   }
@@ -589,7 +589,7 @@
                   "mode": "raw",
                   "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{new_admin_username}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_admin_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                 },
-                "url": "{{url}}/{{version}}/direct/router",
+                "url": "http://172.28.12.54/5.0/direct/router",
                 "description": "creates an admin user in stream manager."
               },
               "response": []
