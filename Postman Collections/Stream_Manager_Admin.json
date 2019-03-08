@@ -197,7 +197,7 @@
                     },
                     {
                       "key": "password",
-                      "value": "sm1000",
+                      "value": "{{admin_password}}",
                       "type": "text"
                     }
                   ]
