@@ -1113,497 +1113,499 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "b0761115-5a9f-44c4-bf90-b4a1bc07d021",
-      "name": "Dashboard",
-      "description": "APIs called for the dashboard",
-      "item": [
+        },
         {
-          "_postman_id": "2b634568-8030-48a9-8bfa-a26142827bda",
-          "name": "Login Valid",
+          "_postman_id": "b0761115-5a9f-44c4-bf90-b4a1bc07d021",
+          "name": "Dashboard",
+          "description": "APIs called for the dashboard",
+          "item": [
+            {
+              "_postman_id": "2b634568-8030-48a9-8bfa-a26142827bda",
+              "name": "Login Valid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "{{user}}"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "{{password}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}",
+                "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "7abf719b-64f1-463a-9805-9ae45e3150c2",
+              "name": "Get appliances",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
+                    "exec": [
+                      "pm.test(\"C78220 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78220 Appliances were listed\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.result.success).to.eql(true);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Appliance\",\n\t\"method\": \"getAppliances\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 2\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "85bed344-4d39-4ea4-8d50-3378b810bc4e",
+              "name": "Get sfs capacity",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
+                    "exec": [
+                      "pm.test(\"C77315 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77315 Success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.result.success).to.eql(true);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Capacity\",\n\t\"method\": \"getSfsCapacity\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 14\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            }
+          ],
           "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "7a25dc16-f7c3-4524-a25f-d657026ee1a4",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
             {
               "listen": "test",
               "script": {
-                "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
+                "id": "3e5916ae-656b-492e-b7e6-c426f7b44fb6",
+                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
+                  ""
+                ]
               }
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "01bcc5e0-2f72-4fe6-b438-f55c2427e56d",
+          "name": "Contacts",
+          "description": null,
+          "item": [
+            {
+              "_postman_id": "d9051480-9325-4e1e-b071-5ea9441e1656",
+              "name": "Login Admin",
+              "event": [
                 {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user}}"
+                  "listen": "test",
+                  "script": {
+                    "id": "fd61a154-458c-4402-ab72-e27c9dc2e13f",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "    ",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "{{user}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "58afb9fc-eb76-4e4d-b711-ce2ef4e3228a",
+              "name": "Create New Contact",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
+                    "exec": [
+                      "pm.test(\"C77396 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77396 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e380079a-dd76-479f-a16c-818c47b9259a",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}",
-            "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7abf719b-64f1-463a-9805-9ae45e3150c2",
-          "name": "Get appliances",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
-                "exec": [
-                  "pm.test(\"C78220 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78220 Appliances were listed\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.result.success).to.eql(true);",
-                  "});"
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Appliance\",\n\t\"method\": \"getAppliances\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 2\n}"
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"{{contact_last_name}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"{{contact_primary_phone}}\",\n\t\t\t\t\"title\": \"{{contact_title}}\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"{{contact_company}}\",\n\t\t\t\t\"secondary_phone\": \"{{contact_secondary_phone}}\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
             },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "85bed344-4d39-4ea4-8d50-3378b810bc4e",
-          "name": "Get sfs capacity",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
-                "exec": [
-                  "pm.test(\"C77315 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77315 Success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.result.success).to.eql(true);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Capacity\",\n\t\"method\": \"getSfsCapacity\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 14\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "7a25dc16-f7c3-4524-a25f-d657026ee1a4",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "3e5916ae-656b-492e-b7e6-c426f7b44fb6",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "_postman_id": "01bcc5e0-2f72-4fe6-b438-f55c2427e56d",
-      "name": "Contacts",
-      "description": null,
-      "item": [
-        {
-          "_postman_id": "d9051480-9325-4e1e-b071-5ea9441e1656",
-          "name": "Login Admin",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "fd61a154-458c-4402-ab72-e27c9dc2e13f",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "    ",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "ec491ad1-346f-4655-9d74-cee38e14fb83",
+              "name": "Retrieve Contact",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "e4558a59-a6eb-4806-a91f-254c36501ff1",
+                    "exec": [
+                      "pm.test(\"C78221 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"getContacts\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78221 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "contact_name = pm.environment.get(\"contact_name\");",
+                      "contact_last_name = pm.environment.get(\"contact_last_name\");",
+                      "contact_primary_phone = pm.environment.get(\"contact_primary_phone\");",
+                      "contact_title = pm.environment.get(\"contact_title\");",
+                      "contact_company = pm.environment.get(\"contact_company\");",
+                      "contact_secondary_phone = pm.environment.get(\"contact_secondary_phone\");",
+                      "contact_email = pm.environment.get(\"contact_email\");",
+                      "",
+                      "pm.test(\"C78221 Contact name is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_name);",
+                      "});",
+                      "pm.test(\"C78221 Contact last name is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_last_name);",
+                      "});",
+                      "pm.test(\"C78221 Contact primary phone is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_primary_phone);",
+                      "});",
+                      "pm.test(\"C78221 Contact title is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_title);",
+                      "});",
+                      "pm.test(\"C78221 Contact company is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_company);",
+                      "});",
+                      "pm.test(\"C78221 Contact secondary phone is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_secondary_phone);",
+                      "});",
+                      "pm.test(\"C78221 Contact email is saved\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_email);",
+                      "});",
+                      "",
+                      "//Setting up for next test",
+                      "pm.test(\"C78221 User was created and variables set.\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.total) !== null;",
+                      "    ",
+                      "    pm.environment.unset(\"contact_id\");",
+                      "    ",
+                      "    pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }\n]\n"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "b5110405-2da9-4188-a992-c79a12132f3b",
+              "name": "Update Contact",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "0cf5a165-a291-4811-81ef-da4a318a6fb4",
+                    "exec": [
+                      "contact_name = pm.environment.get(\"contact_name\");",
+                      "pm.environment.set(\"contact_name_EDIT\", contact_name + \"EDIT\");",
+                      "",
+                      "contact_last_name = pm.environment.get(\"contact_last_name\");",
+                      "pm.environment.set(\"contact_last_name_EDIT\", contact_last_name + \"EDIT\");",
+                      "",
+                      "contact_title = pm.environment.get(\"contact_title\");",
+                      "pm.environment.set(\"contact_title_EDIT\", contact_title + \"EDIT\");",
+                      "",
+                      "contact_company = pm.environment.get(\"contact_company\");",
+                      "pm.environment.set(\"contact_company_EDIT\", contact_company + \"EDIT\");",
+                      "",
+                      "pm.environment.set(\"contact_secondary_phone_EDIT\", \"111-111-1115\");",
+                      "",
+                      "contact_email = pm.environment.get(\"contact_email\");",
+                      "pm.environment.set(\"contact_email_EDIT\", contact_email + \"EDIT\");",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "value": "{{password}}",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "e7db2ce3-0949-47cc-a29f-e0458198eb4b",
+                    "exec": [
+                      "contact_name_EDIT = pm.environment.get(\"contact_name_EDIT\");",
+                      "contact_last_name_EDIT = pm.environment.get(\"contact_last_name_EDIT\");",
+                      "contact_title_EDIT = pm.environment.get(\"contact_title_EDIT\");",
+                      "contact_company_EDIT = pm.environment.get(\"contact_company_EDIT\");",
+                      "contact_secondary_phone_EDIT = pm.environment.get(\"contact_secondary_phone_EDIT\");",
+                      "contact_email_EDIT = pm.environment.get(\"contact_email_EDIT\");",
+                      "",
+                      "pm.test(\"C77395 Body includes edited first name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_name_EDIT);",
+                      "});",
+                      "pm.test(\"C77395 Body includes edited last name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_last_name_EDIT);",
+                      "});",
+                      "pm.test(\"C77395 Body includes edited title\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_title_EDIT);",
+                      "});",
+                      "pm.test(\"C77395 Body includes edited company\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_company_EDIT);",
+                      "});",
+                      "pm.test(\"C77395 Body includes edited secondary phone name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_secondary_phone_EDIT);",
+                      "});",
+                      "pm.test(\"C77395 Body includes edited email\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_email_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77395 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77395 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"updateContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "58afb9fc-eb76-4e4d-b711-ce2ef4e3228a",
-          "name": "Create New Contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
-                "exec": [
-                  "pm.test(\"C77396 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77396 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  ""
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[{\n  \"action\": \"Contact\",\n  \"method\": \"updateContact\",\n  \"data\": [\n    {\n      \"first_name\": \"{{contact_name_EDIT}}\",\n      \"last_name\": \"{{contact_last_name_EDIT}}\",\n      \"last_updated\": {\n        \"date\": \"2018-06-11 14:18:14.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"primary_phone\": \"412-576-1000\",\n      \"title\": \"{{contact_title_EDIT}}\",\n      \"last_updated_by\": \"Stream Manager\",\n      \"company_name\": \"{{contact_company_EDIT}}\",\n      \"secondary_phone\": \"{{contact_secondary_phone_EDIT}}\",\n      \"email_address\": \"{{contact_email_EDIT}}@gmail.com\",\n      \"displayx\": \"793209 Allemang\",\n      \"id\": \"{{contact_id}}\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 29\n},\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
             },
             {
-              "listen": "prerequest",
-              "script": {
-                "id": "e380079a-dd76-479f-a16c-818c47b9259a",
-                "exec": [
-                  ""
+              "_postman_id": "6c50932d-fbf2-448f-a6fc-c66c446f3cf0",
+              "name": "Delete Contact",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "77edff98-14e0-4f52-8bdb-f90fc2fe7ea2",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "b2a7a52d-a9b8-4b10-aaa9-5a5ba3acbce3",
+                    "exec": [
+                      "contact_name_EDIT = pm.environment.get(\"contact_name_EDIT\");",
+                      "contact_last_name_EDIT = pm.environment.get(\"contact_last_name_EDIT\");",
+                      "contact_title_EDIT = pm.environment.get(\"contact_title_EDIT\");",
+                      "contact_company_EDIT = pm.environment.get(\"contact_company_EDIT\");",
+                      "contact_secondary_phone_EDIT = pm.environment.get(\"contact_secondary_phone_EDIT\");",
+                      "contact_email_EDIT = pm.environment.get(\"contact_email_EDIT\");",
+                      "",
+                      "pm.test(\"C77399 Body does not include edited first name\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(contact_name_EDIT);",
+                      "});",
+                      "pm.test(\"C77399 Body does not include edited last name\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(contact_last_name_EDIT);",
+                      "});",
+                      "pm.test(\"C77399 Body does not include edited title\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(contact_title_EDIT);",
+                      "});",
+                      "pm.test(\"C77399 Body does not include edited company\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(contact_company_EDIT);",
+                      "});",
+                      "pm.test(\"C77399 Body does not include edited secondary phone name\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(contact_secondary_phone_EDIT);",
+                      "});",
+                      "pm.test(\"C77399 Body does not include edited email\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(contact_email_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77399 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77399 deleteContact gives success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData[1].result.success).to.eql(true);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"deleteContact\",\n    \"data\": [\n      {\n        \"first_name\": \"{{contact_first_name_EDIT}}\",\n        \"last_name\": \"bfdbfdsdf\",\n        \"last_updated\": {\n          \"date\": \"2018-06-08 17:53:23.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"primary_phone\": \"444-168-6533\",\n        \"title\": \"bdfdfgbdf\",\n        \"last_updated_by\": \"Stream Manager\",\n        \"company_name\": \"bdfsdbdf\",\n        \"secondary_phone\": \"\",\n        \"email_address\": \"{{contact_email}}@gmail.com\",\n        \"displayx\": \"1111\",\n        \"id\": \"{{contact_id}}\"\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 28\n  },\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"last_name\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 107\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"{{contact_last_name}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"{{contact_primary_phone}}\",\n\t\t\t\t\"title\": \"{{contact_title}}\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"{{contact_company}}\",\n\t\t\t\t\"secondary_phone\": \"{{contact_secondary_phone}}\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ec491ad1-346f-4655-9d74-cee38e14fb83",
-          "name": "Retrieve Contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e4558a59-a6eb-4806-a91f-254c36501ff1",
-                "exec": [
-                  "pm.test(\"C78221 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"getContacts\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78221 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "contact_name = pm.environment.get(\"contact_name\");",
-                  "contact_last_name = pm.environment.get(\"contact_last_name\");",
-                  "contact_primary_phone = pm.environment.get(\"contact_primary_phone\");",
-                  "contact_title = pm.environment.get(\"contact_title\");",
-                  "contact_company = pm.environment.get(\"contact_company\");",
-                  "contact_secondary_phone = pm.environment.get(\"contact_secondary_phone\");",
-                  "contact_email = pm.environment.get(\"contact_email\");",
-                  "",
-                  "pm.test(\"C78221 Contact name is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_name);",
-                  "});",
-                  "pm.test(\"C78221 Contact last name is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_last_name);",
-                  "});",
-                  "pm.test(\"C78221 Contact primary phone is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_primary_phone);",
-                  "});",
-                  "pm.test(\"C78221 Contact title is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_title);",
-                  "});",
-                  "pm.test(\"C78221 Contact company is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_company);",
-                  "});",
-                  "pm.test(\"C78221 Contact secondary phone is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_secondary_phone);",
-                  "});",
-                  "pm.test(\"C78221 Contact email is saved\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_email);",
-                  "});",
-                  "",
-                  "//Setting up for next test",
-                  "pm.test(\"C78221 User was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    ",
-                  "    pm.environment.unset(\"contact_id\");",
-                  "    ",
-                  "    pm.environment.set(\"contact_id\",jsonData[0].result.records[0].id);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }\n]\n"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b5110405-2da9-4188-a992-c79a12132f3b",
-          "name": "Update Contact",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "0cf5a165-a291-4811-81ef-da4a318a6fb4",
-                "exec": [
-                  "contact_name = pm.environment.get(\"contact_name\");",
-                  "pm.environment.set(\"contact_name_EDIT\", contact_name + \"EDIT\");",
-                  "",
-                  "contact_last_name = pm.environment.get(\"contact_last_name\");",
-                  "pm.environment.set(\"contact_last_name_EDIT\", contact_last_name + \"EDIT\");",
-                  "",
-                  "contact_title = pm.environment.get(\"contact_title\");",
-                  "pm.environment.set(\"contact_title_EDIT\", contact_title + \"EDIT\");",
-                  "",
-                  "contact_company = pm.environment.get(\"contact_company\");",
-                  "pm.environment.set(\"contact_company_EDIT\", contact_company + \"EDIT\");",
-                  "",
-                  "pm.environment.set(\"contact_secondary_phone_EDIT\", \"111-111-1115\");",
-                  "",
-                  "contact_email = pm.environment.get(\"contact_email\");",
-                  "pm.environment.set(\"contact_email_EDIT\", contact_email + \"EDIT\");",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "e7db2ce3-0949-47cc-a29f-e0458198eb4b",
-                "exec": [
-                  "contact_name_EDIT = pm.environment.get(\"contact_name_EDIT\");",
-                  "contact_last_name_EDIT = pm.environment.get(\"contact_last_name_EDIT\");",
-                  "contact_title_EDIT = pm.environment.get(\"contact_title_EDIT\");",
-                  "contact_company_EDIT = pm.environment.get(\"contact_company_EDIT\");",
-                  "contact_secondary_phone_EDIT = pm.environment.get(\"contact_secondary_phone_EDIT\");",
-                  "contact_email_EDIT = pm.environment.get(\"contact_email_EDIT\");",
-                  "",
-                  "pm.test(\"C77395 Body includes edited first name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_name_EDIT);",
-                  "});",
-                  "pm.test(\"C77395 Body includes edited last name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_last_name_EDIT);",
-                  "});",
-                  "pm.test(\"C77395 Body includes edited title\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_title_EDIT);",
-                  "});",
-                  "pm.test(\"C77395 Body includes edited company\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_company_EDIT);",
-                  "});",
-                  "pm.test(\"C77395 Body includes edited secondary phone name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_secondary_phone_EDIT);",
-                  "});",
-                  "pm.test(\"C77395 Body includes edited email\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_email_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77395 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77395 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"updateContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[{\n  \"action\": \"Contact\",\n  \"method\": \"updateContact\",\n  \"data\": [\n    {\n      \"first_name\": \"{{contact_name_EDIT}}\",\n      \"last_name\": \"{{contact_last_name_EDIT}}\",\n      \"last_updated\": {\n        \"date\": \"2018-06-11 14:18:14.000000\",\n        \"timezone_type\": 3,\n        \"timezone\": \"GMT\"\n      },\n      \"primary_phone\": \"412-576-1000\",\n      \"title\": \"{{contact_title_EDIT}}\",\n      \"last_updated_by\": \"Stream Manager\",\n      \"company_name\": \"{{contact_company_EDIT}}\",\n      \"secondary_phone\": \"{{contact_secondary_phone_EDIT}}\",\n      \"email_address\": \"{{contact_email_EDIT}}@gmail.com\",\n      \"displayx\": \"793209 Allemang\",\n      \"id\": \"{{contact_id}}\"\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 29\n},\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6c50932d-fbf2-448f-a6fc-c66c446f3cf0",
-          "name": "Delete Contact",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "77edff98-14e0-4f52-8bdb-f90fc2fe7ea2",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "b2a7a52d-a9b8-4b10-aaa9-5a5ba3acbce3",
-                "exec": [
-                  "contact_name_EDIT = pm.environment.get(\"contact_name_EDIT\");",
-                  "contact_last_name_EDIT = pm.environment.get(\"contact_last_name_EDIT\");",
-                  "contact_title_EDIT = pm.environment.get(\"contact_title_EDIT\");",
-                  "contact_company_EDIT = pm.environment.get(\"contact_company_EDIT\");",
-                  "contact_secondary_phone_EDIT = pm.environment.get(\"contact_secondary_phone_EDIT\");",
-                  "contact_email_EDIT = pm.environment.get(\"contact_email_EDIT\");",
-                  "",
-                  "pm.test(\"C77399 Body does not include edited first name\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(contact_name_EDIT);",
-                  "});",
-                  "pm.test(\"C77399 Body does not include edited last name\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(contact_last_name_EDIT);",
-                  "});",
-                  "pm.test(\"C77399 Body does not include edited title\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(contact_title_EDIT);",
-                  "});",
-                  "pm.test(\"C77399 Body does not include edited company\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(contact_company_EDIT);",
-                  "});",
-                  "pm.test(\"C77399 Body does not include edited secondary phone name\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(contact_secondary_phone_EDIT);",
-                  "});",
-                  "pm.test(\"C77399 Body does not include edited email\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(contact_email_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77399 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77399 deleteContact gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"deleteContact\",\n    \"data\": [\n      {\n        \"first_name\": \"{{contact_first_name_EDIT}}\",\n        \"last_name\": \"bfdbfdsdf\",\n        \"last_updated\": {\n          \"date\": \"2018-06-08 17:53:23.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"primary_phone\": \"444-168-6533\",\n        \"title\": \"bdfdfgbdf\",\n        \"last_updated_by\": \"Stream Manager\",\n        \"company_name\": \"bdfsdbdf\",\n        \"secondary_phone\": \"\",\n        \"email_address\": \"{{contact_email}}@gmail.com\",\n        \"displayx\": \"1111\",\n        \"id\": \"{{contact_id}}\"\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 28\n  },\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25,\n        \"sort\": [\n          {\n            \"property\": \"last_name\",\n            \"direction\": \"ASC\"\n          }\n        ]\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 107\n  }\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
+          "_postman_isSubFolder": true
         }
       ]
     },
