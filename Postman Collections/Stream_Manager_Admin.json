@@ -536,24 +536,22 @@
                       "    var jsonData = pm.response.json();",
                       "    pm.expect(jsonData.total) !== null;",
                       "    pm.environment.unset(\"user_ID\");",
-                      "    pm.environment.unset(\"user_name\");",
                       "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
-                      "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
                       "});",
                       "",
                       "pm.test(\"C77441 Body shows success message\", function () {",
                       "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
                       "});",
                       "",
-                      "user_email = pm.environment.get(\"user_email\");",
-                      "admin_personal_name = pm.environment.get(\"admin_personal_name\");",
+                      "//user_email = pm.environment.get(\"user_email\");",
+                      "//admin_personal_name = pm.environment.get(\"admin_personal_name\");",
                       "",
                       "pm.test(\"C77441 Body has email\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(user_email);",
+                      "    pm.expect(pm.response.text()).to.include(new_admin_user_email);",
                       "});",
                       "",
                       "pm.test(\"C77441 Body has personal name\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(admin_personal_name);",
+                      "    pm.expect(pm.response.text()).to.include(new_admin_personal_name);",
                       "});",
                       "",
                       "pm.test(\"C77441 Status code is 200\", function () {",
@@ -569,17 +567,10 @@
                   "script": {
                     "id": "48710cc8-7321-4f55-b607-bab44c69a186",
                     "exec": [
-                      "pm.environment.unset(\"new_admin_username\");",
-                      "pm.environment.unset(\"new_admin_password\");",
-                      "pm.environment.unset(\"new_user_email\");",
-                      "pm.environment.unset(\"new_admin_password\");",
-                      "",
-                      "var user_name = Math.floor((Math.random() * 1000000) + 1);",
-                      "var user_email = Math.floor((Math.random() * 1000000) + 1);",
-                      "",
-                      "pm.environment.set(\"new_admin_username\", user_name);",
+                      "pm.environment.set(\"new_admin_username\", \"callemang\");",
                       "pm.environment.set(\"new_admin_password\", \"streammanager\");",
-                      "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");",
+                      "pm.environment.set(\"new_admin_personal_name\", \"Christopher\");",
+                      "pm.environment.set(\"new_admin_user_email\", \"c.m.allemang@gmail.com\");",
                       ""
                     ],
                     "type": "text/javascript"
@@ -596,7 +587,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{new_admin_username}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{new_admin_username}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_admin_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                 },
                 "url": "{{url}}/{{version}}/direct/router",
                 "description": "creates an admin user in stream manager."
