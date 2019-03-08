@@ -4365,579 +4365,580 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "e7b754c1-ed2d-44f7-aa1d-4d32b611d586",
-      "name": "getByBounds Calls",
-      "description": null,
-      "item": [
-        {
-          "_postman_id": "825d99d0-8a93-4930-937e-357ede9fb7b4",
-          "name": "getByBounds Json Format, Valid Key",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "76cbfd0e-8e2b-42b1-8099-3447a6371de0",
-                "exec": [
-                  "pm.test(\"C77956 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77956 Body is JSON format\", function () {",
-                  "    pm.response.to.be.json;",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=13&lng=40&radius=1000&active=1",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "13",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "40",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "1",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: attempts to grab cameras in Json format with a valid API key. \n\nexpectation: return list of cameras in json format."
-          },
-          "response": []
         },
         {
-          "_postman_id": "01423f7d-263c-4a50-bcf8-96cc00fc1f99",
-          "name": "getByBounds Json Format, Invalid Key",
-          "event": [
+          "_postman_id": "e7b754c1-ed2d-44f7-aa1d-4d32b611d586",
+          "name": "getByBounds Calls",
+          "description": null,
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "0d73228b-3eb2-4a76-ab7f-4a8b0f90d9d8",
-                "exec": [
-                  "pm.test(\"C77957 Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "});",
-                  "",
-                  "pm.test(\"C77957 Verify invalid API error message is provided\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY=ABC123&format=json&lat=33&lng=33&radius=1000&active=1",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
+              "_postman_id": "825d99d0-8a93-4930-937e-357ede9fb7b4",
+              "name": "getByBounds Json Format, Valid Key",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "ABC123",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "1",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "76cbfd0e-8e2b-42b1-8099-3447a6371de0",
+                    "exec": [
+                      "pm.test(\"C77956 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77956 Body is JSON format\", function () {",
+                      "    pm.response.to.be.json;",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=13&lng=40&radius=1000&active=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "13",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "40",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "1",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras in Json format with a valid API key. \n\nexpectation: return list of cameras in json format."
+              },
+              "response": []
             },
-            "description": "description: attempts to grab all cameras which can be currently pulled from stream manager with an invalid API key.\n\nexpectation: 403 error"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ff9965ba-a131-49f8-bf94-f5c3e05ddb25",
-          "name": "getByBounds JsonP Format, Valid Key",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "c7a87241-8255-4da7-8972-53e88ceacb48",
-                "exec": [
-                  "pm.test(\"C77958 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=jsonp&lat=33&lng=33&radius=1000&active=1",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
+              "_postman_id": "01423f7d-263c-4a50-bcf8-96cc00fc1f99",
+              "name": "getByBounds Json Format, Invalid Key",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "jsonp",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "1",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "0d73228b-3eb2-4a76-ab7f-4a8b0f90d9d8",
+                    "exec": [
+                      "pm.test(\"C77957 Status code is 403\", function () {",
+                      "    pm.response.to.have.status(403);",
+                      "});",
+                      "",
+                      "pm.test(\"C77957 Verify invalid API error message is provided\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY=ABC123&format=json&lat=33&lng=33&radius=1000&active=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "ABC123",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "1",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab all cameras which can be currently pulled from stream manager with an invalid API key.\n\nexpectation: 403 error"
+              },
+              "response": []
             },
-            "description": "description: attempts to grab cameras in JSONP format. \n\nexpectation: return cameras in JSONP format."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6073a274-90a0-4691-be7d-b68a3d8dbe7c",
-          "name": "getByBounds XML Format, Valid Key",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "070d143d-35f2-4a24-84a4-6875ed240ba5",
-                "exec": [
-                  "pm.test(\"C77959 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77959 Body is in XML format\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=xml&lat=33&lng=33&radius=1000&active=1",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
+              "_postman_id": "ff9965ba-a131-49f8-bf94-f5c3e05ddb25",
+              "name": "getByBounds JsonP Format, Valid Key",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "xml",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "1",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "c7a87241-8255-4da7-8972-53e88ceacb48",
+                    "exec": [
+                      "pm.test(\"C77958 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=jsonp&lat=33&lng=33&radius=1000&active=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonp",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "1",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras in JSONP format. \n\nexpectation: return cameras in JSONP format."
+              },
+              "response": []
             },
-            "description": "description: attempts to grab cameras in XML format. \n\nexpectation: return XML list of cameras."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "756af524-c0da-4029-8d47-2affd0bcca9b",
-          "name": "getByBounds Invalid Format, Valid Key",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "5aee534c-eefb-40b6-b224-d2f43eaf2747",
-                "exec": [
-                  "pm.test(\"C77960 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=ABC123&lat=33&lng=33&radius=1000&active=1",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
+              "_postman_id": "6073a274-90a0-4691-be7d-b68a3d8dbe7c",
+              "name": "getByBounds XML Format, Valid Key",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "ABC123",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "1",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "070d143d-35f2-4a24-84a4-6875ed240ba5",
+                    "exec": [
+                      "pm.test(\"C77959 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77959 Body is in XML format\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=xml&lat=33&lng=33&radius=1000&active=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "xml",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "1",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras in XML format. \n\nexpectation: return XML list of cameras."
+              },
+              "response": []
             },
-            "description": "description: attempts to grab cameras in a random format (\"ABC123\"). not a real format and therefore not supported\n\nexpectation: not sure. currently it just returns XML format. i'll put a ticket in or ask someone how it should actually behave."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "787a56e1-a190-463f-a2ef-0734e7226d0d",
-          "name": "getByBounds Invalid Lat/Longs",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "6a6aaa2a-16b7-4a71-85c0-51fe82b99c00",
-                "exec": [
-                  "pm.test(\"C77961 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=AB&lng=CD&radius=1000&active=1",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
+              "_postman_id": "756af524-c0da-4029-8d47-2affd0bcca9b",
+              "name": "getByBounds Invalid Format, Valid Key",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "AB",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "CD",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "1",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "5aee534c-eefb-40b6-b224-d2f43eaf2747",
+                    "exec": [
+                      "pm.test(\"C77960 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=ABC123&lat=33&lng=33&radius=1000&active=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "ABC123",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "1",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras in a random format (\"ABC123\"). not a real format and therefore not supported\n\nexpectation: not sure. currently it just returns XML format. i'll put a ticket in or ask someone how it should actually behave."
+              },
+              "response": []
             },
-            "description": "description: attempts to grab cameras in json format but provides bogus data to long/lat\n\nexpectation: still returns, just based on a long lat of 0,0... maybe we should provide an error message instead."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "46fbec71-e6ef-44ee-a0c6-1e993bdedd4c",
-          "name": "getByBounds Find Inactive Cameras",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "77be54ce-3ab1-4200-9794-b625e84a993e",
-                "exec": [
-                  "pm.test(\"C77962 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77962 Body just has empty Feature Collection\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"FeatureCollection\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=33&lng=33&radius=1000&active=0",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getByBounds"
-              ],
-              "query": [
+              "_postman_id": "787a56e1-a190-463f-a2ef-0734e7226d0d",
+              "name": "getByBounds Invalid Lat/Longs",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                },
-                {
-                  "key": "lat",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "lng",
-                  "value": "33",
-                  "equals": true
-                },
-                {
-                  "key": "radius",
-                  "value": "1000",
-                  "equals": true
-                },
-                {
-                  "key": "active",
-                  "value": "0",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "6a6aaa2a-16b7-4a71-85c0-51fe82b99c00",
+                    "exec": [
+                      "pm.test(\"C77961 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=AB&lng=CD&radius=1000&active=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "AB",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "CD",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "1",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras in json format but provides bogus data to long/lat\n\nexpectation: still returns, just based on a long lat of 0,0... maybe we should provide an error message instead."
+              },
+              "response": []
             },
-            "description": "description: attempts to grab cameras with active marked as 0\n\nexpectation: not sure. so far i have never had results returned for this. so i'm not sure what the point is of specifying this flag."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0497e021-d11c-4993-a036-ec34bbdd9c4a",
-          "name": "Delete API Key",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
-                "exec": [
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\"Response does not contain deleted key\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
-                  "});",
-                  "",
-                  "pm.test(\"deleteApiKey gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Api key was deleted\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
-                  "});",
-                  ""
+              "_postman_id": "46fbec71-e6ef-44ee-a0c6-1e993bdedd4c",
+              "name": "getByBounds Find Inactive Cameras",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "77be54ce-3ab1-4200-9794-b625e84a993e",
+                    "exec": [
+                      "pm.test(\"C77962 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77962 Body just has empty Feature Collection\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"FeatureCollection\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=json&lat=33&lng=33&radius=1000&active=0",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getByBounds"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    },
+                    {
+                      "key": "lat",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "lng",
+                      "value": "33",
+                      "equals": true
+                    },
+                    {
+                      "key": "radius",
+                      "value": "1000",
+                      "equals": true
+                    },
+                    {
+                      "key": "active",
+                      "value": "0",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras with active marked as 0\n\nexpectation: not sure. so far i have never had results returned for this. so i'm not sure what the point is of specifying this flag."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "0497e021-d11c-4993-a036-ec34bbdd9c4a",
+              "name": "Delete API Key",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
+                    "exec": [
+                      "user_key = pm.environment.get(\"user_key\");",
+                      "",
+                      "pm.test(\"Response does not contain deleted key\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                      "});",
+                      "",
+                      "pm.test(\"deleteApiKey gives success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData[1].result.success).to.eql(true);",
+                      "});",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Api key was deleted\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "deletes an api key"
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "deletes an api key"
-          },
-          "response": []
+          "_postman_isSubFolder": true
         }
       ]
     },
