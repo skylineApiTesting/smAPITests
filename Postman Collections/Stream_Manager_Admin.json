@@ -2325,1010 +2325,1012 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "6226ddca-a008-4c5a-9a10-90e54ff1d21e",
-      "name": "API Keys",
-      "description": null,
-      "item": [
+        },
         {
-          "_postman_id": "4b9eb684-cda9-4018-a861-17bf64ec0751",
-          "name": "Login Admin",
-          "event": [
+          "_postman_id": "6226ddca-a008-4c5a-9a10-90e54ff1d21e",
+          "name": "API Keys",
+          "description": null,
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "8b88e99b-2738-40ce-a88b-42a2f6a65b93",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "4b9eb684-cda9-4018-a861-17bf64ec0751",
+              "name": "Login Admin",
+              "event": [
                 {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user}}"
-                },
-                {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
+                  "listen": "test",
+                  "script": {
+                    "id": "8b88e99b-2738-40ce-a88b-42a2f6a65b93",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d5985e16-efb2-4f65-b885-f39ae5cdcb79",
-          "name": "Create New Contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
-                "exec": [
-                  "pm.test(\"Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "contact_name = pm.environment.get(\"contact_name\");",
-                  "",
-                  "pm.test(\"Body has contact\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_name);",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "// Set up next test",
-                  "var obj = pm.response.json();",
-                  "var record;",
-                  "pm.environment.unset(\"contact_id\");",
-                  "for (var i = 0; i < obj[1].result.total; i++) {",
-                  "    if (obj[1].result.records[i].first_name == contact_name) {",
-                  "        record = obj[1].result.records[i].id;",
-                  "    }",
-                  "}",
-                  "pm.environment.set(\"contact_id\",record);",
-                  "console.log(record);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e380079a-dd76-479f-a16c-818c47b9259a",
-                "exec": [
-                  "pm.environment.unset(\"contact_name\");",
-                  "pm.environment.unset(\"contact_email\");",
-                  "",
-                  "var first_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var email = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"contact_name\", first_name);",
-                  "pm.environment.set(\"contact_email\", email);",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "37d4d664-8499-457e-a0ad-d4cb8d2d956a",
-          "name": "Create API Key",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1181797c-a819-4e06-a600-15bec4595719",
-                "exec": [
-                  "pm.test(\"C77964 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\"C77964 API Key was created and variables set.\", function () {",
-                  "    var obj = JSON.parse(pm.response.text());",
-                  "    var record = null;",
-                  "    contact_id = pm.environment.get(\"contact_id\");",
-                  "",
-                  "    for (var i = 0; i < obj[1].result.total; i++){",
-                  "        if (obj[1].result.records[i].zone_id == 2 && obj[1].result.records[i].contact_id == contact_id){",
-                  "            record = obj[1].result.records[i];",
-                  "        }",
-                  "    }",
-                  "    pm.environment.unset(\"user_key\");",
-                  "    pm.environment.set(\"user_key\",record.user_key);",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\"C77964 Body has new key\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_key);",
-                  "});",
-                  "",
-                  "pm.test(\"C77964 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77964 API Key list is not empty\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "eb567c1c-671f-4829-a609-7b6f02754479",
-          "name": "Retrieve API keys",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
-                "exec": [
-                  "var obj = JSON.parse(pm.response.text());",
-                  "var record = null;",
-                  "",
-                  "contact_id = pm.environment.get(\"contact_id\");",
-                  "",
-                  "for (var i = 0; i < obj.result.total; i++){",
-                  "    if (obj.result.records[i].zone_id == 2 && obj.result.records[i].contact_id == contact_id){",
-                  "        record = obj.result.records[i];",
-                  "    }",
-                  "}",
-                  "",
-                  "pm.test(\"C78005 Correct Zone\", function () {",
-                  "    pm.expect(record.zone_name === \"SSL VPN\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78005 Correct Contact\", function () {",
-                  "    pm.expect(record.first_name === \"Bertha\");",
-                  "    pm.expect(record.last_name === \"Shakira\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78005 Response record contains an API key\", function () {",
-                  "    pm.expect(record.user_key!==null);",
-                  "});",
-                  "",
-                  "pm.environment.unset(\"user_API_Key\");",
-                  "pm.environment.set(\"user_API_Key\", record.user_key);",
-                  "",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"ApiKey\",\n\t\"method\": \"getApikeys\",\n\t\"data\": [\n\t  {\n\t    \"page\": 1,\n\t    \"start\": 0,\n\t    \"limit\": 25\n\t  }\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 20\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all the API keys."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c14c9d11-6088-40e3-aa52-ff7f23942e55",
-          "name": "GetAll streams - Only Streams from Zone",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "exec": [
-                  "pm.test(\"C78006 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78006 Body is JSON format\", function () {",
-                  "    pm.response.to.be.json;",
-                  "});",
-                  "",
-                  "pm.test(\"C78006 Streams in API Zone received\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"test_stream_cam_to_multiple_sfs\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78006 Streams not in API Zone are not received\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
-              "host": [
-                "{{url}}"
               ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "{{user}}"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "{{password}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "d5985e16-efb2-4f65-b885-f39ae5cdcb79",
+              "name": "Create New Contact",
+              "event": [
                 {
-                  "key": "X-API-KEY",
-                  "value": "{{user_API_Key}}",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
+                    "exec": [
+                      "pm.test(\"Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "contact_name = pm.environment.get(\"contact_name\");",
+                      "",
+                      "pm.test(\"Body has contact\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_name);",
+                      "});",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "// Set up next test",
+                      "var obj = pm.response.json();",
+                      "var record;",
+                      "pm.environment.unset(\"contact_id\");",
+                      "for (var i = 0; i < obj[1].result.total; i++) {",
+                      "    if (obj[1].result.records[i].first_name == contact_name) {",
+                      "        record = obj[1].result.records[i].id;",
+                      "    }",
+                      "}",
+                      "pm.environment.set(\"contact_id\",record);",
+                      "console.log(record);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e380079a-dd76-479f-a16c-818c47b9259a",
+                    "exec": [
+                      "pm.environment.unset(\"contact_name\");",
+                      "pm.environment.unset(\"contact_email\");",
+                      "",
+                      "var first_name = Math.floor((Math.random() * 1000000) + 1);",
+                      "var email = Math.floor((Math.random() * 1000000) + 1);",
+                      "",
+                      "pm.environment.set(\"contact_name\", first_name);",
+                      "pm.environment.set(\"contact_email\", email);",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "838ac33b-be92-489c-a6e4-66995ca46496",
-          "name": "Delete API Key",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
-                "exec": [
-                  "user_key = pm.environment.get(\"user_API_Key\");",
-                  "",
-                  "pm.test(\"C77967 Response does not contain deleted key\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
-                  "});",
-                  "",
-                  "pm.test(\"C77967 deleteApiKey gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
-                  "});",
-                  "",
-                  "pm.test(\"C77967 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77967 Api key was deleted\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(user_key);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_API_Key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "deletes an api key"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6aec071e-5b87-4a8b-a5fe-f8a0f8f15702",
-          "name": "GetAll Steams - No Streams From Deleted API Key's Zone",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "exec": [
-                  "pm.test(\"C78007 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78007 Body is JSON format\", function () {",
-                  "    pm.response.to.be.json;",
-                  "});",
-                  "",
-                  "pm.test(\"C78007 Streams in deleted API key's Zone not received\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(\"test_stream_cam_to_multiple_sfs\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78007 Streams not in deleted API key's Zone are not received\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
-              "host": [
-                "{{url}}"
               ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_API_Key}}",
-                  "equals": true
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
                 },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "37d4d664-8499-457e-a0ad-d4cb8d2d956a",
+              "name": "Create API Key",
+              "event": [
                 {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "1181797c-a819-4e06-a600-15bec4595719",
+                    "exec": [
+                      "pm.test(\"C77964 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "user_key = pm.environment.get(\"user_key\");",
+                      "",
+                      "pm.test(\"C77964 API Key was created and variables set.\", function () {",
+                      "    var obj = JSON.parse(pm.response.text());",
+                      "    var record = null;",
+                      "    contact_id = pm.environment.get(\"contact_id\");",
+                      "",
+                      "    for (var i = 0; i < obj[1].result.total; i++){",
+                      "        if (obj[1].result.records[i].zone_id == 2 && obj[1].result.records[i].contact_id == contact_id){",
+                      "            record = obj[1].result.records[i];",
+                      "        }",
+                      "    }",
+                      "    pm.environment.unset(\"user_key\");",
+                      "    pm.environment.set(\"user_key\",record.user_key);",
+                      "});",
+                      "",
+                      "user_key = pm.environment.get(\"user_key\");",
+                      "",
+                      "pm.test(\"C77964 Body has new key\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_key);",
+                      "});",
+                      "",
+                      "pm.test(\"C77964 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77964 API Key list is not empty\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.total) !== null;",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "c4343393-06b1-440c-b256-83acd8b55209",
-      "name": "GetAll Calls",
-      "description": null,
-      "item": [
-        {
-          "_postman_id": "ca98f504-1535-4ac2-be2c-bfd4418183b9",
-          "name": "Create New Contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
-                "exec": [
-                  "pm.test(\"Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "contact_name = pm.environment.get(\"contact_name\");",
-                  "",
-                  "pm.test(\"Body has contact\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(contact_name);",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "// Set up next test",
-                  "var obj = pm.response.json();",
-                  "console.log(contact_name);",
-                  "console.log(obj);",
-                  "var record;",
-                  "pm.environment.unset(\"contact_id\");",
-                  "for (var i = 0; i < obj[1].result.total; i++) {",
-                  "    if (obj[1].result.records[i].first_name == contact_name) {",
-                  "        record = obj[1].result.records[i].id;",
-                  "    }",
-                  "}",
-                  "pm.environment.set(\"contact_id\",record);",
-                  "console.log(record);",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e380079a-dd76-479f-a16c-818c47b9259a",
-                "exec": [
-                  "pm.environment.unset(\"contact_name\");",
-                  "pm.environment.unset(\"contact_email\");",
-                  "",
-                  "var first_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var email = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"contact_name\", first_name);",
-                  "pm.environment.set(\"contact_email\", email);",
-                  "",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "bea9d7b8-6178-4887-9703-ede4cde63f5b",
-          "name": "Create API Key",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1181797c-a819-4e06-a600-15bec4595719",
-                "exec": [
-                  "pm.test(\" Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\" API Key was created and variables set.\", function () {",
-                  "    var obj = JSON.parse(pm.response.text());",
-                  "    var record = null;",
-                  "    contact_id = pm.environment.get(\"contact_id\");",
-                  "",
-                  "    for (var i = 0; i < obj[1].result.total; i++){",
-                  "        if (obj[1].result.records[i].zone_id == 2 && obj[1].result.records[i].contact_id == contact_id){",
-                  "            record = obj[1].result.records[i];",
-                  "        }",
-                  "    }",
-                  "    pm.environment.unset(\"user_key\");",
-                  "    pm.environment.set(\"user_key\",record.user_key);",
-                  "});",
-                  "",
-                  "user_key = pm.environment.get(\"user_key\");",
-                  "",
-                  "pm.test(\" Body has new key\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(user_key);",
-                  "});",
-                  "",
-                  "pm.test(\" Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\" API Key list is not empty\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "35123bc1-336d-42b1-9258-aa3bab89addf",
-          "name": "GetAll streams in JSON w/Valid Key",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "exec": [
-                  "pm.test(\"C77938 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77938 Body is JSON format\", function () {",
-                  "    pm.response.to.be.json;",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
-              "host": [
-                "{{url}}"
               ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_API_Key}}",
-                  "equals": true
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
                 },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "eb567c1c-671f-4829-a609-7b6f02754479",
+              "name": "Retrieve API keys",
+              "event": [
                 {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
+                  "listen": "test",
+                  "script": {
+                    "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
+                    "exec": [
+                      "var obj = JSON.parse(pm.response.text());",
+                      "var record = null;",
+                      "",
+                      "contact_id = pm.environment.get(\"contact_id\");",
+                      "",
+                      "for (var i = 0; i < obj.result.total; i++){",
+                      "    if (obj.result.records[i].zone_id == 2 && obj.result.records[i].contact_id == contact_id){",
+                      "        record = obj.result.records[i];",
+                      "    }",
+                      "}",
+                      "",
+                      "pm.test(\"C78005 Correct Zone\", function () {",
+                      "    pm.expect(record.zone_name === \"SSL VPN\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78005 Correct Contact\", function () {",
+                      "    pm.expect(record.first_name === \"Bertha\");",
+                      "    pm.expect(record.last_name === \"Shakira\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78005 Response record contains an API key\", function () {",
+                      "    pm.expect(record.user_key!==null);",
+                      "});",
+                      "",
+                      "pm.environment.unset(\"user_API_Key\");",
+                      "pm.environment.set(\"user_API_Key\", record.user_key);",
+                      "",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1adbb8ea-42ff-47eb-88da-b9aaaef6bf8c",
-          "name": "GetAll streams valid data types",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                "exec": [
-                  "// Parse response body",
-                  "var obj = JSON.parse(pm.response.text());",
-                  "var record = obj.features[0];",
-                  "",
-                  "version = pm.environment.get(\"version\");",
-                  "",
-                  "pm.test(\"C78232 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78232 Coordinates are in an array\", function () {",
-                  "    pm.expect(record.geometry.coordinates[0]).to.not.be.undefined;",
-                  "    pm.expect(record.geometry.coordinates[1]).to.not.be.undefined;",
-                  "});",
-                  "",
-                  "pm.test(\"C78232 Active field is a bool\", function () {",
-                  "    pm.expect(record.properties.active).to.be.a('boolean');",
-                  "});",
-                  "",
-                  "pm.test(\"C78232 urls are strings\", function () {",
-                  "    pm.expect(record.properties.clsp_url).to.be.a('string');",
-                  "    pm.expect(record.properties.clsps_url).to.be.a('string');",
-                  "    ",
-                  "    pm.expect(record.properties.https_url).to.be.a('string');",
-                  "    ",
-                  "    pm.expect(record.properties.rtmp_url).to.be.a('string');",
-                  "    pm.expect(record.properties.rtsp_url).to.be.a('string');",
-                  "    ",
-                  "    if (version == 5.0)",
-                  "        pm.expect(record.properties.ios_url).to.be.a('string');",
-                  "});",
-                  "",
-                  "",
-                  "",
-                  "pm.test(\"C78232 Metadata are strings\", function () {",
-                  "    pm.expect(record.properties.description).to.be.a('string');",
-                  "    if (version == 1.0)",
-                  "        pm.expect(record.properties.deviceid).to.be.a('string');",
-                  "    pm.expect(record.properties.direction).to.be.a('string');",
-                  "    if (version == 1.0)",
-                  "        pm.expect(record.properties.id).to.be.a('string');",
-                  "    else",
-                  "        pm.expect(record.properties.id).to.be.a('number');",
-                  "    pm.expect(record.properties.jurisdiction).to.be.a('string');",
-                  "    pm.expect(record.properties.route).to.be.a('string');",
-                  "    pm.expect(record.properties.image_url).to.be.a('string');",
-                  "});"
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"ApiKey\",\n\t\"method\": \"getApikeys\",\n\t\"data\": [\n\t  {\n\t    \"page\": 1,\n\t    \"start\": 0,\n\t    \"limit\": 25\n\t  }\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 20\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all the API keys."
+              },
+              "response": []
             },
             {
-              "listen": "prerequest",
-              "script": {
-                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "exec": [
-                  ""
+              "_postman_id": "c14c9d11-6088-40e3-aa52-ff7f23942e55",
+              "name": "GetAll streams - Only Streams from Zone",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                    "exec": [
+                      "pm.test(\"C78006 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78006 Body is JSON format\", function () {",
+                      "    pm.response.to.be.json;",
+                      "});",
+                      "",
+                      "pm.test(\"C78006 Streams in API Zone received\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"test_stream_cam_to_multiple_sfs\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78006 Streams not in API Zone are not received\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_API_Key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "838ac33b-be92-489c-a6e4-66995ca46496",
+              "name": "Delete API Key",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
+                    "exec": [
+                      "user_key = pm.environment.get(\"user_API_Key\");",
+                      "",
+                      "pm.test(\"C77967 Response does not contain deleted key\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                      "});",
+                      "",
+                      "pm.test(\"C77967 deleteApiKey gives success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData[1].result.success).to.eql(true);",
+                      "});",
+                      "",
+                      "pm.test(\"C77967 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77967 Api key was deleted\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(user_key);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_API_Key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "deletes an api key"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "6aec071e-5b87-4a8b-a5fe-f8a0f8f15702",
+              "name": "GetAll Steams - No Streams From Deleted API Key's Zone",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                    "exec": [
+                      "pm.test(\"C78007 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78007 Body is JSON format\", function () {",
+                      "    pm.response.to.be.json;",
+                      "});",
+                      "",
+                      "pm.test(\"C78007 Streams in deleted API key's Zone not received\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(\"test_stream_cam_to_multiple_sfs\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78007 Streams not in deleted API key's Zone are not received\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_API_Key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
-          },
-          "response": []
+          "_postman_isSubFolder": true
         },
         {
-          "_postman_id": "b27eed06-8f52-4698-a9a5-aa984e015ccb",
-          "name": "GetAll streams in JSON w/invalid key",
-          "event": [
+          "_postman_id": "c4343393-06b1-440c-b256-83acd8b55209",
+          "name": "GetAll Calls",
+          "description": null,
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
-                "exec": [
-                  "pm.test(\"C77939 Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "});",
-                  "",
-                  "pm.test(\"C77939 Verify invalid API error message is provided\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
-                  "});"
+              "_postman_id": "ca98f504-1535-4ac2-be2c-bfd4418183b9",
+              "name": "Create New Contact",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
+                    "exec": [
+                      "pm.test(\"Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "contact_name = pm.environment.get(\"contact_name\");",
+                      "",
+                      "pm.test(\"Body has contact\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(contact_name);",
+                      "});",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "// Set up next test",
+                      "var obj = pm.response.json();",
+                      "console.log(contact_name);",
+                      "console.log(obj);",
+                      "var record;",
+                      "pm.environment.unset(\"contact_id\");",
+                      "for (var i = 0; i < obj[1].result.total; i++) {",
+                      "    if (obj[1].result.records[i].first_name == contact_name) {",
+                      "        record = obj[1].result.records[i].id;",
+                      "    }",
+                      "}",
+                      "pm.environment.set(\"contact_id\",record);",
+                      "console.log(record);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e380079a-dd76-479f-a16c-818c47b9259a",
+                    "exec": [
+                      "pm.environment.unset(\"contact_name\");",
+                      "pm.environment.unset(\"contact_email\");",
+                      "",
+                      "var first_name = Math.floor((Math.random() * 1000000) + 1);",
+                      "var email = Math.floor((Math.random() * 1000000) + 1);",
+                      "",
+                      "pm.environment.set(\"contact_name\", first_name);",
+                      "pm.environment.set(\"contact_email\", email);",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "bea9d7b8-6178-4887-9703-ede4cde63f5b",
+              "name": "Create API Key",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1181797c-a819-4e06-a600-15bec4595719",
+                    "exec": [
+                      "pm.test(\" Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "user_key = pm.environment.get(\"user_key\");",
+                      "",
+                      "pm.test(\" API Key was created and variables set.\", function () {",
+                      "    var obj = JSON.parse(pm.response.text());",
+                      "    var record = null;",
+                      "    contact_id = pm.environment.get(\"contact_id\");",
+                      "",
+                      "    for (var i = 0; i < obj[1].result.total; i++){",
+                      "        if (obj[1].result.records[i].zone_id == 2 && obj[1].result.records[i].contact_id == contact_id){",
+                      "            record = obj[1].result.records[i];",
+                      "        }",
+                      "    }",
+                      "    pm.environment.unset(\"user_key\");",
+                      "    pm.environment.set(\"user_key\",record.user_key);",
+                      "});",
+                      "",
+                      "user_key = pm.environment.get(\"user_key\");",
+                      "",
+                      "pm.test(\" Body has new key\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(user_key);",
+                      "});",
+                      "",
+                      "pm.test(\" Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\" API Key list is not empty\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.total) !== null;",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "35123bc1-336d-42b1-9258-aa3bab89addf",
+              "name": "GetAll streams in JSON w/Valid Key",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                    "exec": [
+                      "pm.test(\"C77938 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77938 Body is JSON format\", function () {",
+                      "    pm.response.to.be.json;",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_API_Key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "1adbb8ea-42ff-47eb-88da-b9aaaef6bf8c",
+              "name": "GetAll streams valid data types",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                    "exec": [
+                      "// Parse response body",
+                      "var obj = JSON.parse(pm.response.text());",
+                      "var record = obj.features[0];",
+                      "",
+                      "version = pm.environment.get(\"version\");",
+                      "",
+                      "pm.test(\"C78232 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78232 Coordinates are in an array\", function () {",
+                      "    pm.expect(record.geometry.coordinates[0]).to.not.be.undefined;",
+                      "    pm.expect(record.geometry.coordinates[1]).to.not.be.undefined;",
+                      "});",
+                      "",
+                      "pm.test(\"C78232 Active field is a bool\", function () {",
+                      "    pm.expect(record.properties.active).to.be.a('boolean');",
+                      "});",
+                      "",
+                      "pm.test(\"C78232 urls are strings\", function () {",
+                      "    pm.expect(record.properties.clsp_url).to.be.a('string');",
+                      "    pm.expect(record.properties.clsps_url).to.be.a('string');",
+                      "    ",
+                      "    pm.expect(record.properties.https_url).to.be.a('string');",
+                      "    ",
+                      "    pm.expect(record.properties.rtmp_url).to.be.a('string');",
+                      "    pm.expect(record.properties.rtsp_url).to.be.a('string');",
+                      "    ",
+                      "    if (version == 5.0)",
+                      "        pm.expect(record.properties.ios_url).to.be.a('string');",
+                      "});",
+                      "",
+                      "",
+                      "",
+                      "pm.test(\"C78232 Metadata are strings\", function () {",
+                      "    pm.expect(record.properties.description).to.be.a('string');",
+                      "    if (version == 1.0)",
+                      "        pm.expect(record.properties.deviceid).to.be.a('string');",
+                      "    pm.expect(record.properties.direction).to.be.a('string');",
+                      "    if (version == 1.0)",
+                      "        pm.expect(record.properties.id).to.be.a('string');",
+                      "    else",
+                      "        pm.expect(record.properties.id).to.be.a('number');",
+                      "    pm.expect(record.properties.jurisdiction).to.be.a('string');",
+                      "    pm.expect(record.properties.route).to.be.a('string');",
+                      "    pm.expect(record.properties.image_url).to.be.a('string');",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "b27eed06-8f52-4698-a9a5-aa984e015ccb",
+              "name": "GetAll streams in JSON w/invalid key",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
+                    "exec": [
+                      "pm.test(\"C77939 Status code is 403\", function () {",
+                      "    pm.response.to.have.status(403);",
+                      "});",
+                      "",
+                      "pm.test(\"C77939 Verify invalid API error message is provided\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY=ABC123&format=json",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "ABC123",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "json",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab all cameras which can be currently pulled from stream manager with an invalid API key.\n\nexpectation: 403 error"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "c5803cab-3801-4bdf-b442-c25f5aaf8f98",
+              "name": "GetAll Jsonp format Valid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d6db7a64-fa64-4c8a-901e-062013b58e54",
+                    "exec": [
+                      "pm.test(\"C77940 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77940 Response has padding\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"callbackFunction(\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "jsonp",
+                      "equals": true
+                    },
+                    {
+                      "key": "callback",
+                      "value": "callbackFunction",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSONP format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be JSONP\n\n"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "8af4e95f-c449-4c83-9e33-d3beedab3a1c",
+              "name": "GetAll XML format Valid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ce7e6e40-f5bb-41d2-b035-a9ab8219f8cf",
+                    "exec": [
+                      "pm.test(\"C77941 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77941 Body is in XML format\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=xml",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "xml",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in XML format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be XML.\n\n"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "6c5df2f2-7331-4169-8e7b-d58b59f752ac",
+              "name": "GetAll streams in invalid format",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "56af97ea-979c-46af-8552-e51286b20569",
+                    "exec": [
+                      "pm.test(\"C77942 Status code is 403\", function () {",
+                      "    pm.response.to.have.status(403);",
+                      "});",
+                      "",
+                      "pm.test(\"C77942 Verify invalid API error message is provided\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.error).to.eql(\"Invalid Format.\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=ABC123",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "{{version}}",
+                    "streams",
+                    "getAll"
+                  ],
+                  "query": [
+                    {
+                      "key": "X-API-KEY",
+                      "value": "{{user_key}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "format",
+                      "value": "ABC123",
+                      "equals": true
+                    }
+                  ]
+                },
+                "description": "description: attempts to grab cameras in a random format (\"1001\"). not a real format and therefore not supported\n\nexpectation: not sure. currently it just returns XML format. i'll put a ticket in or ask someone how it should actually behave."
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY=ABC123&format=json",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "ABC123",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: attempts to grab all cameras which can be currently pulled from stream manager with an invalid API key.\n\nexpectation: 403 error"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c5803cab-3801-4bdf-b442-c25f5aaf8f98",
-          "name": "GetAll Jsonp format Valid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d6db7a64-fa64-4c8a-901e-062013b58e54",
-                "exec": [
-                  "pm.test(\"C77940 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77940 Response has padding\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"callbackFunction(\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "jsonp",
-                  "equals": true
-                },
-                {
-                  "key": "callback",
-                  "value": "callbackFunction",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSONP format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be JSONP\n\n"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8af4e95f-c449-4c83-9e33-d3beedab3a1c",
-          "name": "GetAll XML format Valid",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ce7e6e40-f5bb-41d2-b035-a9ab8219f8cf",
-                "exec": [
-                  "pm.test(\"C77941 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77941 Body is in XML format\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=xml",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "xml",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in XML format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be XML.\n\n"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6c5df2f2-7331-4169-8e7b-d58b59f752ac",
-          "name": "GetAll streams in invalid format",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "56af97ea-979c-46af-8552-e51286b20569",
-                "exec": [
-                  "pm.test(\"C77942 Status code is 403\", function () {",
-                  "    pm.response.to.have.status(403);",
-                  "});",
-                  "",
-                  "pm.test(\"C77942 Verify invalid API error message is provided\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.error).to.eql(\"Invalid Format.\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=ABC123",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "{{version}}",
-                "streams",
-                "getAll"
-              ],
-              "query": [
-                {
-                  "key": "X-API-KEY",
-                  "value": "{{user_key}}",
-                  "equals": true
-                },
-                {
-                  "key": "format",
-                  "value": "ABC123",
-                  "equals": true
-                }
-              ]
-            },
-            "description": "description: attempts to grab cameras in a random format (\"1001\"). not a real format and therefore not supported\n\nexpectation: not sure. currently it just returns XML format. i'll put a ticket in or ask someone how it should actually behave."
-          },
-          "response": []
+          "_postman_isSubFolder": true
         }
       ]
     },
