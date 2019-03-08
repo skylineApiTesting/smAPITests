@@ -570,15 +570,16 @@
                     "id": "48710cc8-7321-4f55-b607-bab44c69a186",
                     "exec": [
                       "pm.environment.unset(\"new_admin_username\");",
+                      "pm.environment.unset(\"new_admin_password\");",
                       "pm.environment.unset(\"new_user_email\");",
                       "pm.environment.unset(\"new_admin_password\");",
                       "",
                       "var user_name = Math.floor((Math.random() * 1000000) + 1);",
                       "var user_email = Math.floor((Math.random() * 1000000) + 1);",
                       "",
-                      "pm.environment.set(\"user_name\", user_name);",
-                      "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");",
+                      "pm.environment.set(\"new_admin_username\", user_name);",
                       "pm.environment.set(\"new_admin_password\", \"streammanager\");",
+                      "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");",
                       ""
                     ],
                     "type": "text/javascript"
