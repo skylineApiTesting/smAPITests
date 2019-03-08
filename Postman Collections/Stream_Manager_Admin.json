@@ -589,7 +589,7 @@
                   "mode": "raw",
                   "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{new_admin_username}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_admin_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                 },
-                "url": "http://prometheus.qa.skyline.local/5.0/direct/router",
+                "url": "https://prometheus.qa.skyline.local/1.0/direct/router",
                 "description": "creates an admin user in stream manager."
               },
               "response": []
