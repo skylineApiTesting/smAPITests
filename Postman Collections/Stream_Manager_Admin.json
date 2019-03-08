@@ -409,13 +409,14 @@
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "key": "user",
+                      "key": "password",
                       "value": "{{admin_user}}",
                       "type": "text"
                     },
                     {
-                      "key": "password",
+                      "key": "user",
                       "value": "{{admin_password}}",
+                      "description": "",
                       "type": "text"
                     }
                   ]
@@ -571,6 +572,8 @@
                       "pm.environment.unset(\"user_name\");",
                       "pm.environment.unset(\"new_user_email\");",
                       "pm.environment.unset(\"new_admin_password\");",
+                      "pm.environment.unset(\"new_admin_password\");",
+                      "",
                       "",
                       "var user_name = Math.floor((Math.random() * 1000000) + 1);",
                       "var user_email = Math.floor((Math.random() * 1000000) + 1);",
@@ -594,7 +597,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{new_admin_username}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                 },
                 "url": "{{url}}/{{version}}/direct/router",
                 "description": "creates an admin user in stream manager."
