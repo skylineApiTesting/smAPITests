@@ -3331,445 +3331,446 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "4dc8b78c-8a12-4b15-9658-ae3041500d81",
-      "name": "Get Lists",
-      "description": "get lists of different items/information from stream manager.",
-      "item": [
+        },
         {
-          "_postman_id": "402728fe-fd42-442f-b65b-7f3f8a598464",
-          "name": "Get All Contacts",
+          "_postman_id": "4dc8b78c-8a12-4b15-9658-ae3041500d81",
+          "name": "Get Lists",
+          "description": "get lists of different items/information from stream manager.",
+          "item": [
+            {
+              "_postman_id": "402728fe-fd42-442f-b65b-7f3f8a598464",
+              "name": "Get All Contacts",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bd01da50-638a-4d06-ac48-355d8066b431",
+                    "exec": [
+                      "pm.test(\"C77972 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all contacts associated with the stream manager."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "4235829f-7bb3-4793-ba14-75317c5bc4d8",
+              "name": "Get All Appliances",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
+                    "exec": [
+                      "pm.test(\"C77973 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\t\"action\": \"Appliance\",\n\t\t\"method\": \"getAppliances\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 2\n\t}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all appliances"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "49da746f-18d3-43bd-b1a6-75738b591a5c",
+              "name": "Get all issue streams",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "3210c158-8837-41a2-97ff-5fbb4016ead3",
+                    "exec": [
+                      "pm.test(\"C77974 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getIssueStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 3\n\t}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all issue streams from stream manager."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "3d62cff5-5b31-409d-8113-0c223ce2854b",
+              "name": "Get all Locations",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
+                    "exec": [
+                      "pm.test(\"C77975 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Location\",\n\t\t\"method\": \"getLocations\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 4\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all locations associated with a stream manager"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "d57aa69f-7e53-44d7-bc3a-5bb3be5b6f04",
+              "name": "Get all offline sfs streams",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
+                    "exec": [
+                      "pm.test(\"C77976 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"Media\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 5\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all offlined sfs streams from stream manager."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "21a4517b-1d6c-42bc-8c11-7f25d29b0e74",
+              "name": "Get all offlined streams no media flag",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "a52af66e-6564-479f-85fc-78e49c204817",
+                    "exec": [
+                      "pm.test(\"C77977 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 6\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "This technically has its own TID. Im not really sure how much it differs from Get all offline sfs streams. The only difference is that there is no type: media property in this one."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "02f5a871-ba24-4a03-a052-ef6af18c27b6",
+              "name": "Get  sfs capacity",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
+                    "exec": [
+                      "pm.test(\"C77978 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Capacity\",\n\t\t\"method\": \"getSfsCapacity\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 7\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "Returns a list of connected appliances and their current connections and streamcount."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "f13276e8-4a59-42ff-b7a3-542a287afa64",
+              "name": "Get all offline streams SSL VPN",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
+                    "exec": [
+                      "pm.test(\"C77979 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"SSL VPN\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 8\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "offline appliace = SSL VPN"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "477bab87-ff96-48a9-8c1c-e55e702ffa20",
+              "name": "Get all streams",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
+                    "exec": [
+                      "pm.test(\"C77980 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getGrid\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 9\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a list of all streams (grid)"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "ed9900a4-1a16-41d4-99af-b54ee176062a",
+              "name": "Get all users",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
+                    "exec": [
+                      "pm.test(\"C77981 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "545f552a-c546-45c0-9892-97f749721381",
+              "name": "Get all zones",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
+                    "exec": [
+                      "pm.test(\"C77982 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 11\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "Gets a list of all zones in stream manager"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "c06d7157-8047-4b86-b11d-4a798e874509",
+              "name": "Get Stream Map",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e5b299d5-3abd-42ad-89b8-cb71210d6735",
+                    "exec": [
+                      "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
+                      "",
+                      "pm.test(\"C77983 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getStreamMap\",\n\t\"data\": [\n\t\t{\n\t\t\t\"metadataId\": {{metadata_id}}\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 17\n}"
+                },
+                "url": "{{url}}/{{version}}/direct/router",
+                "description": "gets a stream map of a test stream based on its metadata_id"
+              },
+              "response": []
+            }
+          ],
           "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2f772db1-d93d-4948-b616-6fab453c0ba1",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
             {
               "listen": "test",
               "script": {
-                "id": "bd01da50-638a-4d06-ac48-355d8066b431",
+                "id": "7388327a-7e65-48b9-bd99-48f68fa09ab0",
+                "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"C77972 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
+                  ""
+                ]
               }
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all contacts associated with the stream manager."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "4235829f-7bb3-4793-ba14-75317c5bc4d8",
-          "name": "Get All Appliances",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
-                "exec": [
-                  "pm.test(\"C77973 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\t\"action\": \"Appliance\",\n\t\t\"method\": \"getAppliances\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 2\n\t}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all appliances"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "49da746f-18d3-43bd-b1a6-75738b591a5c",
-          "name": "Get all issue streams",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3210c158-8837-41a2-97ff-5fbb4016ead3",
-                "exec": [
-                  "pm.test(\"C77974 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getIssueStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 3\n\t}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all issue streams from stream manager."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3d62cff5-5b31-409d-8113-0c223ce2854b",
-          "name": "Get all Locations",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
-                "exec": [
-                  "pm.test(\"C77975 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Location\",\n\t\t\"method\": \"getLocations\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 4\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all locations associated with a stream manager"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d57aa69f-7e53-44d7-bc3a-5bb3be5b6f04",
-          "name": "Get all offline sfs streams",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
-                "exec": [
-                  "pm.test(\"C77976 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"Media\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 5\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all offlined sfs streams from stream manager."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "21a4517b-1d6c-42bc-8c11-7f25d29b0e74",
-          "name": "Get all offlined streams no media flag",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a52af66e-6564-479f-85fc-78e49c204817",
-                "exec": [
-                  "pm.test(\"C77977 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 6\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "This technically has its own TID. Im not really sure how much it differs from Get all offline sfs streams. The only difference is that there is no type: media property in this one."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "02f5a871-ba24-4a03-a052-ef6af18c27b6",
-          "name": "Get  sfs capacity",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
-                "exec": [
-                  "pm.test(\"C77978 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Capacity\",\n\t\t\"method\": \"getSfsCapacity\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 7\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "Returns a list of connected appliances and their current connections and streamcount."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f13276e8-4a59-42ff-b7a3-542a287afa64",
-          "name": "Get all offline streams SSL VPN",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
-                "exec": [
-                  "pm.test(\"C77979 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"SSL VPN\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 8\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "offline appliace = SSL VPN"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "477bab87-ff96-48a9-8c1c-e55e702ffa20",
-          "name": "Get all streams",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
-                "exec": [
-                  "pm.test(\"C77980 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getGrid\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 9\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a list of all streams (grid)"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ed9900a4-1a16-41d4-99af-b54ee176062a",
-          "name": "Get all users",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
-                "exec": [
-                  "pm.test(\"C77981 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "545f552a-c546-45c0-9892-97f749721381",
-          "name": "Get all zones",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
-                "exec": [
-                  "pm.test(\"C77982 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"getZones\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 11\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "Gets a list of all zones in stream manager"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c06d7157-8047-4b86-b11d-4a798e874509",
-          "name": "Get Stream Map",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e5b299d5-3abd-42ad-89b8-cb71210d6735",
-                "exec": [
-                  "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
-                  "",
-                  "pm.test(\"C77983 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getStreamMap\",\n\t\"data\": [\n\t\t{\n\t\t\t\"metadataId\": {{metadata_id}}\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 17\n}"
-            },
-            "url": "{{url}}/{{version}}/direct/router",
-            "description": "gets a stream map of a test stream based on its metadata_id"
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "2f772db1-d93d-4948-b616-6fab453c0ba1",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "7388327a-7e65-48b9-bd99-48f68fa09ab0",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
+          "_postman_isSubFolder": true
         }
       ]
     },
