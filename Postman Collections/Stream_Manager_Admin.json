@@ -1606,332 +1606,333 @@
             }
           ],
           "_postman_isSubFolder": true
-        }
-      ]
-    },
-    {
-      "_postman_id": "926e544e-4087-4c6e-9137-f3e3ee7ade5a",
-      "name": "Zones",
-      "description": null,
-      "item": [
+        },
         {
-          "_postman_id": "7d085612-5eee-4c3b-a472-a13ccea5e32b",
-          "name": "Login Admin",
-          "event": [
+          "_postman_id": "926e544e-4087-4c6e-9137-f3e3ee7ade5a",
+          "name": "Zones",
+          "description": null,
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "cccdea28-e65c-438b-9419-b9f3613e77c3",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "7d085612-5eee-4c3b-a472-a13ccea5e32b",
+              "name": "Login Admin",
+              "event": [
                 {
-                  "key": "user",
-                  "type": "text",
-                  "value": "{{user}}"
+                  "listen": "test",
+                  "script": {
+                    "id": "cccdea28-e65c-438b-9419-b9f3613e77c3",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "{{user}}"
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "{{password}}"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "e8ace92b-b3c1-4b89-8992-11ea07205e4e",
+              "name": "Create New Zone",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2312f720-db46-4552-a787-b8b1164c658e",
+                    "exec": [
+                      "pm.test(\"C77466 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"createZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77466 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 },
                 {
-                  "key": "password",
-                  "type": "text",
-                  "value": "{{password}}"
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "a3492e1e-1f6a-4614-9556-fca9f9a8dc52",
+                    "exec": [
+                      "pm.environment.unset(\"zone_name\");",
+                      "pm.environment.unset(\"zone_description\");",
+                      "",
+                      "var zone_name = Math.floor((Math.random() * 1000000) + 1);",
+                      "var zone_description = Math.floor((Math.random() * 1000000) + 1);",
+                      "",
+                      "pm.environment.set(\"zone_name\", zone_name);",
+                      "pm.environment.set(\"zone_description\", zone_description);",
+                      "pm.environment.set(\"zone_auto_offline\", false);",
+                      "pm.environment.set(\"zone_current_status_report\", true);"
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e8ace92b-b3c1-4b89-8992-11ea07205e4e",
-          "name": "Create New Zone",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2312f720-db46-4552-a787-b8b1164c658e",
-                "exec": [
-                  "pm.test(\"C77466 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"createZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77466 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
             },
             {
-              "listen": "prerequest",
-              "script": {
-                "id": "a3492e1e-1f6a-4614-9556-fca9f9a8dc52",
-                "exec": [
-                  "pm.environment.unset(\"zone_name\");",
-                  "pm.environment.unset(\"zone_description\");",
-                  "",
-                  "var zone_name = Math.floor((Math.random() * 1000000) + 1);",
-                  "var zone_description = Math.floor((Math.random() * 1000000) + 1);",
-                  "",
-                  "pm.environment.set(\"zone_name\", zone_name);",
-                  "pm.environment.set(\"zone_description\", zone_description);",
-                  "pm.environment.set(\"zone_auto_offline\", false);",
-                  "pm.environment.set(\"zone_current_status_report\", true);"
+              "_postman_id": "8cc115a8-4b97-413c-8e97-4d45089fd732",
+              "name": "Retrieve Zone",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7c82a013-75a5-4154-befc-699a9e81fad4",
+                    "exec": [
+                      "zone_name = pm.environment.get(\"zone_name\");",
+                      "zone_description = pm.environment.get(\"zone_description\");",
+                      "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
+                      "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
+                      "",
+                      "pm.test(\"C78222 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"getZones\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      "",
+                      "pm.test(\"C78222 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78222 Body includes zone\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_name);",
+                      "});",
+                      "",
+                      "pm.test(\"C77466 Body has new zone description\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_description);",
+                      "});",
+                      "",
+                      "pm.test(\"C77466 Body has auto offline setting\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_auto_offline);",
+                      "});",
+                      "",
+                      "pm.test(\"C77466 Body has current status settings\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_current_status_report);",
+                      "});",
+                      "",
+                      "//Setting up for next test",
+                      "pm.test(\"C78222 Zone was created and variables set.\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData.total) !== null;",
+                      "    ",
+                      "    pm.environment.unset(\"zone_id\");",
+                      "    ",
+                      "    recordsLength = jsonData[0].result.records.length;",
+                      "    ",
+                      "    pm.environment.set(\"zone_id\",jsonData[0].result.records[recordsLength-1].id);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "96180ce2-4460-4b3f-ace2-b710b508b7ad",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "5f23ad68-16c0-43d3-b431-5d525ca3c068",
+              "name": "Update Zone",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e2e87afa-5685-43e1-aba3-4a082566403a",
+                    "exec": [
+                      "zone_name_EDIT = pm.environment.get(\"zone_name\");",
+                      "zone_description_EDIT = pm.environment.get(\"zone_description\");",
+                      "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
+                      "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
+                      "",
+                      "pm.test(\"C77470 Body includes edited zone name\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_name_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77470 Body includes edited zone description\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_description_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77470 Body includes edited zone auto offline\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_auto_offline);",
+                      "});",
+                      "",
+                      "pm.test(\"C77470 Body includes edited zone status report\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(zone_current_status_report);",
+                      "});",
+                      "",
+                      "pm.test(\"C77470 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78222 Body shows success message\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"\\\"updateZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "1f827154-1f78-4c81-bf74-fe0d14db46ac",
+                    "exec": [
+                      "zone_name = pm.environment.get(\"zone_name\");",
+                      "pm.environment.set(\"zone_name_EDIT\", zone_name + \"EDIT\");",
+                      "",
+                      "zone_description = pm.environment.get(\"zone_description\");",
+                      "pm.environment.set(\"zone_description_EDIT\", zone_description + \"EDIT\");",
+                      "",
+                      "pm.environment.set(\"zone_auto_offline\", true);",
+                      "",
+                      "pm.environment.set(\"zone_current_status_report\", false);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description_EDIT}}\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t},\n\t{\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "e5c01160-8559-4541-8166-5be838dacfff",
+              "name": "Delete Zone",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "40d3fee4-2ae4-4d1d-8bd6-25f5d930910a",
+                    "exec": [
+                      "zone_name_EDIT = pm.environment.get(\"zone_name\");",
+                      "zone_description_EDIT = pm.environment.get(\"zone_description\");",
+                      "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
+                      "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
+                      "",
+                      "pm.test(\"C77472 Response does not contain deleted zone name\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(zone_name_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77472 Response does not contain deleted zone description\", function () {",
+                      "    pm.expect(pm.response.text()).to.not.include(zone_description_EDIT);",
+                      "});",
+                      "",
+                      "pm.test(\"C77472 deleteZone gives success message\", function () {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.expect(jsonData[1].result.success).to.eql(true);",
+                      "});",
+                      "",
+                      "pm.test(\"C77472 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "fe5296d5-0c4b-4241-b91c-9eac5ae7ddb5",
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"deleteZone\",\n    \"data\": [\n      {\n        \"id\": \"{{zone_id}}\",\n        \"customer_id\": \"\",\n        \"name\": \"{{zone_name_EDIT}}\",\n        \"auto_offline\": false,\n        \"description\": \"{{zone_description}}\",\n        \"last_updated\": {\n          \"date\": \"2018-06-13 19:01:18.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"last_updated_by\": \"admin\",\n        \"include_in_current_status_report\": true\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 29\n  },\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 30\n  }\n]"
+                },
+                "url": "{{url}}/{{version}}/direct/router"
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8cc115a8-4b97-413c-8e97-4d45089fd732",
-          "name": "Retrieve Zone",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7c82a013-75a5-4154-befc-699a9e81fad4",
-                "exec": [
-                  "zone_name = pm.environment.get(\"zone_name\");",
-                  "zone_description = pm.environment.get(\"zone_description\");",
-                  "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
-                  "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
-                  "",
-                  "pm.test(\"C78222 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"getZones\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  "",
-                  "pm.test(\"C78222 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78222 Body includes zone\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_name);",
-                  "});",
-                  "",
-                  "pm.test(\"C77466 Body has new zone description\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_description);",
-                  "});",
-                  "",
-                  "pm.test(\"C77466 Body has auto offline setting\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_auto_offline);",
-                  "});",
-                  "",
-                  "pm.test(\"C77466 Body has current status settings\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_current_status_report);",
-                  "});",
-                  "",
-                  "//Setting up for next test",
-                  "pm.test(\"C78222 Zone was created and variables set.\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.total) !== null;",
-                  "    ",
-                  "    pm.environment.unset(\"zone_id\");",
-                  "    ",
-                  "    recordsLength = jsonData[0].result.records.length;",
-                  "    ",
-                  "    pm.environment.set(\"zone_id\",jsonData[0].result.records[recordsLength-1].id);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "96180ce2-4460-4b3f-ace2-b710b508b7ad",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "5f23ad68-16c0-43d3-b431-5d525ca3c068",
-          "name": "Update Zone",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e2e87afa-5685-43e1-aba3-4a082566403a",
-                "exec": [
-                  "zone_name_EDIT = pm.environment.get(\"zone_name\");",
-                  "zone_description_EDIT = pm.environment.get(\"zone_description\");",
-                  "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
-                  "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
-                  "",
-                  "pm.test(\"C77470 Body includes edited zone name\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_name_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77470 Body includes edited zone description\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_description_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77470 Body includes edited zone auto offline\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_auto_offline);",
-                  "});",
-                  "",
-                  "pm.test(\"C77470 Body includes edited zone status report\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(zone_current_status_report);",
-                  "});",
-                  "",
-                  "pm.test(\"C77470 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78222 Body shows success message\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"\\\"updateZone\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "1f827154-1f78-4c81-bf74-fe0d14db46ac",
-                "exec": [
-                  "zone_name = pm.environment.get(\"zone_name\");",
-                  "pm.environment.set(\"zone_name_EDIT\", zone_name + \"EDIT\");",
-                  "",
-                  "zone_description = pm.environment.get(\"zone_description\");",
-                  "pm.environment.set(\"zone_description_EDIT\", zone_description + \"EDIT\");",
-                  "",
-                  "pm.environment.set(\"zone_auto_offline\", true);",
-                  "",
-                  "pm.environment.set(\"zone_current_status_report\", false);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description_EDIT}}\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t},\n\t{\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e5c01160-8559-4541-8166-5be838dacfff",
-          "name": "Delete Zone",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "40d3fee4-2ae4-4d1d-8bd6-25f5d930910a",
-                "exec": [
-                  "zone_name_EDIT = pm.environment.get(\"zone_name\");",
-                  "zone_description_EDIT = pm.environment.get(\"zone_description\");",
-                  "zone_auto_offline = pm.environment.get(\"zone_auto_offline\");",
-                  "zone_current_status_report = pm.environment.get(\"zone_current_status_report\");",
-                  "",
-                  "pm.test(\"C77472 Response does not contain deleted zone name\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(zone_name_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77472 Response does not contain deleted zone description\", function () {",
-                  "    pm.expect(pm.response.text()).to.not.include(zone_description_EDIT);",
-                  "});",
-                  "",
-                  "pm.test(\"C77472 deleteZone gives success message\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData[1].result.success).to.eql(true);",
-                  "});",
-                  "",
-                  "pm.test(\"C77472 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "fe5296d5-0c4b-4241-b91c-9eac5ae7ddb5",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"deleteZone\",\n    \"data\": [\n      {\n        \"id\": \"{{zone_id}}\",\n        \"customer_id\": \"\",\n        \"name\": \"{{zone_name_EDIT}}\",\n        \"auto_offline\": false,\n        \"description\": \"{{zone_description}}\",\n        \"last_updated\": {\n          \"date\": \"2018-06-13 19:01:18.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"last_updated_by\": \"admin\",\n        \"include_in_current_status_report\": true\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 29\n  },\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 30\n  }\n]"
-            },
-            "url": "{{url}}/{{version}}/direct/router"
-          },
-          "response": []
+          "_postman_isSubFolder": true
         }
       ]
     },
