@@ -7,464 +7,472 @@
   },
   "item": [
     {
-      "_postman_id": "a139401d-2bfc-4f61-8556-6950f75b9abd",
-      "name": "Login",
-      "description": null,
+      "_postman_id": "04a7ff66-e1c2-48d3-9ad2-a910ea1bd100",
+      "name": "Admin",
+      "description": "",
       "item": [
         {
-          "_postman_id": "fb8efba4-be34-4278-b5bc-099d0ab5fb4f",
-          "name": "Empty Fields",
-          "event": [
+          "_postman_id": "a139401d-2bfc-4f61-8556-6950f75b9abd",
+          "name": "Login",
+          "description": null,
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
-                "exec": [
-                  "pm.test(\"C77283 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77283 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77283 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "fb8efba4-be34-4278-b5bc-099d0ab5fb4f",
+              "name": "Empty Fields",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
+                    "exec": [
+                      "pm.test(\"C77283 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77283 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77283 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "15813c9e-9965-44c3-b14a-eab62f18291e",
-          "name": "Empty Password",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1c1fbaef-b26d-431f-96d2-ea393aca93ba",
-                "exec": [
-                  "pm.test(\"C77284 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77284 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77284 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "{{user}}",
-                  "type": "text"
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "",
+                      "type": "text"
+                    }
+                  ]
                 },
-                {
-                  "key": "password",
-                  "value": "",
-                  "type": "text"
-                }
-              ]
+                "url": "{{url}}"
+              },
+              "response": []
             },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "2b025c8f-6d06-449d-b7b1-a92491ba499f",
-          "name": "Empty Username",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "b005cd07-393e-4d33-b1dc-e141d3b7ae7f",
-                "exec": [
-                  "pm.test(\"C77285 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77285 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77285 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "15813c9e-9965-44c3-b14a-eab62f18291e",
+              "name": "Empty Password",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "1c1fbaef-b26d-431f-96d2-ea393aca93ba",
+                    "exec": [
+                      "pm.test(\"C77284 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77284 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77284 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "{{user}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "",
+                      "type": "text"
+                    }
+                  ]
                 },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
+                "url": "{{url}}"
+              },
+              "response": []
             },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d12a0eeb-48d0-42ed-be74-dede2daaa784",
-          "name": "Invalid Username",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "3f390d2f-ddeb-4ce0-a2a3-8bbdaa376370",
-                "exec": [
-                  "pm.test(\"C77287 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77287 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77287 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "2b025c8f-6d06-449d-b7b1-a92491ba499f",
+              "name": "Empty Username",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "wrongUser",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "b005cd07-393e-4d33-b1dc-e141d3b7ae7f",
+                    "exec": [
+                      "pm.test(\"C77285 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77285 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77285 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "sm1000",
+                      "type": "text"
+                    }
+                  ]
                 },
-                {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
-                }
-              ]
+                "url": "{{url}}"
+              },
+              "response": []
             },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "56933c62-8815-4ef8-b503-4be7effadb4a",
-          "name": "Invalid Password",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "e0608f42-6650-4b53-9a34-6dd313ef6af9",
-                "exec": [
-                  "pm.test(\"C77286 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77286 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77286 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "d12a0eeb-48d0-42ed-be74-dede2daaa784",
+              "name": "Invalid Username",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "admin",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "3f390d2f-ddeb-4ce0-a2a3-8bbdaa376370",
+                    "exec": [
+                      "pm.test(\"C77287 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77287 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77287 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "wrongUser",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "sm1000",
+                      "type": "text"
+                    }
+                  ]
                 },
-                {
-                  "key": "password",
-                  "value": "wrongPassword",
-                  "type": "text"
-                }
-              ]
+                "url": "{{url}}"
+              },
+              "response": []
             },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1735f59c-15b8-4227-81fb-d680ff8d9c4c",
-          "name": "Password Wrong Case",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "4d4a7612-de72-4220-92b4-8fd9d766f259",
-                "exec": [
-                  "pm.test(\"C77288 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77288 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77288 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "56933c62-8815-4ef8-b503-4be7effadb4a",
+              "name": "Invalid Password",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "admin",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "e0608f42-6650-4b53-9a34-6dd313ef6af9",
+                    "exec": [
+                      "pm.test(\"C77286 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77286 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77286 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "admin",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "wrongPassword",
+                      "type": "text"
+                    }
+                  ]
                 },
-                {
-                  "key": "password",
-                  "value": "SM1000",
-                  "type": "text"
-                }
-              ]
+                "url": "{{url}}"
+              },
+              "response": []
             },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8b29fd4c-e92f-4a64-828d-3fb17eea810a",
-          "name": "Username Wrong Case Admin",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "66c1c821-2ce2-40ec-b411-56ffbbdb5ee8",
-                "exec": [
-                  "pm.test(\"C78214 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C78214 Body IsAdministrator field to show it is logged in\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+              "_postman_id": "1735f59c-15b8-4227-81fb-d680ff8d9c4c",
+              "name": "Password Wrong Case",
+              "event": [
                 {
-                  "key": "user",
-                  "value": "ADMIN",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "4d4a7612-de72-4220-92b4-8fd9d766f259",
+                    "exec": [
+                      "pm.test(\"C77288 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77288 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77288 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "admin",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "SM1000",
+                      "type": "text"
+                    }
+                  ]
                 },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "8b29fd4c-e92f-4a64-828d-3fb17eea810a",
+              "name": "Username Wrong Case Admin",
+              "event": [
                 {
-                  "key": "password",
-                  "value": "sm1000",
-                  "type": "text"
+                  "listen": "test",
+                  "script": {
+                    "id": "66c1c821-2ce2-40ec-b411-56ffbbdb5ee8",
+                    "exec": [
+                      "pm.test(\"C78214 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C78214 Body IsAdministrator field to show it is logged in\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
                 }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "10a568bc-e26f-445a-afef-ecd65449bbab",
-          "name": "Logout",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
-                "exec": [
-                  "pm.test(\"C77292 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77292 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "82f83625-9808-49f9-8a06-9bfe89e7de5e",
-          "name": "Username Password Swapped",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8449b7ee-930f-4930-ae91-90a0804ce2f1",
-                "exec": [
-                  "pm.test(\"C77289 Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"C77289 Body Contains Login Fields\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                  "});",
-                  "",
-                  "pm.test(\"C77289 Body Contains Error\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "value": "sm1000",
-                  "type": "text"
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "ADMIN",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "sm1000",
+                      "type": "text"
+                    }
+                  ]
                 },
-                {
-                  "key": "password",
-                  "value": "admin",
-                  "type": "text"
-                }
-              ]
+                "url": "{{url}}"
+              },
+              "response": []
             },
-            "url": "{{url}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f70fd7af-b368-4bef-9890-90ae3c519453",
-          "name": "Login Valid",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                "exec": [
-                  "//pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
-                  "//    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                  "//});",
-                  ""
+              "_postman_id": "10a568bc-e26f-445a-afef-ecd65449bbab",
+              "name": "Logout",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
+                    "exec": [
+                      "pm.test(\"C77292 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77292 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "82f83625-9808-49f9-8a06-9bfe89e7de5e",
+              "name": "Username Password Swapped",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8449b7ee-930f-4930-ae91-90a0804ce2f1",
+                    "exec": [
+                      "pm.test(\"C77289 Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"C77289 Body Contains Login Fields\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                      "});",
+                      "",
+                      "pm.test(\"C77289 Body Contains Error\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "value": "sm1000",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "admin",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "f70fd7af-b368-4bef-9890-90ae3c519453",
+              "name": "Login Valid",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
+                    "exec": [
+                      "//pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
+                      "//    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                      "//});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Chris",
+                    "value": "FindME",
+                    "type": "text"
+                  }
                 ],
-                "type": "text/javascript"
-              }
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "user",
+                      "type": "text",
+                      "value": "admin",
+                      "description": ""
+                    },
+                    {
+                      "key": "password",
+                      "type": "text",
+                      "value": "sm1000"
+                    }
+                  ]
+                },
+                "url": "{{url}}"
+              },
+              "response": []
             }
           ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Chris",
-                "value": "FindME",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "user",
-                  "type": "text",
-                  "value": "admin",
-                  "description": ""
-                },
-                {
-                  "key": "password",
-                  "type": "text",
-                  "value": "sm1000"
-                }
-              ]
-            },
-            "url": "{{url}}"
-          },
-          "response": []
+          "_postman_isSubFolder": true
         }
       ]
     },
@@ -5121,12 +5129,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "04a7ff66-e1c2-48d3-9ad2-a910ea1bd100",
-      "name": "Admin",
-      "description": "",
-      "item": []
     }
   ],
   "event": [
