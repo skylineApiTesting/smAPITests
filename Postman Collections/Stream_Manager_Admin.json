@@ -6250,50 +6250,6 @@
               "description": "get lists of different items/information from stream manager.",
               "item": [
                 {
-                  "_postman_id": "b49dc9f6-bf54-4e58-9440-7927c544b535",
-                  "name": "Login Operator",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "    ",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "{{user}}",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "63231cf4-11cd-4749-98df-1a5e4d43d6ad",
                   "name": "Get All Contacts",
                   "event": [
