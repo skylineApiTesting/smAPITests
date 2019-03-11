@@ -961,12 +961,12 @@
                         {
                           "key": "user",
                           "type": "text",
-                          "value": "{{user}}"
+                          "value": "{{admin_user}}"
                         },
                         {
                           "key": "password",
                           "type": "text",
-                          "value": "{{password}}"
+                          "value": "{{admin_password}}"
                         }
                       ]
                     },
