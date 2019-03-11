@@ -6836,7 +6836,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getGrid\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 9\n\t}\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "gets a list of all streams (grid)"
                   },
                   "response": []
@@ -6870,7 +6870,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 10\n\t}\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "Retrieves a list of users. if you are an admin, you should see all the users. if you are an operator, you should only see yourself."
                   },
                   "response": []
