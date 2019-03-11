@@ -7730,7 +7730,7 @@
                           "    pm.expect(pm.response.text()).to.include(new_admin_personal_name);",
                           "});",
                           "",
-                          "pm.test(\"C77441 Body has email\", function () {",
+                          "pm.test(\"C77441 Body has username\", function () {",
                           "    pm.expect(pm.response.text()).to.include(user_name);",
                           "});",
                           "",
