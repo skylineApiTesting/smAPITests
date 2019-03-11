@@ -5336,7 +5336,7 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "OPERATOR",
+                          "value": "OPERATOR2",
                           "type": "text"
                         },
                         {
@@ -5953,111 +5953,6 @@
                     },
                     "url": "{{url}}/1.0/direct/router",
                     "description": "get information for a specific stream"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "7d4b696c-bcfc-47cb-b14d-1f4daf0bfd5b",
-                  "name": "Update Stream Metadata - Operator Cannot Update",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
-                        "exec": [
-                          "pm.test(\"C78231 Verify operator cannot have edited stream\", function () {",
-                          "    pm.expect(pm.response.text()).to.not.include('\"result\":{\"success\":true}}');",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "text/plain"
-                      }
-                    ],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "extTID",
-                          "value": "17",
-                          "type": "text"
-                        },
-                        {
-                          "key": "extAction",
-                          "value": "Streams",
-                          "type": "text"
-                        },
-                        {
-                          "key": "extMethod",
-                          "value": "updateMetadata",
-                          "type": "text"
-                        },
-                        {
-                          "key": "extType",
-                          "value": "rpc",
-                          "type": "text"
-                        },
-                        {
-                          "key": "extUpload",
-                          "value": "false",
-                          "type": "text"
-                        },
-                        {
-                          "key": "id",
-                          "value": "6",
-                          "type": "text"
-                        },
-                        {
-                          "key": "description",
-                          "value": "test_stream_cam_to_multiple_sfsEDITED",
-                          "type": "text"
-                        },
-                        {
-                          "key": "jurisdiction",
-                          "value": "test jurisdiction EDITED",
-                          "type": "text"
-                        },
-                        {
-                          "key": "route_name",
-                          "value": "test route EDITED",
-                          "type": "text"
-                        },
-                        {
-                          "key": "mile_marker",
-                          "value": "66",
-                          "type": "text"
-                        },
-                        {
-                          "key": "traffic_direction",
-                          "value": "S",
-                          "type": "text"
-                        },
-                        {
-                          "key": "latitude",
-                          "value": "50",
-                          "type": "text"
-                        },
-                        {
-                          "key": "longitude",
-                          "value": "50",
-                          "type": "text"
-                        },
-                        {
-                          "key": "deviceid",
-                          "value": "",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}/1.0/direct/router",
-                    "description": "important things to know for the test:\n\nyou will need the id (or metadataID) to change the stream. that id is the unique identifier of the stream.\n\nwe need a way to mass update metadata for load testing."
                   },
                   "response": []
                 }
