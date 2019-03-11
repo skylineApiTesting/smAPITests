@@ -468,7 +468,7 @@
                     }
                   ]
                 },
-                "url": "https://172.28.12.54"
+                "url": "https://prometheus.qa.skyline.local"
               },
               "response": []
             }
