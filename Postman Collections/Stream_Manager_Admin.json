@@ -1151,12 +1151,12 @@
                         {
                           "key": "user",
                           "type": "text",
-                          "value": "{{user}}"
+                          "value": "{{admin_user}}"
                         },
                         {
                           "key": "password",
                           "type": "text",
-                          "value": "{{password}}"
+                          "value": "{{admin_password}}"
                         }
                       ]
                     },
@@ -1300,12 +1300,12 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "{{user}}",
+                          "value": "{{admin_user}}",
                           "type": "text"
                         },
                         {
                           "key": "password",
-                          "value": "{{password}}",
+                          "value": "{{admin_password}}",
                           "type": "text"
                         }
                       ]
@@ -1644,12 +1644,12 @@
                         {
                           "key": "user",
                           "type": "text",
-                          "value": "{{user}}"
+                          "value": "{{admin_user}}"
                         },
                         {
                           "key": "password",
                           "type": "text",
-                          "value": "{{password}}"
+                          "value": "{{admin_password}}"
                         }
                       ]
                     },
