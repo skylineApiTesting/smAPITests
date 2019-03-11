@@ -4623,12 +4623,12 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/{{version}}/streams/getByBounds?X-API-KEY={{user_key}}&format=ABC123&lat=33&lng=33&radius=1000&active=1",
+                      "raw": "{{url}}/1.0/streams/getByBounds?X-API-KEY={{user_key}}&format=ABC123&lat=33&lng=33&radius=1000&active=1",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
-                        "{{version}}",
+                        "1.0",
                         "streams",
                         "getByBounds"
                       ],
