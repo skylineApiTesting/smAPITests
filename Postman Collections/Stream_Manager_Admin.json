@@ -570,7 +570,7 @@
                       "script": {
                         "id": "48710cc8-7321-4f55-b607-bab44c69a186",
                         "exec": [
-                          "pm.environment.set(\"new_admin_username\", \"callemang\");",
+                          "pm.environment.set(\"user_name\", \"callemang\");",
                           "pm.environment.set(\"new_admin_password\", \"streammanager\");",
                           "pm.environment.set(\"new_admin_personal_name\", \"Christopher\");",
                           "pm.environment.set(\"new_admin_user_email\", \"c.m.allemang@gmail.com\");",
