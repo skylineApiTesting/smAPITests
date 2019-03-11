@@ -5086,7 +5086,8 @@
                         "id": "7be8edf0-db71-40b0-b037-c7a04d78613a",
                         "exec": [
                           "pm.environment.set(\"user\", \"operator\");",
-                          "pm.environment.set(\"password\", \"sm2000\");"
+                          "pm.environment.set(\"password\", \"sm2000\");",
+                          "pm.environment.set(\"user_email\", \"chris5@gmail.com\");"
                         ],
                         "type": "text/javascript"
                       }
