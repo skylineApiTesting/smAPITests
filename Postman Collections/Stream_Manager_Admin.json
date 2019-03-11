@@ -932,7 +932,7 @@
                 },
                 {
                   "_postman_id": "7cb19dd4-9d6b-4466-a877-e7a726033714",
-                  "name": "Login Super Admin",
+                  "name": "Login Admin",
                   "event": [
                     {
                       "listen": "test",
