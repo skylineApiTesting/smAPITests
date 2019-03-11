@@ -1359,7 +1359,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"{{contact_last_name}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"{{contact_primary_phone}}\",\n\t\t\t\t\"title\": \"{{contact_title}}\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"{{contact_company}}\",\n\t\t\t\t\"secondary_phone\": \"{{contact_secondary_phone}}\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -1437,7 +1437,7 @@
                       "mode": "raw",
                       "raw": "[\n  {\n    \"action\": \"Contact\",\n    \"method\": \"getContacts\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 1\n  }\n]\n"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
