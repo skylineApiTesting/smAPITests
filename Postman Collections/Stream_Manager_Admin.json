@@ -5145,11 +5145,11 @@
                       "script": {
                         "id": "f6c79170-f98e-4723-9dd4-a5cbed1cdc1b",
                         "exec": [
-                          "pm.test(\"C78010 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C78010 Body Contains Error\", function () {",
+                          "pm.test(\"Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                           "});"
                         ],
@@ -6741,7 +6741,7 @@
                       "script": {
                         "id": "fc3fe377-5c3a-4b40-bd5a-d93dacb54412",
                         "exec": [
-                          "pm.test(\"C78186 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
