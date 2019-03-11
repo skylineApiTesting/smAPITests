@@ -1710,7 +1710,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"createZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": null,\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description}}\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t}\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -1790,7 +1790,7 @@
                       "mode": "raw",
                       "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -1867,7 +1867,7 @@
                       "mode": "raw",
                       "raw": "[\n\t\t{\n\t\t\"action\": \"Zone\",\n\t\t\"method\": \"updateZone\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{zone_id}}\",\n\t\t\t\t\"customer_id\": \"\",\n\t\t\t\t\"name\": \"{{zone_name_EDIT}}\",\n\t\t\t\t\"auto_offline\": \"{{zone_auto_offline}}\",\n\t\t\t\t\"description\": \"{{zone_description_EDIT}}\",\n\t\t\t\t\"last_updated\": {\n\t\t\t\t\t\"date\": \"2018-06-13 16:53:21.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"last_updated_by\": \"admin\",\n\t\t\t\t\"include_in_current_status_report\": \"{{zone_current_status_report}}\"\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t},\n\t{\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 16\n  }\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -1929,7 +1929,7 @@
                       "mode": "raw",
                       "raw": "[\n  {\n    \"action\": \"Zone\",\n    \"method\": \"deleteZone\",\n    \"data\": [\n      {\n        \"id\": \"{{zone_id}}\",\n        \"customer_id\": \"\",\n        \"name\": \"{{zone_name_EDIT}}\",\n        \"auto_offline\": false,\n        \"description\": \"{{zone_description}}\",\n        \"last_updated\": {\n          \"date\": \"2018-06-13 19:01:18.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"last_updated_by\": \"admin\",\n        \"include_in_current_status_report\": true\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 29\n  },\n  {\n    \"action\": \"Zone\",\n    \"method\": \"getZones\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 30\n  }\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 }
