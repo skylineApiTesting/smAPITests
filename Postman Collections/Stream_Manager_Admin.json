@@ -3294,7 +3294,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 1\n\t}\n]"
                     },
-                    "url": "{{url}1.0/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "gets a list of all contacts associated with the stream manager."
                   },
                   "response": []
@@ -3670,7 +3670,7 @@
                       "mode": "raw",
                       "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getStreamMap\",\n\t\"data\": [\n\t\t{\n\t\t\t\"metadataId\": {{metadata_id}}\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 17\n}"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "gets a stream map of a test stream based on its metadata_id"
                   },
                   "response": []
