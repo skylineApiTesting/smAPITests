@@ -2321,7 +2321,7 @@
                       "mode": "raw",
                       "raw": "{\n  \"action\": \"Appliance\",\n  \"method\": \"getAppliances\",\n  \"data\": [\n    {\n      \"page\": 1,\n      \"start\": 0,\n      \"limit\": 25,\n      \"group\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"property\": \"location_name\",\n          \"direction\": \"ASC\"\n        }\n      ]\n    }\n  ],\n  \"type\": \"rpc\",\n  \"tid\": 15\n}"
                     },
-                    "url": "{{url}}/{{version}}/direct/router/"
+                    "url": "{{url}}/1.0/direct/router/"
                   },
                   "response": []
                 }
