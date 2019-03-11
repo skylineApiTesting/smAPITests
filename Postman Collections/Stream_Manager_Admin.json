@@ -1347,15 +1347,7 @@
                           "pm.environment.set(\"contact_title\", \"Developer\");",
                           "pm.environment.set(\"contact_company\", \"Whiteboards-4-Life\");",
                           "pm.environment.set(\"contact_secondary_phone\", \"333-444-5893\");",
-                          "\"first_name\": \"{{}}\",",
-                          "\t\t\t\t\"last_name\": \"{{}\",",
-                          "\t\t\t\t\"last_updated\": \"\",",
-                          "\t\t\t\t\"primary_phone\": \"{{}}\",",
-                          "\t\t\t\t\"title\": \"{{}}\",",
-                          "\t\t\t\t\"last_updated_by\": \"\",",
-                          "\t\t\t\t\"company_name\": \"{{}}\",",
-                          "\t\t\t\t\"secondary_phone\": \"{{}}\",",
-                          "\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\","
+                          "pm.environment.set(\"contact_email\", \"mathew@gmail.com\");"
                         ],
                         "type": "text/javascript"
                       }
