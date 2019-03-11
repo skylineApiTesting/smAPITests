@@ -6712,6 +6712,50 @@
                   "response": []
                 },
                 {
+                  "_postman_id": "f53b4d88-8665-423d-9ca4-8cc8bd562f05",
+                  "name": "Login Operator Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "aeac104d-906a-4223-abea-c688504db648",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "    ",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "type": "text",
+                          "value": "{{user}}"
+                        },
+                        {
+                          "key": "password",
+                          "type": "text",
+                          "value": "{{password}}"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}",
+                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+                  },
+                  "response": []
+                },
+                {
                   "_postman_id": "49de39e6-5a75-44bc-b142-a0033d9d2e96",
                   "name": "getAllStreamStatus",
                   "event": [
@@ -6809,50 +6853,6 @@
                       "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 24\n}"
                     },
                     "url": "{{url}}/1.0/direct/router"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "f53b4d88-8665-423d-9ca4-8cc8bd562f05",
-                  "name": "Login Operator Copy",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "aeac104d-906a-4223-abea-c688504db648",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "    ",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "type": "text",
-                          "value": "{{user}}"
-                        },
-                        {
-                          "key": "password",
-                          "type": "text",
-                          "value": "{{password}}"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
                   },
                   "response": []
                 }
