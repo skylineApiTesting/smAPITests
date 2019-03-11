@@ -789,7 +789,7 @@
                           "});",
                           "",
                           "pm.test(\"C78216 Response contains edited personal name\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(user_email_EDIT);",
+                          "    pm.expect(pm.response.text()).to.include(operator_personal_name_EDIT);",
                           "});",
                           "",
                           "pm.test(\"C78216 Status code is 200\", function () {",
@@ -829,7 +829,7 @@
                       "mode": "raw",
                       "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{operator_id}}\",\r\n        \"username\": \"{{operator_user_name}}\",\r\n        \"password\": \"{{operator_password_EDIT}}\",\r\n        \"personal_name\": \"{{operator_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -883,7 +883,7 @@
                       "mode": "raw",
                       "raw": "[\r\n  {\r\n    \"action\": \"Users\",\r\n    \"method\": \"updateUser\",\r\n    \"data\": [\r\n      {\r\n        \"id\": \"{{user_ID}}\",\r\n        \"username\": \"{{user_name}}\",\r\n        \"password\": \"{{admin_password_EDIT}}\",\r\n        \"personal_name\": \"{{admin_personal_name_EDIT}}\",\r\n        \"email\": \"{{user_email_EDIT}}\",\r\n        \"date_created\": {\r\n          \"date\": \"2018-06-05 21:17:28.000000\",\r\n          \"timezone_type\": 3,\r\n          \"timezone\": \"GMT\"\r\n        },\r\n        \"is_admin\": false\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 29\r\n  }\r\n]\r\n"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
