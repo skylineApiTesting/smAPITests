@@ -7028,7 +7028,7 @@
                       "mode": "raw",
                       "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getAllStreamStatus\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 22\n}"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "this is the response from using the 'Current status' report in stream manager."
                   },
                   "response": []
