@@ -6145,8 +6145,7 @@
                       "script": {
                         "id": "4b491a78-3df2-49f3-a594-8663feab62cf",
                         "exec": [
-                          "pm.environment.set(\"operator_2_password_edit\", \"{{operator_2_password}}\"+\"edit\");",
-                          "pm.environment.get(\"variable_key\");"
+                          "pm.environment.set(\"operator_2_password_edit\", \"{{password}}\"+\"edit\");"
                         ],
                         "type": "text/javascript"
                       }
@@ -6162,7 +6161,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_id}}\",\n\t\t\t\t\"username\": \"User 1533235445\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jennnnnnnnnnnn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
+                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 57,\n\t\t\t\t\"username\": \"{{user}}\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jennnnnnnnnnnn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
                     },
                     "url": "{{url}}/1.0/direct/router"
                   },
