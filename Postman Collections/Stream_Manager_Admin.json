@@ -3532,7 +3532,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Streams\",\n\t\t\"method\": \"getOfflineSfsStreams\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"offlineAppliance\": \"SSL VPN\",\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25,\n\t\t\t\t\"group\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"sort\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 8\n\t}\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "offline appliace = SSL VPN"
                   },
                   "response": []
