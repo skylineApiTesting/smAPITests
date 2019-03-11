@@ -2917,7 +2917,7 @@
                       "mode": "raw",
                       "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -2961,12 +2961,12 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
-                        "{{version}}",
+                        "1.0",
                         "streams",
                         "getAll"
                       ],
@@ -3066,12 +3066,12 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=json",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
-                        "{{version}}",
+                        "1.0",
                         "streams",
                         "getAll"
                       ],
@@ -3122,12 +3122,12 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY=ABC123&format=json",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY=ABC123&format=json",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
-                        "{{version}}",
+                        "1.0",
                         "streams",
                         "getAll"
                       ],
@@ -3178,12 +3178,12 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
-                        "{{version}}",
+                        "1.0",
                         "streams",
                         "getAll"
                       ],
