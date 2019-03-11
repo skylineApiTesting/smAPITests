@@ -2813,7 +2813,6 @@
                           "    }",
                           "}",
                           "pm.environment.set(\"contact_id\",record);",
-                          "console.log(record);",
                           ""
                         ],
                         "type": "text/javascript"
