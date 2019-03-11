@@ -3305,12 +3305,12 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/{{version}}/streams/getAll?X-API-KEY={{user_key}}&format=ABC123",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=ABC123",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
-                        "{{version}}",
+                        "1.0",
                         "streams",
                         "getAll"
                       ],
