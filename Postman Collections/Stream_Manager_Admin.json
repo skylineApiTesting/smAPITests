@@ -676,6 +676,7 @@
                         "exec": [
                           "user_email = pm.environment.get(\"user_email\");",
                           "user_name = pm.environment.get(\"user_name\");",
+                          "",
                           "pm.test(\"C78215 Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"getUsers\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
@@ -7719,7 +7720,7 @@
                           "",
                           "new_admin_user_email = pm.environment.get(\"new_admin_user_email\");",
                           "new_admin_personal_name = pm.environment.get(\"new_admin_personal_name\");",
-                          "new_admin_username = pm.environment.get(\"_user_name\");",
+                          "user_name = pm.environment.get(\"user_name\");",
                           "",
                           "pm.test(\"C77441 Body has email\", function () {",
                           "    pm.expect(pm.response.text()).to.include(new_admin_user_email);",
