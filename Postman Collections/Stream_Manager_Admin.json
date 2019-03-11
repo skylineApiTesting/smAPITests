@@ -6193,11 +6193,12 @@
                         {
                           "key": "user",
                           "type": "text",
-                          "value": "{{operator_2}}"
+                          "value": "{{user}}"
                         },
                         {
                           "key": "password",
                           "value": "{{operator_2_password_edit}}",
+                          "description": "",
                           "type": "text"
                         }
                       ]
