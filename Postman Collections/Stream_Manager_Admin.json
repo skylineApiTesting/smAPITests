@@ -7719,7 +7719,7 @@
                           "",
                           "new_admin_user_email = pm.environment.get(\"new_admin_user_email\");",
                           "new_admin_personal_name = pm.environment.get(\"new_admin_personal_name\");",
-                          "new_admin_username = pm.environment.get(\"new_admin_username\");",
+                          "new_admin_username = pm.environment.get(\"_user_name\");",
                           "",
                           "pm.test(\"C77441 Body has email\", function () {",
                           "    pm.expect(pm.response.text()).to.include(new_admin_user_email);",
@@ -7730,7 +7730,7 @@
                           "});",
                           "",
                           "pm.test(\"C77441 Body has email\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(new_admin_username);",
+                          "    pm.expect(pm.response.text()).to.include(user_name);",
                           "});",
                           "",
                           "pm.test(\"C77441 Status code is 200\", function () {",
@@ -7746,7 +7746,7 @@
                       "script": {
                         "id": "48710cc8-7321-4f55-b607-bab44c69a186",
                         "exec": [
-                          "pm.environment.set(\"new_admin_username\", \"callemang\");",
+                          "pm.environment.set(\"user_name\", \"callemang\");",
                           "pm.environment.set(\"new_admin_password\", \"streammanager\");",
                           "pm.environment.set(\"new_admin_personal_name\", \"Christopher\");",
                           "pm.environment.set(\"new_admin_user_email\", \"c.m.allemang@gmail.com\");",
@@ -7766,7 +7766,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{new_admin_username}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_admin_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{user_name}}\",\n\t\t\t\t\"password\": \"{{new_admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{new_admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{new_admin_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                     },
                     "url": "{{url}}/1.0/direct/router",
                     "description": "creates an admin user in stream manager."
