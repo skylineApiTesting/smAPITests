@@ -5036,12 +5036,11 @@
                         "exec": [
                           "pm.environment.unset(\"user_name\");",
                           "pm.environment.unset(\"user_email\");",
+                          "pm.environment.unset(\"admin_personal_name\");",
                           "",
-                          "var user_name = Math.floor((Math.random() * 1000000) + 1);",
-                          "var user_email = Math.floor((Math.random() * 1000000) + 1);",
-                          "",
-                          "pm.environment.set(\"user_name\", user_name);",
-                          "pm.environment.set(\"user_email\", user_email+\"@gmail.com\");"
+                          "pm.environment.set(\"user_name\", \"rkingsss\");",
+                          "pm.environment.set(\"user_email\", \"rkingsss@gmail.com\");",
+                          "pm.environment.set(\"admin_personal_name\", \"RalphyRalph\");"
                         ],
                         "type": "text/javascript"
                       }
@@ -5059,7 +5058,7 @@
                       "mode": "raw",
                       "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"User {{$timestamp}}\",\n\t\t\t\t\"password\": \"{{admin_password}}\",\n\t\t\t\t\"personal_name\": \"{{admin_personal_name}}\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "creates an admin user in stream manager."
                   },
                   "response": []
@@ -5622,7 +5621,7 @@
                       "mode": "raw",
                       "raw": ""
                     },
-                    "url": "{{url}}/{{version}}/direct/api"
+                    "url": "{{url}}/1.0/direct/api"
                   },
                   "response": []
                 }
@@ -5729,7 +5728,7 @@
                       "mode": "raw",
                       "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": 1,\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 1,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
@@ -5772,7 +5771,7 @@
                       "mode": "raw",
                       "raw": "[\n    {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 20\n  }\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "gets a list of all the API keys."
                   },
                   "response": []
@@ -5811,7 +5810,7 @@
                       "mode": "raw",
                       "raw": "[\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"deleteApiKey\",\n    \"data\": [\n      {\n        \"user_key\": \"{{user_key}}\",\n        \"level\": 10,\n        \"date_created\": {\n          \"date\": \"2018-07-02 18:13:32.000000\",\n          \"timezone_type\": 3,\n          \"timezone\": \"GMT\"\n        },\n        \"first_name\": \"DOT\",\n        \"last_name\": \"Government\",\n        \"primary phone\": \"\",\n        \"email address\": \"\",\n        \"contact_id\": 1,\n        \"zone_name\": \"Public\",\n        \"zone_id\": 1,\n        \"id\": null\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 23\n  },\n  {\n    \"action\": \"ApiKey\",\n    \"method\": \"getApikeys\",\n    \"data\": [\n      {\n        \"page\": 1,\n        \"start\": 0,\n        \"limit\": 25\n      }\n    ],\n    \"type\": \"rpc\",\n    \"tid\": 24\n  }\n]"
                     },
-                    "url": "{{url}}/{{version}}/direct/router",
+                    "url": "{{url}}/1.0/direct/router",
                     "description": "deletes an api key"
                   },
                   "response": []
@@ -5924,7 +5923,7 @@
                       "mode": "raw",
                       "raw": "{\n\t\"action\": \"Appliance\",\n\t\"method\": \"getAppliances\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"location_name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 2\n}"
                     },
-                    "url": "{{url}}/{{version}}/direct/router"
+                    "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
                 },
