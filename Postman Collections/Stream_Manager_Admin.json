@@ -4455,7 +4455,7 @@
                       "script": {
                         "id": "c7a87241-8255-4da7-8972-53e88ceacb48",
                         "exec": [
-                          "pm.test(\"C77958 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
@@ -4527,11 +4527,11 @@
                       "script": {
                         "id": "070d143d-35f2-4a24-84a4-6875ed240ba5",
                         "exec": [
-                          "pm.test(\"C77959 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77959 Body is in XML format\", function () {",
+                          "pm.test(\"Body is in XML format\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
                           "});"
                         ],
@@ -4602,7 +4602,7 @@
                       "script": {
                         "id": "5aee534c-eefb-40b6-b224-d2f43eaf2747",
                         "exec": [
-                          "pm.test(\"C77960 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
