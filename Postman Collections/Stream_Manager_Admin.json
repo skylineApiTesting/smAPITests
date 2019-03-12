@@ -853,7 +853,7 @@
                           "    pm.expect(pm.response.text()).to.include('\"is_admin\":false');",
                           "});",
                           "",
-                          "pm.test(\"C77451 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
