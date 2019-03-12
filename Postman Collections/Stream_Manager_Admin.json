@@ -259,53 +259,6 @@
                   "response": []
                 },
                 {
-                  "_postman_id": "60383c98-be5d-44bb-828a-09e5dc8d23d1",
-                  "name": "Empty Username",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "b005cd07-393e-4d33-b1dc-e141d3b7ae7f",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Error\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{admin_password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "6f3d140b-486c-47ad-996e-3fdef2753e14",
                   "name": "Empty Username Copy",
                   "event": [
@@ -4443,6 +4396,53 @@
                     },
                     "url": "{{url}}",
                     "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "60383c98-be5d-44bb-828a-09e5dc8d23d1",
+                  "name": "Empty Username",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "b005cd07-393e-4d33-b1dc-e141d3b7ae7f",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Error\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "value": "",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{admin_password}}",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}"
                   },
                   "response": []
                 }
