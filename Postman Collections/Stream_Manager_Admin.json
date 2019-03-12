@@ -2710,8 +2710,8 @@
                       "script": {
                         "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
                         "exec": [
-                          "pm.test(\"C78007 Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
+                          "pm.test(\"C78007 Status code is 403\", function () {",
+                          "    pm.response.to.have.status(403);",
                           "});",
                           "",
                           "pm.test(\"C78007 Body is JSON format\", function () {",
@@ -2960,7 +2960,7 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
                       "host": [
                         "{{url}}"
                       ],
@@ -2972,7 +2972,7 @@
                       "query": [
                         {
                           "key": "X-API-KEY",
-                          "value": "{{user_API_Key}}",
+                          "value": "{{user_key}}",
                           "equals": true
                         },
                         {
