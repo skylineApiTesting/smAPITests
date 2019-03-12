@@ -163,54 +163,6 @@
                   "response": []
                 },
                 {
-                  "_postman_id": "a01ea819-bd5f-431b-8e76-32f9c7088640",
-                  "name": "Empty Fields",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Error\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "0109ea04-984e-43ce-8ddb-c20493e3e25b",
                   "name": "Empty Password",
                   "event": [
@@ -307,7 +259,7 @@
                 },
                 {
                   "_postman_id": "ba877c17-83ab-4566-840e-e97818d1a9ad",
-                  "name": "Username Wrong Case Admin",
+                  "name": "Wrong Username Case, Correct Password",
                   "event": [
                     {
                       "listen": "test",
@@ -4196,8 +4148,56 @@
                   "response": []
                 },
                 {
+                  "_postman_id": "a01ea819-bd5f-431b-8e76-32f9c7088640",
+                  "name": "Empty Fields",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Error\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "value": "",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}"
+                  },
+                  "response": []
+                },
+                {
                   "_postman_id": "7f8b8040-1f61-4bf3-8d8e-31499d78cf0f",
-                  "name": "Correct Username Wrong Case, Correct Password",
+                  "name": "Wrong Username Case, Correct Password",
                   "event": [
                     {
                       "listen": "test",
