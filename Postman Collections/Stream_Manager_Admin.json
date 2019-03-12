@@ -1396,7 +1396,7 @@
                           "contact_secondary_phone = pm.environment.get(\"contact_secondary_phone\");",
                           "contact_email = pm.environment.get(\"contact_email\");",
                           "",
-                          "pm.test(\"C78221 Contact name is saved\", function () {",
+                          "pm.test(\"Contact name is saved\", function () {",
                           "    pm.expect(pm.response.text()).to.include(contact_name);",
                           "});",
                           "pm.test(\"C78221 Contact last name is saved\", function () {",
