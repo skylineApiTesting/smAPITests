@@ -476,6 +476,54 @@
                     "url": "https://prometheus.qa.skyline.local"
                   },
                   "response": []
+                },
+                {
+                  "_postman_id": "cb5a94a1-bcbf-46fa-9c54-3f8c565bdcfd",
+                  "name": "Empty Password Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "1c1fbaef-b26d-431f-96d2-ea393aca93ba",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Error\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "value": "{{admin_user}}",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}"
+                  },
+                  "response": []
                 }
               ],
               "_postman_isSubFolder": true
