@@ -2522,50 +2522,6 @@
               "description": "API tests for streams tab for operators",
               "item": [
                 {
-                  "_postman_id": "dbc0831c-7fec-44bb-b9b4-3cefa164b271",
-                  "name": "Login Valid",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "11710913-2121-4ef0-9792-ed8db549290c",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "    ",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "{{admin_user}}",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{admin_password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "7e921af4-7ea5-4f39-a620-9f1323526bb7",
                   "name": "Create Metadata",
                   "event": [
