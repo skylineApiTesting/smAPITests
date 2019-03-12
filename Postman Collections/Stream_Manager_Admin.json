@@ -5455,11 +5455,11 @@
                       "script": {
                         "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
                         "exec": [
-                          "pm.test(\"C78227 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78227 Body contains api names\", function () {",
+                          "pm.test(\"Body contains api names\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
                           "});",
                           ""
@@ -5523,7 +5523,7 @@
                       "script": {
                         "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
                         "exec": [
-                          "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
