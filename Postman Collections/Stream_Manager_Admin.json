@@ -5610,7 +5610,7 @@
                           "",
                           "var obj = JSON.parse(pm.response.text());",
                           "",
-                          "pm.test(\"C78209 No Keys are returned\", function () {",
+                          "pm.test(\"No Keys are returned\", function () {",
                           "    pm.expect(obj[0].result.total === 0);",
                           "}); "
                         ],
