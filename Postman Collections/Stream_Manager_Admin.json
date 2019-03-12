@@ -3893,11 +3893,11 @@
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78000 Success message present\", function () {",
+                          "pm.test(\"Success message present\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                           "});",
                           "",
-                          "pm.test(\"C78000 Created Metadata was saved\", function () {",
+                          "pm.test(\"Created Metadata was saved\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
                           "});"
                         ],
@@ -3931,7 +3931,7 @@
                       "script": {
                         "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
                         "exec": [
-                          "pm.test(\"C78001 Verify admin can edit stream metadata\", function () {",
+                          "pm.test(\"Verify admin can edit stream metadata\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
                           "});"
                         ],
@@ -4065,7 +4065,7 @@
                           "stream_latitude = pm.environment.get(\"stream_latitude_EDIT\");",
                           "stream_longitude = pm.environment.get(\"stream_longitude_EDIT\");",
                           "",
-                          "pm.test(\"C78002 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
