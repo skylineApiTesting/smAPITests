@@ -5118,115 +5118,6 @@
               "_postman_isSubFolder": true
             },
             {
-              "_postman_id": "2709f040-14b7-4d12-bd50-4d2f0b0b66ca",
-              "name": "Reports",
-              "description": "these are the APIs which are called when you view reports in the reports tab of stream manager.",
-              "item": [
-                {
-                  "_postman_id": "49de39e6-5a75-44bc-b142-a0033d9d2e96",
-                  "name": "getAllStreamStatus",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "5bb8f8e4-838d-4008-ad62-f9b3e552c10b",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getAllStreamStatus\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 22\n}"
-                    },
-                    "url": "{{url}}/1.0/direct/router",
-                    "description": "this is the response from using the 'Current status' report in stream manager."
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "3e090510-fbaa-4c01-b82c-ec237263482c",
-                  "name": "Stream metadata report",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "9309f386-78cc-4e1f-92f1-0153d75e9154",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 23\n}"
-                    },
-                    "url": "{{url}}/1.0/direct/router",
-                    "description": "this is the response when you get data for the 'stream metadata' report in stream manager."
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "cdae3d2c-25b5-464f-ab33-a19025a48311",
-                  "name": "stream network config report",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "fc3fe377-5c3a-4b40-bd5a-d93dacb54412",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 24\n}"
-                    },
-                    "url": "{{url}}/1.0/direct/router"
-                  },
-                  "response": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
               "_postman_id": "935f6cf9-7b4d-4974-805c-d1374f59ec57",
               "name": "Login Admin",
               "event": [
@@ -6790,6 +6681,114 @@
           "description": "",
           "item": [],
           "_postman_isSubFolder": true
+        }
+      ]
+    },
+    {
+      "_postman_id": "2709f040-14b7-4d12-bd50-4d2f0b0b66ca",
+      "name": "Reports",
+      "description": "these are the APIs which are called when you view reports in the reports tab of stream manager.",
+      "item": [
+        {
+          "_postman_id": "49de39e6-5a75-44bc-b142-a0033d9d2e96",
+          "name": "getAllStreamStatus",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5bb8f8e4-838d-4008-ad62-f9b3e552c10b",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getAllStreamStatus\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 22\n}"
+            },
+            "url": "{{url}}/1.0/direct/router",
+            "description": "this is the response from using the 'Current status' report in stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3e090510-fbaa-4c01-b82c-ec237263482c",
+          "name": "Stream metadata report",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9309f386-78cc-4e1f-92f1-0153d75e9154",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 23\n}"
+            },
+            "url": "{{url}}/1.0/direct/router",
+            "description": "this is the response when you get data for the 'stream metadata' report in stream manager."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "cdae3d2c-25b5-464f-ab33-a19025a48311",
+          "name": "stream network config report",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fc3fe377-5c3a-4b40-bd5a-d93dacb54412",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 24\n}"
+            },
+            "url": "{{url}}/1.0/direct/router"
+          },
+          "response": []
         }
       ]
     }
