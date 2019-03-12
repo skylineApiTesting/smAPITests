@@ -220,15 +220,15 @@
                       "script": {
                         "id": "e0608f42-6650-4b53-9a34-6dd313ef6af9",
                         "exec": [
-                          "pm.test(\"C77286 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77286 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C77286 Body Contains Error\", function () {",
+                          "pm.test(\"Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                           "});"
                         ],
