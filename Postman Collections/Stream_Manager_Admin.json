@@ -6116,20 +6116,20 @@
                       "script": {
                         "id": "99fe64b1-19ab-4b7f-9d4f-01696e144f19",
                         "exec": [
-                          "pm.test(\"C78149 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78149 operator was updated\", function () {",
+                          "pm.test(\"operator was updated\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData[0].result.success).to.eql(true);",
                           "});",
                           "",
-                          "pm.test(\"C78149 Body contains new email\", function () {",
+                          "pm.test(\"Body contains new email\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"email\":\"jpeeling_edit@skylinenet.net\"');",
                           "});",
                           "",
-                          "pm.test(\"C78149 Body contains new personal name\", function () {",
+                          "pm.test(\"Body contains new personal name\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"personal_name\":\"Jennnnnnnnnnnn\"');",
                           "});",
                           ""
@@ -6173,7 +6173,7 @@
                       "script": {
                         "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
                         "exec": [
-                          "pm.test(\"C78212 Body shows Operator Logged in\", function () {",
+                          "pm.test(\"Body shows Operator Logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
