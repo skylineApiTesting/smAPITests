@@ -429,6 +429,52 @@
                     "url": "{{url}}"
                   },
                   "response": []
+                },
+                {
+                  "_postman_id": "43e3d9b9-f6e5-4228-9499-a792ea537db4",
+                  "name": "Login Admin Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "c4858c6f-531a-44db-851c-98bdbc5d47eb",
+                        "exec": [
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "value": "{{admin_user}}",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{admin_password}}",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}",
+                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+                  },
+                  "response": []
                 }
               ],
               "_postman_isSubFolder": true
@@ -3652,52 +3698,6 @@
                 {
                   "_postman_id": "935f6cf9-7b4d-4974-805c-d1374f59ec57",
                   "name": "Login Admin",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "c4858c6f-531a-44db-851c-98bdbc5d47eb",
-                        "exec": [
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "{{admin_user}}",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{admin_password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "43e3d9b9-f6e5-4228-9499-a792ea537db4",
-                  "name": "Login Admin Copy",
                   "event": [
                     {
                       "listen": "test",
