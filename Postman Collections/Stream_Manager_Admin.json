@@ -3205,11 +3205,11 @@
                       "script": {
                         "id": "ce7e6e40-f5bb-41d2-b035-a9ab8219f8cf",
                         "exec": [
-                          "pm.test(\"C77941 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77941 Body is in XML format\", function () {",
+                          "pm.test(\"Body is in XML format\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
                           "});",
                           ""
