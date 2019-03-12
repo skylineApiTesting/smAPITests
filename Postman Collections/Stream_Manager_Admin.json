@@ -537,6 +537,10 @@
                       "script": {
                         "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
                         "exec": [
+                          "new_admin_user_email = pm.environment.get(\"new_admin_user_email\");",
+                          "new_admin_personal_name = pm.environment.get(\"new_admin_personal_name\");",
+                          "user_name = pm.environment.get(\"user_name\");",
+                          "",
                           "pm.test(\"User was created and variables set.\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.total) !== null;",
@@ -548,11 +552,7 @@
                           "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
-                          "new_admin_user_email = pm.environment.get(\"new_admin_user_email\");",
-                          "new_admin_personal_name = pm.environment.get(\"new_admin_personal_name\");",
-                          "user_name = pm.environment.get(\"user_name\");",
-                          "",
-                          "pm.test(\"C77441 Body has email\", function () {",
+                          "pm.test(\"Body has email\", function () {",
                           "    pm.expect(pm.response.text()).to.include(new_admin_user_email);",
                           "});",
                           "",
