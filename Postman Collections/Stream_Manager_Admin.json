@@ -306,6 +306,53 @@
                   "response": []
                 },
                 {
+                  "_postman_id": "6f3d140b-486c-47ad-996e-3fdef2753e14",
+                  "name": "Empty Username Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "b005cd07-393e-4d33-b1dc-e141d3b7ae7f",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Error\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "value": "",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{admin_password}}",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}"
+                  },
+                  "response": []
+                },
+                {
                   "_postman_id": "ba877c17-83ab-4566-840e-e97818d1a9ad",
                   "name": "Wrong Username Case, Correct Password",
                   "event": [
