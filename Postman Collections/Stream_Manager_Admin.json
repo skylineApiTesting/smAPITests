@@ -3021,9 +3021,7 @@
                           "    ",
                           "});",
                           "",
-                          "",
-                          "",
-                          "pm.test(\"C78232 Metadata are strings\", function () {",
+                          "pm.test(\"Metadata are strings\", function () {",
                           "    pm.expect(record.properties.description).to.be.a('string');",
                           "    pm.expect(record.properties.deviceid).to.be.a('string');",
                           "    pm.expect(record.properties.direction).to.be.a('string');",
@@ -3090,11 +3088,11 @@
                       "script": {
                         "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
                         "exec": [
-                          "pm.test(\"C77939 Status code is 403\", function () {",
+                          "pm.test(\"Status code is 403\", function () {",
                           "    pm.response.to.have.status(403);",
                           "});",
                           "",
-                          "pm.test(\"C77939 Verify invalid API error message is provided\", function () {",
+                          "pm.test(\"Verify invalid API error message is provided\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
                           "});"
