@@ -6214,7 +6214,7 @@
                       "script": {
                         "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
                         "exec": [
-                          "pm.test(\"C78150 Operator cant make self admin\", function () {",
+                          "pm.test(\"Operator cant make self admin\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":false');",
                           "});"
                         ],
@@ -6255,7 +6255,7 @@
                       "script": {
                         "id": "bd01da50-638a-4d06-ac48-355d8066b431",
                         "exec": [
-                          "pm.test(\"C123397 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -6289,7 +6289,7 @@
                       "script": {
                         "id": "523b5782-12a9-4a8e-8ee7-4bca8c45a8c3",
                         "exec": [
-                          "pm.test(\"C123398 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
