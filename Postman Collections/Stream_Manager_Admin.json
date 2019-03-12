@@ -5274,11 +5274,11 @@
                       "script": {
                         "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
                         "exec": [
-                          "pm.test(\"C78013 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C78013 Body Contains Error\", function () {",
+                          "pm.test(\"Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                           "});"
                         ],
@@ -5317,7 +5317,7 @@
                       "script": {
                         "id": "1a421a29-f4c1-42ec-bc72-94f25b1a0379",
                         "exec": [
-                          "pm.test(\"C78207 Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
@@ -5356,7 +5356,7 @@
                       "script": {
                         "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
                         "exec": [
-                          "pm.test(\"C78017 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           ""
@@ -5385,7 +5385,7 @@
                       "script": {
                         "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
                         "exec": [
-                          "pm.test(\"C78016 Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
