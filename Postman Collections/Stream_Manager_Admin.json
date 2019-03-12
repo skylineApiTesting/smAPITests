@@ -4242,46 +4242,6 @@
               "description": null,
               "item": [
                 {
-                  "_postman_id": "c1aa5108-3b7c-49a4-8236-9e207065b667",
-                  "name": "Login Operator",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "09ae0a77-c4f9-493c-abf9-fa61693c6898",
-                        "exec": [
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "operator",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "sm1000",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "4fe5bc16-066a-41cc-89b9-0312535462b3",
                   "name": "Op Cannot Create API Key",
                   "event": [
