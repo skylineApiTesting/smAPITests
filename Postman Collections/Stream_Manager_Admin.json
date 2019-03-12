@@ -1187,49 +1187,6 @@
               "description": null,
               "item": [
                 {
-                  "_postman_id": "43e47ba4-0e0a-4e97-b754-cf83ab7c4b79",
-                  "name": "Login Admin",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "fd61a154-458c-4402-ab72-e27c9dc2e13f",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "    ",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "{{admin_user}}",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{admin_password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "1595ad80-826f-465a-9c52-d1a64fea773c",
                   "name": "Create New Contact",
                   "event": [
