@@ -5563,11 +5563,11 @@
                       "script": {
                         "id": "1181797c-a819-4e06-a600-15bec4595719",
                         "exec": [
-                          "pm.test(\"C78177 Body shows failure message\", function () {",
+                          "pm.test(\"Body shows failure message\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":false,\"message\":\"not logged in\"');",
                           "});",
                           "",
-                          "pm.test(\"C78177 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
