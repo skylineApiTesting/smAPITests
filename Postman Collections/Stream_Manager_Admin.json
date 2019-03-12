@@ -903,11 +903,11 @@
                       "script": {
                         "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
                         "exec": [
-                          "pm.test(\"C78218 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "    ",
-                          "pm.test(\"C78218 User is logged in as an operator\", function () {",
+                          "pm.test(\"User is logged in as an operator\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
@@ -950,7 +950,7 @@
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});",
                           ""
