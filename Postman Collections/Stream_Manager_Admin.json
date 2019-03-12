@@ -3012,7 +3012,7 @@
                           "    pm.expect(record.properties.active).to.be.a('boolean');",
                           "});",
                           "",
-                          "pm.test(\"C78232 urls are strings\", function () {",
+                          "pm.test(\"urls are strings\", function () {",
                           "    pm.expect(record.properties.clsp_url).to.be.a('string');",
                           "    pm.expect(record.properties.clsps_url).to.be.a('string');",
                           "    pm.expect(record.properties.https_url).to.be.a('string');",
