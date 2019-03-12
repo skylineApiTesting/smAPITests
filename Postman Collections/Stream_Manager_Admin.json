@@ -3645,7 +3645,7 @@
                         "exec": [
                           "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
                           "",
-                          "pm.test(\"C77983 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -3753,7 +3753,7 @@
                       "script": {
                         "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
                         "exec": [
-                          "pm.test(\"C77999 Verify admin can edit stream metadata\", function () {",
+                          "pm.test(\"Verify admin can edit stream metadata\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
                           "});",
                           "",
@@ -3889,7 +3889,7 @@
                           "stream_latitude = pm.environment.get(\"stream_latitude\");",
                           "stream_longitude = pm.environment.get(\"stream_longitude\");",
                           "",
-                          "pm.test(\"C78000 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
