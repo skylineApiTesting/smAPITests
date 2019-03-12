@@ -1487,49 +1487,6 @@
               "description": null,
               "item": [
                 {
-                  "_postman_id": "956ccdd4-7fe0-46aa-b47b-791cd4685ff0",
-                  "name": "Login Admin",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "cccdea28-e65c-438b-9419-b9f3613e77c3",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "type": "text",
-                          "value": "{{admin_user}}"
-                        },
-                        {
-                          "key": "password",
-                          "type": "text",
-                          "value": "{{admin_password}}"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "411627a5-1d26-47ec-89bd-2cb18628587a",
                   "name": "Create New Zone",
                   "event": [
@@ -1813,49 +1770,6 @@
               "name": "Appliances",
               "description": "",
               "item": [
-                {
-                  "_postman_id": "c3d638fd-3ca5-4e5a-8213-2c4945f0ea18",
-                  "name": "Login Admin",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "    ",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "{{admin_user}}",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{admin_password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
                 {
                   "_postman_id": "c2e95dd1-61fd-4856-a1b1-197cdb475583",
                   "name": "Retrieve",
