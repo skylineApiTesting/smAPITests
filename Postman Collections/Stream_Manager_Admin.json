@@ -5795,11 +5795,11 @@
                       "script": {
                         "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
                         "exec": [
-                          "pm.test(\"C78174 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78174 Success message\", function () {",
+                          "pm.test(\"Success message\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
@@ -5885,11 +5885,11 @@
                       "script": {
                         "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
                         "exec": [
-                          "pm.test(\"C78229 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78229 Success message present\", function () {",
+                          "pm.test(\"Success message present\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                           "});"
                         ],
@@ -5923,11 +5923,11 @@
                       "script": {
                         "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
                         "exec": [
-                          "pm.test(\"C78230 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78230 Verify stream info was returned\", function () {",
+                          "pm.test(\"Verify stream info was returned\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData[0].result.success).to.eql(true);",
                           "});"
@@ -5970,20 +5970,20 @@
                       "script": {
                         "id": "0db209bd-a2bd-44a2-8a16-f7674e86277d",
                         "exec": [
-                          "pm.test(\"C78183 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78183 Correct Hostname\", function () {",
+                          "pm.test(\"Correct Hostname\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"hostname\\\":\\\"Jennnn-ts\\\"\");",
                           "});",
                           "",
-                          "pm.test(\"C78183 Correct Model\", function () {",
+                          "pm.test(\"Correct Model\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"model\\\":\\\"SFS1000\\\"\");",
                           "});",
                           "",
                           "sfsVersion = pm.environment.get(\"SfsVersion\");",
-                          "pm.test(\"C78183 Correct SFS Version\", function () {",
+                          "pm.test(\"Correct SFS Version\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"software_version\\\":\\\"0.0.999\\\"\");",
                           "});",
                           ""
@@ -6080,7 +6080,7 @@
                       "script": {
                         "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
                         "exec": [
-                          "pm.test(\"C78211 Set operator id environment variable\", function () {",
+                          "pm.test(\"Set operator id environment variable\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    var operator_id = jsonData[0].result.records.id;",
                           "    pm.environment.set(\"operator_id\", operator_id);",
