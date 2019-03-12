@@ -429,53 +429,6 @@
                     "url": "{{url}}"
                   },
                   "response": []
-                },
-                {
-                  "_postman_id": "32e5174f-35f1-4d46-bf11-4a5d69b9374f",
-                  "name": "Login Admin",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
-                        "exec": [
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Chris",
-                        "value": "FindME",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "type": "text",
-                          "value": "{{admin_user}}",
-                          "description": ""
-                        },
-                        {
-                          "key": "password",
-                          "type": "text",
-                          "value": "{{admin_password}}"
-                        }
-                      ]
-                    },
-                    "url": "https://prometheus.qa.skyline.local"
-                  },
-                  "response": []
                 }
               ],
               "_postman_isSubFolder": true
@@ -5278,6 +5231,53 @@
               "name": "GetAll Calls",
               "description": null,
               "item": [
+                {
+                  "_postman_id": "32e5174f-35f1-4d46-bf11-4a5d69b9374f",
+                  "name": "Login Admin",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
+                        "exec": [
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Chris",
+                        "value": "FindME",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "type": "text",
+                          "value": "{{admin_user}}",
+                          "description": ""
+                        },
+                        {
+                          "key": "password",
+                          "type": "text",
+                          "value": "{{admin_password}}"
+                        }
+                      ]
+                    },
+                    "url": "https://prometheus.qa.skyline.local"
+                  },
+                  "response": []
+                },
                 {
                   "_postman_id": "91b2f66d-6a77-454d-a97e-43e992c8db5a",
                   "name": "Create New Contact",
