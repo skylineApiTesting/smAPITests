@@ -2250,11 +2250,11 @@
                       "script": {
                         "id": "f70ab318-f89d-49be-9cf7-ca8032b0d253",
                         "exec": [
-                          "pm.test(\"C77360 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77360 Body shows success message\", function () {",
+                          "pm.test(\"Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(\"\\\"result\\\":{\\\"success\\\":true\\\"\");",
                           "});"
                         ],
@@ -2288,11 +2288,11 @@
                       "script": {
                         "id": "833c2d9d-108d-4e30-b6db-355b0b695f16",
                         "exec": [
-                          "pm.test(\"C78223 Body does not include deleted appliance\", function () {",
+                          "pm.test(\"Body does not include deleted appliance\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(\"\\\"hostname\\\": \\\"Jennnn-SFS\\\"\");",
                           "});",
                           "",
-                          "pm.test(\"C78223 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
