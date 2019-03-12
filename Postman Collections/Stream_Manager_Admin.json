@@ -5600,11 +5600,11 @@
                       "script": {
                         "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
                         "exec": [
-                          "pm.test(\"C78209 Body shows success message\", function () {",
+                          "pm.test(\"Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"getApikeys\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
-                          "pm.test(\"C78209 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
