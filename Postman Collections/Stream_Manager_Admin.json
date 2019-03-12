@@ -995,7 +995,7 @@
                           "    pm.expect(pm.response.text()).to.include('\"is_admin\":true');",
                           "});",
                           "",
-                          "pm.test(\"C78217 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
