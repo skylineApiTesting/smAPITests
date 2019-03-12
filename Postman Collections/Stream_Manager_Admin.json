@@ -267,15 +267,15 @@
                       "script": {
                         "id": "4d4a7612-de72-4220-92b4-8fd9d766f259",
                         "exec": [
-                          "pm.test(\"C77288 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77288 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C77288 Body Contains Error\", function () {",
+                          "pm.test(\"Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                           "});"
                         ],
@@ -314,11 +314,11 @@
                       "script": {
                         "id": "66c1c821-2ce2-40ec-b411-56ffbbdb5ee8",
                         "exec": [
-                          "pm.test(\"C78214 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78214 Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});",
                           ""
@@ -358,11 +358,11 @@
                       "script": {
                         "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
                         "exec": [
-                          "pm.test(\"C77292 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C77292 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
@@ -391,15 +391,15 @@
                       "script": {
                         "id": "8449b7ee-930f-4930-ae91-90a0804ce2f1",
                         "exec": [
-                          "pm.test(\"C77289 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77289 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C77289 Body Contains Error\", function () {",
+                          "pm.test(\"Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                           "});"
                         ],
@@ -421,6 +421,7 @@
                         {
                           "key": "user",
                           "value": "{{admin_password}}",
+                          "description": "",
                           "type": "text"
                         }
                       ]
@@ -438,7 +439,7 @@
                       "script": {
                         "id": "1efdff2a-8c60-4bc4-a201-ecce7e8e3948",
                         "exec": [
-                          "pm.test(\"C77291 Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});",
                           ""
@@ -462,7 +463,8 @@
                         {
                           "key": "user",
                           "type": "text",
-                          "value": "{{admin_user}}"
+                          "value": "{{admin_user}}",
+                          "description": ""
                         },
                         {
                           "key": "password",
@@ -535,14 +537,14 @@
                       "script": {
                         "id": "ee086e9b-758c-4f73-b785-b307f28d6c73",
                         "exec": [
-                          "pm.test(\"C77441 User was created and variables set.\", function () {",
+                          "pm.test(\"User was created and variables set.\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.total) !== null;",
                           "    pm.environment.unset(\"user_ID\");",
                           "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
                           "});",
                           "",
-                          "pm.test(\"C77441 Body shows success message\", function () {",
+                          "pm.test(\"Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
