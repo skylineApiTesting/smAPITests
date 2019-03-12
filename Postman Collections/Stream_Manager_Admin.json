@@ -4196,54 +4196,6 @@
                   "response": []
                 },
                 {
-                  "_postman_id": "a8a6312d-4fa9-434d-a7f3-d8db0787441c",
-                  "name": "Empty Fields Copy",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Error\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "7f8b8040-1f61-4bf3-8d8e-31499d78cf0f",
                   "name": "Wrong Username Case, Correct Password",
                   "event": [
@@ -4348,6 +4300,54 @@
                     },
                     "url": "{{url}}",
                     "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "a8a6312d-4fa9-434d-a7f3-d8db0787441c",
+                  "name": "Empty Fields Copy",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
+                          "});",
+                          "",
+                          "pm.test(\"Body Contains Error\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "user",
+                          "value": "",
+                          "type": "text"
+                        },
+                        {
+                          "key": "password",
+                          "value": "",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{url}}"
                   },
                   "response": []
                 }
