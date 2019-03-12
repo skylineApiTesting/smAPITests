@@ -3750,49 +3750,6 @@
                   "response": []
                 },
                 {
-                  "_postman_id": "4b5125f5-2e30-4050-a130-6f09d2713887",
-                  "name": "Empty Username",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "f6c79170-f98e-4723-9dd4-a5cbed1cdc1b",
-                        "exec": [
-                          "pm.test(\"Body Contains Login Fields\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
-                          "});",
-                          "",
-                          "pm.test(\"Body Contains Error\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "value": "",
-                          "type": "text"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{password}}",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "52ddcadd-2443-43f8-99d6-7fb170f064d1",
                   "name": "Invalid Password",
                   "event": [
