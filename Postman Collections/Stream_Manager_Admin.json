@@ -2776,486 +2776,6 @@
               "_postman_isSubFolder": true
             },
             {
-              "_postman_id": "d5f93000-1696-420d-9884-ede0e0490aed",
-              "name": "GetAll Calls",
-              "description": null,
-              "item": [
-                {
-                  "_postman_id": "91b2f66d-6a77-454d-a97e-43e992c8db5a",
-                  "name": "Create New Contact",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
-                        "exec": [
-                          "pm.test(\"Body shows success message\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                          "});",
-                          "",
-                          "contact_name = pm.environment.get(\"contact_name\");",
-                          "",
-                          "pm.test(\"Body has contact\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(contact_name);",
-                          "});",
-                          "",
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "// Set up next test",
-                          "var obj = pm.response.json();",
-                          "var record;",
-                          "pm.environment.unset(\"contact_id\");",
-                          "for (var i = 0; i < obj[1].result.total; i++) {",
-                          "    if (obj[1].result.records[i].first_name == contact_name) {",
-                          "        record = obj[1].result.records[i].id;",
-                          "    }",
-                          "}",
-                          "pm.environment.set(\"contact_id\",record);",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    },
-                    {
-                      "listen": "prerequest",
-                      "script": {
-                        "id": "e380079a-dd76-479f-a16c-818c47b9259a",
-                        "exec": [
-                          "pm.environment.unset(\"contact_name\");",
-                          "pm.environment.unset(\"contact_email\");",
-                          "",
-                          "var first_name = Math.floor((Math.random() * 1000000) + 1);",
-                          "var email = Math.floor((Math.random() * 1000000) + 1);",
-                          "",
-                          "pm.environment.set(\"contact_name\", first_name);",
-                          "pm.environment.set(\"contact_email\", email);",
-                          "",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
-                    },
-                    "url": "{{url}}/1.0/direct/router"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "51938ded-b6ff-44a8-9a50-7a41042ceaeb",
-                  "name": "Create API Key",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "1181797c-a819-4e06-a600-15bec4595719",
-                        "exec": [
-                          "pm.test(\"Body shows success message\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
-                          "});",
-                          "",
-                          "user_key = pm.environment.get(\"user_key\");",
-                          "",
-                          "pm.test(\"API Key was created and variables set.\", function () {",
-                          "    var obj = JSON.parse(pm.response.text());",
-                          "    var record = null;",
-                          "    contact_id = pm.environment.get(\"contact_id\");",
-                          "",
-                          "    for (var i = 0; i < obj[1].result.total; i++){",
-                          "        if (obj[1].result.records[i].zone_id == 2 && obj[1].result.records[i].contact_id == contact_id){",
-                          "            record = obj[1].result.records[i];",
-                          "        }",
-                          "    }",
-                          "    pm.environment.unset(\"user_key\");",
-                          "    pm.environment.set(\"user_key\",record.user_key);",
-                          "});",
-                          "",
-                          "user_key = pm.environment.get(\"user_key\");",
-                          "",
-                          "pm.test(\"Body has new key\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(user_key);",
-                          "});",
-                          "",
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\" API Key list is not empty\", function () {",
-                          "    var jsonData = pm.response.json();",
-                          "    pm.expect(jsonData.total) !== null;",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
-                    },
-                    "url": "{{url}}/1.0/direct/router"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "f35d5857-c3f1-49be-810b-6da1f798f071",
-                  "name": "GetAll streams in JSON w/Valid Key",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body is JSON format\", function () {",
-                          "    pm.response.to.be.json;",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    },
-                    {
-                      "listen": "prerequest",
-                      "script": {
-                        "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "1.0",
-                        "streams",
-                        "getAll"
-                      ],
-                      "query": [
-                        {
-                          "key": "X-API-KEY",
-                          "value": "{{user_key}}",
-                          "equals": true
-                        },
-                        {
-                          "key": "format",
-                          "value": "json",
-                          "equals": true
-                        }
-                      ]
-                    },
-                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "62a7212f-de6b-452f-bdbd-8b4106f0140b",
-                  "name": "GetAll streams valid data types",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
-                        "exec": [
-                          "// Parse response body",
-                          "var obj = JSON.parse(pm.response.text());",
-                          "var record = obj.features[0];",
-                          "",
-                          "version = pm.environment.get(\"version\");",
-                          "",
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Coordinates are in an array\", function () {",
-                          "    pm.expect(record.geometry.coordinates[0]).to.not.be.undefined;",
-                          "    pm.expect(record.geometry.coordinates[1]).to.not.be.undefined;",
-                          "});",
-                          "",
-                          "pm.test(\"Active field is a bool\", function () {",
-                          "    pm.expect(record.properties.active).to.be.a('boolean');",
-                          "});",
-                          "",
-                          "pm.test(\"urls are strings\", function () {",
-                          "    pm.expect(record.properties.clsp_url).to.be.a('string');",
-                          "    pm.expect(record.properties.clsps_url).to.be.a('string');",
-                          "    pm.expect(record.properties.https_url).to.be.a('string');",
-                          "    pm.expect(record.properties.rtmp_url).to.be.a('string');",
-                          "    pm.expect(record.properties.rtsp_url).to.be.a('string');",
-                          "    ",
-                          "});",
-                          "",
-                          "pm.test(\"Metadata are strings\", function () {",
-                          "    pm.expect(record.properties.description).to.be.a('string');",
-                          "    pm.expect(record.properties.deviceid).to.be.a('string');",
-                          "    pm.expect(record.properties.direction).to.be.a('string');",
-                          "    pm.expect(record.properties.id).to.be.a('string');",
-                          "    pm.expect(record.properties.jurisdiction).to.be.a('string');",
-                          "    pm.expect(record.properties.route).to.be.a('string');",
-                          "    pm.expect(record.properties.image_url).to.be.a('string');",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    },
-                    {
-                      "listen": "prerequest",
-                      "script": {
-                        "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "1.0",
-                        "streams",
-                        "getAll"
-                      ],
-                      "query": [
-                        {
-                          "key": "X-API-KEY",
-                          "value": "{{user_key}}",
-                          "equals": true
-                        },
-                        {
-                          "key": "format",
-                          "value": "json",
-                          "equals": true
-                        }
-                      ]
-                    },
-                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "6e974358-eca2-4a7c-8239-7040ab5c53c6",
-                  "name": "GetAll streams in JSON w/invalid key",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
-                        "exec": [
-                          "pm.test(\"Status code is 403\", function () {",
-                          "    pm.response.to.have.status(403);",
-                          "});",
-                          "",
-                          "pm.test(\"Verify invalid API error message is provided\", function () {",
-                          "    var jsonData = pm.response.json();",
-                          "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY=ABC123&format=json",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "1.0",
-                        "streams",
-                        "getAll"
-                      ],
-                      "query": [
-                        {
-                          "key": "X-API-KEY",
-                          "value": "ABC123",
-                          "equals": true
-                        },
-                        {
-                          "key": "format",
-                          "value": "json",
-                          "equals": true
-                        }
-                      ]
-                    },
-                    "description": "description: attempts to grab all cameras which can be currently pulled from stream manager with an invalid API key.\n\nexpectation: 403 error"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "766ab3d3-16e1-4dd7-a869-7cf1eab17a64",
-                  "name": "GetAll Jsonp format Valid",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "d6db7a64-fa64-4c8a-901e-062013b58e54",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Response has padding\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"callbackFunction(\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "1.0",
-                        "streams",
-                        "getAll"
-                      ],
-                      "query": [
-                        {
-                          "key": "X-API-KEY",
-                          "value": "{{user_key}}",
-                          "equals": true
-                        },
-                        {
-                          "key": "format",
-                          "value": "jsonp",
-                          "equals": true
-                        },
-                        {
-                          "key": "callback",
-                          "value": "callbackFunction",
-                          "equals": true
-                        }
-                      ]
-                    },
-                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSONP format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be JSONP\n\n"
-                  },
-                  "response": []
-                },
-                {
-                  "_postman_id": "5f0f92c5-0947-4a36-a4cb-4406c7cb70a5",
-                  "name": "GetAll XML format Valid",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "ce7e6e40-f5bb-41d2-b035-a9ab8219f8cf",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body is in XML format\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=xml",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "1.0",
-                        "streams",
-                        "getAll"
-                      ],
-                      "query": [
-                        {
-                          "key": "X-API-KEY",
-                          "value": "{{user_key}}",
-                          "equals": true
-                        },
-                        {
-                          "key": "format",
-                          "value": "xml",
-                          "equals": true
-                        }
-                      ]
-                    },
-                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in XML format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be XML.\n\n"
-                  },
-                  "response": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
               "_postman_id": "74b707ab-71af-47ec-a24f-e4a83f7e5b54",
               "name": "Get Lists",
               "description": "get lists of different items/information from stream manager.",
@@ -6780,7 +6300,488 @@
           "_postman_id": "2aba9653-986a-4fec-ac29-34b493701c73",
           "name": "1.0",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "d5f93000-1696-420d-9884-ede0e0490aed",
+              "name": "GetAll Calls",
+              "description": null,
+              "item": [
+                {
+                  "_postman_id": "91b2f66d-6a77-454d-a97e-43e992c8db5a",
+                  "name": "Create New Contact",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
+                        "exec": [
+                          "pm.test(\"Body shows success message\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                          "});",
+                          "",
+                          "contact_name = pm.environment.get(\"contact_name\");",
+                          "",
+                          "pm.test(\"Body has contact\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(contact_name);",
+                          "});",
+                          "",
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "// Set up next test",
+                          "var obj = pm.response.json();",
+                          "var record;",
+                          "pm.environment.unset(\"contact_id\");",
+                          "for (var i = 0; i < obj[1].result.total; i++) {",
+                          "    if (obj[1].result.records[i].first_name == contact_name) {",
+                          "        record = obj[1].result.records[i].id;",
+                          "    }",
+                          "}",
+                          "pm.environment.set(\"contact_id\",record);",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "id": "e380079a-dd76-479f-a16c-818c47b9259a",
+                        "exec": [
+                          "pm.environment.unset(\"contact_name\");",
+                          "pm.environment.unset(\"contact_email\");",
+                          "",
+                          "var first_name = Math.floor((Math.random() * 1000000) + 1);",
+                          "var email = Math.floor((Math.random() * 1000000) + 1);",
+                          "",
+                          "pm.environment.set(\"contact_name\", first_name);",
+                          "pm.environment.set(\"contact_email\", email);",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"createContact\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"first_name\": \"{{contact_name}}\",\n\t\t\t\t\"last_name\": \"Allemang\",\n\t\t\t\t\"last_updated\": \"\",\n\t\t\t\t\"primary_phone\": \"412-576-8688\",\n\t\t\t\t\"title\": \"adcl\",\n\t\t\t\t\"last_updated_by\": \"\",\n\t\t\t\t\"company_name\": \"dfvfds\",\n\t\t\t\t\"secondary_phone\": \"412-576-8688\",\n\t\t\t\t\"email_address\": \"{{contact_email}}@gmail.com\",\n\t\t\t\t\"displayx\": \"\",\n\t\t\t\t\"id\": null\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 15\n\t},\n\t{\n\t\t\"action\": \"Contact\",\n\t\t\"method\": \"getContacts\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 16\n\t}\n]"
+                    },
+                    "url": "{{url}}/1.0/direct/router"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "51938ded-b6ff-44a8-9a50-7a41042ceaeb",
+                  "name": "Create API Key",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "1181797c-a819-4e06-a600-15bec4595719",
+                        "exec": [
+                          "pm.test(\"Body shows success message\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                          "});",
+                          "",
+                          "user_key = pm.environment.get(\"user_key\");",
+                          "",
+                          "pm.test(\"API Key was created and variables set.\", function () {",
+                          "    var obj = JSON.parse(pm.response.text());",
+                          "    var record = null;",
+                          "    contact_id = pm.environment.get(\"contact_id\");",
+                          "",
+                          "    for (var i = 0; i < obj[1].result.total; i++){",
+                          "        if (obj[1].result.records[i].zone_id == 2 && obj[1].result.records[i].contact_id == contact_id){",
+                          "            record = obj[1].result.records[i];",
+                          "        }",
+                          "    }",
+                          "    pm.environment.unset(\"user_key\");",
+                          "    pm.environment.set(\"user_key\",record.user_key);",
+                          "});",
+                          "",
+                          "user_key = pm.environment.get(\"user_key\");",
+                          "",
+                          "pm.test(\"Body has new key\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(user_key);",
+                          "});",
+                          "",
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\" API Key list is not empty\", function () {",
+                          "    var jsonData = pm.response.json();",
+                          "    pm.expect(jsonData.total) !== null;",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"createApiKey\",\r\n    \"data\": [\r\n      {\r\n        \"user_key\": \"\",\r\n        \"level\": \"\",\r\n        \"date_created\": \"\",\r\n        \"first_name\": \"\",\r\n        \"last_name\": \"\",\r\n        \"primary phone\": \"\",\r\n        \"email address\": \"\",\r\n        \"contact_id\": \"{{contact_id}}\",\r\n        \"zone_name\": \"\",\r\n        \"zone_id\": 2,\r\n        \"id\": null\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 19\r\n  },\r\n  {\r\n    \"action\": \"ApiKey\",\r\n    \"method\": \"getApikeys\",\r\n    \"data\": [\r\n      {\r\n        \"page\": 1,\r\n        \"start\": 0,\r\n        \"limit\": 25\r\n      }\r\n    ],\r\n    \"type\": \"rpc\",\r\n    \"tid\": 20\r\n  }\r\n]"
+                    },
+                    "url": "{{url}}/1.0/direct/router"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "f35d5857-c3f1-49be-810b-6da1f798f071",
+                  "name": "GetAll streams in JSON w/Valid Key",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body is JSON format\", function () {",
+                          "    pm.response.to.be.json;",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "1.0",
+                        "streams",
+                        "getAll"
+                      ],
+                      "query": [
+                        {
+                          "key": "X-API-KEY",
+                          "value": "{{user_key}}",
+                          "equals": true
+                        },
+                        {
+                          "key": "format",
+                          "value": "json",
+                          "equals": true
+                        }
+                      ]
+                    },
+                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "62a7212f-de6b-452f-bdbd-8b4106f0140b",
+                  "name": "GetAll streams valid data types",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
+                        "exec": [
+                          "// Parse response body",
+                          "var obj = JSON.parse(pm.response.text());",
+                          "var record = obj.features[0];",
+                          "",
+                          "version = pm.environment.get(\"version\");",
+                          "",
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Coordinates are in an array\", function () {",
+                          "    pm.expect(record.geometry.coordinates[0]).to.not.be.undefined;",
+                          "    pm.expect(record.geometry.coordinates[1]).to.not.be.undefined;",
+                          "});",
+                          "",
+                          "pm.test(\"Active field is a bool\", function () {",
+                          "    pm.expect(record.properties.active).to.be.a('boolean');",
+                          "});",
+                          "",
+                          "pm.test(\"urls are strings\", function () {",
+                          "    pm.expect(record.properties.clsp_url).to.be.a('string');",
+                          "    pm.expect(record.properties.clsps_url).to.be.a('string');",
+                          "    pm.expect(record.properties.https_url).to.be.a('string');",
+                          "    pm.expect(record.properties.rtmp_url).to.be.a('string');",
+                          "    pm.expect(record.properties.rtsp_url).to.be.a('string');",
+                          "    ",
+                          "});",
+                          "",
+                          "pm.test(\"Metadata are strings\", function () {",
+                          "    pm.expect(record.properties.description).to.be.a('string');",
+                          "    pm.expect(record.properties.deviceid).to.be.a('string');",
+                          "    pm.expect(record.properties.direction).to.be.a('string');",
+                          "    pm.expect(record.properties.id).to.be.a('string');",
+                          "    pm.expect(record.properties.jurisdiction).to.be.a('string');",
+                          "    pm.expect(record.properties.route).to.be.a('string');",
+                          "    pm.expect(record.properties.image_url).to.be.a('string');",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "id": "e935837d-0318-49f8-b93c-fedf63939ab1",
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "1.0",
+                        "streams",
+                        "getAll"
+                      ],
+                      "query": [
+                        {
+                          "key": "X-API-KEY",
+                          "value": "{{user_key}}",
+                          "equals": true
+                        },
+                        {
+                          "key": "format",
+                          "value": "json",
+                          "equals": true
+                        }
+                      ]
+                    },
+                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSON format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams), which are json objects with multiple values.\n\nbased on GetAll streams API - documentation on 172.28.12.54\n\nhttps://imgur.com/a/hs2vUeM"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "6e974358-eca2-4a7c-8239-7040ab5c53c6",
+                  "name": "GetAll streams in JSON w/invalid key",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "ea3a75a4-f547-4351-ac7a-272b17ad4c39",
+                        "exec": [
+                          "pm.test(\"Status code is 403\", function () {",
+                          "    pm.response.to.have.status(403);",
+                          "});",
+                          "",
+                          "pm.test(\"Verify invalid API error message is provided\", function () {",
+                          "    var jsonData = pm.response.json();",
+                          "    pm.expect(jsonData.error).to.eql(\"Invalid API Key.\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY=ABC123&format=json",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "1.0",
+                        "streams",
+                        "getAll"
+                      ],
+                      "query": [
+                        {
+                          "key": "X-API-KEY",
+                          "value": "ABC123",
+                          "equals": true
+                        },
+                        {
+                          "key": "format",
+                          "value": "json",
+                          "equals": true
+                        }
+                      ]
+                    },
+                    "description": "description: attempts to grab all cameras which can be currently pulled from stream manager with an invalid API key.\n\nexpectation: 403 error"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "766ab3d3-16e1-4dd7-a869-7cf1eab17a64",
+                  "name": "GetAll Jsonp format Valid",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "d6db7a64-fa64-4c8a-901e-062013b58e54",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Response has padding\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"callbackFunction(\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=jsonp&callback=callbackFunction",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "1.0",
+                        "streams",
+                        "getAll"
+                      ],
+                      "query": [
+                        {
+                          "key": "X-API-KEY",
+                          "value": "{{user_key}}",
+                          "equals": true
+                        },
+                        {
+                          "key": "format",
+                          "value": "jsonp",
+                          "equals": true
+                        },
+                        {
+                          "key": "callback",
+                          "value": "callbackFunction",
+                          "equals": true
+                        }
+                      ]
+                    },
+                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in JSONP format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be JSONP\n\n"
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "5f0f92c5-0947-4a36-a4cb-4406c7cb70a5",
+                  "name": "GetAll XML format Valid",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "ce7e6e40-f5bb-41d2-b035-a9ab8219f8cf",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body is in XML format\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": {
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=xml",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "1.0",
+                        "streams",
+                        "getAll"
+                      ],
+                      "query": [
+                        {
+                          "key": "X-API-KEY",
+                          "value": "{{user_key}}",
+                          "equals": true
+                        },
+                        {
+                          "key": "format",
+                          "value": "xml",
+                          "equals": true
+                        }
+                      ]
+                    },
+                    "description": "description: grabs all cameras which can be currently pulled from stream manager with a valid API key. Returns objects in XML format.\n\nexpectation: 200 response, with multiple 'Feature' entries (streams). The format should be XML.\n\n"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
