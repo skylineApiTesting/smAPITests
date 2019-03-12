@@ -1176,11 +1176,11 @@
                       "script": {
                         "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
                         "exec": [
-                          "pm.test(\"C78220 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C78220 Appliances were listed\", function () {",
+                          "pm.test(\"Appliances were listed\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
@@ -1214,11 +1214,11 @@
                       "script": {
                         "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
                         "exec": [
-                          "pm.test(\"C77315 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"C77315 Success message\", function () {",
+                          "pm.test(\"Success message\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
