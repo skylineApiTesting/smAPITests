@@ -432,7 +432,7 @@
                 },
                 {
                   "_postman_id": "32e5174f-35f1-4d46-bf11-4a5d69b9374f",
-                  "name": "Login Valid",
+                  "name": "Login Admin",
                   "event": [
                     {
                       "listen": "test",
