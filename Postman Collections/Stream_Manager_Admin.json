@@ -1081,50 +1081,6 @@
               "description": "APIs called for the dashboard",
               "item": [
                 {
-                  "_postman_id": "aa90c4c4-9cb8-42e4-99c1-59d5a99ab796",
-                  "name": "Login Valid",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "type": "text",
-                          "value": "{{admin_user}}"
-                        },
-                        {
-                          "key": "password",
-                          "type": "text",
-                          "value": "{{admin_password}}"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "f13dc17a-7c25-4d91-a31c-b0e47fbd49c7",
                   "name": "Get appliances",
                   "event": [
