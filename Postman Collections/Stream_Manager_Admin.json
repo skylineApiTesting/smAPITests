@@ -4239,7 +4239,7 @@
                           "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                           "});",
                           "",
-                          "pm.test(\"C78004 Deleted Metadata was saved\", function () {",
+                          "pm.test(\"Deleted Metadata was saved\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"id\":'+stream_id+',\"description\":\"\",\"jurisdiction\":\"\",\"traffic_direction\":\"\",\"route_name\":\"\",\"mile_marker\":0,\"latitude\":0,\"longitude\":0');",
                           "});"
                         ],
