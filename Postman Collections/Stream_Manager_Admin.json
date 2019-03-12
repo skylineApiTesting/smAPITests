@@ -117,7 +117,7 @@
                 },
                 {
                   "_postman_id": "8fe46d5a-dd0d-4ed3-9687-a5392ef896cb",
-                  "name": "Password Wrong Case",
+                  "name": "Correct Username, Incorrect Password Case",
                   "event": [
                     {
                       "listen": "test",
