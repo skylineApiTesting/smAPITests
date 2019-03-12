@@ -1399,7 +1399,7 @@
                           "pm.test(\"Contact name is saved\", function () {",
                           "    pm.expect(pm.response.text()).to.include(contact_name);",
                           "});",
-                          "pm.test(\"C78221 Contact last name is saved\", function () {",
+                          "pm.test(\"Contact last name is saved\", function () {",
                           "    pm.expect(pm.response.text()).to.include(contact_last_name);",
                           "});",
                           "pm.test(\"C78221 Contact primary phone is saved\", function () {",
