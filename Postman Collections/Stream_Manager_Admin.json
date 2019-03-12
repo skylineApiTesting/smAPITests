@@ -2068,6 +2068,74 @@
               "_postman_isSubFolder": true
             },
             {
+              "_postman_id": "f2d54042-edf9-4f27-9b86-a3c910d7888a",
+              "name": "APIs",
+              "description": "get lists of different items/information from stream manager.",
+              "item": [
+                {
+                  "_postman_id": "2251af16-8d6f-4819-a323-b0963df6aaf6",
+                  "name": "List APIs",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body contains api names\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": "{{url}}/1.0/direct/api"
+                  },
+                  "response": []
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "2f772db1-d93d-4948-b616-6fab453c0ba1",
+                    "type": "text/javascript",
+                    "exec": [
+                      ""
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7388327a-7e65-48b9-bd99-48f68fa09ab0",
+                    "type": "text/javascript",
+                    "exec": [
+                      ""
+                    ]
+                  }
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
               "_postman_id": "90d904b6-1830-4c8f-968a-a1feb9283ddb",
               "name": "API Keys",
               "description": null,
@@ -4112,74 +4180,6 @@
                   "listen": "test",
                   "script": {
                     "id": "35cf5db4-f295-4880-9ca9-4b2309aa394a",
-                    "type": "text/javascript",
-                    "exec": [
-                      ""
-                    ]
-                  }
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
-              "_postman_id": "f2d54042-edf9-4f27-9b86-a3c910d7888a",
-              "name": "APIs",
-              "description": "get lists of different items/information from stream manager.",
-              "item": [
-                {
-                  "_postman_id": "2251af16-8d6f-4819-a323-b0963df6aaf6",
-                  "name": "List APIs",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body contains api names\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": "{{url}}/1.0/direct/api"
-                  },
-                  "response": []
-                }
-              ],
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "id": "2f772db1-d93d-4948-b616-6fab453c0ba1",
-                    "type": "text/javascript",
-                    "exec": [
-                      ""
-                    ]
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "7388327a-7e65-48b9-bd99-48f68fa09ab0",
                     "type": "text/javascript",
                     "exec": [
                       ""
