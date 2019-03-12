@@ -8,7 +8,7 @@
   "item": [
     {
       "_postman_id": "eeef8aa8-f348-455c-90d3-67e73b20be48",
-      "name": "1.0",
+      "name": "Backend",
       "description": "",
       "item": [
         {
@@ -6770,6 +6770,12 @@
           "_postman_isSubFolder": true
         }
       ]
+    },
+    {
+      "_postman_id": "a4b77f47-787e-46e4-8522-dfe65d575bcf",
+      "name": "Customer Facing",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
