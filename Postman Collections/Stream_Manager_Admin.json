@@ -628,7 +628,7 @@
                           "",
                           "operator_email = pm.environment.get(\"operator_email\");",
                           "",
-                          "pm.test(\"C77442 Body has email\", function () {",
+                          "pm.test(\"Body has email\", function () {",
                           "    pm.expect(pm.response.text()).to.include(operator_email);",
                           "});",
                           "",
