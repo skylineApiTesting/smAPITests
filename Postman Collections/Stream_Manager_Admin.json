@@ -5231,11 +5231,11 @@
                       "script": {
                         "id": "fd02c6a7-adde-43cd-bc48-d1a53fe7dbf1",
                         "exec": [
-                          "pm.test(\"C78012 Body Contains Login Fields\", function () {",
+                          "pm.test(\"Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"C78012 Body Contains Error\", function () {",
+                          "pm.test(\"Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                           "});"
                         ],
