@@ -1380,11 +1380,11 @@
                       "script": {
                         "id": "e4558a59-a6eb-4806-a91f-254c36501ff1",
                         "exec": [
-                          "pm.test(\"C78221 Body shows success message\", function () {",
+                          "pm.test(\"Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"getContacts\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
-                          "pm.test(\"C78221 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
