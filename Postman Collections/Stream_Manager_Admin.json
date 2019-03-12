@@ -6631,7 +6631,7 @@
                         "exec": [
                           "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
                           "",
-                          "pm.test(\"C78169 Status code is 200\", function () {",
+                          "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
