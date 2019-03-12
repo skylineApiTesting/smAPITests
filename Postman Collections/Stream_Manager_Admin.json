@@ -613,7 +613,7 @@
                       "script": {
                         "id": "26b6c30f-c56b-42b6-96c5-336163e50673",
                         "exec": [
-                          "pm.test(\"C77442 User was created and variables set.\", function () {",
+                          "pm.test(\"User was created and variables set.\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.total) !== null;",
                           "    pm.environment.unset(\"operator_id\");",
@@ -622,7 +622,7 @@
                           "    pm.environment.set(\"operator_user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
                           "});",
                           "",
-                          "pm.test(\"C77442 Body shows success message\", function () {",
+                          "pm.test(\"Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"createUser\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
