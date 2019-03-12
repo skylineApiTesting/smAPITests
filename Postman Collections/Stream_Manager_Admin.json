@@ -991,7 +991,7 @@
                       "script": {
                         "id": "6175e43a-368d-4502-83e1-5ef1c52f9a75",
                         "exec": [
-                          "pm.test(\"C78217 Operator is now an Admin\", function () {",
+                          "pm.test(\"Operator is now an Admin\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"is_admin\":true');",
                           "});",
                           "",
@@ -1039,7 +1039,7 @@
                       "script": {
                         "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
                         "exec": [
-                          "pm.test(\"C78219 User is logged in as an admin\", function () {",
+                          "pm.test(\"User is logged in as an admin\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});"
                         ],
