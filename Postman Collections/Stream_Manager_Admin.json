@@ -77,15 +77,15 @@
                       "script": {
                         "id": "3f390d2f-ddeb-4ce0-a2a3-8bbdaa376370",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127505 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "pm.test(\"C127505 Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Error\", function () {",
+                          "pm.test(\"C127505 Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                           "});"
                         ],
@@ -124,15 +124,15 @@
                       "script": {
                         "id": "4d4a7612-de72-4220-92b4-8fd9d766f259",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127506 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "pm.test(\"C127506 Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Error\", function () {",
+                          "pm.test(\"C127506 Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                           "});"
                         ],
