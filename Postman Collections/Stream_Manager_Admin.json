@@ -4093,7 +4093,7 @@
                         },
                         {
                           "key": "password",
-                          "value": "{{admin_password}}",
+                          "value": "{{operator_password}}",
                           "type": "text"
                         }
                       ]
