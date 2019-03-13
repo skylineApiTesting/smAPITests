@@ -3452,40 +3452,6 @@
                   "response": []
                 },
                 {
-                  "_postman_id": "aedf300e-12bc-4246-8007-14fbb5a32abb",
-                  "name": "Get  sfs capacity",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "7b1669e5-c2f8-449d-a1f3-7e2a4eca6d9d",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Capacity\",\n\t\t\"method\": \"getSfsCapacity\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"page\": 1,\n\t\t\t\t\"start\": 0,\n\t\t\t\t\"limit\": 25\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 7\n\t}\n]"
-                    },
-                    "url": "{{url}}/1.0/direct/router",
-                    "description": "Returns a list of connected appliances and their current connections and streamcount."
-                  },
-                  "response": []
-                },
-                {
                   "_postman_id": "2d4b288c-f88c-47af-b3f8-0b2198edcd48",
                   "name": "Get all offline streams SSL VPN",
                   "event": [
