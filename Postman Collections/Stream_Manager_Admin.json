@@ -2182,74 +2182,6 @@
               "_postman_isSubFolder": true
             },
             {
-              "_postman_id": "d19df92b-e38b-497c-a152-e54046b2665d",
-              "name": "APIs Copy",
-              "description": "get lists of different items/information from stream manager.",
-              "item": [
-                {
-                  "_postman_id": "e0912d77-32ea-497b-92dc-aba87ba5ddd2",
-                  "name": "List APIs",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Body contains api names\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
-                          "});",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
-                    "url": "{{url}}/1.0/direct/api"
-                  },
-                  "response": []
-                }
-              ],
-              "event": [
-                {
-                  "listen": "prerequest",
-                  "script": {
-                    "id": "2f772db1-d93d-4948-b616-6fab453c0ba1",
-                    "type": "text/javascript",
-                    "exec": [
-                      ""
-                    ]
-                  }
-                },
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "7388327a-7e65-48b9-bd99-48f68fa09ab0",
-                    "type": "text/javascript",
-                    "exec": [
-                      ""
-                    ]
-                  }
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
               "_postman_id": "90d904b6-1830-4c8f-968a-a1feb9283ddb",
               "name": "API Keys",
               "description": null,
@@ -5366,6 +5298,74 @@
                     "url": "{{url}}/1.0/direct/router"
                   },
                   "response": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "_postman_id": "d19df92b-e38b-497c-a152-e54046b2665d",
+              "name": "APIs",
+              "description": "get lists of different items/information from stream manager.",
+              "item": [
+                {
+                  "_postman_id": "e0912d77-32ea-497b-92dc-aba87ba5ddd2",
+                  "name": "List APIs",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Body contains api names\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": ""
+                    },
+                    "url": "{{url}}/1.0/direct/api"
+                  },
+                  "response": []
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "2f772db1-d93d-4948-b616-6fab453c0ba1",
+                    "type": "text/javascript",
+                    "exec": [
+                      ""
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7388327a-7e65-48b9-bd99-48f68fa09ab0",
+                    "type": "text/javascript",
+                    "exec": [
+                      ""
+                    ]
+                  }
                 }
               ],
               "_postman_isSubFolder": true
