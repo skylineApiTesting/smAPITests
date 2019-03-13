@@ -6303,11 +6303,11 @@
                       "script": {
                         "id": "77be54ce-3ab1-4200-9794-b625e84a993e",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127597 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body just has empty Feature Collection\", function () {",
+                          "pm.test(\"C127597 Body just has empty Feature Collection\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"FeatureCollection\");",
                           "});"
                         ],
