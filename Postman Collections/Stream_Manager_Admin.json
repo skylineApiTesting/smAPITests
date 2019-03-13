@@ -6161,7 +6161,7 @@
                       "script": {
                         "id": "5aee534c-eefb-40b6-b224-d2f43eaf2747",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127595 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
