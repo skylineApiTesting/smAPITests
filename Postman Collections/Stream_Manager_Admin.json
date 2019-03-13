@@ -4195,12 +4195,12 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "{{operator_user}}",
+                          "value": "operator",
                           "type": "text"
                         },
                         {
                           "key": "password",
-                          "value": "{{operator_password}}",
+                          "value": "sm1000",
                           "type": "text"
                         }
                       ]
