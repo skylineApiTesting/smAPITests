@@ -4437,11 +4437,11 @@
                       "script": {
                         "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127644 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Appliances were listed\", function () {",
+                          "pm.test(\"C127644 Appliances were listed\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
@@ -4475,11 +4475,11 @@
                       "script": {
                         "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127645 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Success message\", function () {",
+                          "pm.test(\"C127645 Success message\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
