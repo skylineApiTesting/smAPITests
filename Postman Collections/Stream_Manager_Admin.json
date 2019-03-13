@@ -5279,7 +5279,7 @@
                       "script": {
                         "id": "fc3fe377-5c3a-4b40-bd5a-d93dacb54412",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127656 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
