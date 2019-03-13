@@ -2224,7 +2224,6 @@
                           "    }",
                           "}",
                           "pm.environment.set(\"contact_id\",record);",
-                          "console.log(record);",
                           ""
                         ],
                         "type": "text/javascript"
@@ -2279,8 +2278,6 @@
                           "    pm.expect(pm.response.text()).to.include(\"\\\"createApiKey\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
-                          "user_key = pm.environment.get(\"user_key\");",
-                          "",
                           "pm.test(\"C127540 API Key was created and variables set.\", function () {",
                           "    var obj = JSON.parse(pm.response.text());",
                           "    var record = null;",
@@ -2295,7 +2292,7 @@
                           "    pm.environment.set(\"user_key\",record.user_key);",
                           "});",
                           "",
-                          "user_key = pm.environment.get(\"user_key\");",
+                          "user_key = pm.environment.get(\"user_key\"); ",
                           "",
                           "pm.test(\"C127540 Body has new key\", function () {",
                           "    pm.expect(pm.response.text()).to.include(user_key);",
