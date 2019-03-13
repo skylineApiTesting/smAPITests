@@ -212,7 +212,7 @@
                 },
                 {
                   "_postman_id": "cb5a94a1-bcbf-46fa-9c54-3f8c565bdcfd",
-                  "name": "Empty Password Copy",
+                  "name": "Empty Password",
                   "event": [
                     {
                       "listen": "test",
