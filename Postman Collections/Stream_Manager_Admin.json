@@ -4757,7 +4757,7 @@
                         {
                           "key": "user",
                           "type": "text",
-                          "value": "{{user}}"
+                          "value": "{{operator_user}}"
                         },
                         {
                           "key": "password",
