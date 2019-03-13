@@ -391,15 +391,15 @@
                       "script": {
                         "id": "8449b7ee-930f-4930-ae91-90a0804ce2f1",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127507 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "pm.test(\"C127507 Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Error\", function () {",
+                          "pm.test(\"C127507 Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                           "});"
                         ],
@@ -439,7 +439,7 @@
                       "script": {
                         "id": "c4858c6f-531a-44db-851c-98bdbc5d47eb",
                         "exec": [
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"C127508 Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});"
                         ],
