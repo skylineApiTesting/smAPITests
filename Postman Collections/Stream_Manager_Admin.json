@@ -4195,12 +4195,12 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "operator",
+                          "value": "{{operator_user}}",
                           "type": "text"
                         },
                         {
                           "key": "password",
-                          "value": "sm1000",
+                          "value": "{{operator_password}}",
                           "type": "text"
                         }
                       ]
@@ -4624,51 +4624,6 @@
               "name": "Profile",
               "description": "api calls that help you manage user profile",
               "item": [
-                {
-                  "_postman_id": "a4574911-22d4-4bbc-a488-ca65cb8e02d5",
-                  "name": "Login As Other Operator",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "    ",
-                          "pm.test(\"Body shows Operator Logged in\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "formdata",
-                      "formdata": [
-                        {
-                          "key": "user",
-                          "type": "text",
-                          "value": "{{user}}"
-                        },
-                        {
-                          "key": "password",
-                          "value": "{{password}}",
-                          "description": "",
-                          "type": "text"
-                        }
-                      ]
-                    },
-                    "url": "{{url}}",
-                    "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
-                  },
-                  "response": []
-                },
                 {
                   "_postman_id": "33f84cb2-c776-4180-8ba5-9ab57ea3c0a3",
                   "name": "Read Profile",
