@@ -4633,6 +4633,10 @@
                       "script": {
                         "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
                         "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
                           "pm.test(\"Set operator id environment variable\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    var operator_id = jsonData[0].result.records.id;",
