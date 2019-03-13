@@ -4081,7 +4081,7 @@
                       "script": {
                         "id": "1a421a29-f4c1-42ec-bc72-94f25b1a0379",
                         "exec": [
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"C127611 Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
@@ -4120,7 +4120,7 @@
                       "script": {
                         "id": "a4a9eb4d-86f2-40f4-9f83-c26106d731b6",
                         "exec": [
-                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "pm.test(\"C127612 Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           ""
