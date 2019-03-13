@@ -4219,11 +4219,11 @@
                       "script": {
                         "id": "13d9196c-9908-4a61-8aaa-54f6cf6781d5",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127621 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body contains api names\", function () {",
+                          "pm.test(\"C127621 Body contains api names\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"Ext.app.REMOTING_API\");",
                           "});",
                           ""
@@ -4287,11 +4287,11 @@
                       "script": {
                         "id": "1181797c-a819-4e06-a600-15bec4595719",
                         "exec": [
-                          "pm.test(\"Body shows failure message\", function () {",
+                          "pm.test(\"C127650 Body shows failure message\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":false,\"message\":\"not logged in\"');",
                           "});",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127650 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -4324,17 +4324,17 @@
                       "script": {
                         "id": "b1a39797-3f6c-410d-a612-37ee0d33f690",
                         "exec": [
-                          "pm.test(\"Body shows success message\", function () {",
+                          "pm.test(\"C127651 Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"getApikeys\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127651 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
                           "var obj = JSON.parse(pm.response.text());",
                           "",
-                          "pm.test(\"No Keys are returned\", function () {",
+                          "pm.test(\"C127651 No Keys are returned\", function () {",
                           "    pm.expect(obj[0].result.total === 0);",
                           "}); "
                         ],
@@ -4368,11 +4368,11 @@
                       "script": {
                         "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
                         "exec": [
-                          "pm.test(\"Body shows failure message\", function () {",
+                          "pm.test(\"C127652 Body shows failure message\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":false,\"message\":\"not logged in\"');",
                           "});",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127652 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
