@@ -3895,11 +3895,11 @@
                       "script": {
                         "id": "82d6b2fb-455a-48e0-b262-de164c35bf33",
                         "exec": [
-                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "pm.test(\"C127610 Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Error\", function () {",
+                          "pm.test(\"C127610 Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">Invalid credentials</div>\");",
                           "});"
                         ],
