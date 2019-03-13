@@ -4709,7 +4709,8 @@
                       "script": {
                         "id": "4b491a78-3df2-49f3-a594-8663feab62cf",
                         "exec": [
-                          "pm.environment.set(\"operator_2_password_edit\", \"{{operator_password}}\"+\"edit\");"
+                          "pm.environment.set(\"operator_2_password_edit\", \"{{operator_password}}\"+\"edit\");",
+                          "pm.environment.set(\"operator_user_ID\", \"{{operator_user_ID}}\");"
                         ],
                         "type": "text/javascript"
                       }
