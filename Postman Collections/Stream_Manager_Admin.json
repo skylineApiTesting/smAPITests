@@ -432,7 +432,7 @@
                 },
                 {
                   "_postman_id": "43e3d9b9-f6e5-4228-9499-a792ea537db4",
-                  "name": "Login Admin Copy",
+                  "name": "Login Admin",
                   "event": [
                     {
                       "listen": "test",
@@ -3753,16 +3753,16 @@
                           "pm.test(\"User was created and variables set.\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.total) !== null;",
-                          "    pm.environment.unset(\"user_ID\");",
-                          "    pm.environment.unset(\"user_name\");",
-                          "    pm.environment.set(\"user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
-                          "    pm.environment.set(\"user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
+                          "    pm.environment.unset(\"operator_user_ID\");",
+                          "    pm.environment.unset(\"operator_user_name\");",
+                          "    pm.environment.set(\"operator_user_ID\",jsonData[1].result.records[jsonData[1].result.records.length-1].id);",
+                          "    pm.environment.set(\"operator_user_name\",jsonData[1].result.records[jsonData[1].result.records.length-1].username);",
                           "});",
                           "",
-                          "user_email = pm.environment.get(\"user_email\");",
+                          "operator_user_email = pm.environment.get(\"operator_user_email\");",
                           "",
                           "pm.test(\"Body has email\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(user_email);",
+                          "    pm.expect(pm.response.text()).to.include(operator_user_email);",
                           "});",
                           "",
                           "",
@@ -3776,9 +3776,9 @@
                       "script": {
                         "id": "7be8edf0-db71-40b0-b037-c7a04d78613a",
                         "exec": [
-                          "pm.environment.set(\"user\", \"operator2\");",
-                          "pm.environment.set(\"password\", \"sm2000\");",
-                          "pm.environment.set(\"user_email\", \"chris5@gmail.com\");"
+                          "pm.environment.set(\"operator_user\", \"operator2\");",
+                          "pm.environment.set(\"operator_password\", \"sm2000\");",
+                          "pm.environment.set(\"operator_user_email\", \"chris5@gmail.com\");"
                         ],
                         "type": "text/javascript"
                       }
@@ -3794,7 +3794,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{user}}\",\n\t\t\t\t\"password\": \"{{password}}\",\n\t\t\t\t\"personal_name\": \"PName\",\n\t\t\t\t\"email\": \"{{user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
+                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"createUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"username\": \"{{operator_user}}\",\n\t\t\t\t\"password\": \"{{operator_password}}\",\n\t\t\t\t\"personal_name\": \"PName\",\n\t\t\t\t\"email\": \"{{operator_user_email}}\",\n\t\t\t\t\"date_created\": \"\",\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 26\n\t},\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"getUsers\",\n\t\t\"data\": null,\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 27\n\t}\n]"
                     },
                     "url": "{{url}}/1.0/direct/router",
                     "description": "creates an admin user in stream manager."
@@ -3859,7 +3859,7 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "{{user}}",
+                          "value": "{{operator_user}}",
                           "type": "text"
                         },
                         {
@@ -3907,7 +3907,7 @@
                         },
                         {
                           "key": "password",
-                          "value": "{{password}}",
+                          "value": "{{operator_password}}",
                           "type": "text"
                         }
                       ]
@@ -3945,7 +3945,7 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "{{user}}",
+                          "value": "{{operator_user}}",
                           "type": "text"
                         },
                         {
