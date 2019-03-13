@@ -4640,7 +4640,7 @@
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "/*pm.test(\"Body shows success message\", function () {",
+                          "pm.test(\"Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"getUsers\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
@@ -4651,7 +4651,7 @@
                           "pm.test(\"Body includes email\", function () {",
                           "    pm.expect(pm.response.text()).to.include(operator_user_email);",
                           "});",
-                          "*/"
+                          ""
                         ],
                         "type": "text/javascript"
                       }
@@ -4709,7 +4709,7 @@
                       "script": {
                         "id": "4b491a78-3df2-49f3-a594-8663feab62cf",
                         "exec": [
-                          "pm.environment.set(\"operator_2_password_edit\", \"{{password}}\"+\"edit\");"
+                          "pm.environment.set(\"operator_2_password_edit\", \"{{operator_password}}\"+\"edit\");"
                         ],
                         "type": "text/javascript"
                       }
@@ -4725,7 +4725,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 57,\n\t\t\t\t\"username\": \"{{user}}\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jennnnnnnnnnnn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
+                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": 57,\n\t\t\t\t\"username\": \"{{operator_user}}\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"Jennnnnnnnnnnn\",\n\t\t\t\t\"email\": \"jpeeling_edit@skylinenet.net\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-25 14:28:11.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": false\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 14\n\t}\n]"
                     },
                     "url": "{{url}}/1.0/direct/router"
                   },
