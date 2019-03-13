@@ -4633,14 +4633,23 @@
                       "script": {
                         "id": "b873ecaf-b3eb-4cfb-ae8f-4773be5da451",
                         "exec": [
+                          "operator_user_name = pm.environment.get(operator_user_name);",
+                          "operator_user_email = pm.environment.get(operator_user_email); ",
+                          "",
                           "pm.test(\"Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Set operator id environment variable\", function () {",
-                          "    var jsonData = pm.response.json();",
-                          "    var operator_id = jsonData[0].result.records.id;",
-                          "    pm.environment.set(\"operator_id\", operator_id);",
+                          "pm.test(\"Body shows success message\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"\\\"getUsers\\\",\\\"result\\\":{\\\"success\\\":true\");",
+                          "});",
+                          "",
+                          "pm.test(\"Body includes username\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(operator_user_name);",
+                          "});",
+                          "",
+                          "pm.test(\"Body includes email\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(operator_user_email);",
                           "});"
                         ],
                         "type": "text/javascript"
