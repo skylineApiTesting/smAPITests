@@ -1194,11 +1194,11 @@
                       "script": {
                         "id": "ce075b4d-4ce3-4f6a-b20f-bb185a2106ec",
                         "exec": [
-                          "pm.test(\"Body shows success message\", function () {",
+                          "pm.test(\"C127534 Body shows success message\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"\\\"createContact\\\",\\\"result\\\":{\\\"success\\\":true\");",
                           "});",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127534 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
