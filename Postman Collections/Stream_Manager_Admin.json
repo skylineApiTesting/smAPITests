@@ -4778,7 +4778,7 @@
                       "script": {
                         "id": "8a81fe8e-d0ec-4a6f-a893-47108cdd8e4f",
                         "exec": [
-                          "pm.test(\"Body shows Operator Logged in\", function () {",
+                          "pm.test(\"C127624 Body shows Operator Logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=false ;\");",
                           "});"
                         ],
