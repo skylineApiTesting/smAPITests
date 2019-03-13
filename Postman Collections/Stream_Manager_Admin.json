@@ -5065,7 +5065,7 @@
                       "script": {
                         "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127662 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -5099,7 +5099,7 @@
                       "script": {
                         "id": "db8bbf11-03dd-43d1-8612-7215cafecab6",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127639 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
