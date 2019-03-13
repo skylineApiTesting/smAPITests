@@ -5520,11 +5520,11 @@
                       "script": {
                         "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127569 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body is JSON format\", function () {",
+                          "pm.test(\"C127569 Body is JSON format\", function () {",
                           "    pm.response.to.be.json;",
                           "});",
                           ""
