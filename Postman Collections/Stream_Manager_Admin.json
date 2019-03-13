@@ -2076,11 +2076,11 @@
                       "script": {
                         "id": "833c2d9d-108d-4e30-b6db-355b0b695f16",
                         "exec": [
-                          "pm.test(\"Body does not include deleted appliance\", function () {",
+                          "pm.test(\"C127530 Body does not include deleted appliance\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(\"\\\"hostname\\\": \\\"Jennnn-SFS\\\"\");",
                           "});",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127530 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
