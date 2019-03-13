@@ -1036,16 +1036,16 @@
                         "exec": [
                           "user_name_EDIT = pm.environment.get(\"user_name_EDIT\");",
                           "",
-                          "pm.test(\"Response does not contain deleted user\", function () {",
+                          "pm.test(\"C127547 Response does not contain deleted user\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(user_name_EDIT);",
                           "});",
                           "",
-                          "pm.test(\"deleteUser gives success message\", function () {",
+                          "pm.test(\"C127547 deleteUser gives success message\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127547 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
@@ -1088,11 +1088,11 @@
                       "script": {
                         "id": "21b479ff-d576-41d5-9885-d6b5f624ab38",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127517 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Appliances were listed\", function () {",
+                          "pm.test(\"C127517 Appliances were listed\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
@@ -1126,11 +1126,11 @@
                       "script": {
                         "id": "f4dc5ab6-a817-4dc4-890b-94c1e9177b89",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127516 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Success message\", function () {",
+                          "pm.test(\"C127516 Success message\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.result.success).to.eql(true);",
                           "});"
