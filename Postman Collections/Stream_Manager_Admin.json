@@ -2779,7 +2779,7 @@
                       "script": {
                         "id": "85babbf0-3b57-40a7-b91c-ae6d36811bb0",
                         "exec": [
-                          "pm.test(\"Verify admin can edit stream metadata\", function () {",
+                          "pm.test(\"C127521 Verify admin can edit stream metadata\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
                           "});"
                         ],
