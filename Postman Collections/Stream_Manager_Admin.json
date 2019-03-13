@@ -6014,7 +6014,7 @@
                       "script": {
                         "id": "c7a87241-8255-4da7-8972-53e88ceacb48",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127593 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           ""
@@ -6086,11 +6086,11 @@
                       "script": {
                         "id": "070d143d-35f2-4a24-84a4-6875ed240ba5",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127594 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body is in XML format\", function () {",
+                          "pm.test(\"C127594 Body is in XML format\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<xml>\");",
                           "});"
                         ],
