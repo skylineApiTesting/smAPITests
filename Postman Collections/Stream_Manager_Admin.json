@@ -4132,7 +4132,7 @@
                         },
                         {
                           "key": "password",
-                          "value": "{{password}}",
+                          "value": "{{operator_password}}",
                           "type": "text"
                         }
                       ]
@@ -4195,12 +4195,12 @@
                       "formdata": [
                         {
                           "key": "user",
-                          "value": "operator",
+                          "value": "{{operator_user}}",
                           "type": "text"
                         },
                         {
                           "key": "password",
-                          "value": "sm1000",
+                          "value": "{{operator_password}}",
                           "type": "text"
                         }
                       ]
