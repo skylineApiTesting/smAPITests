@@ -5133,7 +5133,7 @@
                       "script": {
                         "id": "41b1a442-474c-42c5-a538-eb588d29a1a7",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127640 Zone code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -5169,7 +5169,7 @@
                         "exec": [
                           "//this API gets information for stream test_stream_alpha, which has a metadata_id of 1",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127631 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
