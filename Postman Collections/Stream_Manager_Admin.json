@@ -171,15 +171,15 @@
                       "script": {
                         "id": "cdf83a48-2d7c-43ee-a1dd-8fcb13cfbb95",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127501 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Login Fields\", function () {",
+                          "pm.test(\"C127501 Body Contains Login Fields\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<input type=\\\"text\\\" placeholder=\\\"Username\\\" name=\\\"user\\\">\");",
                           "});",
                           "",
-                          "pm.test(\"Body Contains Error\", function () {",
+                          "pm.test(\"C127501 Body Contains Error\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"<div style=\\\"color: red\\\">No match for username</div>\");",
                           "});",
                           ""
