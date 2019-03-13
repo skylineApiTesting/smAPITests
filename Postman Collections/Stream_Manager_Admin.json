@@ -4929,7 +4929,7 @@
                       "script": {
                         "id": "26e22d2e-a6f2-4614-b6da-0e1d0fd512de",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127634 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -4963,7 +4963,7 @@
                       "script": {
                         "id": "ea61cd6c-d14d-4c10-87e0-3545c4079013",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127635 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -4997,7 +4997,7 @@
                       "script": {
                         "id": "a52af66e-6564-479f-85fc-78e49c204817",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127629 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -5031,7 +5031,7 @@
                       "script": {
                         "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127630 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
