@@ -2605,8 +2605,7 @@
                           "pm.test(\"C127519 Verify admin can edit stream metadata\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"result\":{\"success\":true}}');",
                           "});",
-                          "",
-                          "pm.environment.set(\"variable_key\", \"variable_value\");"
+                          ""
                         ],
                         "type": "text/javascript"
                       }
@@ -2738,15 +2737,15 @@
                           "stream_latitude = pm.environment.get(\"stream_latitude\");",
                           "stream_longitude = pm.environment.get(\"stream_longitude\");",
                           "",
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127520 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Success message present\", function () {",
+                          "pm.test(\"C127520 Success message present\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                           "});",
                           "",
-                          "pm.test(\"Created Metadata was saved\", function () {",
+                          "pm.test(\"C127520 Created Metadata was saved\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"{\\\"id\\\":\" + stream_id + \",\\\"description\\\":\\\"\" + stream_description + \"\\\",\\\"jurisdiction\\\":\\\"\" + stream_jurisdiction + \"\\\",\\\"traffic_direction\\\":\\\"\" + stream_traffic_direction + \"\\\",\\\"route_name\\\":\\\"\" + stream_route_name + \"\\\",\\\"mile_marker\\\":\" + stream_milemarker + \",\\\"latitude\\\":\" + stream_latitude + \",\\\"longitude\\\":\" + stream_longitude);",
                           "});"
                         ],
