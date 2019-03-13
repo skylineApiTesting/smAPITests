@@ -995,7 +995,7 @@
                       "script": {
                         "id": "2e25ad93-6506-47e1-a3e6-87a8a9ace82c",
                         "exec": [
-                          "pm.test(\"User is logged in as an admin\", function () {",
+                          "pm.test(\"C127556 User is logged in as an admin\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});"
                         ],
