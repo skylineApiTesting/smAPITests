@@ -2521,19 +2521,19 @@
                       "script": {
                         "id": "41440b5f-df39-44c5-9c2b-435dc6a0960b",
                         "exec": [
-                          "pm.test(\"Status code is 403\", function () {",
+                          "pm.test(\"C127544 Status code is 403\", function () {",
                           "    pm.response.to.have.status(403);",
                           "});",
                           "",
-                          "pm.test(\"Body is JSON format\", function () {",
+                          "pm.test(\"C127544 Body is JSON format\", function () {",
                           "    pm.response.to.be.json;",
                           "});",
                           "",
-                          "pm.test(\"Streams in deleted API key's Zone not received\", function () {",
+                          "pm.test(\"C127544 Streams in deleted API key's Zone not received\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(\"test_stream_cam_to_multiple_sfs\");",
                           "});",
                           "",
-                          "pm.test(\"Streams not in deleted API key's Zone are not received\", function () {",
+                          "pm.test(\"C127544 Streams not in deleted API key's Zone are not received\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(\"stream_1012\");",
                           "});"
                         ],
