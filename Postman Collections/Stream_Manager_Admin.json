@@ -2468,7 +2468,7 @@
                       "script": {
                         "id": "f4f9c766-fe9c-4c3a-a7e5-b171779af845",
                         "exec": [
-                          "user_key = pm.environment.get(\"user_API_Key\");",
+                          "user_key = pm.environment.get(\"user_key\");",
                           "",
                           "pm.test(\"C127541 Response does not contain deleted key\", function () {",
                           "    pm.expect(pm.response.text()).to.not.include(user_key);",
@@ -2556,7 +2556,7 @@
                       "raw": ""
                     },
                     "url": {
-                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_API_Key}}&format=json",
+                      "raw": "{{url}}/1.0/streams/getAll?X-API-KEY={{user_key}}&format=json",
                       "host": [
                         "{{url}}"
                       ],
@@ -2568,7 +2568,7 @@
                       "query": [
                         {
                           "key": "X-API-KEY",
-                          "value": "{{user_API_Key}}",
+                          "value": "{{user_key}}",
                           "equals": true
                         },
                         {
