@@ -4521,11 +4521,11 @@
                       "script": {
                         "id": "1a03e176-fca7-4fbe-909b-b73dad6e56bc",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127647 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Success message present\", function () {",
+                          "pm.test(\"C127647 Success message present\", function () {",
                           "    pm.expect(pm.response.text()).to.include('\"success\":true');",
                           "});"
                         ],
@@ -4559,11 +4559,11 @@
                       "script": {
                         "id": "62c5ee91-626f-487f-9f9b-3eb440859912",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127648 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Verify stream info was returned\", function () {",
+                          "pm.test(\"C127648 Verify stream info was returned\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData[0].result.success).to.eql(true);",
                           "});"
