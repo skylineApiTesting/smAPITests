@@ -1290,7 +1290,7 @@
                           "});",
                           "",
                           "//Setting up for next test",
-                          "pm.test(\"User was created and variables set.\", function () {",
+                          "pm.test(\"C127536 User was created and variables set.\", function () {",
                           "    var jsonData = pm.response.json();",
                           "    pm.expect(jsonData.total) !== null;",
                           "    ",
