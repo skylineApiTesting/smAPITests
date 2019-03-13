@@ -2585,7 +2585,7 @@
             },
             {
               "_postman_id": "586d7d8f-e591-4dfc-9b01-10d324e24cf9",
-              "name": "Stream Metadata",
+              "name": "Metadata",
               "description": "API tests for streams tab for operators",
               "item": [
                 {
@@ -3678,6 +3678,115 @@
                       ""
                     ]
                   }
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "_postman_id": "bb66ac50-ab79-448a-8362-48b62020bbe8",
+              "name": "Reports Copy",
+              "description": "these are the APIs which are called when you view reports in the reports tab of stream manager.",
+              "item": [
+                {
+                  "_postman_id": "9ee63fd2-bdb5-4ea8-990d-1f038f5ac8f8",
+                  "name": "getAllStreamStatus",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "5bb8f8e4-838d-4008-ad62-f9b3e552c10b",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getAllStreamStatus\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 22\n}"
+                    },
+                    "url": "{{url}}/1.0/direct/router",
+                    "description": "this is the response from using the 'Current status' report in stream manager."
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "26f8a73a-3b5e-45cc-9d2e-2850958ae727",
+                  "name": "Stream metadata report",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "9309f386-78cc-4e1f-92f1-0153d75e9154",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 23\n}"
+                    },
+                    "url": "{{url}}/1.0/direct/router",
+                    "description": "this is the response when you get data for the 'stream metadata' report in stream manager."
+                  },
+                  "response": []
+                },
+                {
+                  "_postman_id": "43cc5353-4939-48d7-904c-b48fb4861fec",
+                  "name": "stream network config report",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "fc3fe377-5c3a-4b40-bd5a-d93dacb54412",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n\t\"action\": \"Streams\",\n\t\"method\": \"getGrid\",\n\t\"data\": [\n\t\t{\n\t\t\t\"page\": 1,\n\t\t\t\"start\": 0,\n\t\t\t\"limit\": 25,\n\t\t\t\"group\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"sort\": [\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"jurisdiction\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"property\": \"name\",\n\t\t\t\t\t\"direction\": \"ASC\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t],\n\t\"type\": \"rpc\",\n\t\"tid\": 24\n}"
+                    },
+                    "url": "{{url}}/1.0/direct/router"
+                  },
+                  "response": []
                 }
               ],
               "_postman_isSubFolder": true
