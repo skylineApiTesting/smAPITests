@@ -314,11 +314,11 @@
                       "script": {
                         "id": "66c1c821-2ce2-40ec-b411-56ffbbdb5ee8",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127510 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});",
                           "",
-                          "pm.test(\"Body IsAdministrator field to show it is logged in\", function () {",
+                          "pm.test(\"C127510 Body IsAdministrator field to show it is logged in\", function () {",
                           "    pm.expect(pm.response.text()).to.include(\"IsAdministrator=true ;\");",
                           "});",
                           ""
