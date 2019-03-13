@@ -3464,7 +3464,7 @@
                       "script": {
                         "id": "d9c63487-9f93-4637-98c1-71cf367ceb72",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127583 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
@@ -3498,7 +3498,7 @@
                       "script": {
                         "id": "7abfae09-2dc8-421e-a8c0-32b99e03a824",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
+                          "pm.test(\"C127584 Status code is 200\", function () {",
                           "    pm.response.to.have.status(200);",
                           "});"
                         ],
