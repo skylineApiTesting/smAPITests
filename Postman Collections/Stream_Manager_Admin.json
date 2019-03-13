@@ -4771,40 +4771,6 @@
                     "description": "logs in with a valid username\nadmin - admin / sm1000\noperator - operator / sm1000"
                   },
                   "response": []
-                },
-                {
-                  "_postman_id": "af22f1f1-0ac7-4ded-884e-8d0f15104914",
-                  "name": "Cannot Make Self Admin",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "e76c4384-7964-4d88-a45f-77eda40df52c",
-                        "exec": [
-                          "pm.test(\"Operator cant make self admin\", function () {",
-                          "    pm.expect(pm.response.text()).to.include('\"success\":false');",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "[\n\t{\n\t\t\"action\": \"Users\",\n\t\t\"method\": \"updateUser\",\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"id\": \"{{operator_user_ID}}\",\n\t\t\t\t\"username\": \"{{operator_user_name}}\",\n\t\t\t\t\"password\": \"{{operator_2_password_edit}}\",\n\t\t\t\t\"personal_name\": \"test\",\n\t\t\t\t\"email\": \"{{operator_user_email}}\",\n\t\t\t\t\"date_created\": {\n\t\t\t\t\t\"date\": \"2018-06-19 19:04:09.000000\",\n\t\t\t\t\t\"timezone_type\": 3,\n\t\t\t\t\t\"timezone\": \"GMT\"\n\t\t\t\t},\n\t\t\t\t\"is_admin\": true\n\t\t\t}\n\t\t],\n\t\t\"type\": \"rpc\",\n\t\t\"tid\": 25\n\t}\n]"
-                    },
-                    "url": "{{url}}/1.0/direct/router",
-                    "description": "SM-50 This belongs at the bottom of Backend/Operator/Profile"
-                  },
-                  "response": []
                 }
               ],
               "_postman_isSubFolder": true
@@ -5290,7 +5256,7 @@
                         }
                       ]
                     },
-                    "url": "https://prometheus.qa.skyline.local"
+                    "url": "{{url}}"
                   },
                   "response": []
                 },
